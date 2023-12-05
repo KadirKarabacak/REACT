@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
 
 // Copied pizza data from data.js
 const pizzaData = [
@@ -47,12 +48,12 @@ const pizzaData = [
   },
 ];
 
-// There is two rule writing function as component !
+//! There is two rule writing function as component !
 // 1- Function names starts with Uppercase.
 // 2- Each function returns any markup.
 function App() {
   return (
-    <div>
+    <div className="container">
       <Header />
       {/* React is allow us to call another component more and more */}
       <Menu />
@@ -62,34 +63,53 @@ function App() {
 }
 
 function Header() {
-  return <h1>Fast React Pizza Co.</h1>;
+  // To style any element we need to define an object like bottom or directly inline ->
+  // const style = { color: "red", fontSize: "48px", textTransform: "uppercase" };
+  const style = {};
+  // Setting empty cuz of external css is not works
+  return (
+    <header className="header">
+      <h1 style={style} className="header">
+        Fast React Pizza Co.
+      </h1>
+    </header>
+  );
 }
 
 function Menu() {
   return (
-    <div>
+    <main className="menu">
       <h2>Our Menu</h2>
       <Pizza />
       <Pizza />
       <Pizza />
-    </div>
+    </main>
   );
 }
 
-// In footer instead of JSX use createElement method
 function Footer() {
+  const hour = new Date().getHours();
+  const openHour = 12;
+  const closeHour = 22;
+  const isOpen = hour >= openHour && hour <= closeHour;
+  console.log(isOpen);
+  // if (hour >= openHour && hour <= closeHour) alert(" We are open!");
+  // else alert("We are closed!");
+
   // First is element, second is props, third one is child element.
   // return React.createElement("footer", null, "We'r currently open!");
   return (
-    <footer>{new Date().toLocaleTimeString()}. We'r currently open!</footer>
+    <footer className="footer">
+      {new Date().toLocaleTimeString()}. We'r currently open!
+    </footer>
   );
 }
 
 function Pizza() {
   return (
-    <div>
+    <div className="">
       <img src="pizzas/spinaci.jpg" alt="Spinaci Pizza" />
-      <h2>Pizza Spinaci</h2>
+      <h3>Pizza Spinaci</h3>
       <p>Tomato, mozarella, spinach, and ricotta cheese</p>
     </div>
   );
