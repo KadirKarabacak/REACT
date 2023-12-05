@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- Included react from --- >>>>  https://react.dev/learn/installation -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!-- First script is React core! Including all stuff like components, state etc. -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Second script is Rendering Layer! Rendering react components into DOM -->
+    <script>
+      // Main app for react
+      function App() {
+        // To update clock every second we use state
+        const [time, setTime] = React.useState(new Date().toLocaleTimeString());
+        // And then we need useEffect to update function
+        React.useEffect(function () {
+          setInterval(() => {
+            // Every second update normal state
+            setTime(new Date().toLocaleTimeString());
+          }, 1000);
+        }, []);
+
+        // JSX doesn't work right here. No tool to convert JSX to JS.
+        return React.createElement("header", null, `Hello React! It's ${time}`);
+        // React object comes from first script.
+      }
+      //   At this point we create element, but we don't render it. So ->
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(React.createElement(App));
+    </script>
+  </body>
+</html>
