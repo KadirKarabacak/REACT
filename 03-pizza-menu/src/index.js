@@ -48,6 +48,8 @@ const pizzaData = [
   },
 ];
 
+console.log(pizzaData);
+
 //! There is two rule writing function as component !
 // 1- Function names starts with Uppercase.
 // 2- Each function returns any markup.
@@ -62,6 +64,53 @@ function App() {
   );
 }
 
+//! We pass props from parent element to child element
+function Pizza(props) {
+  // For some less code
+  const prop = props.pizzaObj;
+  return (
+    <li className="pizza">
+      <img src={prop.photoName} alt={prop.name} />
+      <div>
+        <h3>{prop.name}</h3>
+        <p>{prop.ingredients}</p>
+        <span className="pizza-price">{`${prop.price}$`}</span>
+      </div>
+    </li>
+  );
+}
+
+// For all pizzas our menu
+function Menu() {
+  return (
+    <main className="menu">
+      <h2>Our Menu</h2>
+      {/* Instead of doin all pizzas manually one by one, we use render lists by pizzas array */}
+      <ul className="pizzas">
+        {pizzaData.map((pizza) => (
+          // Passing entire object and then fixing on Pizza component
+          <Pizza pizzaObj={pizza} key={pizza.name} />
+          // Also we need a unique key prop on pizza for performance or something like that xD
+        ))}
+      </ul>
+
+      {/* <Pizza
+        name="Pizza Spinaci"
+        ingredients="Tomato, mozarella, spinach, and ricotta cheese"
+        photoName="pizzas/spinaci.jpg"
+        price={10}
+      /> */}
+
+      {/* <Pizza
+        name="Pizza Funghi"
+        ingredients="Tomato, mozarella, spinach, and ricotta cheese"
+        photoName="pizzas/funghi.jpg"
+        price={12}
+      /> */}
+    </main>
+  );
+}
+
 function Header() {
   // To style any element we need to define an object like bottom or directly inline ->
   // const style = { color: "red", fontSize: "48px", textTransform: "uppercase" };
@@ -73,17 +122,6 @@ function Header() {
         Fast React Pizza Co.
       </h1>
     </header>
-  );
-}
-
-function Menu() {
-  return (
-    <main className="menu">
-      <h2>Our Menu</h2>
-      <Pizza />
-      <Pizza />
-      <Pizza />
-    </main>
   );
 }
 
@@ -102,16 +140,6 @@ function Footer() {
     <footer className="footer">
       {new Date().toLocaleTimeString()}. We'r currently open!
     </footer>
-  );
-}
-
-function Pizza() {
-  return (
-    <div className="">
-      <img src="pizzas/spinaci.jpg" alt="Spinaci Pizza" />
-      <h3>Pizza Spinaci</h3>
-      <p>Tomato, mozarella, spinach, and ricotta cheese</p>
-    </div>
   );
 }
 
