@@ -113,15 +113,17 @@ function Menu() {
 function Pizza({ pizzaObj }) {
   console.log(pizzaObj);
   // Multiple return, this is not return which pizza is sold out.
-  if (pizzaObj.soldOut) return null;
+  // if (pizzaObj.soldOut) return null;
 
   return (
-    <li className="pizza">
+    <li className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}>
       <img src={pizzaObj.photoName} alt={pizzaObj.name} />
       <div>
         <h3>{pizzaObj.name}</h3>
         <p>{pizzaObj.ingredients}</p>
-        <span className="pizza-price">{`${pizzaObj.price}$`}</span>
+        <span className="pizza-price">
+          {pizzaObj.soldOut ? "SOLD OUT" : `${pizzaObj.price}$`}
+        </span>
       </div>
     </li>
   );
