@@ -82,17 +82,27 @@ function Pizza(props) {
 
 // For all pizzas our menu
 function Menu() {
+  // To add conditional rendering.
+  const pizzas = pizzaData;
+  // If we pass an empty array pizzas are not rendered but ul el. is still there
+  // const pizzas = [];
+  // To remove ul element too we need to check length
+  const numPizzas = pizzas.length;
+  // And now it renders 0 on document, we have to use > 0 into short circuiting
+
   return (
     <main className="menu">
       <h2>Our Menu</h2>
       {/* Instead of doin all pizzas manually one by one, we use render lists by pizzas array */}
-      <ul className="pizzas">
-        {pizzaData.map((pizza) => (
-          // Passing entire object and then fixing on Pizza component
-          <Pizza pizzaObj={pizza} key={pizza.name} />
-          // Also we need a unique key prop on pizza for performance or something like that xD
-        ))}
-      </ul>
+      {numPizzas > 0 && (
+        <ul className="pizzas">
+          {pizzas.map((pizza) => (
+            // Passing entire object and then fixing on Pizza component
+            <Pizza pizzaObj={pizza} key={pizza.name} />
+            // Also we need a unique key prop on pizza for performance or something like that xD
+          ))}
+        </ul>
+      )}
 
       {/* <Pizza
         name="Pizza Spinaci"
@@ -129,16 +139,22 @@ function Footer() {
   const hour = new Date().getHours();
   const openHour = 12;
   const closeHour = 22;
+  // Conditional rendering
   const isOpen = hour >= openHour && hour <= closeHour;
   console.log(isOpen);
   // if (hour >= openHour && hour <= closeHour) alert(" We are open!");
   // else alert("We are closed!");
 
-  // First is element, second is props, third one is child element.
+  //! First is element, second is props, third one is child element.
   // return React.createElement("footer", null, "We'r currently open!");
   return (
     <footer className="footer">
-      {new Date().toLocaleTimeString()}. We'r currently open!
+      {isOpen && (
+        <div className="order">
+          <p>We're open until {closeHour}:00. Come visit us or order online.</p>
+          <button className="btn">Order</button>
+        </div>
+      )}
     </footer>
   );
 }
