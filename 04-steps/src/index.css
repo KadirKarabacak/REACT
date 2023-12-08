@@ -63,6 +63,11 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+  transition: all 0.2s;
+}
+
+.buttons button:hover {
+  background-color: #8866ec !important;
 }
 
 .buttons button span {

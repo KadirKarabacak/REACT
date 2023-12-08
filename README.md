@@ -11,6 +11,7 @@ In this repository, I keep all my work done with "React" in bulk.
 - How to render multiple components at once using loops. [ .map() forexample ]
 - What is **props** and how can i use [ For DRY prensiple immediately **destructure** props object ].
 - Why props are immutable.
+- What is useState() and how to use it.
 - What is **React fragment** and how can i use [ Instead of element blocks like "Div" simply use <> and </> ].
 - What is the difference between **Imperetive** and **Declarative**. [ Vanilla JS vs React ]
 - What are React frameworks. **[ NextJS, Remix ]**
