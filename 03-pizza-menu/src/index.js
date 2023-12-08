@@ -83,15 +83,24 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our Menu</h2>
+
       {/* Instead of doin all pizzas manually one by one, we use render lists by pizzas array */}
       {numPizzas > 0 ? (
-        <ul className="pizzas">
-          {pizzas.map((pizza) => (
-            // Passing entire object and then fixing on Pizza component
-            <Pizza pizzaObj={pizza} key={pizza.name} />
-            // Also we need a unique key prop on pizza for performance or something like that xD
-          ))}
-        </ul>
+        // <React.Fragment key={}></React.Fragment>
+        // When we want to render two element then we use React Fragments [ <>, </> ]
+        <>
+          <p>
+            Authentic Italian cuisine. 6 creative dishes to choose from. All
+            from our stone oven, all organic, all delicious.
+          </p>
+          <ul className="pizzas">
+            {pizzas.map((pizza) => (
+              // Passing entire object and then fixing on Pizza component
+              <Pizza pizzaObj={pizza} key={pizza.name} />
+              // Also we need a unique key prop on pizza for performance or something like that xD
+            ))}
+          </ul>
+        </>
       ) : (
         <p>We're still working on our menu. Please come back later :)</p>
       )}
