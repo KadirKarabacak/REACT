@@ -48,8 +48,6 @@ const pizzaData = [
   },
 ];
 
-console.log(pizzaData);
-
 //! There is two rule writing function as component !
 // 1- Function names starts with Uppercase.
 // 2- Each function returns any markup.
@@ -57,26 +55,18 @@ function App() {
   return (
     <div className="container">
       <Header />
-      {/* React is allow us to call another component more and more */}
       <Menu />
       <Footer />
     </div>
   );
 }
 
-//! We pass props from parent element to child element
-function Pizza(props) {
-  // For some less code
-  const prop = props.pizzaObj;
+// Header
+function Header() {
   return (
-    <li className="pizza">
-      <img src={prop.photoName} alt={prop.name} />
-      <div>
-        <h3>{prop.name}</h3>
-        <p>{prop.ingredients}</p>
-        <span className="pizza-price">{`${prop.price}$`}</span>
-      </div>
-    </li>
+    <header className="header">
+      <h1>Fast React Pizza Co.</h1>
+    </header>
   );
 }
 
@@ -94,7 +84,7 @@ function Menu() {
     <main className="menu">
       <h2>Our Menu</h2>
       {/* Instead of doin all pizzas manually one by one, we use render lists by pizzas array */}
-      {numPizzas > 0 && (
+      {numPizzas > 0 ? (
         <ul className="pizzas">
           {pizzas.map((pizza) => (
             // Passing entire object and then fixing on Pizza component
@@ -102,60 +92,66 @@ function Menu() {
             // Also we need a unique key prop on pizza for performance or something like that xD
           ))}
         </ul>
+      ) : (
+        <p>We're still working on our menu. Please come back later :)</p>
       )}
-
-      {/* <Pizza
-        name="Pizza Spinaci"
-        ingredients="Tomato, mozarella, spinach, and ricotta cheese"
-        photoName="pizzas/spinaci.jpg"
-        price={10}
-      /> */}
-
-      {/* <Pizza
-        name="Pizza Funghi"
-        ingredients="Tomato, mozarella, spinach, and ricotta cheese"
-        photoName="pizzas/funghi.jpg"
-        price={12}
-      /> */}
     </main>
   );
 }
 
-function Header() {
-  // To style any element we need to define an object like bottom or directly inline ->
-  // const style = { color: "red", fontSize: "48px", textTransform: "uppercase" };
-  const style = {};
-  // Setting empty cuz of external css is not works
+//! We pass props from parent element to child element
+//: And also we can immediately destructure props
+function Pizza({ pizzaObj }) {
+  console.log(pizzaObj);
+  // Multiple return, this is not return which pizza is sold out.
+  if (pizzaObj.soldOut) return null;
+
   return (
-    <header className="header">
-      <h1 style={style} className="header">
-        Fast React Pizza Co.
-      </h1>
-    </header>
+    <li className="pizza">
+      <img src={pizzaObj.photoName} alt={pizzaObj.name} />
+      <div>
+        <h3>{pizzaObj.name}</h3>
+        <p>{pizzaObj.ingredients}</p>
+        <span className="pizza-price">{`${pizzaObj.price}$`}</span>
+      </div>
+    </li>
   );
 }
 
+// Footer
 function Footer() {
   const hour = new Date().getHours();
   const openHour = 12;
   const closeHour = 22;
   // Conditional rendering
   const isOpen = hour >= openHour && hour <= closeHour;
-  console.log(isOpen);
-  // if (hour >= openHour && hour <= closeHour) alert(" We are open!");
-  // else alert("We are closed!");
 
   //! First is element, second is props, third one is child element.
   // return React.createElement("footer", null, "We'r currently open!");
   return (
     <footer className="footer">
-      {isOpen && (
-        <div className="order">
-          <p>We're open until {closeHour}:00. Come visit us or order online.</p>
-          <button className="btn">Order</button>
-        </div>
+      {isOpen ? (
+        <Order openHour={openHour} closeHour={closeHour} />
+      ) : (
+        <p>
+          We're happy to welcome you between {openHour}:00 and {closeHour}:00.
+        </p>
       )}
     </footer>
+  );
+}
+
+// Includes paragraph and button to order
+// Destructure props here too
+function Order({ closeHour, openHour }) {
+  return (
+    <div className="order">
+      <p>
+        We're open from {openHour}:00 to {closeHour}:00. Come visit us or order
+        online.
+      </p>
+      <button className="btn">Order</button>
+    </div>
   );
 }
 
