@@ -12,6 +12,7 @@ In this repository, I keep all my work done with "React" in bulk.
 - What is **props** and how can i use [ For DRY prensiple immediately **destructure** props object ].
 - Why props are immutable.
 - What is useState() and how to use it.
+- What is **React Hooks** and how to use them. [ Forexample useState, useReducer, useEffect ]
 - What is **React fragment** and how can i use [ Instead of element blocks like "Div" simply use <> and </> ].
 - What is the difference between **Imperetive** and **Declarative**. [ Vanilla JS vs React ]
 - What are React frameworks. **[ NextJS, Remix ]**
