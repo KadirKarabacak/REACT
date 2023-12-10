@@ -6,6 +6,15 @@ const messages = [
 ];
 
 export default function App() {
+  return (
+    <div>
+      <Steps />
+      <Steps />
+    </div>
+  );
+}
+
+function Steps() {
   // let step = 1;
   // const [test, setTest] = useState({ name: "Kadir" });
 
@@ -42,7 +51,7 @@ export default function App() {
   }
 
   return (
-    <>
+    <div>
       <button onClick={handleClose} className="close">
         &times;
       </button>
@@ -74,6 +83,6 @@ export default function App() {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
