@@ -18,3 +18,4 @@ In this repository, I keep all my work done with "React" in bulk.
 - What are React frameworks. **[ NextJS, Remix ]**
 - Why does React use one-way data flow. [ Also Angular has two-way data flow. ]
 - What is **SSR [ Server-Side Rendering ]**, **CSR [ Client-Side Rendering ]** and **SPA [ Single-Page Application ]**.
+- What is React Dev Tools and how can i use.
