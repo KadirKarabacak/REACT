@@ -16,11 +16,18 @@ export default function App() {
   //! React hooks only available to call in App [Global function].
 
   function handlePrevious() {
-    if (step > 1) setStep(step - 1);
+    // Always use callback into setter
+    if (step > 1) setStep((s) => s - 1);
   }
 
   function handleNext() {
-    if (step < messages.length) setStep(step + 1);
+    if (step < messages.length) {
+      // What if we want to move forward two times ?
+      setStep((s) => s + 1);
+      //! Two time call is not the solution, instead we have to pass function into setter
+      // setStep((s) => s + 1);
+    }
+
     // In this situation we trying to mutate step variable. But React doesn't mutate step,only updating.
     //: step = step + 1 // React has no way to know it was a state or not. Need to use setter function we defined.
 
@@ -31,7 +38,7 @@ export default function App() {
   }
 
   function handleClose() {
-    setIsOpen(!isOpen);
+    setIsOpen((isOp) => !isOp);
   }
 
   return (

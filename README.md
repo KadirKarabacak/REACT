@@ -10,12 +10,13 @@ In this repository, I keep all my work done with "React" in bulk.
 - What is **conditional rendering** and how can i use [ **Ternary Operator**, **Short Circuiting** ].
 - How to render multiple components at once using loops. [ .map() forexample ]
 - What is **props** and how can i use [ For DRY prensiple immediately **destructure** props object ].
-- Why props are immutable.
-- What is useState() and how to use it.
+- Why props are **immutable**.
+- What is **useState()** and how to use it.
+- Why should i use a **callback function** into useState setter function.
 - What is **React Hooks** and how to use them. [ Forexample useState, useReducer, useEffect ]
 - What is **React fragment** and how can i use [ Instead of element blocks like "Div" simply use <> and </> ].
 - What is the difference between **Imperetive** and **Declarative**. [ Vanilla JS vs React ]
 - What are React frameworks. **[ NextJS, Remix ]**
-- Why does React use one-way data flow. [ Also Angular has two-way data flow. ]
+- Why does React use **one-way** data flow. [ Also Angular has **two-way** data flow. ]
 - What is **SSR [ Server-Side Rendering ]**, **CSR [ Client-Side Rendering ]** and **SPA [ Single-Page Application ]**.
-- What is React Dev Tools and how can i use.
+- What is **React Dev Tools** and how can i use.
