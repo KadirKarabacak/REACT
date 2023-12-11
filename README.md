@@ -6,7 +6,7 @@ In this repository, I keep all my work done with "React" in bulk.
 
 #### Setup
 
-- How to install and use **Create-React-App** [ In real projects always use **Vite** for better performance and comminity support, but for learning Create-React-App is still ok ].
+- How to install and use **Create-React-App** [ In real projects always use **Vite <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/410px-Vitejs-logo.svg.png" style="width: 25px">** for better performance and comminity support, but for learning Create-React-App is still ok ].
 
 #### Rendering
 
