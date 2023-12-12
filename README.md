@@ -19,7 +19,7 @@ In this repository, I keep all my work done with "React" in bulk.
 #### Props
 
 - What is **props** and how can i use [ For DRY prensiple immediately **destructure** props object ].
-- Why props are **immutable**.
+- Why props are **immutable** [ Readonly ].
 
 #### State
 
@@ -28,6 +28,9 @@ In this repository, I keep all my work done with "React" in bulk.
 - What is **React Hooks** and how to use them. [ Forexample useState, useReducer, useEffect ]
 - One component has one state and isolated from other components.
 - What is **Controlled Elements**, why and how i gonna use them. [ When working with forms ]
+- What is State Management **[ Deciding when to create state, types of state and how data flows through the App]**
+- When should i derive a state and where should i place it. **[ Local or Global State ]**
+- Whats the difference between **Local and Global** state, and why i need to always start with **Local State**
 
 #### Information
 
@@ -36,3 +39,5 @@ In this repository, I keep all my work done with "React" in bulk.
 - Why does React use **one-way** data flow. [ Also Angular has **two-way** data flow. ]
 - What is **SSR [ Server-Side Rendering ]**, **CSR [ Client-Side Rendering ]** and **SPA [ Single-Page Application ]**.
 - What is **React Dev Tools** and how can i use.
+- What is the **Thinking in React** [ Break UI into components, component tree, build static version (without state), think about state and establish data flow. ]
+- What is **Redux** and when i need to use it. [ Global State Management ]
