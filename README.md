@@ -42,6 +42,7 @@ In this repository, I keep all my work done with "React" in bulk.
 - What is **React Dev Tools** and how can i use.
 - What is the **Thinking in React** [ Break UI into components, component tree, build static version (without state), think about state and establish data flow. ]
 - What is **Redux** and when i need to use it. [ Global State Management ]
+- Why should I organize my files into one file for each component. [ To avoid a big mess ]
 
 #### ⌨ My **Codesandbox** practices about React ⏬
 
