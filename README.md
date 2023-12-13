@@ -30,6 +30,7 @@ In this repository, I keep all my work done with "React" in bulk.
 - What is **Controlled Elements**, why and how i gonna use them. [ When working with forms ]
 - What is State Management **[ Deciding when to create state, types of state and how data flows through the App]**
 - When should i derive a state and where should i place it. **[ Local or Global State ]**
+- What is **State Lifting** and when should i use it.
 - Whats the difference between **Local and Global** state, and why i need to always start with **Local State**
 
 #### 🖊 Information

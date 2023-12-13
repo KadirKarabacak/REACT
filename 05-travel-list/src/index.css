@@ -130,3 +130,7 @@ input[type="checkbox"] {
   font-weight: 700;
   padding: 3.2rem 0;
 }
+
+span {
+  transition: all 0.4s;
+}
