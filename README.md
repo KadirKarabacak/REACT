@@ -20,6 +20,7 @@ In this repository, I keep all my work done with "React" in bulk.
 
 - What is **props** and how can i use [ For DRY prensiple immediately **destructure** props object ].
 - Why props are **immutable** [ Readonly ].
+- What is children props, and how can i use them.
 
 #### ♦ State
 
