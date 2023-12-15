@@ -16,3 +16,5 @@
 
 - useState for control list for friends, to control form elements, and submit events.
 - Conditional rendering for forms, button texts, calculated expense and for friend properties.
+
+![React-Eat-N-Split](src/eat-n-split-comp.png)
