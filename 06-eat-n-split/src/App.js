@@ -42,7 +42,11 @@ export default function App() {
 
   // Control selected friend by passing in friend object
   function handleSelection(friend) {
-    setSelectedFriend(friend);
+    // If selected button clicks again, set it null to hide form, otherwise set friend.
+    setSelectedFriend((cur) => (cur?.id === friend.id ? null : friend));
+    // Also i need optional chaining on current right here.
+    setShowAddFriend(false);
+    // And each time only open one form.
   }
 
   return (
@@ -88,7 +92,9 @@ function FriendsList({ friends, onSelection, selectedFriend }) {
 
 // Take entire object forEach friend and render each <li>
 function Friend({ friend, onSelection, selectedFriend }) {
-  const isSelected = selectedFriend.id === friend.id;
+  // Check id to add selected class conditionally, and change button text
+  const isSelected = selectedFriend?.id === friend.id;
+  // selectedFriend.id is null right now, so i use optional chaining
 
   return (
     <li className={isSelected && "selected"}>
@@ -108,7 +114,9 @@ function Friend({ friend, onSelection, selectedFriend }) {
       )}
       {friend.balance === 0 && <p>You and {friend.name} are even</p>}
       {/* Select buttons to open right form */}
-      <Button onClick={() => onSelection(friend)}>Select</Button>
+      <Button onClick={() => onSelection(friend)}>
+        {isSelected ? "Close" : "Select"}
+      </Button>
     </li>
   );
 }
@@ -166,26 +174,42 @@ function FormAddFriend({ onAddFriend }) {
 
 // Using selectedFriend to each click set New selected friends data
 function FormSplitBill({ selectedFriend }) {
+  const [bill, setBill] = useState("");
+  const [expense, setExpense] = useState("");
+  const friendExpense = bill ? bill - expense : "";
+  const [whoPays, setWhoPays] = useState("user");
+
   return (
     <form className="form-split-bill">
       <h2>Split a bill with {selectedFriend.name}</h2>
 
-      <label>💰Bill value</label>
-      <input type="text" />
+      <label>💰 Bill value</label>
+      <input
+        placeholder="Bill"
+        value={bill}
+        onChange={(e) => setBill(+e.target.value)}
+        type="text"
+      />
 
       <label>🧑 Your expense</label>
-      <input type="text" />
+      <input
+        value={expense}
+        onChange={(e) =>
+          setExpense(+e.target.value > bill ? expense : +e.target.value)
+        }
+        type="text"
+      />
 
       <label>🤙 {selectedFriend.name}'s expense</label>
-      <input disabled type="text" />
+      <input value={+friendExpense} disabled type="text" />
 
-      <label>🤑 Who is paying bill?</label>
-      <select>
-        <option value="user">You</option>
-        <option value="friend">{selectedFriend.name}</option>
+      <label>🤑 Who is paying bill</label>
+      <select value={whoPays} onChange={(e) => setWhoPays(e.target.value)}>
+        <option value="user">You?</option>
+        <option value="friend">{selectedFriend.name}?</option>
       </select>
 
-      <Button>Split bill</Button>
+      <Button onClick={() => {}}>Split bill</Button>
     </form>
   );
 }
