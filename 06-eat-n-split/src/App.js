@@ -253,6 +253,6 @@ function FormSplitBill({ selectedFriend, onSplitBill }) {
   );
 }
 
-function Header() {
-  return <header className="header">Eat-N-Split</header>;
-}
+// function Header() {
+//   return <header className="header">Eat-N-Split</header>;
+// }
