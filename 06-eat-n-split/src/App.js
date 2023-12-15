@@ -73,6 +73,7 @@ export default function App() {
 
   return (
     <div className="app">
+      {/* <Header /> */}
       <div className="sidebar">
         {/* Friends list */}
         <FriendsList
@@ -250,4 +251,8 @@ function FormSplitBill({ selectedFriend, onSplitBill }) {
       <Button onClick={() => {}}>Split bill</Button>
     </form>
   );
+}
+
+function Header() {
+  return <header className="header">Eat-N-Split</header>;
 }
