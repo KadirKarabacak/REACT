@@ -145,25 +145,6 @@ function Box({ children }) {
   );
 }
 
-// Watched Box and List box almost same, i created a Box reusable component.
-/*
-function WatchedBox() {
-  const [isOpen2, setIsOpen2] = useState(true);
-  
-  return (
-    <div className="box">
-      <Button setIsOpen={setIsOpen2} isOpen={isOpen2} />
-      {isOpen2 && (
-        <>
-          <WatchedSummary watched={watched} />
-          <WatchedMoviesList watched={watched} />
-        </>
-      )}
-    </div>
-  );
-}
-*/
-
 // API ListBox Item
 function MovieList({ movies }) {
   return (
