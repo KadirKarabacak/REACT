@@ -47,26 +47,41 @@ const tempWatchedData = [
   },
 ];
 
-const average = (arr) =>
-  arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
-
 // Whole App
 export default function App() {
+  const [movies, setMovies] = useState(tempMovieData);
+  const [watched, setWatched] = useState(tempWatchedData);
+
   return (
     <>
-      <Navbar />
-      <Main />
+      <Navbar>
+        <Search />
+        <NumResults movies={movies} />
+      </Navbar>
+
+      <Main>
+        {/* Passing Elements as a Prop */}
+        {/* <Box element={<MovieList movies={movies} />} /> */}
+        <Box>
+          <MovieList movies={movies} />
+        </Box>
+
+        <Box>
+          <WatchedSummary watched={watched} />
+          <WatchedMoviesList watched={watched} />
+        </Box>
+      </Main>
     </>
   );
 }
 
 // Navbar itself
-function Navbar() {
+function Navbar({ children }) {
+  // Used component composition, for fix prop drilling
   return (
     <nav className="nav-bar">
       <Logo />
-      <Search />
-      <NumResults />
+      {children}
     </nav>
   );
 }
@@ -96,10 +111,10 @@ function Search() {
 }
 
 // NavResults
-function NumResults() {
+function NumResults({ movies }) {
   return (
     <p className="num-results">
-      Found <strong>X</strong> results
+      Found <strong>{movies.length}</strong> results
     </p>
   );
 }
@@ -114,30 +129,43 @@ function Button({ setIsOpen, isOpen }) {
 }
 
 // Main Both Rendering API list and Our List
-function Main() {
-  return (
-    <main className="main">
-      <ListBox />
-      <WatchedBox />
-    </main>
-  );
+function Main({ children }) {
+  return <main className="main">{children}</main>;
 }
 
 // List of API Result
-function ListBox() {
-  const [isOpen1, setIsOpen1] = useState(true);
+function Box({ children }) {
+  const [isOpen, setIsOpen] = useState(true);
 
   return (
     <div className="box">
-      <Button setIsOpen={setIsOpen1} isOpen={isOpen1} />
-      {isOpen1 && <MovieList />}
+      <Button setIsOpen={setIsOpen} isOpen={isOpen} />
+      {isOpen && children}
     </div>
   );
 }
 
+// Watched Box and List box almost same, i created a Box reusable component.
+/*
+function WatchedBox() {
+  const [isOpen2, setIsOpen2] = useState(true);
+  
+  return (
+    <div className="box">
+      <Button setIsOpen={setIsOpen2} isOpen={isOpen2} />
+      {isOpen2 && (
+        <>
+          <WatchedSummary watched={watched} />
+          <WatchedMoviesList watched={watched} />
+        </>
+      )}
+    </div>
+  );
+}
+*/
+
 // API ListBox Item
-function MovieList() {
-  const [movies, setMovies] = useState(tempMovieData);
+function MovieList({ movies }) {
   return (
     <ul className="list">
       {movies?.map((movie) => (
@@ -160,24 +188,6 @@ function Movie({ movie }) {
         </p>
       </div>
     </li>
-  );
-}
-
-// Watched Box
-function WatchedBox() {
-  const [isOpen2, setIsOpen2] = useState(true);
-  const [watched, setWatched] = useState(tempWatchedData);
-
-  return (
-    <div className="box">
-      <Button setIsOpen={setIsOpen2} isOpen={isOpen2} />
-      {isOpen2 && (
-        <>
-          <WatchedSummary watched={watched} />
-          <WatchedMoviesList watched={watched} />
-        </>
-      )}
-    </div>
   );
 }
 
@@ -215,6 +225,9 @@ function WatchedMovie({ movie }) {
     </li>
   );
 }
+
+const average = (arr) =>
+  arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
 // WatchedBox Summary
 function WatchedSummary({ watched }) {
