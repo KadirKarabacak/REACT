@@ -15,12 +15,25 @@ In this repository, I keep all my work done with "React" in bulk.
 - What is **conditional rendering** and how can i use [ **Ternary Operator**, **Short Circuiting** ].
 - How to render multiple components at once using loops. [ .map() forexample ]
 - What is **React fragment** and how can i use [ Instead of element blocks like "Div" simply use <> and </> ].
+- What is **component composition** and how i can use. [ { children } to make component reusable. And also fix **Prop Drilling** ]
 
 #### ℹ Props
 
 - What is **props** and how can i use [ For DRY prensiple immediately **destructure** props object ].
 - Why props are **immutable** [ Readonly ].
 - What is children props, and how can i use them.
+- What is prop drilling, and how could i do that. [ Passing data through parent components nested components ]
+- How to passing elements as a prop [ Alternative to children prop ]
+
+##### Example passing element as a **prop** :
+
+- <Box element={<MovieList movies={movies} />} />
+
+##### Example passing element as a **children**:
+
+- <Box>
+  -  <MovieList movies={movies} />
+- </Box>
 
 #### ♦ State
 
