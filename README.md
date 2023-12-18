@@ -16,6 +16,7 @@ In this repository, I keep all my work done with "React" in bulk.
 - How to render multiple components at once using loops. [ .map() forexample ]
 - What is **React fragment** and how can i use [ Instead of element blocks like "Div" simply use <> and </> ].
 - What is **component composition** and how i can use. [ { children } to make component reusable. And also fix **Prop Drilling** ]
+- What is the difference between **Component**, **Instance** and the **Element**.
 
 #### ℹ Props
 
@@ -49,7 +50,7 @@ In this repository, I keep all my work done with "React" in bulk.
 - What is **State Lifting** and when should i use it.
 - Whats the difference between **Local and Global** state, and why i need to always start with **Local State**
 
-#### 🖊 Information
+#### 🖊 Information & Behind The Scenes
 
 - What is the difference between **Imperetive** and **Declarative**. [ Vanilla JS vs React ]
 - What are React frameworks. **[ NextJS, Remix ]**
@@ -59,6 +60,9 @@ In this repository, I keep all my work done with "React" in bulk.
 - What is the **Thinking in React** [ Break UI into components, component tree, build static version (without state), think about state and establish data flow. ]
 - What is **Redux** and when i need to use it. [ Global State Management ]
 - Why should I organize my files into **one file** for **each component**. [ To avoid a big mess ]
+- How components are displayed on the screen and how renders are triggered. [ Initial render of app and when state is updated ]
+- What is **Reconciler [ Fiber ]** and how does it work. [ Simply comparing last state and updated state of DOM, then applying renders on only changes. ]
+- What is the difference between **React Element Tree [ Called Virtual DOM aswell ] ** and **Fiber Tree**.
 
 #### ⌨ My **Codesandbox** practices about React ⏬
 
