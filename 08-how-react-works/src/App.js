@@ -38,8 +38,12 @@ function Tabbed({ content }) {
         <Tab num={3} activeTab={activeTab} onClick={setActiveTab} />
       </div>
 
+      {/* Here if we give a key prop to TabContent, its stays without change for different Tab component */}
       {activeTab <= 2 ? (
-        <TabContent item={content.at(activeTab)} />
+        <TabContent
+          key={content.at(activeTab).summary}
+          item={content.at(activeTab)}
+        />
       ) : (
         <DifferentContent />
       )}
@@ -62,8 +66,34 @@ function TabContent({ item }) {
   const [showDetails, setShowDetails] = useState(true);
   const [likes, setLikes] = useState(0);
 
+  //! This console.log is very useful to check how many renders u get
+  console.log("RENDER");
+
   function handleInc() {
-    setLikes(likes + 1);
+    //! Also here always use callback function
+    setLikes((likes) => likes + 1);
+  }
+
+  //! State Updates are Batched.
+  function handleUndo() {
+    setShowDetails(true);
+    setLikes(0);
+  }
+
+  //! To show batching works in timers aswell on React@18
+  function handleUndoLater() {
+    setTimeout(handleUndo, 2000);
+  }
+
+  function handleTripleInc() {
+    //! Three times calls is not add +3, its only add's 1. Because its Asynchronously.
+    // setLikes(likes + 1);
+    // setLikes(likes + 1);
+    // setLikes(likes + 1);
+    //! If we want to fix this to add +3 likes then we need a callback
+    setLikes((likes) => likes + 1);
+    setLikes((likes) => likes + 1);
+    setLikes((likes) => likes + 1);
   }
 
   return (
@@ -79,13 +109,13 @@ function TabContent({ item }) {
         <div className="hearts-counter">
           <span>{likes} ❤️</span>
           <button onClick={handleInc}>+</button>
-          <button>+++</button>
+          <button onClick={() => handleTripleInc()}>+++</button>
         </div>
       </div>
 
       <div className="tab-undo">
-        <button>Undo</button>
-        <button>Undo in 2s</button>
+        <button onClick={handleUndo}>Undo</button>
+        <button onClick={handleUndoLater}>Undo in 2s</button>
       </div>
     </div>
   );

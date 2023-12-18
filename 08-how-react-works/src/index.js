@@ -1,5 +1,6 @@
 import React from "react";
 
+//! To try batching change import aswell
 import ReactDOM from "react-dom/client";
 // import ReactDOM from 'react-dom';
 
@@ -14,6 +15,7 @@ root.render(
   </React.StrictMode>
 );
 
+//! Also u can see batching is not working at React@17
 // REACT 17
 // ReactDOM.render(
 //   <React.StrictMode>
