@@ -87,7 +87,7 @@ In this repository, I keep all my work done with "React" in bulk.
 - Animations - Transitions ▶ **Motion / React Spring**
 - UI Components ▶ **Chakra / Mantine**
 
-### Practical Summaries About React <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png?20220125121207">✍
+### Practical Summaries About React <img style="width: 25px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png?20220125121207">✍
 
 #### About Components
 
