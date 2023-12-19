@@ -73,6 +73,57 @@ In this repository, I keep all my work done with "React" in bulk.
 - How React handles events behind the scenes. **[ Capturing Phase and Bubbling Phase ]**
 - What is **Synthetic Events**.
 - What is the differance about **Event Handlers** between Vanilla JS and React.
+- Why we call React is a **Library**.
+- What are Frameworks built on top of React. **[ Next.js / Remix / Gatsby ]**
+
+#### 3rd-Party React Libraries 👇
+
+- For Routing ▶ **React Router / React Location**
+- HTTP request ▶ **fetch() / Axios**
+- Remote State Management ▶ **React Query / SWR / Apollo**
+- Global State Management ▶ **Context API / Redux / Zustand**
+- Styling ▶ **CSS Modules / Styled Components / Tailwind CSS**
+- Form Management ▶ **React Hook Form / Formik**
+- Animations - Transitions ▶ **Motion / React Spring**
+- UI Components ▶ **Chakra / Mantine**
+
+### Practical Summaries About React ✍
+
+#### About Components
+
+- A component is like a _blueprint_ for a piece of UI that will eventually exist on the screen.
+- When we "use" a component, _React creates a component instance_ containing props, state, and more.
+- A component instance, when rendered, will return a _React element_.
+- Never declare a _new component inside another_ component! Doing so will re-create the _nested component every time_ the parent component re-renders. React will always see the _nested component as new_.
+
+#### About State
+
+- _Multiple state updates_ inside an event handler function are _batched_, so they happen all at once, causing _only one re-render_. This means we can not access a state variable _immediately after updating_ it. **State updates are asynchronous**. Since React@18, batching also happens in _timeouts, promises and native event handlers_.
+
+#### About Rendering
+
+- Rendering only means _calling component functions_ and calculating what DOM element need to be inserted, deleted or updated. It has _nothing to do with writing to DOM_.
+- Each time a component instance is rendered and re-rendered, the _function is called_ again.
+- Only the initial app render and state updates can cause a render which happens _entire the application_, not just one single component.
+- When a component instance gets re-rendered, _all its children_ will get re-rendered as well. This doesn't mean that all children will get updated in the DOM. Thanks to _reconciliation_, which checks _which elements have actually changed_ between two renders.
+- The DOM is updated in the _commit phase_, but not by React! By a _renderer_ called _ReactDOM_. That's why we always need to _include both libraries_ in a React web app project.
+
+#### Render Logic
+
+- The logic that produces JSX output for a component instance is _not allowed to produce any side effects_. [ No API calls, no timers, no object or variable mutations, no state updates ] _Side effects are allowed in event handlers and useEffect_ .
+
+#### Diffing
+
+- Diffing is how React decides which DOM elements need to be _added or modified_. If between renders, a certain React element stays at the _same position_ in the element tree( Fiber Tree ), the corresponding DOM element and component state will stay same. If the element _changed to a different position, or if it's a different element type_, the DOM element and state will be destroyed.
+
+#### Key Prop
+
+- Giving elements a key prop allows React to _distinguish between multiple_ component instances.
+- When a key _stays the same_ across renders, the element is kept in the DOM. This is why we need to use keys in _lists_. When we _change the key_ between renders, the DOM element will be destroyed and rebuilt. We use this as a trick to _reset state_.
+
+#### React
+
+- _React is a library, not a framework._ This means that you can assemble your application using your _favourite third-party_ libraries. _The downside_ is that you need to find and _learn all these additional_ libraries.
 
 ### ⌨ My **Codesandbox** practices about React ⏬
 
