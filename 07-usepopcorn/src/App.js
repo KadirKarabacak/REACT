@@ -56,37 +56,70 @@ const KEY = "a19da93";
 export default function App() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
+  const [query, setQuery] = useState("");
   // Handle loading data situation, set true at the begining of fetching, and set false at the end.
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  // const tempQuery = "interstellar";
 
-  const query = "interstellar";
+  //! To control which dependency array when executed.
+  /*
+  useEffect(function () {
+    console.log("After initial render");
+  }, []);
+
+  useEffect(function () {
+    console.log("After Every Render");
+  });
+
+  useEffect(
+    function () {
+      console.log("Only Query Update");
+    },
+    [query]
+  );
+
+  console.log("During render");
+*/
 
   //! To fix infinite re-render loop need useEffect and make it async
-  useEffect(function () {
-    setIsLoading(true);
-    async function fetchMovies() {
-      try {
-        const res = await fetch(
-          `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`
-        );
-        const data = await res.json();
+  useEffect(
+    function () {
+      async function fetchMovies() {
+        try {
+          // At the beginning set the loading and error every time
+          setIsLoading(true);
+          setError("");
+          const res = await fetch(
+            `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`
+          );
+          const data = await res.json();
 
-        // Handling errors
-        if (!res.ok) throw new Error("Something went wrong...");
+          // Handling errors
+          if (!res.ok) throw new Error("Something went wrong...");
 
-        // There is no result ?
-        if (data.Response === "False") throw new Error("Movie not found.");
+          // There is no result ?
+          if (data.Response === "False") throw new Error("Movie not found.");
 
-        setMovies(data.Search);
-        setIsLoading(false);
-      } catch (err) {
-        console.log(err.message);
-        setError(err.message);
+          setMovies(data.Search);
+          setIsLoading(false);
+        } catch (err) {
+          console.error(err.message);
+          setError(err.message);
+        }
       }
-    }
-    fetchMovies();
-  }, []);
+
+      // If there is no query yet, wait for search don't show an error.
+      if (query.length < 3) {
+        setMovies([]);
+        setError("");
+        // And these happens, do not fetch data.
+        return;
+      }
+      fetchMovies();
+    },
+    [query]
+  );
 
   //! We should't do data fetching in render logic,
   // fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=interstellar
@@ -100,7 +133,7 @@ export default function App() {
   return (
     <>
       <Navbar>
-        <Search />
+        <Search query={query} setQuery={setQuery} />
         <NumResults movies={movies} />
       </Navbar>
 
@@ -112,6 +145,7 @@ export default function App() {
           {isLoading && !error && <Loader />}
           {!isLoading && !error && <MovieList movies={movies} />}
           {error && <ErrorMessage message={error} />}
+          {movies.length < 1 && !isLoading && <StartSearching />}
         </Box>
 
         <Box>
@@ -133,6 +167,14 @@ function ErrorMessage({ message }) {
   return (
     <p className="error">
       <span>⛔</span> {message}
+    </p>
+  );
+}
+
+function StartSearching() {
+  return (
+    <p className="loader">
+      Start searching <span>🔍</span>
     </p>
   );
 }
@@ -159,8 +201,7 @@ function Logo() {
 }
 
 // NavSearch
-function Search() {
-  const [query, setQuery] = useState("");
+function Search({ query, setQuery }) {
   return (
     <input
       className="search"
