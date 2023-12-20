@@ -56,11 +56,11 @@ const KEY = "a19da93";
 export default function App() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState("inception");
   // Handle loading data situation, set true at the begining of fetching, and set false at the end.
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  // const tempQuery = "interstellar";
+  const [selectedId, setSelectedId] = useState(null);
 
   //! To control which dependency array when executed.
   /*
@@ -81,6 +81,17 @@ export default function App() {
 
   console.log("During render");
 */
+
+  // Select the movie from left to right
+  function handleSelectMovie(id) {
+    setSelectedId((selectedId) => (id === selectedId ? null : id));
+    // selectedId === id && setSelectedId(null);
+  }
+
+  // Clear Selection from right list
+  function handleCloseMovie() {
+    setSelectedId(null);
+  }
 
   //! To fix infinite re-render loop need useEffect and make it async
   useEffect(
@@ -143,14 +154,25 @@ export default function App() {
         {/* <Box>{isLoading ? <Loader /> : <MovieList movies={movies} />}</Box> */}
         <Box>
           {isLoading && !error && <Loader />}
-          {!isLoading && !error && <MovieList movies={movies} />}
+          {!isLoading && !error && (
+            <MovieList onSelect={handleSelectMovie} movies={movies} />
+          )}
           {error && <ErrorMessage message={error} />}
           {movies.length < 1 && !isLoading && <StartSearching />}
         </Box>
 
         <Box>
-          <WatchedSummary watched={watched} />
-          <WatchedMoviesList watched={watched} />
+          {selectedId ? (
+            <MovieDetails
+              onCloseMovie={handleCloseMovie}
+              selectedId={selectedId}
+            />
+          ) : (
+            <>
+              <WatchedSummary watched={watched} />
+              <WatchedMoviesList watched={watched} />
+            </>
+          )}
         </Box>
       </Main>
     </>
@@ -249,20 +271,20 @@ function Box({ children }) {
 }
 
 // API ListBox Item
-function MovieList({ movies }) {
+function MovieList({ movies, onSelect }) {
   return (
-    <ul className="list">
+    <ul className="list list-movies">
       {movies?.map((movie) => (
-        <Movie movie={movie} key={movie.imdbID} />
+        <Movie onSelect={onSelect} movie={movie} key={movie.imdbID} />
       ))}
     </ul>
   );
 }
 
 // Each movie From API
-function Movie({ movie }) {
+function Movie({ movie, onSelect }) {
   return (
-    <li>
+    <li onClick={() => onSelect(movie.imdbID)}>
       <img src={movie.Poster} alt={`${movie.Title} poster`} />
       <h3>{movie.Title}</h3>
       <div>
@@ -272,6 +294,17 @@ function Movie({ movie }) {
         </p>
       </div>
     </li>
+  );
+}
+
+function MovieDetails({ selectedId, onCloseMovie }) {
+  return (
+    <div className="details">
+      <button className="btn-back" onClick={onCloseMovie}>
+        &larr;
+      </button>
+      {selectedId}
+    </div>
   );
 }
 
