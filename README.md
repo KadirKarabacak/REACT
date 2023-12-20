@@ -73,6 +73,13 @@ In this repository, I keep all my work done with "React" in bulk.
 - Executed after the components mounts( _initial render_ ) And after subsequent re-renders ( _according to dependency array_ ).
 - Used to keep a component synchronized with some external system ( _API calls_ )
 
+#### API Calls and Error Handling
+
+- Always wrap API calls into _try and catch blocks_.
+- To handle errors and _display them into UI_ use state.
+- Conditionally rendering is important at this point. If there is an error, u have to _display meaningful messages_ into UI.
+- Always check _response.ok_ property to handle error.
+
 ### 🖊 Information & Behind The Scenes
 
 - What is the difference between **Imperetive** and **Declarative**. [ Vanilla JS vs React ]

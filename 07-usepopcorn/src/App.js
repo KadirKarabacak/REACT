@@ -60,7 +60,7 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const query = "asdasdaxcz";
+  const query = "interstellar";
 
   //! To fix infinite re-render loop need useEffect and make it async
   useEffect(function () {
