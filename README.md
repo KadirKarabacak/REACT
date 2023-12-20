@@ -55,6 +55,23 @@ In this repository, I keep all my work done with "React" in bulk.
 - What is **State Lifting** and when should i use it.
 - Whats the difference between **Local and Global** state, and why i need to always start with **Local State**
 - What is **State Update Batching**, and why it is important. [ Grouping setStates into one function and only rendering one time for performance. "Available on React@18" ]
+- Why should i avoid to setState in render logic. [ In fetch or top level of code it makes million re-renders. *useEffect* comes to play. ]
+
+### ✨ Side Effects
+
+- What is effect [ *Interaction between a React component and the world outside the component*].
+- What is the differance between _Event Handlers_ and _useEffect_.
+
+#### Event Handlers
+
+- Executed when the _corresponding event_ happens.
+- Used to _React_ to an event.
+- _Preferred way_ of creating side effects.
+
+#### Use Effect
+
+- Executed after the components mounts( _initial render_ ) And after subsequent re-renders ( _according to dependency array_ ).
+- Used to keep a component synchronized with some external system ( _API calls_ )
 
 ### 🖊 Information & Behind The Scenes
 
