@@ -57,7 +57,7 @@ const KEY = "a19da93";
 export default function App() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
-  const [query, setQuery] = useState("inception");
+  const [query, setQuery] = useState("");
   // Handle loading data situation, set true at the begining of fetching, and set false at the end.
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -122,7 +122,7 @@ export default function App() {
       }
 
       // At the beginning before search don't show Error
-      if (query.length < 3) {
+      if (query.length < 2) {
         setMovies([]);
         setError("");
         // And these happens, do not fetch data.
@@ -165,7 +165,7 @@ export default function App() {
           {error && <ErrorMessage message={error} />}
 
           {/* no movie found yet, and not loading [ Beginning state ] */}
-          {movies.length < 1 && !isLoading && <StartSearching />}
+          {movies.length < 1 && !isLoading && !query && <StartSearching />}
         </Box>
 
         <Box>
@@ -183,28 +183,6 @@ export default function App() {
         </Box>
       </Main>
     </>
-  );
-}
-
-// Loader before data arrive
-function Loader() {
-  return <p className="loader">⏳ Loading...</p>;
-}
-
-// Error message
-function ErrorMessage({ message }) {
-  return (
-    <p className="error">
-      <span>⛔</span> {message}
-    </p>
-  );
-}
-
-function StartSearching() {
-  return (
-    <p className="loader">
-      Start searching <span>🔍</span>
-    </p>
   );
 }
 
@@ -244,10 +222,19 @@ function Search({ query, setQuery }) {
 
 // NavResults
 function NumResults({ movies }) {
+  // Don't show which has no image
+  const fixedMovies = movies.filter(
+    (movie) => movie.Poster !== "N/A" && movie.Year.length <= 4
+  );
+
   return (
-    <p className="num-results">
-      Found <strong>{movies.length}</strong> results
-    </p>
+    <>
+      {movies.length !== 0 ? (
+        <p className="num-results">Found {fixedMovies.length} results</p>
+      ) : (
+        <p className="num-results">No results yet 🤷‍♂️</p>
+      )}
+    </>
   );
 }
 
@@ -279,11 +266,16 @@ function Box({ children }) {
 
 // API ListBox Item
 function MovieList({ movies, onSelect }) {
+  console.log(movies);
   return (
     <ul className="list list-movies">
-      {movies?.map((movie) => (
-        <Movie onSelect={onSelect} movie={movie} key={movie.imdbID} />
-      ))}
+      {movies?.map(
+        (movie) =>
+          movie.Poster !== "N/A" &&
+          movie.Year.length <= 4 && (
+            <Movie onSelect={onSelect} movie={movie} key={movie.imdbID} />
+          )
+      )}
     </ul>
   );
 }
@@ -292,12 +284,12 @@ function MovieList({ movies, onSelect }) {
 function Movie({ movie, onSelect }) {
   return (
     <li onClick={() => onSelect(movie.imdbID)}>
-      <img src={movie.Poster} alt={`${movie.Title} poster`} />
+      <img src={movie.Poster} alt={`${movie.Title.slice(0, 6)} poster`} />
       <h3>{movie.Title}</h3>
       <div>
         <p>
-          <span>🗓</span>
-          <span>{movie.Year}</span>
+          <span>📅</span>
+          <span>{movie.Year.slice(0, 4)}</span>
         </p>
       </div>
     </li>
@@ -454,5 +446,28 @@ function WatchedSummary({ watched }) {
         </p>
       </div>
     </div>
+  );
+}
+
+// Loader before data arrive
+function Loader() {
+  return <p className="loader">⏳ Loading...</p>;
+}
+
+// Error message
+function ErrorMessage({ message }) {
+  return (
+    <p className="error">
+      <span>⛔</span> {message}
+    </p>
+  );
+}
+
+// Start Searching Text
+function StartSearching() {
+  return (
+    <p className="loader">
+      Start searching <span>🔍</span>
+    </p>
   );
 }
