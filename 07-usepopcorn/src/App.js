@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import StarRating from "./StarRating";
 
 //! API KEY
 // a19da93
@@ -115,12 +116,12 @@ export default function App() {
           setMovies(data.Search);
           setIsLoading(false);
         } catch (err) {
-          console.error(err.message);
+          // console.error(err.message);
           setError(err.message);
         }
       }
 
-      // If there is no query yet, wait for search don't show an error.
+      // At the beginning before search don't show Error
       if (query.length < 3) {
         setMovies([]);
         setError("");
@@ -151,13 +152,19 @@ export default function App() {
       <Main>
         {/* Passing Elements as a Prop */}
         {/* <Box element={<MovieList movies={movies} />} /> */}
-        {/* <Box>{isLoading ? <Loader /> : <MovieList movies={movies} />}</Box> */}
         <Box>
+          {/* its loading and no error. */}
           {isLoading && !error && <Loader />}
+
+          {/* its not loading and no error */}
           {!isLoading && !error && (
             <MovieList onSelect={handleSelectMovie} movies={movies} />
           )}
+
+          {/* error */}
           {error && <ErrorMessage message={error} />}
+
+          {/* no movie found yet, and not loading [ Beginning state ] */}
           {movies.length < 1 && !isLoading && <StartSearching />}
         </Box>
 
@@ -181,7 +188,7 @@ export default function App() {
 
 // Loader before data arrive
 function Loader() {
-  return <p className="loader">Loading...</p>;
+  return <p className="loader">⏳ Loading...</p>;
 }
 
 // Error message
@@ -298,12 +305,85 @@ function Movie({ movie, onSelect }) {
 }
 
 function MovieDetails({ selectedId, onCloseMovie }) {
+  // Handle api data
+  const [movie, setMovie] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const {
+    Title: title,
+    Year: year,
+    Poster: poster,
+    Runtime: runtime,
+    imdbRating,
+    Plot: plot,
+    Released: released,
+    Actors: actors,
+    Director: director,
+    Genre: genre,
+  } = movie;
+
+  useEffect(
+    function () {
+      async function getMovieDetails() {
+        try {
+          setIsLoading(true);
+          // setError("");
+          const res = await fetch(
+            `http://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`
+          );
+          const data = await res.json();
+
+          // Handling errors
+          if (!res.ok) throw new Error("Something went wrong...");
+
+          setMovie(data);
+          setIsLoading(false);
+        } catch (err) {
+          setError(err.message);
+        }
+      }
+      getMovieDetails();
+    },
+    [selectedId]
+  );
+
   return (
     <div className="details">
-      <button className="btn-back" onClick={onCloseMovie}>
-        &larr;
-      </button>
-      {selectedId}
+      {error && <ErrorMessage message={error} />}
+      {isLoading && !error && <Loader />}
+      {!isLoading && !error && (
+        <>
+          <header>
+            <button className="btn-back" onClick={onCloseMovie}>
+              &larr;
+            </button>
+            <img src={poster} alt={`Poster of ${movie}`} />
+            <div className="details-overview">
+              <h2>{title}</h2>
+              <p>
+                {released} &bull; {runtime}
+              </p>
+              <p>{genre}</p>
+              <p>
+                <span>⭐</span>
+                {imdbRating} IMDB rating
+              </p>
+            </div>
+          </header>
+
+          <section>
+            <div className="rating">
+              <StarRating maxRating={10} size={24} />
+            </div>
+            <p>
+              <em>{plot}</em>
+            </p>
+            <p>Starring {actors}</p>
+            <p>Directed by {director}</p>
+          </section>
+        </>
+      )}
     </div>
   );
 }

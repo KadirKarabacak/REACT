@@ -51,7 +51,7 @@ export default function StarRating({
 
     // When component used by consumer, there will be an external state, so need to set it too.
     // Otherwise this component is presentational.
-    onSetRating(rating);
+    // onSetRating(rating);
   }
   return (
     <div style={containerStyle} className={className}>
