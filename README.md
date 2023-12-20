@@ -71,7 +71,11 @@ In this repository, I keep all my work done with "React" in bulk.
 #### Use Effect
 
 - Executed after the components mounts( _initial render_ ) And after subsequent re-renders ( _according to dependency array_ ).
+- Without dependency array, _React doesn't know_ when to run the effect.
+- Every _state variable and prop_ used inside the effect, must be included in dependency array.
 - Used to keep a component synchronized with some external system ( _API calls_ )
+- useEffect is like an eventlistener that is listening for dependency to change. When a dependency is changes, it will execute the effect again.
+- [] Runs only on mount _( initial render )_, [ x,y,z ] mount and re-render triggered _by updating x,y or z_, no dependency array is simply updating on _everytime something change_. ( Usually Bad⛔ )
 
 #### API Calls and Error Handling
 
