@@ -52,6 +52,8 @@ body {
 .box {
   width: 42rem;
   max-width: 42rem;
+  height: min-content;
+  min-height: 54.4rem;
   background-color: var(--color-background-500);
   border-radius: 0.9rem;
   position: relative;
