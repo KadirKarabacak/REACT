@@ -16,6 +16,7 @@ import App from "./App";
 //   );
 // }
 
+//! Our console outputs comes twice, its happening because of StrictMode but only for development.
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
