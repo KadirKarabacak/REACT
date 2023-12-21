@@ -76,6 +76,7 @@ In this repository, I keep all my work done with "React" in bulk.
 - Used to keep a component synchronized with some external system ( _API calls_ )
 - useEffect is like an eventlistener that is listening for dependency to change. When a dependency is changes, it will execute the effect again.
 - [] Runs only on mount _( initial render )_, [ x,y,z ] mount and re-render triggered _by updating x,y or z_, no dependency array is simply updating on _everytime something change_. ( Usually Bad⛔ )
+- What is the _Cleanup function_ and when i should use it. [ to clear side effects when mount or unmount ]
 
 #### API Calls and Error Handling
 
