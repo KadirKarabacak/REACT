@@ -163,7 +163,7 @@ In this repository, I keep all my work done with "React" in bulk.
 
 - _React is a library, not a framework._ This means that you can assemble your application using your _favourite third-party_ libraries. _The downside_ is that you need to find and _learn all these additional_ libraries.
 
-### ⌨ My **Codesandbox** practices about React ⏬
+## ⌨ My **Codesandbox** practices about React ⏬
 
 - <a href="https://t.ly/_9303">📆 Date Counter </a>
 - <a href="https://t.ly/qxh5X">📕 Small Exam with State</a>
