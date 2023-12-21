@@ -338,3 +338,9 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+.watched-rate {
+  color: #fcc419;
+  font-weight: bold;
+  font-size: 15px;
+}
