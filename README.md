@@ -48,6 +48,7 @@ In this repository, I keep all my work done with "React" in bulk.
 - What is **useState()** and how to use it.
 - Why should i use a **callback function** into useState setter function.
 - What is **React Hooks** and how to use them. [ Forexample useState, useReducer, useEffect ]
+- Why should i _never define any hook conditionally_ or never do _early return on global_ situation. **[ Hooks are has order from FiberTree, it must never change ]**
 - One component has one state and isolated from other components.
 - What is **Controlled Elements**, why and how i gonna use them. [ When working with forms ]
 - What is State Management **[ Deciding when to create state, types of state and how data flows through the App]**
