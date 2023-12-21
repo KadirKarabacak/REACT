@@ -17,12 +17,19 @@ const KEY = "a19da93";
 // Whole App
 export default function App() {
   const [movies, setMovies] = useState([]);
-  const [watched, setWatched] = useState([]);
   const [query, setQuery] = useState("");
   // Handle loading data situation, set true at the begining of fetching, and set false at the end.
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [selectedId, setSelectedId] = useState(null);
+  // const [watched, setWatched] = useState([]);
+  //! Instead of setting it empty array at the beginning, we read local storage
+  const [watched, setWatched] = useState(function () {
+    const storedValue = localStorage.getItem("watched");
+    // Thats works because we only return something to use as initial value
+    // and the initial values only setting at the beginning, only on mount.
+    return JSON.parse(storedValue);
+  });
 
   // Select the movie clicked
   function handleSelectMovie(id) {
@@ -39,12 +46,24 @@ export default function App() {
   // Add Watched Movies
   function handleAddWatched(movie) {
     setWatched((watched) => [...watched, movie]);
+
+    //! Set Local Storage
+    // localStorage.setItem("watched", JSON.stringify([...watched, movie]));
   }
 
   // Delete Watched Movies
   function handleDeleteWatched(id) {
     setWatched((watched) => watched.filter((movie) => movie.imdbID !== id));
   }
+
+  //! And actually local storage better into useEffect
+  useEffect(
+    function () {
+      // To read items, we set state at the beginning as a callback function
+      localStorage.setItem("watched", JSON.stringify(watched));
+    },
+    [watched]
+  );
 
   //! To fix infinite re-render loop need useEffect and make it async
   useEffect(
@@ -172,6 +191,15 @@ function Logo() {
 
 // NavSearch
 function Search({ query, setQuery }) {
+  //! Manually selecting elements [X]
+  // useEffect(function () {
+  //   const el = document.querySelector(".search");
+  //   console.log(el);
+  //   el.focus();
+  // });
+
+  //* React is all about Declarative so we need to use "useRef"
+
   return (
     <input
       className="search"

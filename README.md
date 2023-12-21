@@ -58,7 +58,11 @@ In this repository, I keep all my work done with "React" in bulk.
 - What is **State Update Batching**, and why it is important. [ Grouping setStates into one function and only rendering one time for performance. "Available on React@18" ]
 - Why should i avoid to setState in render logic. [ In fetch or top level of code it makes million re-renders. *useEffect* comes to play. ]
 
-### ✨ Side Effects
+#### 📦 Refs
+
+- What are refs and when i need to use it. _[ Creating a variable stays same between renders ]_
+
+#### ✨ Side Effects
 
 - What is effect [ *Interaction between a React component and the world outside the component*].
 - What is the differance between _Event Handlers_ and _useEffect_.
@@ -85,6 +89,10 @@ In this repository, I keep all my work done with "React" in bulk.
 - To handle errors and _display them into UI_ use state.
 - Conditionally rendering is important at this point. If there is an error, u have to _display meaningful messages_ into UI.
 - Always check _response.ok_ property to handle error.
+
+#### Local Storage
+
+- A way to implement local storage into our applications, _we can simply use useEffect_.
 
 ### 🖊 Information & Behind The Scenes
 
