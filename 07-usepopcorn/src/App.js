@@ -315,6 +315,17 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
   // Handle user rate
   const [userRating, setUserRating] = useState("");
 
+  // Handle userRating how many clicked behind the scene
+  const countRef = useRef(0);
+
+  useEffect(
+    function () {
+      // On each userRating re-render by click, add +1, and ofc control at the beginning it exists ?
+      if (userRating) countRef.current += 1;
+    },
+    [userRating]
+  );
+
   // Already watched list includes ?
   const isWatchedAlready = watched
     .map((movie) => movie.imdbID)
@@ -349,6 +360,8 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
       imdbRating: Number(imdbRating),
       runtime: Number(runtime.split(" ").at(0)),
       userRating,
+      // And use the ref on add to count decisions
+      countRatingDecisions: countRef.current,
     };
 
     // Comes from App [...movies, newWatchedMovie]
