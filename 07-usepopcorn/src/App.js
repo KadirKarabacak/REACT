@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import StarRating from "./StarRating";
 
 // const tempMovieData = [
@@ -191,14 +191,30 @@ function Logo() {
 
 // NavSearch
 function Search({ query, setQuery }) {
-  //! Manually selecting elements [X]
-  // useEffect(function () {
-  //   const el = document.querySelector(".search");
-  //   console.log(el);
-  //   el.focus();
-  // });
+  //* React is all about Declarative so we need to use "useRef" to select elements
+  //! Set useRef to some variable, then call it like prop into element, and use into useEffect
+  const inputEl = useRef(null);
 
-  //* React is all about Declarative so we need to use "useRef"
+  useEffect(
+    function () {
+      function callback(e) {
+        // Focused element already inputEl then return;
+        if (document.activeElement === inputEl.current) return;
+
+        if (e.code === "Enter") {
+          inputEl.current.focus();
+          // Clear input field on hit "Enter"
+          setQuery("");
+        }
+      }
+
+      document.addEventListener("keydown", callback);
+
+      // Cleanup function
+      return () => document.addEventListener("keydown", callback);
+    },
+    [setQuery]
+  );
 
   return (
     <input
@@ -207,6 +223,7 @@ function Search({ query, setQuery }) {
       placeholder="Search movies..."
       value={query}
       onChange={(e) => setQuery(e.target.value)}
+      ref={inputEl}
     />
   );
 }
