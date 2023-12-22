@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import StarRating from "./StarRating";
 import { useMovies } from "./useMovies";
+import { useLocalStorageState } from "./useLocalStorageState";
+import { useKey } from "./useKey";
 
 const KEY = "a19da93";
 
-// Whole App
 export default function App() {
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState(null);
@@ -12,33 +13,22 @@ export default function App() {
   // Custom hook imported and immediately destructuring which needs to use in this file.
   const { movies, isLoading, error } = useMovies(query);
 
-  // const [watched, setWatched] = useState([]);
-  //! Instead of setting it empty array at the beginning, we read local storage
-  const [watched, setWatched] = useState(function () {
-    const storedValue = localStorage.getItem("watched");
-    // Thats works because we only return something to use as initial value
-    // and the initial values only setting at the beginning, only on mount.
-    return JSON.parse(storedValue);
-  });
+  // Exported custom hook to handle localstorage state and useEffect
+  const [watched, setWatched] = useLocalStorageState([], "watched");
 
   // Select the movie clicked
   function handleSelectMovie(id) {
-    // if (id === selectedId) document.title = "UsePopCorn";
     setSelectedId((selectedId) => (id === selectedId ? null : id));
   }
 
   // Clear Selection from right list
   function handleCloseMovie() {
     setSelectedId(null);
-    // document.title = "UsePopCorn";
   }
 
   // Add Watched Movies
   function handleAddWatched(movie) {
     setWatched((watched) => [...watched, movie]);
-
-    //! Set Local Storage
-    // localStorage.setItem("watched", JSON.stringify([...watched, movie]));
   }
 
   // Delete Watched Movies
@@ -46,19 +36,14 @@ export default function App() {
     setWatched((watched) => watched.filter((movie) => movie.imdbID !== id));
   }
 
-  //! And actually local storage better into useEffect
-  useEffect(
-    function () {
-      // To read items, we set state at the beginning as a callback function
-      localStorage.setItem("watched", JSON.stringify(watched));
-    },
-    [watched]
-  );
-
   return (
     <>
       <Navbar>
-        <Search query={query} setQuery={setQuery} />
+        <Search
+          onCloseMovie={handleCloseMovie}
+          query={query}
+          setQuery={setQuery}
+        />
         <NumResults movies={movies} />
       </Navbar>
 
@@ -125,31 +110,25 @@ function Logo() {
 }
 
 // NavSearch
-function Search({ query, setQuery }) {
+function Search({ query, setQuery, onCloseMovie }) {
   //* React is all about Declarative so we need to use "useRef" to select elements
   //! Set useRef to some variable, then call it like prop into element, and use into useEffect
   const inputEl = useRef(null);
 
-  useEffect(
-    function () {
-      function callback(e) {
-        // Focused element already inputEl then return;
-        if (document.activeElement === inputEl.current) return;
+  // Custom Hook
+  useKey("Enter", function () {
+    // Focused element already inputEl then return;
+    if (document.activeElement === inputEl.current) return;
 
-        if (e.code === "Enter") {
-          inputEl.current.focus();
-          // Clear input field on hit "Enter"
-          setQuery("");
-        }
-      }
+    // Focus to element when hit "Enter"
+    inputEl.current.focus();
 
-      document.addEventListener("keydown", callback);
+    // Clear input field on hit "Enter"
+    setQuery("");
 
-      // Cleanup function
-      return () => document.addEventListener("keydown", callback);
-    },
-    [setQuery]
-  );
+    // Close MovieDetails on hit "Enter"
+    onCloseMovie();
+  });
 
   return (
     <input
@@ -238,7 +217,6 @@ function Movie({ movie, onSelect }) {
   );
 }
 
-// ??????
 function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
   // Handle api data
   const [movie, setMovie] = useState({});
@@ -345,26 +323,28 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
   );
 
   // Handle keyPress "ESC" to close MovieDetails
-  useEffect(
-    function () {
-      //! Set it named function to call on cleanup function.
-      function handleKeyDown(e) {
-        if (e.key === "Escape") {
-          onCloseMovie();
-          console.log("CLOSING");
-        }
-      }
+  // useEffect(
+  //   function () {
+  //     //! Set it named function to call on cleanup function.
+  //     function handleKeyDown(e) {
+  //       if (e.key === "Escape") {
+  //         onCloseMovie();
+  //         console.log("CLOSING");
+  //       }
+  //     }
 
-      document.addEventListener("keydown", handleKeyDown);
+  //     document.addEventListener("keydown", handleKeyDown);
 
-      //! Need to clear eventListener, otherwise they are stacking up into DOM
-      //! Cleanup function need to be exactly the same as event listener
-      return function () {
-        document.removeEventListener("keydown", handleKeyDown);
-      };
-    },
-    [onCloseMovie]
-  );
+  //     //! Need to clear eventListener, otherwise they are stacking up into DOM
+  //     //! Cleanup function need to be exactly the same as event listener
+  //     return function () {
+  //       document.removeEventListener("keydown", handleKeyDown);
+  //     };
+  //   },
+  //   [onCloseMovie]
+  // );
+
+  useKey("Escape", onCloseMovie);
 
   // JSX
   return (
