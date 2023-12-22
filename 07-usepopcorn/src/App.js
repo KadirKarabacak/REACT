@@ -1,27 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import StarRating from "./StarRating";
+import { useMovies } from "./useMovies";
 
-// const tempMovieData = [
-//   {
-//     imdbID: "tt1375666",
-//     Title: "Inception",
-//     Year: "2010",
-//     Poster:
-//       "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
-//   },
-// ];
-
-//! API KEY
 const KEY = "a19da93";
 
 // Whole App
 export default function App() {
-  const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("");
-  // Handle loading data situation, set true at the begining of fetching, and set false at the end.
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
   const [selectedId, setSelectedId] = useState(null);
+
+  // Custom hook imported and immediately destructuring which needs to use in this file.
+  const { movies, isLoading, error } = useMovies(query);
+
   // const [watched, setWatched] = useState([]);
   //! Instead of setting it empty array at the beginning, we read local storage
   const [watched, setWatched] = useState(function () {
@@ -63,61 +53,6 @@ export default function App() {
       localStorage.setItem("watched", JSON.stringify(watched));
     },
     [watched]
-  );
-
-  //! To fix infinite re-render loop need useEffect and make it async
-  useEffect(
-    function () {
-      // Controls data fetching for useEffect cleanup function
-      const controller = new AbortController();
-
-      async function fetchMovies() {
-        try {
-          // At the beginning set the loading and error every time
-          setIsLoading(true);
-          setError("");
-
-          // pass a second argument { signal: controller.signal }
-          const res = await fetch(
-            `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`,
-            { signal: controller.signal }
-          );
-          const data = await res.json();
-
-          // Error handlings
-          if (!res.ok) throw new Error("Something went wrong...");
-          if (data.Response === "False") throw new Error("Movie not found.");
-
-          // Set Data
-          setMovies(data.Search);
-          setIsLoading(false);
-          setError("");
-        } catch (err) {
-          //! To ignore "AbortError" and let app keep working
-          if (err.name !== "AbortError") setError(err.message);
-        }
-      }
-
-      // At the beginning before search don't show Error
-      if (query.length < 2) {
-        setMovies([]);
-        setError("");
-
-        // And these happens, do not fetch data.
-        return;
-      }
-      // When there is another seach, close movie details
-      handleCloseMovie();
-      fetchMovies();
-
-      //! Cleanup function which cancels previous fetch requests (Aborting previous calls)
-      //! Because each time we write to search, this component is re-renders, then cleanup
-      //! function calls again and again. It allows us each time cancel previous
-      return function () {
-        controller.abort();
-      };
-    },
-    [query]
   );
 
   return (
