@@ -83,6 +83,10 @@ In this repository, I keep all my work done with "React" in bulk.
 - [] Runs only on mount _( initial render )_, [ x,y,z ] mount and re-render triggered _by updating x,y or z_, no dependency array is simply updating on _everytime something change_. ( Usually Bad⛔ )
 - What is the _Cleanup function_ and when i should use it. [ to clear side effects when mount or unmount ]
 
+#### Use Reducer
+
+-
+
 #### API Calls and Error Handling
 
 - Always wrap API calls into _try and catch blocks_.
