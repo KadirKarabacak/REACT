@@ -1,5 +1,136 @@
 # <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="30" height="30" /> REACT
 
+Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
+
+## 🖊 Şimdiye kadar neler öğrendim?
+
+### ⚒ Öncelikle kurulum ile başlayalım. Sonuçta herşey bununla başlıyor.
+- Bir React projesi oluşturmak için her zaman cmd komut satırına girip *create-react-app@latest* komutunu kullanarak ve yanına proje ismimizi vererek bir React proje dosyası oluşturuyoruz.
+- Gerçek dünya projelerinde her zaman *Vite <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/410px-Vitejs-logo.svg.png" style="width: 25px">* kullanmalıyız çünkü *performans ve topluluk desteği* bakımından Create-react-app'den daha popüler. Ama öğrenmek amaçlı create-react-app hala kullanılabilir.
+
+### 💻 Render'lama
+- Bir *component* basitçe kullanıcı arayüzünü oluşturan lego parçalarına benzetilebilir. Her zaman büyük harfle başlamalıdır [ function Header() ].
+- JSX bir component'in içerisinden döndürdüğümüz HTML benzeri bir yapıdır. İçerisinde JS ve CSS kullanmamıza olanak sağlar.
+- Kondisyonel renderlama bir koşula bağlı olarak bir DOM elementini veya bir component'i gizleyip gösterebilir. State değişimine bağlı olarak çıktılar alırız.
+- Birden fazla bileşen renderlamak istediğimizde döngüler kullanırız. Örneğin .map methodu React'ta birçok noktada kullanılır.
+- Döngüler kullanarak renderladığımız bileşenlere key özelliği vermemiz gerekir. Key özelliği yeri ve içeriği değişmeyen elemanların tekrar tekrar renderlanmasını engeller ve performansı arttırır.
+- React Fragment olarak adlandırdığımız şey JSX'te bir parent element yerine birden fazla kardeş element renderlamak istediğimizde bu elementleri çevreleyen bir parent oluşturur. Yeni bir div oluşturmaktan kaçınmak istediğimizde tercihimizdir. [ <>, </> ]
+- Component composition, bizim çok fazla prop kaydırma gerektiren durumlarda imdadımıza yetişir. Alt componentleri ana component'in açılış ve kapanış tag'leri içine taşırız ve children prop'u vererek içeriğini tamamen taşımasına olanak sağlarız. Aynı zamanda parent component'in yeniden kullanılabilirliği adına mükemmel bir adımdır. Genel olarak Prop Drilling adı verdiğimiz durumdan kaçınmamızı sağlar.
+- Component, Instance ve Element arasındaki farklar; Component tamamiyle bir bileşendir. Instance componentlerin çoğaltılmış örnekleridir ve aynı özellikleri barındırır. Element tamamen DOM ile ilgilidir, HTML'de kullandığımız yapılar birer elementtir.
+- Dışarıdan aldığımız bir değişkeni değiştirmek, HTTP çağırıları gibi durumlar kodumuzda yan efektler oluşturur ve bu durum renderlamada kaçınmamız gereken durumlardan biridir.
+- Pure function dediğimiz fonksiyon türü hiçbir yan etkiye sahip olmaz. Verilen değer, çıkan değer ile aynıdır.
+
+#### 🔴 Renderlama mantığında bazı katı kurallar vardır. 
+- HTTP çağırıları yapamazsınız.
+- Zamanlayıcılar başlatamazsınız.
+- DOM API'ını direkt kullanamazsınız.
+- Obje veya değişkenleri mutate edemezsiniz.
+- State güncellemesi ve ref güncellemesi yapamazsınız. Program sonsuz döngüye girer.
+- Side effectler sadece handler fonksiyonlar içerisinde izin verilir. Bunun dışında birde useEffect hook'u dahilinde kullanabiliriz.
+
+### ℹ Prop'lar
+- Proplar basitçe parent componentten child component'lere iletilebilen değişkenlerdir. Aynı anda birden fazla componentte kullanılması gereken değişkenler için kullanılır. Kod içindeki karmaşıklığı azaltmak adına props.anything demek yerine componente dahil ederken {anything} destructure yaparak alırız.
+- Proplar değiştirilemez. Sadece okunur. "Readonly".
+- Children prop rendering kısmında da belirtildiği gibi component composition gibi durumlarda işlevseldir.
+- Prop drilling Parent component'lerden child component'lere veri akışını ifade eder.
+- Bir prop olarak bir elementi child elemente gönderebiliriz. Çok kullanışlı olduğu söylenemez. Child prop'una alternatif olarak gösterilir.
+- Diğer geliştiricilerin kullanımı için olabildiğince esnek ve yeniden kullanılabilir componentler yazmak önemlidir. Aynı zamanda diğer projelerinize de dahil edebilirsiniz. Harici state, proptypes gibi durumlara hakim olmalısınız.
+- Key prop'u Diffing algoritmasına bir bileşenin benzersiz (unique) olduğunu belirtir.
+- Key prop'u liste itemlarında state'i dağılmadan tutabilmek veya tamamen state'i sıfırlamak için kullanılabilir.
+
+### ♦ State'ler
+- const [count, setCount] = useState(0) -- Bir state örneğidir. count bizim ekranda göstereceğimiz değer, setCount arka planda tıklama farklı etkilerle count değerini güncelleyen fonksiyon, ve 0 ise count'ımızın başlangıç değeridir.
+- Önceki state'e bağlı olarak yeni bir state türetilmesi istenen durumlarda *setCount((anything)=> anything+1)* gibi callback fonksiyonları içerisinde güncelleme yapmalıyız. State asenkron şekilde işlediğinden callback fonksiyon içerisinde çağırmaz isek state hep aynı kalır.
+- useState gibi farklı React hook'ları da mevcuttur. Bunlardan bazıları useEffect, useReducer vb. useEffect componentin dışarıyla olan iletişimini kontrol eder örneğin HTTP request. useReducer ise useState'e bir alternatiftir. Her değişmesi istediğimiz durum için bir useState oluşturmak yerine tamamını useReducer içerisinde güncelleyebiliriz.
+- Hook'ları asla bir kondisyona bağlı yazmamalıyız. Globalde erken return'ler yapmamalıyız. Tüm hookların fiber tree adı verdiğimiz ağaçta bir yeri vardır. Kondisyonel olarak bunun değişmesi programı bozar.
+- Kontrol edilmiş elementler olarak adlandırdığımız yapılar form elemanlarıdır. Input, select, range vb. elementleri kontrolümüze alıp her girilen değeri hafızaya kaydetmesini ve ekrana göstermesini sağlayabiliriz.
+- State Management kavramı ne zaman yeni bir state oluşturmamız, ne zaman türetilmiş state'ler kullanmamız ve bir state'in nereye konumlandırmamız gerektiğini ifade eder.
+- Derived State ( Türetilmiş durum ) bir state değişkenine bağlı olarak türetilmiş sabit değişkendir. Bazı durumlarda yeni bir state üretmek yerine varolan'dan yenilerini türetmemizi sağlar.
+- State Lifting kavramı child componentlerden birisinde oluşturduğumuz bir state'i gerektiğinde birden fazla sibling(kardeş) component'e dağıtmak için en yakın parent elemente taşımak anlamına gelir.
+- State Group Batching ifadesi, bir handler fonksiyon içerisinde birden fazla gerçekleşen state güncellemesini tek bir güncelleme gibi görüp programımıza performans kazandıran bir terim ve uygulamadır. React@18 ve üzerinde geçerlidir.
+
+#### 📦 Ref'ler
+- Refler bir kutu gibidir ve mount ve re-render'lar arasında değişmez. State'in renderlardan etkilenmeyen versiyonu gibi görebiliriz. Elementlere class vermeden seçmemizi sağlar.
+
+#### ✨ Side Effect'ler
+- Side effect bir React componentinin (bileşeninin) bu bileşen dışındaki bir dünyayla etkileşim kurması sonucu oluşur. Yine HTTP request'lerini örnek verebiliriz.
+
+#### ⚔ Event Handler'lar
+- Bir event gerçekleştiğinde çalıştırılırlar.
+- Side Effect'ler oluştururken tercih edilen bir yöntemdir. Bunun yanı sıra useEffect çok daha efektiftir.
+
+#### ✨ Use Effect'ler
+
+- Bir component sayfaya mount'landığında [ Yani başlangıçta ] ve sonraki re-render'larda çalışır ( _Bağlılık dizisine verdiğiniz değerlere göre değişir_ ).
+- Bağımlılık dizisi olmadan, React effect'i ne zaman çalıştıracağını bilmez.
+- Effect içinde kullanılan her state değişkeni ve prop bağımlılık dizisine eklenmelidir. Aksi taktirde çalışmaz.
+- Bir component'i harici bir sistem ile senkronize tutmaya yarar. Örneğin API çağırıları.
+- UseEffect bir eventlistener'a benzer. Bağımlılık dizisindekilerin değişmesini gözlemler. Her değişimde tekrar tekrar çalışır.
+- [] Sadece başlangıçta çalışır. _( initial render )_, [ x,y,z ] başlangıçta, x,y ve z her güncellendiğinde çalışır. Bağımlılık dizisi olmazsa programda değişen herşey tekrar tekrar çalışmasına sebep olur. Performans için berbat bir durum. ⛔ 
+- Cleanup fonksiyonu sideEffect'leri temizlemek için kullanılır ve performansı arttırmaya yardımcı olur.
+
+#### 🟥 API Cağırıları ve Hata yakalama
+
+- Her zaman API çağırıları try ve catch blokları içerisinde yapmalısınız.
+- Hataları ele almak ve ekranda göstermek için yeni bir state oluşturmalısınız. const[error, setError]= useState("") gibi.
+- Kondisyonel renderlama bu noktada çok önemlidir. Eğer bir hata varsa ekranda anlamlı mesajlar göstermelisiniz. Yukarıdaki örnekten yola çıkarak error değişkenini ekrana yazdırabilirsiniz.
+- Her zaman response.ok özelliğini kontrol etmeli ve bir hata varsa ekrana yazdırmalısınız.
+
+#### 🗃 Local Storage
+
+- Ugulamalarımıza local storage eklemek için useEffect kullanabiliriz. [] boş bir bağımlılık dizisi program her açıldığında local storage'daki kayıtları getirir.
+
+### 🖊 Arka planda nasıl çalışır & Bazı değerli bilgiler
+
+- Imperetive(Zorunlu) ve Declarative(Bildirimsel) arasındaki fark VanillaJS ve React farkında gözle görülmektedir. VanillaJS'de bir çok eylemi bizzat siz yapmanız gerekir. Fakat React'ta ne yapması istediğinizi söyler ve gerisini ona bırakırsınız.
+- Bazı React framework'leri şunlardır. NextJS, Remix.
+- React'ta data akışı tek yönlüdür. Parent'tan child'a. Böylelikle birçok problemin önüne geçilir, karmaşıklıklar azaltılır. [ Ayrıca Angular iki yönlü data akışı sağlar. ]
+- SPA [ Single-Page Application ] tek sayfalık uygulamalar anlamına gelir. Özellikle son dönemde oldukça popülerdirler.
+- React Devtools bir geliştirme aracıdır. Chrome aracılığı ile de ulaşabileceğiniz bu eklenti program süresinde component tree, states ve birçok durumu etraflıca kontrol edebilmenizi sağlar. 💙
+- React'ta düşünmek diyince aklımıza neler gelir. Tüm arayüzü component'lere bölmek, component tree, herhangi bir state olmadan static versiyonu oluşturma, state hakkında düşünme ve veri akşını hayal etme.
+- Redux bir Global State Management aracıdır. İlerleyen süreçte daha fazla bilgi eklenecek.
+- Her component için bir dosya oluşturmak büyük karmaşıklıkların önüne geçer. Her zaman bu metodolojiyi uygulayın.
+- Componentler ekranda nasıl gösterilir ve render nasıl tetiklenir. Initial yani başlangıç render'ı ve state değişimleri sayesinde gösterilir.
+- Reconciler yani Fiber basitçe geçmiş state ve güncellenmiş state'i karşılaştırıp değişen durumlar için render yapıp değişmeyenleri sabit bırakır. 
+- Event Propagation ve Event Delegation kavramları bir eventin gerçekleşme süreci ile ilgilidir. Ne zaman dökümanda bir evet gerçekleşse, event dökümanın en üst düzeyindeki parent elementten eventin gerçekleştiği noktaya kadar yolculuk yapar ve eventi bulur. Aksi takdirde eventin nerede gerçekleştiğini bilmenin bir yolu yoktur. Bu yüzden eventi bir üst parent'a taşıyıp altındaki tüm elemanlar için gerçekleşmesini sağlayabiliriz.
+- Event'in nerede gerçekleştiğini bulmak adına başlayan bu süreç Capturing Phase(Yakalama aşaması) ve bulduktan sonra Bubbling Phase(Kabarcıklanma aşaması) olarak tanımlanır.
+- React bir kütüphanedir(library), bir çerçeve(framework) değildir. Çünkü bir çerçeve bünyesinde ihtiyacınız olan tüm geliştirme araçlarını barındırır. Bir kütüphane istediğiniz geliştirme aracını tamamen kendi istediğinize göre seçmenize ve kullanmanıza izin verir.
+- React üzerinde oluşturulmuş bazı çerçeveler(frameworks) şunlardır. Next.js / Remix / Gatsby
+
+#### Daha fazla 3rd-Party React kütüphanesi 👇
+
+- Routing için ▶ **React Router / React Location**
+- HTTP requests ▶ **fetch() / Axios**
+- Uzaktan Durum Yönetimi ▶ **React Query / SWR / Apollo**
+- Küresel Durum Yönetimi ▶ **Context API / Redux / Zustand**
+- Şekillendirme ▶ **CSS Modules / Styled Components / Tailwind CSS**
+- Form Düzenleme ▶ **React Hook Form / Formik**
+- Animasyonlar - Transitions ▶ **Motion / React Spring**
+- Arayüz bileşenleri ▶ **Chakra / Mantine**
+
+### 📜 React Hakkında Pratik Özetler <img style="width: 25px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png?20220125121207">✍
+
+#### 🧩 Component'ler Hakkında
+
+- Bir component bir şema gibidir. Arayüzün bir parçasını oluşturmak için vardır
+- Ne zaman bir component kullansak React bir component instance oluşturur ve bu instance props,state ve daha fazlasını içerebilir.
+- Asla bir component içerisinde ikinci bir component tanımlama! Bunu yapmak içerdeki componenti her zaman yeniden renderlar. Bu da parent'i tekrar renderlar. React nested component'i her zaman yeni olarak görür. Performans açısından berbattır.
+
+#### ⏳ Render'lama Hakkında
+
+- Renderlama tamamen component fonksiyonlarını çağırma ve hangi elementlerin eklenmesi, silinmesi veya güncellenmesi gerektiğinin kontrolü ile ilgilidir. DOM'a herhangi birşey yazmaz.
+- Bir component instance renderlandığında yada yeniden renderlandığında fonksiyon tekrar tekrar çağırılır. 
+- Ne zaman bir component instance yeniden renderlansa tüm child'ları da renderlanabilir. Bu hepsinin kesinlikle güncelleneceği anlamına gelmez. İki render arasında sadece değişim yaşayan child'lar yeniden renderlanır.
+- DOM, commit phase denen aşamada güncellenir, ama React tarafından değil. Renderlayıcı olarak da isimlendirilen ReactDOM tarafından. Bu durum, projelerimize neden her zaman hem React hem de ReactDOM'u eklediğimizi açıklıyor.
+
+#### Diffing ( Farklılaşan )
+
+- Diffing, React'ın hangi DOM elementlerinin eklenmesi veya değiştirilmesi hakkında karar vermesini sağlar. Eğer renderlar arasında bir React elementi Fiber Tree'de aynı pozisyonda duruyorsa bu component ve state'i sabit kalır. Eğer element değiştiyse veya farklı bir pozisyondaysa element ve state yok edilir. 
+
+ # <p align=center> 🔷 ENGLISH 🔷 </p>
+
+# <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="30" height="30" /> REACT
+
 In this repository, I keep all my work done with "React" in bulk.
 
 ## 🖊 What have I learned so far ?
@@ -52,7 +183,6 @@ In this repository, I keep all my work done with "React" in bulk.
 - One component has one state and isolated from other components.
 - What is **Controlled Elements**, why and how i gonna use them. [ When working with forms ]
 - What is State Management **[ Deciding when to create state, types of state and how data flows through the App]**
-- When should i derive a state. **[ Local or Global State ]**
 - What is **State Lifting** and when should i use it.
 - Whats the difference between **Local and Global** state, and why i need to always start with **Local State**
 - What is **State Update Batching**, and why it is important. [ Grouping setStates into one function and only rendering one time for performance. "Available on React@18" ]
@@ -146,22 +276,13 @@ In this repository, I keep all my work done with "React" in bulk.
 - When a component instance gets re-rendered, _all its children_ will get re-rendered as well. This doesn't mean that all children will get updated in the DOM. Thanks to _reconciliation_, which checks _which elements have actually changed_ between two renders.
 - The DOM is updated in the _commit phase_, but not by React! By a _renderer_ called _ReactDOM_. That's why we always need to _include both libraries_ in a React web app project.
 
-#### Render Logic
-
-- The logic that produces JSX output for a component instance is _not allowed to produce any side effects_. [ No API calls, no timers, no object or variable mutations, no state updates ] _Side effects are allowed in event handlers and useEffect_ .
-
 #### Diffing
 
 - Diffing is how React decides which DOM elements need to be _added or modified_. If between renders, a certain React element stays at the _same position_ in the element tree( Fiber Tree ), the corresponding DOM element and component state will stay same. If the element _changed to a different position, or if it's a different element type_, the DOM element and state will be destroyed.
 
 #### Key Prop
 
-- Giving elements a key prop allows React to _distinguish between multiple_ component instances.
 - When a key _stays the same_ across renders, the element is kept in the DOM. This is why we need to use keys in _lists_. When we _change the key_ between renders, the DOM element will be destroyed and rebuilt. We use this as a trick to _reset state_.
-
-#### React
-
-- _React is a library, not a framework._ This means that you can assemble your application using your _favourite third-party_ libraries. _The downside_ is that you need to find and _learn all these additional_ libraries.
 
 ## ⌨ My **Codesandbox** practices about React ⏬
 
