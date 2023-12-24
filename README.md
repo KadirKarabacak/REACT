@@ -9,34 +9,34 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - Gerçek dünya projelerinde her zaman *Vite <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/410px-Vitejs-logo.svg.png" style="width: 25px">* kullanmalıyız çünkü *performans ve topluluk desteği* bakımından Create-react-app'den daha popüler. Ama öğrenmek amaçlı create-react-app hala kullanılabilir.
 
 ### 💻 Render'lama
-- Bir *component* basitçe kullanıcı arayüzünü oluşturan lego parçalarına benzetilebilir. Her zaman büyük harfle başlamalıdır [ function Header() ].
-- JSX bir component'in içerisinden döndürdüğümüz HTML benzeri bir yapıdır. İçerisinde JS ve CSS kullanmamıza olanak sağlar.
-- Kondisyonel renderlama bir koşula bağlı olarak bir DOM elementini veya bir component'i gizleyip gösterebilir. State değişimine bağlı olarak çıktılar alırız.
-- Birden fazla bileşen renderlamak istediğimizde döngüler kullanırız. Örneğin .map methodu React'ta birçok noktada kullanılır.
-- Döngüler kullanarak renderladığımız bileşenlere key özelliği vermemiz gerekir. Key özelliği yeri ve içeriği değişmeyen elemanların tekrar tekrar renderlanmasını engeller ve performansı arttırır.
-- React Fragment olarak adlandırdığımız şey JSX'te bir parent element yerine birden fazla kardeş element renderlamak istediğimizde bu elementleri çevreleyen bir parent oluşturur. Yeni bir div oluşturmaktan kaçınmak istediğimizde tercihimizdir. [ <>, </> ]
-- Component composition, bizim çok fazla prop kaydırma gerektiren durumlarda imdadımıza yetişir. Alt componentleri ana component'in açılış ve kapanış tag'leri içine taşırız ve children prop'u vererek içeriğini tamamen taşımasına olanak sağlarız. Aynı zamanda parent component'in yeniden kullanılabilirliği adına mükemmel bir adımdır. Genel olarak Prop Drilling adı verdiğimiz durumdan kaçınmamızı sağlar.
-- Component, Instance ve Element arasındaki farklar; Component tamamiyle bir bileşendir. Instance componentlerin çoğaltılmış örnekleridir ve aynı özellikleri barındırır. Element tamamen DOM ile ilgilidir, HTML'de kullandığımız yapılar birer elementtir.
+- Bir *component* basitçe kullanıcı arayüzünü oluşturan lego parçalarına benzetilebilir. Her zaman büyük harfle başlamalıdır *[ function Header() ]*.
+- JSX bir component'in içerisinden döndürdüğümüz *HTML benzeri* bir yapıdır. İçerisinde *JS ve CSS* kullanmamıza olanak sağlar.
+- *Kondisyonel renderlama* bir koşula bağlı olarak bir DOM elementini veya bir component'i gizleyip gösterebilir. State değişimine bağlı olarak arayüzde farklı görünümler oluştururuz.
+- Birden fazla bileşen renderlamak istediğimizde döngüler kullanırız. Örneğin .map() methodu React'ta birçok noktada kullanılır.
+- Döngüler kullanarak renderladığımız bileşenlere *key özelliği* vermemiz gerekir. Key özelliği *yeri ve içeriği değişmeyen* elemanların tekrar tekrar renderlanmasını engeller ve *performansı arttırır*.
+- *React Fragment* olarak adlandırdığımız yapı JSX'te bir parent element yerine birden fazla kardeş element renderlamak istediğimizde bu elementleri çevreleyen bir parent oluşturur. Yeni bir *div oluşturmaktan kaçınmak* istediğimizde tercihimizdir. [ <>, </> ]
+- *Component composition*, bizim çok fazla prop kaydırma gerektiren durumlarda imdadımıza yetişir. Alt componentleri ana component'in açılış ve kapanış tag'leri içine taşırız ve children prop'u vererek içeriğini tamamen taşımasına olanak sağlarız. Aynı zamanda parent component'in yeniden kullanılabilirliği adına mükemmel bir adımdır. Genel olarak *Prop Drilling* adı verdiğimiz durumdan kaçınmamızı sağlar.
+- *Component, Instance ve Element* arasındaki farklar; Component tamamiyle bir bileşendir. Instance componentlerin çoğaltılmış örnekleridir ve aynı özellikleri barındırır. Element tamamen DOM ile ilgilidir, HTML'de kullandığımız yapılar birer elementtir.
 - Dışarıdan aldığımız bir değişkeni değiştirmek, HTTP çağırıları gibi durumlar kodumuzda yan efektler oluşturur ve bu durum renderlamada kaçınmamız gereken durumlardan biridir.
-- Pure function dediğimiz fonksiyon türü hiçbir yan etkiye sahip olmaz. Verilen değer, çıkan değer ile aynıdır.
+- *Pure function* dediğimiz fonksiyon türü hiçbir yan etkiye sahip olmaz. Verilen değer, çıkan değer ile aynıdır.
 
 #### 🔴 Renderlama mantığında bazı katı kurallar vardır. 
-- HTTP çağırıları yapamazsınız.
-- Zamanlayıcılar başlatamazsınız.
-- DOM API'ını direkt kullanamazsınız.
-- Obje veya değişkenleri mutate edemezsiniz.
-- State güncellemesi ve ref güncellemesi yapamazsınız. Program sonsuz döngüye girer.
-- Side effectler sadece handler fonksiyonlar içerisinde izin verilir. Bunun dışında birde useEffect hook'u dahilinde kullanabiliriz.
+- **HTTP çağırıları** yapamazsınız.
+- **Zamanlayıcılar** başlatamazsınız.
+- **DOM API**'ını direkt kullanamazsınız.
+- **Obje veya değişkenleri** mutate edemezsiniz.
+- **State güncellemesi ve ref güncellemesi** yapamazsınız. Program sonsuz döngüye girer.
+- Side effectler sadece **handler fonksiyonlar** içerisinde izin verilir. Bunun dışında birde **useEffect hook**'u dahilinde kullanabiliriz.
 
 ### ℹ Prop'lar
-- Proplar basitçe parent componentten child component'lere iletilebilen değişkenlerdir. Aynı anda birden fazla componentte kullanılması gereken değişkenler için kullanılır. Kod içindeki karmaşıklığı azaltmak adına props.anything demek yerine componente dahil ederken {anything} destructure yaparak alırız.
-- Proplar değiştirilemez. Sadece okunur. "Readonly".
-- Children prop rendering kısmında da belirtildiği gibi component composition gibi durumlarda işlevseldir.
-- Prop drilling Parent component'lerden child component'lere veri akışını ifade eder.
-- Bir prop olarak bir elementi child elemente gönderebiliriz. Çok kullanışlı olduğu söylenemez. Child prop'una alternatif olarak gösterilir.
-- Diğer geliştiricilerin kullanımı için olabildiğince esnek ve yeniden kullanılabilir componentler yazmak önemlidir. Aynı zamanda diğer projelerinize de dahil edebilirsiniz. Harici state, proptypes gibi durumlara hakim olmalısınız.
-- Key prop'u Diffing algoritmasına bir bileşenin benzersiz (unique) olduğunu belirtir.
-- Key prop'u liste itemlarında state'i dağılmadan tutabilmek veya tamamen state'i sıfırlamak için kullanılabilir.
+- Proplar basitçe **parent componentten child component**'lere iletilebilen değişkenlerdir. Aynı anda birden fazla componentte kullanılması gereken değişkenler için kullanılır. Kod içindeki karmaşıklığı azaltmak adına props.anything demek yerine componente dahil ederken {anything} destructure yaparak alırız.
+- **Proplar değiştirilemez**. Sadece okunur. "Readonly".
+- **Children prop** rendering kısmında da belirtildiği gibi component composition gibi durumlarda işlevseldir.
+- **Prop drilling** Parent component'lerden child component'lere veri akışını ifade eder.
+- **Bir prop olarak bir elementi** child elemente gönderebiliriz. Çok kullanışlı olduğu söylenemez. Child prop'una alternatif olarak gösterilir.
+- **Diğer geliştiricilerin** kullanımı için olabildiğince *esnek ve yeniden kullanılabilir* componentler yazmak önemlidir. Aynı zamanda diğer projelerinize de dahil edebilirsiniz. *Harici state, proptypes* gibi durumlara hakim olmalısınız.
+- *Key prop'u Diffing algoritmasına* bir bileşenin benzersiz (unique) olduğunu belirtir.
+- *Key prop'u* liste itemlarında state'i dağılmadan tutabilmek veya tamamen state'i sıfırlamak için kullanılabilir.
 
 ### ♦ State'ler
 - const [count, setCount] = useState(0) -- Bir state örneğidir. count bizim ekranda göstereceğimiz değer, setCount arka planda tıklama farklı etkilerle count değerini güncelleyen fonksiyon, ve 0 ise count'ımızın başlangıç değeridir.
