@@ -125,7 +125,17 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 
 #### Diffing ( Farklılaşan )
 
-- Diffing, React'ın hangi DOM elementlerinin eklenmesi veya değiştirilmesi hakkında karar vermesini sağlar. Eğer renderlar arasında bir React elementi Fiber Tree'de aynı pozisyonda duruyorsa bu component ve state'i sabit kalır. Eğer element değiştiyse veya farklı bir pozisyondaysa element ve state yok edilir. 
+- Diffing, React'ın hangi DOM elementlerinin eklenmesi veya değiştirilmesi hakkında karar vermesini sağlar. Eğer renderlar arasında bir React elementi Fiber Tree'de aynı pozisyonda duruyorsa bu component ve state'i sabit kalır. Eğer element değiştiyse veya farklı bir pozisyondaysa element ve state yok edilir.
+
+## ⌨ React ile yaptığım bazı **Codesandbox** pratikleri ⏬
+
+- <a href="https://t.ly/_9303">📆 Date Counter </a>
+- <a href="https://t.ly/qxh5X">📕 Small Exam with State</a>
+- <a href="https://t.ly/dq3vf">🃏 User card and List Rendering</a>
+- <a href="https://t.ly/wYSUl">📜 Accordions</a>
+- <a href="https://t.ly/mkXpt">💰 Bill Calculator </a>
+- <a href="https://t.ly/BX59P">🅰 Reusable-Flexible Text Expander Component</a>
+- <a href="https://t.ly/H3LuI">💲 Currency-Converter </a>
 
  # <p align=center> 🔷 ENGLISH 🔷 </p>
 
