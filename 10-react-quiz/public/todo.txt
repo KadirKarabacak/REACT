@@ -1,0 +1,2 @@
+1- Cevapları bir diziye kaydedip kullanıcıya verdiği cevapları kontrol etme şansı tanı.
+2- Başlangıç ekranında kullanıcıya istediği kadar soru seçme şansı ver.

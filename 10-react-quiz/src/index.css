@@ -258,3 +258,7 @@ progress {
   font-size: inherit;
   padding: 0.8rem;
 }
+
+.startscreen_quiz {
+  color: #29e1fd;
+}
