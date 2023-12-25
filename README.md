@@ -137,7 +137,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - <a href="https://t.ly/BX59P">🅰 Reusable-Flexible Text Expander Component</a>
 - <a href="https://t.ly/H3LuI">💲 Currency-Converter </a>
 
- # <p align=center> 🔷 ENGLISH 🔷 </p>
+ # <p align=center> 🔴🔷🟩 ENGLISH 🟩🔷🔴 </p>
 
 # <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="30" height="30" /> REACT
 
