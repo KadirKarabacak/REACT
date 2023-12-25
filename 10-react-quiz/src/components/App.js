@@ -1,4 +1,5 @@
 import { useEffect, useReducer } from "react";
+
 import Header from "./Header";
 import Main from "./Main";
 import Loader from "./Loader";
@@ -10,6 +11,8 @@ import Progress from "./Progress";
 import FinishScreen from "./FinishScreen";
 import Footer from "./Footer";
 import Timer from "./Timer";
+
+// https://drive.filen.io/d/17bfae47-c2bb-41bf-a7a4-195f6a6bafa1#OZhR3Of32wJH0mmebWWA7PjVv7UEb19I
 
 const SECS_PER_QUESTION = 30;
 
@@ -116,7 +119,7 @@ export default function App() {
   }, 0);
 
   useEffect(function () {
-    fetch(`http://localhost:9000/questions`)
+    fetch(`https://codingheroes.io/api-react-course-projects/questions.json`)
       .then((res) => res.json())
       .then((data) => dispatch({ type: "dataRecieved", payload: data }))
       .catch((err) => dispatch({ type: "dataFailed" }));
