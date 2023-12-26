@@ -15,7 +15,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 
 - Bir _Vite_ projesi kurulumu içinse _npm create vite@latest_ komutunu kullanarak onay verdikten sonra proje ismimizi yazıyoruz. Daha sonra kullanacağımız teknoloji seçimini yapıp o teknolojiye özel bir template alıyoruz. Vite bağımlılıkları otomatik yüklemez. Bu nedenle proje dosyamıza girip bağımlılıklarımızı manuel olarak yüklemeliyiz. Create-react-app'deki index.js dosyası yerine main.jsx dosyamız mevcut. Aynı şekilde app.js yerine de App.jsx. Projemizi başlatmak içinse npm start yerine _npm run dev_ komutunu kullanıyoruz.
 
-#### Olası durumlar için Vite Projelerine _Eslint_ kurulumu ve ayarları
+#### Olası durumlar için Vite Projelerine _Eslint_ kurulumu ve ayarları ❕
 
 - Şuanda vite projeleri _eslint_ eklentisi ile birlikte geliyor ki bu durum çok önemli. Fakat olası bir durumda gelmediğini varsayarsak şunları yaparak kurabiliriz.
 - **npm install eslint vite-plugin-eslint eslint-config-react-app --save-dev** ve yükleme tamamlandıktan sonra **.eslintrc.json veya .eslintrc.cjs** isminde bir dosya oluşturup ayarlarımızı uygulayabiliriz.
@@ -25,7 +25,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - Daha sonra vite.config dosyamıza girip **import eslint from "vite-plugin-eslint"** yapıyoruz.
 - Son adım olarak plugins dizisine eslint importumuzu ekliyoruz.
 
-### React Stil Opsiyonları
+### ⭐ React Stil Opsiyonları 
 
 - _İnline_ olarak JSX içerisinde style prop'u kullanarak yapabiliriz.
 - _Harici bir CSS veya SASS_ dosyası ile className özellikleri oluşturarak yapabiliriz. Fakat bu durum bütün uygulamayı etkilediği için özellikle _büyük çaplı projelerde çakışmalar_ yaşamak mümkündür.
