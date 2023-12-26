@@ -6,12 +6,12 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 
 ### ⚒ Öncelikle kurulum ile başlayalım. Sonuçta herşey bununla başlıyor.
 
-#### Create-react-app
+#### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="30" height="30" /> Create-react-app
 
 - Bir React projesi oluşturmak için her zaman cmd komut satırına girip _create-react-app@latest_ komutunu kullanarak ve yanına proje ismimizi vererek bir React proje dosyası oluşturuyoruz.
-- Gerçek dünya projelerinde her zaman _Vite <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/410px-Vitejs-logo.svg.png" style="width: 25px">_ kullanmalıyız çünkü _performans ve topluluk desteği_ bakımından Create-react-app'den daha popüler. Ama öğrenmek amaçlı create-react-app hala kullanılabilir.
+- Gerçek dünya projelerinde her zaman _Vite_ kullanmalıyız çünkü _performans ve topluluk desteği_ bakımından Create-react-app'den daha popüler. Ama öğrenmek amaçlı create-react-app hala kullanılabilir.
 
-#### Vite
+#### <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/410px-Vitejs-logo.svg.png" style="width: 25px"> Vite
 
 - Bir _Vite_ projesi kurulumu içinse _npm create vite@latest_ komutunu kullanarak onay verdikten sonra proje ismimizi yazıyoruz. Daha sonra kullanacağımız teknoloji seçimini yapıp o teknolojiye özel bir template alıyoruz. Vite bağımlılıkları otomatik yüklemez. Bu nedenle proje dosyamıza girip bağımlılıklarımızı manuel olarak yüklemeliyiz. Create-react-app'deki index.js dosyası yerine main.jsx dosyamız mevcut. Aynı şekilde app.js yerine de App.jsx. Projemizi başlatmak içinse npm start yerine _npm run dev_ komutunu kullanıyoruz.
 
