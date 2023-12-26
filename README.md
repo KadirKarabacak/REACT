@@ -15,7 +15,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 
 - Bir _Vite_ projesi kurulumu içinse _npm create vite@latest_ komutunu kullanarak onay verdikten sonra proje ismimizi yazıyoruz. Daha sonra kullanacağımız teknoloji seçimini yapıp o teknolojiye özel bir template alıyoruz. Vite bağımlılıkları otomatik yüklemez. Bu nedenle proje dosyamıza girip bağımlılıklarımızı manuel olarak yüklemeliyiz. Create-react-app'deki index.js dosyası yerine main.jsx dosyamız mevcut. Aynı şekilde app.js yerine de App.jsx. Projemizi başlatmak içinse npm start yerine _npm run dev_ komutunu kullanıyoruz.
 
-#### Olası durumlar için Vite Projelerine _Eslint_ kurulumu ve ayarları ❕
+#### ⚙ Olası durumlar için Vite Projelerine _Eslint_ kurulumu ve ayarları 
 
 - Şuanda vite projeleri _eslint_ eklentisi ile birlikte geliyor ki bu durum çok önemli. Fakat olası bir durumda gelmediğini varsayarsak şunları yaparak kurabiliriz.
 - **npm install eslint vite-plugin-eslint eslint-config-react-app --save-dev** ve yükleme tamamlandıktan sonra **.eslintrc.json veya .eslintrc.cjs** isminde bir dosya oluşturup ayarlarımızı uygulayabiliriz.
@@ -25,7 +25,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - Daha sonra vite.config dosyamıza girip **import eslint from "vite-plugin-eslint"** yapıyoruz.
 - Son adım olarak plugins dizisine eslint importumuzu ekliyoruz.
 
-### ⭐ React Stil Opsiyonları 
+### 🎨 React Stil Opsiyonları 
 
 - _İnline_ olarak JSX içerisinde style prop'u kullanarak yapabiliriz.
 - _Harici bir CSS veya SASS_ dosyası ile className özellikleri oluşturarak yapabiliriz. Fakat bu durum bütün uygulamayı etkilediği için özellikle _büyük çaplı projelerde çakışmalar_ yaşamak mümkündür.
@@ -79,7 +79,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - State Lifting kavramı child componentlerden birisinde oluşturduğumuz bir state'i gerektiğinde birden fazla sibling(kardeş) component'e dağıtmak için en yakın parent elemente taşımak anlamına gelir.
 - State Group Batching ifadesi, bir handler fonksiyon içerisinde birden fazla gerçekleşen state güncellemesini tek bir güncelleme gibi görüp programımıza performans kazandıran bir terim ve uygulamadır. React@18 ve üzerinde geçerlidir.
 
-### Use Reducer
+### 🤏 Use Reducer
 
 - Bir useReducer örneği 👉 const [state, dispatch] = useReducer(reducer, initialState)
 - State oluşturmak için alternatif bir yoldur. useState'e göre anlaması ve uygulaması birazdaha zordur. Karışık state'ler, _birbirleri ile ilişkili_ state'ler ve birden fazla state güncellemesi gereken durumlar için idealdir.
@@ -90,7 +90,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - _action özelliği_ state'in nasıl güncelleneceğini belirtir.
 - dispatch fonksiyonu state güncellemelerini tetiklemek için kullanılır. reducer fonkksiyona actions özelliğini gönderir.
 
-### Router ( Yönlendirici )
+### ↗↖ Router ( Yönlendirici )
 
 - Router oluşturmak için öncelikle **"BrowserRouter"**, daha sonra **"Routes"** ve son olarak her bir gezinim için bir **"Route"** oluşturmalıyız. Kullanıldıkları konuma Eslint'i kızdırmamak için hepsini import etmeliyiz.
 - Her Route'ın bir **path** propu ve bir **element** prop'u olmalıdır. Yani hangi path'de hangi elementin görünmesini istediğimizi belirtiyoruz.
@@ -104,7 +104,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - Aynı zamanda React Routes'a gelişmiş bir Tab Component olarak da bakabiliriz.
 - URL kullanıcı arayüzü state'ini saklamak için mükemmel olabilir. Bazı durumlarda useState yerine kullanılabilir. Bu durumlardan bazıları açılır/kapanır paneller, seçili liste elemanı, liste sıralaması, uygulanmış filtreler vb. Bir E-commerce sitesinde bir eşyaya renk, ebat veya farklı filtreler uygulayıp bir arkadaşınızla paylaştığınızı düşünebilirsiniz. Bu durumda URL içinde state tutmak faydalıdır, çünkü paylaşılan URL tam olarak seçilen filtreleri içerisinde barındırır.
 
-#### Tek Sayfa Uygulamalar [ SPA ]
+#### ⚡ Tek Sayfa Uygulamalar [ SPA ]
 
 - Uygulama baştan sona client (tarayıcı) tarafında çalıştırılır.
 - Farklı URL'ler farklı görünümlerle(components) ilişkilidir.
@@ -189,7 +189,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - Ne zaman bir component instance yeniden renderlansa tüm child'ları da renderlanabilir. Bu hepsinin kesinlikle güncelleneceği anlamına gelmez. İki render arasında sadece değişim yaşayan child'lar yeniden renderlanır.
 - DOM, commit phase denen aşamada güncellenir, ama React tarafından değil. Renderlayıcı olarak da isimlendirilen ReactDOM tarafından. Bu durum, projelerimize neden her zaman hem React hem de ReactDOM'u eklediğimizi açıklıyor.
 
-#### Diffing ( Farklılaşan )
+#### 🆚 Diffing ( Farklılaşan )
 
 - Diffing, React'ın hangi DOM elementlerinin eklenmesi veya değiştirilmesi hakkında karar vermesini sağlar. Eğer renderlar arasında bir React elementi Fiber Tree'de aynı pozisyonda duruyorsa bu component ve state'i sabit kalır. Eğer element değiştiyse veya farklı bir pozisyondaysa element ve state yok edilir.
 
