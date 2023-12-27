@@ -32,7 +32,13 @@ export default function Login() {
         </div>
 
         <div>
-          <button>Login</button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+            }}
+          >
+            Login
+          </button>
         </div>
       </form>
     </main>
