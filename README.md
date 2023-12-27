@@ -17,7 +17,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 
 #### ⚙ Olası durumlar için Vite Projelerine **"Eslint"** kurulumu ve ayarları
 
-- Şuanda vite projeleri _eslint_ eklentisi ile birlikte geliyor ki bu durum çok önemli. Fakat olası bir durumda gelmediğini varsayarsak şunları yaparak kurabiliriz.
+- Şuanda Vite projeleri eslint eklentisi ile birlikte geliyor ki bu durum çok önemli. Fakat olası bir durumda gelmediğini varsayarsak şunları yaparak kurabiliriz.
 - **npm install eslint vite-plugin-eslint eslint-config-react-app --save-dev** ve yükleme tamamlandıktan sonra **.eslintrc.json veya .eslintrc.cjs** isminde bir dosya oluşturup ayarlarımızı uygulayabiliriz.
 - {
 - "extends": "react-app"
@@ -27,17 +27,17 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 
 ### 🎨 React Stil Opsiyonları
 
-- _İnline_ olarak JSX içerisinde style prop'u kullanarak yapabiliriz.
-- _Harici bir CSS veya SASS_ dosyası ile className özellikleri oluşturarak yapabiliriz. Fakat bu durum bütün uygulamayı etkilediği için özellikle _büyük çaplı projelerde çakışmalar_ yaşamak mümkündür.
-- _CSS Modules_ her bir bileşen için harici bir css dosyası oluşturmamızı sağlar, böylece çakışmalar önlenir ve sadece o bileşene özgü stiller oluşturabiliriz. Creat-react-app ve vite içerisinde otomatik olarak gelir. Sadece element yazarak "ul,li,div" gibi stilleme yapamayız. Yaparsak yine tüm proje için geçerli olur. ClassName koşulu zorunludur.
-- _CSS-in-JS_ dediğimiz yöntem ile yeni bir component oluşturarak stilleme yapabiliriz.
-- _Utility-first CSS_ dediğimiz yapıya uygun olarak **Tailwindcss** kullanarak JSX içerisinde Bootstrap'te olduğu gibi sabit className'ler ile yapabiliriz.
-- Alternatif olarak hiç CSS yazmadan bazı arayüz kütüphaneleri olan _MUI, Chakra UI, Mantine_ gibi hazır component yapısı sunan kütüphaneleri kullanabiliriz.
+- **"İnline"** olarak JSX içerisinde style prop'u kullanarak yapabiliriz.
+- **"Harici bir CSS veya SASS**" dosyası ile className özellikleri oluşturarak yapabiliriz. Fakat bu durum bütün uygulamayı etkilediği için özellikle **"büyük çaplı projelerde çakışmalar"** yaşamak mümkündür.
+- **"CSS Modules"** her bir bileşen için harici bir css dosyası oluşturmamızı sağlar, böylece çakışmalar önlenir ve sadece o bileşene özgü stiller oluşturabiliriz. Creat-react-app ve vite içerisinde otomatik olarak gelir. Sadece element yazarak "ul,li,div" gibi stilleme yapamayız. Yaparsak yine tüm proje için geçerli olur. ClassName koşulu zorunludur.
+- **"CSS-in-JS"** dediğimiz yöntem ile yeni bir component oluşturarak stilleme yapabiliriz.
+- **"Utility-first CSS"** dediğimiz yapıya uygun olarak **"Tailwindcss"** kullanarak JSX içerisinde Bootstrap'te olduğu gibi sabit className'ler ile yapabiliriz.
+- Alternatif olarak hiç CSS yazmadan bazı arayüz kütüphaneleri olan **"MUI, Chakra UI, Mantine"** gibi hazır component yapısı sunan kütüphaneleri kullanabiliriz.
 
 ### 💻 Render'lama
 
-- Bir _component_ basitçe kullanıcı arayüzünü oluşturan lego parçalarına benzetilebilir. Her zaman büyük harfle başlamalıdır _[ function Header() ]_.
-- JSX bir component'in içerisinden döndürdüğümüz _HTML benzeri_ bir yapıdır. İçerisinde _JS ve CSS_ kullanmamıza olanak sağlar.
+- Bir **"component"** basitçe kullanıcı arayüzünü oluşturan lego parçalarına benzetilebilir. Her zaman büyük harfle başlamalıdır **[ function Header() ]**
+- JSX bir component'in içerisinden döndürdüğümüz **"HTML benzeri"** bir yapıdır. İçerisinde **"JS ve CSS"** kullanmamıza olanak sağlar.
 - _Kondisyonel renderlama_ bir koşula bağlı olarak bir DOM elementini veya bir component'i gizleyip gösterebilir. State değişimine bağlı olarak arayüzde farklı görünümler oluştururuz.
 - Birden fazla bileşen renderlamak istediğimizde döngüler kullanırız. Örneğin .map() methodu React'ta birçok noktada kullanılır.
 - Döngüler kullanarak renderladığımız bileşenlere _key özelliği_ vermemiz gerekir. Key özelliği _yeri ve içeriği değişmeyen_ elemanların tekrar tekrar renderlanmasını engeller ve _performansı arttırır_.
