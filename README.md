@@ -6,16 +6,16 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 
 ### ⚒ Öncelikle kurulum ile başlayalım. Sonuçta herşey bununla başlıyor.
 
-#### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="30" height="30" /> Create-react-app
+#### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="20" height="20" /> Create-react-app
 
 - Bir React projesi oluşturmak için her zaman cmd komut satırına girip **"create-react-app@latest"** komutunu kullanarak ve yanına proje ismimizi vererek bir React proje dosyası oluşturuyoruz.
 - Gerçek dünya projelerinde her zaman **"Vite"** kullanmalıyız çünkü **"performans ve topluluk desteği"** bakımından Create-react-app'den daha popüler. Ama öğrenmek amaçlı create-react-app hala kullanılabilir.
 
-#### <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/410px-Vitejs-logo.svg.png" style="width: 25px"> Vite
+#### <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/410px-Vitejs-logo.svg.png" style="width: 20px"> Vite
 
 - Bir Vite projesi kurulumu içinse **"npm create vite@latest"** komutunu kullanarak onay verdikten sonra proje ismimizi yazıyoruz. Daha sonra kullanacağımız teknoloji seçimini yapıp o teknolojiye özel bir template alıyoruz. Vite **"bağımlılıkları otomatik yüklemez"**. Bu nedenle proje dosyamıza girip bağımlılıklarımızı manuel olarak yüklemeliyiz. Create-react-app'deki index.js dosyası yerine main.jsx dosyamız mevcut. Aynı şekilde app.js yerine de App.jsx. Projemizi başlatmak içinse npm start yerine **"npm run dev"** komutunu kullanıyoruz.
 
-#### ⚙ Olası durumlar için Vite Projelerine _Eslint_ kurulumu ve ayarları
+#### ⚙ Olası durumlar için Vite Projelerine **"Eslint"** kurulumu ve ayarları
 
 - Şuanda vite projeleri _eslint_ eklentisi ile birlikte geliyor ki bu durum çok önemli. Fakat olası bir durumda gelmediğini varsayarsak şunları yaparak kurabiliriz.
 - **npm install eslint vite-plugin-eslint eslint-config-react-app --save-dev** ve yükleme tamamlandıktan sonra **.eslintrc.json veya .eslintrc.cjs** isminde bir dosya oluşturup ayarlarımızı uygulayabiliriz.
