@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./CityItem.module.css";
+import { useCities } from "../../contexts/CitiesContext";
 
 // Formatting date
 const formatDate = (date) =>
@@ -11,13 +12,16 @@ const formatDate = (date) =>
 
 // Each "li" on CityList
 function CityItem({ city }) {
+  const { currentCity } = useCities();
   const { cityName, emoji, date, id, position } = city;
 
   return (
     <li>
       {/* And then we pass id in "to" prop, After id for "Query string" add a ? mark and use position coords */}
       <Link
-        className={styles.cityItem}
+        className={`${styles.cityItem} ${
+          currentCity.id === id ? styles["cityItem--active"] : ""
+        }`}
         // Here, after the id we read those position query strings into Map.jsx with useSearchParams
         to={`${id}?lat=${position.lat}&lng=${position.lng}`}
       >

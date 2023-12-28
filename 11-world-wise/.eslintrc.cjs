@@ -6,7 +6,6 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended",
-    "rules: react/prop-types' : 'off",
   ],
   ignorePatterns: ["dist", ".eslintrc.cjs"],
   parserOptions: { ecmaVersion: "latest", sourceType: "module" },
@@ -19,5 +18,6 @@ module.exports = {
     ],
     // Closed proptypes error
     "no-unused-vars": ["warn", { varsIgnorePattern: "VARIABLE_NAME" }],
+    "react/prop-types": "off",
   },
 };

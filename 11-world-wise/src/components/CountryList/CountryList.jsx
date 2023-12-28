@@ -1,9 +1,11 @@
-import CountryItem from "./CountryItem";
+import CountryItem from "../CountryItem/CountryItem";
 import styles from "./CountryList.module.css";
-import Spinner from "./Spinner";
-import Message from "./Message";
+import Spinner from "../Spinner/Spinner";
+import Message from "../Message/Message";
+import { useCities } from "../../contexts/CitiesContext";
 
-function CountryList({ cities, isLoading }) {
+function CountryList() {
+  const { cities, isLoading } = useCities();
   if (isLoading) return <Spinner />;
 
   if (!cities.length)

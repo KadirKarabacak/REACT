@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styles from "./PageNav.module.css";
-import Logo from "./Logo";
+import Logo from "../Logo/Logo";
 // Instead of importing link, we use Navlink to add active class which is active.
 // import { Link } from "react-router-dom";
 
