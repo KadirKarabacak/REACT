@@ -111,8 +111,8 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - URL'deki query strings( sorgu dizileri )'i ise **useSearchParam** ile okuyabilir ve kullanabiliriz.
 - _Programmatic Navigation_ (Programlı gezinme) kullanıcı herhangi bir link'e tıklama yapmadan kullanıcıyı yeni bir URL'e götürme işlemidir. Bu durumun en yaygın kullanım alanı **form submit**'tir.
 - Bir başka Router hook'u ise _useNavigate()_, bu hook basitçe bir fonksiyon döndürür ve bu fonksiyonu kullanarak bir etkileşime bağlı dilediğiniz path'e gidebilirsiniz. const navigate = useNavigate() -> navigate("form") örneğin. Veya navigate(-1) bir adım geri gelmemizi sağlar.
-- Aynı zamanda daha declarative bir yol olan "<Navigate/>" componentini "to" özelliği ile kullanabiliriz.
-- <Navigate /> componentinin "replace" özelliğin geçmişte geriye gitmemizi sağlar.
+- Aynı zamanda daha declarative bir yol olan <"Navigate"/> componentini "to" özelliği ile kullanabiliriz.
+- <"Navigate"/> componentinin "replace" özelliğin geçmişte geriye gitmemizi sağlar.
 
 ### 🌟 Context API
 
