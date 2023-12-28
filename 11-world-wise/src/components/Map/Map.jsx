@@ -12,6 +12,7 @@ import {
 } from "react-leaflet";
 import { useGeolocation } from "../../hooks/useGeolocation";
 import Button from "../Button/Button";
+import { useUrlPosition } from "../../hooks/useUrlPosition";
 
 function Map() {
   const { cities } = useCities();
@@ -22,11 +23,8 @@ function Map() {
     getPosition,
   } = useGeolocation();
 
-  // useSearchParams is a Router property which gives us URL params and query strings.
-  const [searchParams] = useSearchParams();
-  // It returns an object includes our data, and we use it to get data like this.
-  const mapLat = searchParams.get("lat");
-  const mapLng = searchParams.get("lng");
+  // Created our own hook to reuse into form
+  const [mapLat, mapLng] = useUrlPosition();
 
   // After a clicked city and we go back map must be stay at tha last position of city so ->
   useEffect(
@@ -91,7 +89,7 @@ function ChangeCenter({ position }) {
 
 // Handle Map Click by Leaflet
 function DetectClick() {
-  // UseNavigate simply returns a function, just write which path u want to go. Same as NavLink feature.
+  // UseNavigate simply returns a function, just write which path u want to go, Opening form onclick. Same as NavLink feature.
   const navigate = useNavigate();
 
   // Leaflet map event handler like click.
@@ -99,7 +97,7 @@ function DetectClick() {
     // Remember onClick we want to open form with useNavigate router feature.
     click: (e) => {
       // e has property latlng which holds latitude and longitude, so we can use on query
-      console.log(e);
+      // console.log(e);
       navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`);
     },
   });
