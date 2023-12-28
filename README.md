@@ -125,6 +125,12 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - İkinci aşama JSX'imizi Posts.Provider componenti ile sarmak ve value prop'una geçirmek istediğimiz tüm propları yazmak.
 - Üçüncü ve son aşama Consumers (Tüketiciler) provider tarafından yayınlanan context değerini okuyan tüm componentlerdir.
 
+### Projelerde kullanmak isteyebileceğimiz Leaflet (Map) kütüphanesi
+
+- Basitçe **"npm i react-leaflet leaflet"** komutu ile hem react hem normal leaflet kütüphanesini projemize dahil ediyoruz.
+- Daha sonra CSS dosyamıza @import **"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"** leaflet'in CSS işlevselliğini eklememiz gerekiyor.
+- Son olarak React içinde render yapabilmek adına **"https://react-leaflet.js.org/"** sitesinden alacağımız MapContainer, TileLayer, Marker ve Popup componentlerini içeren komut satırlarını kopyalayıp projemize dahil ediyoruz.
+
 #### ⚡ Tek Sayfa Uygulamalar [ SPA ]
 
 - Uygulama baştan sona client (tarayıcı) tarafında çalıştırılır.
