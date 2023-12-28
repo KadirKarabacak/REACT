@@ -6,18 +6,18 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 
 ### ⚒ Öncelikle kurulum ile başlayalım. Sonuçta herşey bununla başlıyor.
 
-#### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="30" height="30" /> Create-react-app
+#### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="20" height="20" /> Create-react-app
 
-- Bir React projesi oluşturmak için her zaman cmd komut satırına girip _create-react-app@latest_ komutunu kullanarak ve yanına proje ismimizi vererek bir React proje dosyası oluşturuyoruz.
-- Gerçek dünya projelerinde her zaman _Vite_ kullanmalıyız çünkü _performans ve topluluk desteği_ bakımından Create-react-app'den daha popüler. Ama öğrenmek amaçlı create-react-app hala kullanılabilir.
+- Bir React projesi oluşturmak için her zaman cmd komut satırına girip **"create-react-app@latest"** komutunu kullanarak ve yanına proje ismimizi vererek bir React proje dosyası oluşturuyoruz.
+- Gerçek dünya projelerinde her zaman **"Vite"** kullanmalıyız çünkü **"performans ve topluluk desteği"** bakımından Create-react-app'den daha popüler. Ama öğrenmek amaçlı create-react-app hala kullanılabilir.
 
-#### <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/410px-Vitejs-logo.svg.png" style="width: 25px"> Vite
+#### <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/410px-Vitejs-logo.svg.png" style="width: 20px"> Vite
 
-- Bir _Vite_ projesi kurulumu içinse _npm create vite@latest_ komutunu kullanarak onay verdikten sonra proje ismimizi yazıyoruz. Daha sonra kullanacağımız teknoloji seçimini yapıp o teknolojiye özel bir template alıyoruz. Vite bağımlılıkları otomatik yüklemez. Bu nedenle proje dosyamıza girip bağımlılıklarımızı manuel olarak yüklemeliyiz. Create-react-app'deki index.js dosyası yerine main.jsx dosyamız mevcut. Aynı şekilde app.js yerine de App.jsx. Projemizi başlatmak içinse npm start yerine _npm run dev_ komutunu kullanıyoruz.
+- Bir Vite projesi kurulumu içinse **"npm create vite@latest"** komutunu kullanarak onay verdikten sonra proje ismimizi yazıyoruz. Daha sonra kullanacağımız teknoloji seçimini yapıp o teknolojiye özel bir template alıyoruz. Vite **"bağımlılıkları otomatik yüklemez"**. Bu nedenle proje dosyamıza girip bağımlılıklarımızı manuel olarak yüklemeliyiz. Create-react-app'deki index.js dosyası yerine main.jsx dosyamız mevcut. Aynı şekilde app.js yerine de App.jsx. Projemizi başlatmak içinse npm start yerine **"npm run dev"** komutunu kullanıyoruz.
 
-#### ⚙ Olası durumlar için Vite Projelerine _Eslint_ kurulumu ve ayarları
+#### ⚙ Olası durumlar için Vite Projelerine **"Eslint"** kurulumu ve ayarları
 
-- Şuanda vite projeleri _eslint_ eklentisi ile birlikte geliyor ki bu durum çok önemli. Fakat olası bir durumda gelmediğini varsayarsak şunları yaparak kurabiliriz.
+- Şuanda Vite projeleri eslint eklentisi ile birlikte geliyor ki bu durum çok önemli. Fakat olası bir durumda gelmediğini varsayarsak şunları yaparak kurabiliriz.
 - **npm install eslint vite-plugin-eslint eslint-config-react-app --save-dev** ve yükleme tamamlandıktan sonra **.eslintrc.json veya .eslintrc.cjs** isminde bir dosya oluşturup ayarlarımızı uygulayabiliriz.
 - {
 - "extends": "react-app"
@@ -27,17 +27,17 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 
 ### 🎨 React Stil Opsiyonları
 
-- _İnline_ olarak JSX içerisinde style prop'u kullanarak yapabiliriz.
-- _Harici bir CSS veya SASS_ dosyası ile className özellikleri oluşturarak yapabiliriz. Fakat bu durum bütün uygulamayı etkilediği için özellikle _büyük çaplı projelerde çakışmalar_ yaşamak mümkündür.
-- _CSS Modules_ her bir bileşen için harici bir css dosyası oluşturmamızı sağlar, böylece çakışmalar önlenir ve sadece o bileşene özgü stiller oluşturabiliriz. Creat-react-app ve vite içerisinde otomatik olarak gelir. Sadece element yazarak "ul,li,div" gibi stilleme yapamayız. Yaparsak yine tüm proje için geçerli olur. ClassName koşulu zorunludur.
-- _CSS-in-JS_ dediğimiz yöntem ile yeni bir component oluşturarak stilleme yapabiliriz.
-- _Utility-first CSS_ dediğimiz yapıya uygun olarak **Tailwindcss** kullanarak JSX içerisinde Bootstrap'te olduğu gibi sabit className'ler ile yapabiliriz.
-- Alternatif olarak hiç CSS yazmadan bazı arayüz kütüphaneleri olan _MUI, Chakra UI, Mantine_ gibi hazır component yapısı sunan kütüphaneleri kullanabiliriz.
+- **"İnline"** olarak JSX içerisinde style prop'u kullanarak yapabiliriz.
+- **"Harici bir CSS veya SASS**" dosyası ile className özellikleri oluşturarak yapabiliriz. Fakat bu durum bütün uygulamayı etkilediği için özellikle **"büyük çaplı projelerde çakışmalar"** yaşamak mümkündür.
+- **"CSS Modules"** her bir bileşen için harici bir css dosyası oluşturmamızı sağlar, böylece çakışmalar önlenir ve sadece o bileşene özgü stiller oluşturabiliriz. Creat-react-app ve vite içerisinde otomatik olarak gelir. Sadece element yazarak "ul,li,div" gibi stilleme yapamayız. Yaparsak yine tüm proje için geçerli olur. ClassName koşulu zorunludur.
+- **"CSS-in-JS"** dediğimiz yöntem ile yeni bir component oluşturarak stilleme yapabiliriz.
+- **"Utility-first CSS"** dediğimiz yapıya uygun olarak **"Tailwindcss"** kullanarak JSX içerisinde Bootstrap'te olduğu gibi sabit className'ler ile yapabiliriz.
+- Alternatif olarak hiç CSS yazmadan bazı arayüz kütüphaneleri olan **"MUI, Chakra UI, Mantine"** gibi hazır component yapısı sunan kütüphaneleri kullanabiliriz.
 
 ### 💻 Render'lama
 
-- Bir _component_ basitçe kullanıcı arayüzünü oluşturan lego parçalarına benzetilebilir. Her zaman büyük harfle başlamalıdır _[ function Header() ]_.
-- JSX bir component'in içerisinden döndürdüğümüz _HTML benzeri_ bir yapıdır. İçerisinde _JS ve CSS_ kullanmamıza olanak sağlar.
+- Bir **"component"** basitçe kullanıcı arayüzünü oluşturan lego parçalarına benzetilebilir. Her zaman büyük harfle başlamalıdır **[ function Header() ]**
+- JSX bir component'in içerisinden döndürdüğümüz **"HTML benzeri"** bir yapıdır. İçerisinde **"JS ve CSS"** kullanmamıza olanak sağlar.
 - _Kondisyonel renderlama_ bir koşula bağlı olarak bir DOM elementini veya bir component'i gizleyip gösterebilir. State değişimine bağlı olarak arayüzde farklı görünümler oluştururuz.
 - Birden fazla bileşen renderlamak istediğimizde döngüler kullanırız. Örneğin .map() methodu React'ta birçok noktada kullanılır.
 - Döngüler kullanarak renderladığımız bileşenlere _key özelliği_ vermemiz gerekir. Key özelliği _yeri ve içeriği değişmeyen_ elemanların tekrar tekrar renderlanmasını engeller ve _performansı arttırır_.
