@@ -19,9 +19,7 @@ function CitiesProvider({ children }) {
         setIsLoading(true);
         const res = await fetch(`${BASE_URL}/cities`);
         const data = await res.json();
-        console.log(data);
         if (!res.ok) throw new Error("Failed to fetch cities");
-        console.log(data);
         setCities(data);
       } catch (err) {
         console.log(err.message);
@@ -37,9 +35,7 @@ function CitiesProvider({ children }) {
       setIsLoading(true);
       const res = await fetch(`${BASE_URL}/cities/${id}`);
       const data = await res.json();
-      console.log(data);
       if (!res.ok) throw new Error("Failed to fetch cities");
-      console.log(data);
       setCurrentCity(data);
     } catch (err) {
       console.log(err.message);
@@ -48,6 +44,7 @@ function CitiesProvider({ children }) {
     }
   }
 
+  // Returning Provider to wrap whole app into it to accessible all props
   return (
     <CitiesContext.Provider value={{ cities, isLoading, currentCity, getCity }}>
       {children}
@@ -55,6 +52,7 @@ function CitiesProvider({ children }) {
   );
 }
 
+// Consuming CitiesContext by useContext and created our own hook.
 function useCities() {
   const context = useContext(CitiesContext);
   if (context === undefined)
