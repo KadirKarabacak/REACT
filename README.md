@@ -131,13 +131,20 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - Daha sonra CSS dosyamıza @import **"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"** leaflet'in CSS işlevselliğini eklememiz gerekiyor.
 - Son olarak React içinde render yapabilmek adına **"https://react-leaflet.js.org/"** sitesinden alacağımız MapContainer, TileLayer, Marker ve Popup componentlerini içeren komut satırlarını kopyalayıp projemize dahil ediyoruz.
 
-#### ⚡ Tek Sayfa Uygulamalar [ SPA ]
+### ⚡ Tek Sayfa Uygulamalar [ SPA ]
 
 - Uygulama baştan sona client (tarayıcı) tarafında çalıştırılır.
 - Farklı URL'ler farklı görünümlerle(components) ilişkilidir.
 - Sayfa asla yeniden yüklenmez.
 - Normal bir masaüstü veya mobil uygulama gibi hissettirir.
 - Gerekli olan ekstra bilgiler bir web API'ı tarafından sağlanabilir.
+
+### Sahte Giriş (Fake Login) ve Kullanıcı Doğrulaması (User Authentatication)
+
+- Sahte bir giriş oluşturmak için 3 aşamamız mevut.
+- İlk aşamada kullanıcının e-mail ve şifresini bir giriş formundan alıyoruz, API uç noktası ile e-mail ve şifrenin doğruluğunu kontrol ediyoruz.
+- İkinci aşamada, kimlik bilgileri eğer doğruysa kullanıcının uygulamaya girişine izin veriyoruz ve kullanıcı objesini state'imizde kaydediyoruz.
+- Üçüncü ve son aşama olarak uygulamamızı doğrulamasız ve yanlış bilgi girilmiş durumlardan korumamız gerekiyor.
 
 ### 📦 Ref'ler
 

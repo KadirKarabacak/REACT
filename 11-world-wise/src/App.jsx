@@ -12,11 +12,13 @@ import CountryList from "./components/CountryList/CountryList";
 import City from "./components/City/City";
 import Form from "./components/Form/Form";
 import { CitiesProvider } from "./contexts/CitiesContext";
+import { AuthProvider } from "./contexts/FakeAuthContext";
+import ProtectedRoute from "./pages/ProtectedRoute/ProtectedRoute";
 
 function App() {
   //  To create our own custom hook with Context API cut all states and effects to CitiesContext
   return (
-    <div>
+    <AuthProvider>
       <CitiesProvider>
         {/* Also i need BrowserRouter and Routes before Route. */}
         <BrowserRouter>
@@ -27,7 +29,14 @@ function App() {
             <Route path="login" element={<Login />} />
 
             {/* Here we need some nested Routes */}
-            <Route path="app" element={<AppLayout />}>
+            <Route
+              path="app"
+              element={
+                <ProtectedRoute>
+                  <AppLayout />
+                </ProtectedRoute>
+              }
+            >
               {/* Here instead of pass CityList element on index Route, just use Navigate */}
               <Route index element={<Navigate to="cities" />} />
               <Route path="cities" element={<CityList />} />
@@ -41,7 +50,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </CitiesProvider>
-    </div>
+    </AuthProvider>
   );
 }
 
