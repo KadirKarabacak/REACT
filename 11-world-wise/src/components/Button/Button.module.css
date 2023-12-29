@@ -13,6 +13,11 @@
   font-weight: 700;
   background-color: var(--color-brand--2);
   color: var(--color-dark--1);
+  transition: all 0.3s;
+}
+
+.primary:hover {
+  transform: translateY(-3px);
 }
 
 .back {
@@ -32,4 +37,10 @@
   background-color: var(--color-brand--2);
   color: var(--color-dark--1);
   box-shadow: 0 0.4rem 1.2rem rgba(36, 42, 46, 0.16);
+  transition: all 0.3s;
+}
+
+.position:hover {
+  transform: translateX(-50%) translateY(-4px);
+  background-color: #04e27b;
 }

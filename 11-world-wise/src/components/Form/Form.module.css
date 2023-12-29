@@ -28,7 +28,8 @@
 }
 
 .form.loading {
-  opacity: 0.3;
+  opacity: 0.5;
+  transition: opacity 0.5s;
 }
 
 .form.loading button {
