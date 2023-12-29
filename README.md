@@ -106,7 +106,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - State'i global alanda saklamanın en kolay yoludur URL'ler. Tüm component'lerin erişimi vardır.
 - URL state'i bilgiyi bir sayfadan diğerine geçirmek için iyi bir yoldur.
 - Belirli bir zamanda yapılan sayfa işaretlemelerini paylaşmayı ve daha sonrasında tam olarak o noktaya erişmeyi mümkün kılar.
-- 3 parçadan oluşur. 1.'si _path_ daha önce Router'lara tanımladığımız gibi. 2.'si _params_ yani parametreler. 3.'sü ise _query string_ yani sorgulardır.
+- 3 parçadan oluşur. 1.'si _path_ daha önce Router'lara tanımladığımız gibi. 2.'si **"params"** yani parametreler. 3.'sü ise **"query string"** yani sorgulardır.
 - _Parametre_'leri kullanabilmek için 3 aşamaya ihtiyacımız var. Öncelikle yeni bir **Route oluştururuz**, sonra bu Route'a **link veririz** ve bu Route içerisinde **useParams() aracılığı ile** URL'den gelen state'i okuruz.
 - URL'deki query strings( sorgu dizileri )'i ise **useSearchParam** ile okuyabilir ve kullanabiliriz.
 - _Programmatic Navigation_ (Programlı gezinme) kullanıcı herhangi bir link'e tıklama yapmadan kullanıcıyı yeni bir URL'e götürme işlemidir. Bu durumun en yaygın kullanım alanı **form submit**'tir.
