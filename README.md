@@ -63,8 +63,8 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - **Children prop** rendering kısmında da belirtildiği gibi component composition gibi durumlarda işlevseldir.
 - **Prop drilling** Parent component'lerden child component'lere veri akışını ifade eder.
 - **Bir prop olarak bir elementi** child elemente gönderebiliriz. Çok kullanışlı olduğu söylenemez. Child prop'una alternatif olarak gösterilir.
-- **Diğer geliştiricilerin** kullanımı için olabildiğince _esnek ve yeniden kullanılabilir_ componentler yazmak önemlidir. Aynı zamanda diğer projelerinize de dahil edebilirsiniz. _Harici state, proptypes_ gibi durumlara hakim olmalısınız.
-- _Key prop'u Diffing algoritmasına_ bir bileşenin benzersiz (unique) olduğunu belirtir.
+- **Diğer geliştiricilerin** kullanımı için olabildiğince **"esnek ve yeniden kullanılabilir**" componentler yazmak önemlidir. Aynı zamanda diğer projelerinize de dahil edebilirsiniz. **"Harici state, proptypes**" gibi durumlara hakim olmalısınız.
+- **"Key prop'u Diffing algoritmasına**" bir bileşenin benzersiz (unique) olduğunu belirtir.
 - _Key prop'u_ liste itemlarında state'i dağılmadan tutabilmek veya tamamen state'i sıfırlamak için kullanılabilir.
 
 ### ♦ State'ler
