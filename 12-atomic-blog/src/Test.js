@@ -14,13 +14,31 @@ function SlowComponent() {
   );
 }
 
-export default function Test() {
+// With children prop we extract counter feature a new component, and inside we use SlowComponent.
+// Then when counter gets update, Slow component no longer updated
+function Counter({ children }) {
   const [count, setCount] = useState(0);
   return (
     <div>
       <h1>Slow counter?!?</h1>
       <button onClick={() => setCount((c) => c + 1)}>Increase: {count}</button>
-      <SlowComponent />
+      {children}
     </div>
+  );
+}
+
+export default function Test() {
+  // const [count, setCount] = useState(0);
+  // return (
+  //   <div>
+  //     <h1>Slow counter?!?</h1>
+  //     <button onClick={() => setCount((c) => c + 1)}>Increase: {count}</button>
+  //     <SlowComponent />
+  //   </div>
+  // );
+  return (
+    <Counter>
+      <SlowComponent />
+    </Counter>
   );
 }

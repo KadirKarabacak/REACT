@@ -176,6 +176,28 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - Kondisyonel renderlama bu noktada çok önemlidir. Eğer bir hata varsa ekranda anlamlı mesajlar göstermelisiniz. Yukarıdaki örnekten yola çıkarak error değişkenini ekrana yazdırabilirsiniz.
 - Her zaman response.ok özelliğini kontrol etmeli ve bir hata varsa ekrana yazdırmalısınız.
 
+### ⚡ Performans ve Optimizasyon ☄
+
+- 3 aşamadan oluşan bir takip listemiz olabilir.
+- Birinci olarak Boşa harcanan render'ları engelleme (Prevent Wasted Renders). Bu aşamada kullanabileceklerimiz memo, useMemo, useCallback ve elementleri child olarak yada prop olarak aktarma olabilir. Bu optimizasyonu uygulayabilmek için bileşenlerin ne zaman yeniden renderlandığını bilmemiz gerekir.
+- İkinci aşama uygulama hızını ve duyarlılığını iyileştirme. Bu noktada da useMemo, useCallback ve daha modern bir araç olan useTransition kullanılabilir.
+- Üçüncü aşama ise dosya boyutu düşürme, bunun için de 3rd party paketler, kod bölme (code splitting) ve tembel yükleme (lazy loading) özellikleri uygulanabilir.
+- Yavaş çalışan bir componenti "Children" prop'u ile extract edip children konumuna koyarsak parent renderlarından etkilenmez, bu da optimizasyonu arttırır.
+
+#### "memo" Fonksiyonu
+
+- Bu fonksiyon tamamiyle optimizasyon amaçlı olup, Parent component yeniden renderlandığında eğer **child component'de değişen bir prop** yok ise yeniden renderlanmasını engellemek amacıyla vardır. **Sadece proplara** etki edebilir. Yani memoized bir component kendi state'i veya bağlı olduğu bir context değiştiğinde yeniden renderlanmaya devam eder. Bu demek değildir ki her componentimize memo fonksiyonu uygulamalıyız. Sadece bir component çok ağır (yavaş renderlanan) veya çok sık yeniden renderlanan ve hep aynı proplara sahip olan componentler için geçerlidir.
+- Bazı durumlarda bir component memoized olsa bile, parent component'ten aldığımız ve parent içerisinde oluşturulmuş bir obje veya bir fonksiyon, her seferinde parent yeniden renderlandığında tekrar tekrar oluşturulacaktır. Bu da aldığımız prop'un değiştiğine işaret eder ve memo'yu görmezden gelir. ( {} != {} ) Bu noktada aldığımız obje ve fonksiyon propları sabit kılmak için **"useMemo"** ve **"useCallback"** devreye giriyor.
+- Bu durumlar dışında kalan bir istisna var ki o da setter fonksiyonlarımız. Yani useState için oluşturduğumuz setter fonksiyonlar kendiliğinden memoized olarak gelir. Bir prop olarak gönderirken bu fonksiyon hakkında düşünmemiz gerekmez.
+
+### useMemo & useCallback
+
+- useMemo ve useCallback fonksiyonları içerisinde bir değer alır ve bu değerler cache'de saklanır. Input'lar değişmediği sürece aynı kalmaya devam ederler. useEffect gibi useMemo ve useCallback'de bir bağımlılık dizisine sahiptir ve ne zaman bir bağımlılık değişirse, değer yeniden oluşturulur.
+- Aynı memo'da olduğu gibi bunları heryere yazmamalı ve sadece şu 3 durumda kullanmalıyız.
+- Birinci durum : Boşa harcanan render'ları engellemek için memo ile birlikte.
+- İkinci durum : Her renderlamada ağır yük gerektiren yeniden hesaplamalardan kaçınmak için.
+- Üçüncü durum : Başka bir hook'un bağımlılık dizisinde kullanılan değerler için. (Örneğin useEffect içinde sonsuz döngüleri engellemek)
+
 ### 🗃 Local Storage
 
 - Ugulamalarımıza local storage eklemek için useEffect kullanabiliriz. [] boş bir bağımlılık dizisi program her açıldığında local storage'daki kayıtları getirir.
@@ -183,19 +205,14 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 ### 🖊 Arka planda nasıl çalışır & Bazı değerli bilgiler
 
 - Imperetive(Zorunlu) ve Declarative(Bildirimsel) arasındaki fark VanillaJS ve React farkında gözle görülmektedir. VanillaJS'de bir çok eylemi bizzat siz yapmanız gerekir. Fakat React'ta ne yapması istediğinizi söyler ve gerisini ona bırakırsınız.
-- Bazı React framework'leri şunlardır. NextJS, Remix.
-- React'ta data akışı tek yönlüdür. Parent'tan child'a. Böylelikle birçok problemin önüne geçilir, karmaşıklıklar azaltılır. [ Ayrıca Angular iki yönlü data akışı sağlar. ]
-- SPA [ Single-Page Application ] tek sayfalık uygulamalar anlamına gelir. Özellikle son dönemde oldukça popülerdirler.
+- React'ta veri akışı tek yönlüdür. Parent'tan child'a. Böylelikle birçok problemin önüne geçilir, karmaşıklıklar azaltılır. [ Ayrıca Angular iki yönlü data akışı sağlar. ]
 - React Devtools bir geliştirme aracıdır. Chrome aracılığı ile de ulaşabileceğiniz bu eklenti program süresinde component tree, states ve birçok durumu etraflıca kontrol edebilmenizi sağlar. 💙
-- React'ta düşünmek diyince aklımıza neler gelir. Tüm arayüzü component'lere bölmek, component tree, herhangi bir state olmadan static versiyonu oluşturma, state hakkında düşünme ve veri akşını hayal etme.
-- Redux bir Global State Management aracıdır. İlerleyen süreçte daha fazla bilgi eklenecek.
+- Aynı zamanda yine React Devtools projenizi optimize etmenizi sağlayan Profiler sekmesine sahiptir.
 - Her component için bir dosya oluşturmak büyük karmaşıklıkların önüne geçer. Her zaman bu metodolojiyi uygulayın.
-- Componentler ekranda nasıl gösterilir ve render nasıl tetiklenir. Initial yani başlangıç render'ı ve state değişimleri sayesinde gösterilir.
 - Reconciler yani Fiber basitçe geçmiş state ve güncellenmiş state'i karşılaştırıp değişen durumlar için render yapıp değişmeyenleri sabit bırakır.
 - Event Propagation ve Event Delegation kavramları bir eventin gerçekleşme süreci ile ilgilidir. Ne zaman dökümanda bir evet gerçekleşse, event dökümanın en üst düzeyindeki parent elementten eventin gerçekleştiği noktaya kadar yolculuk yapar ve eventi bulur. Aksi takdirde eventin nerede gerçekleştiğini bilmenin bir yolu yoktur. Bu yüzden eventi bir üst parent'a taşıyıp altındaki tüm elemanlar için gerçekleşmesini sağlayabiliriz.
 - Event'in nerede gerçekleştiğini bulmak adına başlayan bu süreç Capturing Phase(Yakalama aşaması) ve bulduktan sonra Bubbling Phase(Kabarcıklanma aşaması) olarak tanımlanır.
 - React bir kütüphanedir(library), bir çerçeve(framework) değildir. Çünkü bir çerçeve bünyesinde ihtiyacınız olan tüm geliştirme araçlarını barındırır. Bir kütüphane istediğiniz geliştirme aracını tamamen kendi istediğinize göre seçmenize ve kullanmanıza izin verir.
-- React üzerinde oluşturulmuş bazı çerçeveler(frameworks) şunlardır. Next.js / Remix / Gatsby
 
 ### Daha fazla 3rd-Party React kütüphanesi 👇
 
