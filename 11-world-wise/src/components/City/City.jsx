@@ -23,9 +23,11 @@ function City() {
   // Controls ID change
   useEffect(
     function () {
+      // Must add getCity func as a dependency, but it makes infinite loop
+      // To fix into Context, make it stable with useCallback
       getCity(id);
     },
-    [id]
+    [id, getCity]
   );
 
   const { cityName, emoji, date, notes } = currentCity;

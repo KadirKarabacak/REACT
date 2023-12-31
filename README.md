@@ -198,6 +198,13 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - İkinci durum : Her renderlamada ağır yük gerektiren yeniden hesaplamalardan kaçınmak için.
 - Üçüncü durum : Başka bir hook'un bağımlılık dizisinde kullanılan değerler için. (Örneğin useEffect içinde sonsuz döngüleri engellemek)
 
+### 🪓 Kod bölme (Code Splitting)
+
+- Kod bölme, kodumuzu uzak serverdan tek parça halinde gelen (bundle) JS dosyamızı sayfalarımıza, hatta istersen daha küçük componentlerimize bölmemizi sağlar. Bu sayede tüm sayfayı tek seferde uzun bir yükleme bekleyerek değil, sadece ihtiyaç duyulduğunda daha küçük dosyayı hızlı bir şekilde indirerek kullanıcıya daha iyi bir deneyim sunarız.
+- Kodumuzu bölmek için tüm diğer sayfalarımızı import ettiğimiz App.jsx dosyamıza geçip tüm importlarımızı lazy(()=> import) methodu ile yapıyoruz.
+- Tüm importlarımızı lazy() methoduna çevirdikten sonra tüm sayfalarımızın renderlandığı JSX'imizin çevresini Suspense componenti ile sarıp fallback{} property'si veriyoruz.
+- Bu prop'a bir loader veya bir spinner verebiliriz. Böylece sayfa arka planda indirilirken kullanıcıya birşeyler yapıldığı hakkında bilgi veririz.
+
 ### 🗃 Local Storage
 
 - Ugulamalarımıza local storage eklemek için useEffect kullanabiliriz. [] boş bir bağımlılık dizisi program her açıldığında local storage'daki kayıtları getirir.

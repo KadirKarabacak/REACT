@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 import { faker } from "@faker-js/faker";
 
 // We created our own provider from taking all logic into App component.
@@ -38,17 +38,23 @@ function PostProvider({ children }) {
     setPosts([]);
   }
 
+  //! When we click fakeDarkmode app is re-rendered, so context re-rendered and
+  // value object recreated, so it trigger childs too. Let's fix it
+  const value = useMemo(() => {
+    return {
+      posts: searchedPosts,
+      onAddPost: handleAddPost,
+      onClearPosts: handleClearPosts,
+      searchQuery,
+      setSearchQuery,
+    };
+  }, [searchedPosts, searchQuery]);
+
   return (
     // Wrap whole JSX into PostContext.Provider
     <PostContext.Provider
       // Then pass all props as a Provider value
-      value={{
-        posts: searchedPosts,
-        onAddPost: handleAddPost,
-        onClearPosts: handleClearPosts,
-        searchQuery,
-        setSearchQuery,
-      }}
+      value={value}
     >
       {children}
     </PostContext.Provider>
