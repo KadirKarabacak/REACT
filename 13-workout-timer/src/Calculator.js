@@ -13,30 +13,39 @@ function Calculator({ workouts, allowSound }) {
   useEffect(
     function () {
       setDuration((number * sets * speed) / 60 + (sets - 1) * durationBreak);
+      //! If i add playSound function right here and dep array, and other places handling inc or dec
+      //! it resets duration value, i must abstract it into another effect (helper function)
+      // playSound();
     },
     [number, sets, speed, durationBreak]
+  );
+
+  // Only the play sounds whenever duration changes
+  useEffect(
+    function () {
+      const playSound = function () {
+        if (!allowSound) return;
+        const sound = new Audio(clickSound);
+        sound.play();
+      };
+      playSound();
+    },
+    [duration, allowSound]
   );
 
   // Increasing
   function handleInc() {
     setDuration((duration) => Math.floor(duration) + 1);
+    // playSound();
   }
 
   function handleDec() {
     setDuration((duration) => (duration > 1 ? Math.ceil(duration) - 1 : 0));
+    // playSound();
   }
 
-  // Calculate and display minutes and seconds
-  // const duration = (number * sets * speed) / 60 + (sets - 1) * durationBreak;
   const mins = Math.floor(duration);
   const seconds = (duration - mins) * 60;
-
-  // Playing sounds if allowed
-  const playSound = function () {
-    if (!allowSound) return;
-    const sound = new Audio(clickSound);
-    sound.play();
-  };
 
   return (
     <>

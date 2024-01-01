@@ -2,20 +2,20 @@
 
 Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 
-## 🖊 Şimdiye kadar neler öğrendim?
+## 🖊 **Şimdiye kadar neler öğrendim?**
 
-### ⚒ Öncelikle kurulum ile başlayalım. Sonuçta herşey bununla başlıyor.
+### ⚒ **Öncelikle kurulum ile başlayalım. Sonuçta herşey bununla başlıyor.**
 
-#### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="20" height="20" /> Create-react-app
+#### **<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="20" height="20" /> Create-react-app**
 
 - Bir React projesi oluşturmak için her zaman cmd komut satırına girip **"create-react-app@latest"** komutunu kullanarak ve yanına proje ismimizi vererek bir React proje dosyası oluşturuyoruz.
 - Gerçek dünya projelerinde her zaman **"Vite"** kullanmalıyız çünkü **"performans ve topluluk desteği"** bakımından Create-react-app'den daha popüler. Ama öğrenmek amaçlı create-react-app hala kullanılabilir.
 
-#### <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/410px-Vitejs-logo.svg.png" width="20" height="20"> Vite
+#### **<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/410px-Vitejs-logo.svg.png" width="20" height="20"> Vite**
 
 - Bir Vite projesi kurulumu içinse **"npm create vite@latest"** komutunu kullanarak onay verdikten sonra proje ismimizi yazıyoruz. Daha sonra kullanacağımız teknoloji seçimini yapıp o teknolojiye özel bir template alıyoruz. Vite **"bağımlılıkları otomatik yüklemez"**. Bu nedenle proje dosyamıza girip bağımlılıklarımızı manuel olarak yüklemeliyiz. Create-react-app'deki index.js dosyası yerine main.jsx dosyamız mevcut. Aynı şekilde app.js yerine de App.jsx. Projemizi başlatmak içinse npm start yerine **"npm run dev"** komutunu kullanıyoruz.
 
-#### ⚙ Olası durumlar için Vite Projelerine **"Eslint"** kurulumu ve ayarları
+#### ⚙ **Olası durumlar için Vite Projelerine **"Eslint"** kurulumu ve ayarları**
 
 - Şuanda Vite projeleri eslint eklentisi ile birlikte geliyor ki bu durum çok önemli. Fakat olası bir durumda gelmediğini varsayarsak şunları yaparak kurabiliriz.
 - **npm install eslint vite-plugin-eslint eslint-config-react-app --save-dev** ve yükleme tamamlandıktan sonra **.eslintrc.json veya .eslintrc.cjs** isminde bir dosya oluşturup ayarlarımızı uygulayabiliriz.
@@ -25,7 +25,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - Daha sonra vite.config dosyamıza girip **import eslint from "vite-plugin-eslint"** yapıyoruz.
 - Son adım olarak plugins dizisine eslint importumuzu ekliyoruz.
 
-### 🎨 React Stil Opsiyonları
+### 🎨 **React Stil Opsiyonları**
 
 - **"İnline"** olarak JSX içerisinde style prop'u kullanarak yapabiliriz.
 - **"Harici bir CSS veya SASS**" dosyası ile className özellikleri oluşturarak yapabiliriz. Fakat bu durum bütün uygulamayı etkilediği için özellikle **"büyük çaplı projelerde çakışmalar"** yaşamak mümkündür.
@@ -34,7 +34,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - **"Utility-first CSS"** dediğimiz yapıya uygun olarak **"Tailwindcss"** kullanarak JSX içerisinde Bootstrap'te olduğu gibi sabit className'ler ile yapabiliriz.
 - Alternatif olarak hiç CSS yazmadan bazı arayüz kütüphaneleri olan **"MUI, Chakra UI, Mantine"** gibi hazır component yapısı sunan kütüphaneleri kullanabiliriz.
 
-### 💻 Render'lama
+### 💻 **Render'lama**
 
 - Bir **"component"** basitçe kullanıcı arayüzünü oluşturan lego parçalarına benzetilebilir. Her zaman büyük harfle başlamalıdır **[ function Header() ]**
 - JSX bir component'in içerisinden döndürdüğümüz **"HTML benzeri"** bir yapıdır. İçerisinde **"JS ve CSS"** kullanmamıza olanak sağlar.
@@ -47,7 +47,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - Dışarıdan aldığımız bir değişkeni değiştirmek, HTTP çağırıları gibi durumlar kodumuzda yan efektler oluşturur ve bu durum renderlamada kaçınmamız gereken durumlardan biridir.
 - "**Pure function**" dediğimiz fonksiyon türü hiçbir yan etkiye sahip olmaz. Verilen değer, çıkan değer ile aynıdır.
 
-#### 🔴 Renderlama mantığında bazı katı kurallar vardır.
+#### 🔴 **Renderlama mantığında bazı katı kurallar vardır.**
 
 - **HTTP çağırıları** yapamazsınız.
 - **Zamanlayıcılar** başlatamazsınız.
@@ -56,7 +56,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - **State güncellemesi ve ref güncellemesi** yapamazsınız. Program sonsuz döngüye girer.
 - Side effectler sadece **handler fonksiyonlar** içerisinde izin verilir. Bunun dışında birde **useEffect hook**'u dahilinde kullanabiliriz.
 
-### ℹ Prop'lar
+### ℹ **Prop'lar**
 
 - Proplar basitçe **parent componentten child component**'lere iletilebilen değişkenlerdir. Aynı anda birden fazla componentte kullanılması gereken değişkenler için kullanılır. Kod içindeki karmaşıklığı azaltmak adına props.anything demek yerine componente dahil ederken {anything} destructure yaparak alırız.
 - **Proplar değiştirilemez**. Sadece okunur. "Readonly".
@@ -67,7 +67,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - **"Key prop'u Diffing algoritmasına**" bir bileşenin benzersiz (unique) olduğunu belirtir.
 - _Key prop'u_ liste itemlarında state'i dağılmadan tutabilmek veya tamamen state'i sıfırlamak için kullanılabilir.
 
-### ♦ State'ler
+### ♦ **State'ler**
 
 - const [count, setCount] = useState(0) -- Bir state örneğidir. count bizim ekranda göstereceğimiz değer, setCount arka planda tıklama farklı etkilerle count değerini güncelleyen fonksiyon, ve 0 ise count'ımızın başlangıç değeridir.
 - Önceki state'e bağlı olarak yeni bir state türetilmesi istenen durumlarda " **setCount((anything)=> anything+1)** " gibi callback fonksiyonları içerisinde güncelleme yapmalıyız. State asenkron şekilde işlediğinden callback fonksiyon içerisinde çağırmaz isek state hep aynı kalır.
@@ -79,7 +79,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - State Lifting kavramı child componentlerden birisinde oluşturduğumuz bir state'i gerektiğinde birden fazla sibling(kardeş) component'e dağıtmak için en yakın parent elemente taşımak anlamına gelir.
 - State Group Batching ifadesi, bir handler fonksiyon içerisinde birden fazla gerçekleşen state güncellemesini tek bir güncelleme gibi görüp programımıza performans kazandıran bir terim ve uygulamadır. React@18 ve üzerinde geçerlidir.
 
-### 🤏 Use Reducer
+### 🤏 **Use Reducer**
 
 - Bir useReducer örneği 👉 const [state, dispatch] = useReducer(reducer, initialState)
 - State oluşturmak için alternatif bir yoldur. useState'e göre anlaması ve uygulaması birazdaha zordur. Karışık state'ler, "**birbirleri ile ilişkili**" state'ler ve birden fazla state güncellemesi gereken durumlar için idealdir.
@@ -90,16 +90,16 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - "**action özelliği**" state'in nasıl güncelleneceğini belirtir.
 - dispatch fonksiyonu state güncellemelerini tetiklemek için kullanılır. reducer fonkksiyona actions özelliğini gönderir.
 
-### 📦 Ref'ler
+### 📦 **Ref'ler**
 
 - Refler bir kutu gibidir ve mount ve re-render'lar arasında değişmez. State'in renderlardan etkilenmeyen versiyonu gibi görebiliriz. Elementlere class vermeden seçmemizi sağlar.
 
-### ⚔ Event Handler'lar
+### ⚔ **Event Handler'lar**
 
 - Bir event gerçekleştiğinde çalıştırılırlar.
 - Side Effect'ler oluştururken tercih edilen bir yöntemdir. Bunun yanı sıra useEffect çok daha efektiftir.
 
-### ✨ Use Effect'ler
+### ✨**Use Effect'ler**
 
 - Bir component sayfaya mount'landığında [ Yani başlangıçta ] ve sonraki re-render'larda çalışır ( "**Bağlılık dizisine verdiğiniz değerlere göre değişir**" ).
 - Bağımlılık dizisi olmadan, React effect'i ne zaman çalıştıracağını bilmez.
@@ -112,7 +112,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - Bağımlılık dizisi olmazsa programda değişen herşey tekrar tekrar çalışmasına sebep olur. Performans için berbat bir durum. ⛔
 - Cleanup fonksiyonu sideEffect'leri temizlemek için kullanılır ve performansı arttırmaya yardımcı olur.
 
-### ↗↖ Router ( Yönlendirici )
+### ↗↖ **Router ( Yönlendirici )**
 
 - Router oluşturmak için öncelikle **"BrowserRouter"**, daha sonra **"Routes"** ve son olarak her bir gezinim için bir **"Route"** oluşturmalıyız. Kullanıldıkları konuma Eslint'i kızdırmamak için hepsini import etmeliyiz.
 - Her Route'ın bir **path** propu ve bir **element** prop'u olmalıdır. Yani hangi path'de hangi elementin görünmesini istediğimizi belirtiyoruz.
@@ -136,7 +136,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - Aynı zamanda daha declarative bir yol olan <"Navigate"/> componentini "to" özelliği ile kullanabiliriz.
 - <"Navigate"/> componentinin "replace" özelliğin geçmişte geriye gitmemizi sağlar.
 
-### 🌟 Context API
+### 🌟 **Context API**
 
 - Birden fazla derinlikte bulunan child componentlere state geçirmek ve kullanmak istediğimizde bu state'i kullanmayacağımız componentler üzerinden geçerek kod kirliliği ve hantal bir yapı oluşturmak yerine direkt kullanmak istediğimiz child component'e bu state'i vermemizi sağlayan yapıdır.
 - Basitçe Prop Drilling problemimize net bir çözümdür.
@@ -147,28 +147,53 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - İkinci aşama JSX'imizi Posts.Provider componenti ile sarmak ve value prop'una geçirmek istediğimiz tüm propları yazmak.
 - Üçüncü ve son aşama Consumers (Tüketiciler) provider tarafından yayınlanan context değerini okuyan tüm componentlerdir.
 
-### ⚡ Tek Sayfa Uygulamalar [ SPA ]
+### 🟥 **Redux**
+
+- Redux Global state düzenlemesi yapmamızı sağlayan bir 3rd party kütüphanedir.
+- React-redux kütüphanesini kullanarak React applikasyonlarına entegre etmesi kolaydır.
+- Tüm global state, tek bir global erişilebilir yerdedir, actions kullanarak (useReducer'da olduğu gibi) güncellemesi kolaydır.
+- Konsept olarak Context API ve useReducer'ı birlikte kullanmaya benzer.
+- Globalde güncellenen bir state'i kullanan tüm bileşenler yeniden renderlanır.
+- İki farklı versiyonu vardır. Classic Redux ve Modern Redux Toolkit.
+- Yapıyı oluşturmaya öncelikle "**initialState**" objemizi belirterek başlıyoruz. Sonrasında yine bir reducer fonksiyon oluşturuyoruz ve parametre olarak state ve action'ımızı veriyoruz.
+- useReducer'dan farklı olarak state'imizi default olarak initialState'e eşitliyoruz. Yine switch/case yapımızı oluşturup durumları ele alıyoruz. Default olarak bir error yazmak yerine başlangıç state'imizin kendisini döndürüyoruz.
+- Redux'tan "**createStore**" fonksiyonunu import ediyoruz ve oluşturduğumuz reducer'ı bu fonksiyona parametre olarak veriyoruz. "**const store = createStore(reducer)**". Daha sonrasında her state güncellemesinde store objesinden dispatch fonksiyonumuzu okuyoruz ve useReducer'da olduğu gibi güncelliyoruz.
+- Fakat aslında Redux'ta "**Action Creators**" dediğimiz yapıyı kullanarak güncelleme işini manuel yapmak yerine otomatikleştiriyoruz.
+- Oluşturacağımız birden fazla Reducer fonksiyonu bir araya getirmek için bir Root reducer oluşturup bu değişken üzerinde "**combineReducers**" fonksiyonunu çağırabiliriz.
+- const rootReducer = combineReducers"**({ account: accountReducer, customer: customerReducer });**"
+- Kombine ettiğimiz reducerları "**createStore()**" fonksiyonuna argüman olarak verebilir ve kullanabiliriz.
+- Oluşturduğumuz yapıyı projemize bağlamak için "**npm i react-redux**" paketini indiriyoruz.
+- İndirdiğimiz paketten "**{ Provider }**" component'ini import ediyoruz ve uygulamamızı bu component ile sarıyoruz. Aynı Context API'da olduğu gibi Provider'a bir prop olarak oluşturduğumuz store yapısını veriyoruz.
+- Basitçe, Redux'tan alacağımız değerler için "**useSelector()**", dispatch fonksiyonu için "**useDispatch()**", oluşturduğumuz reducer'ları combinlemek için "**combineReducers()**" ve yeni bir store oluşturmak için "**createStore()**"
+- Asenkron işlemleri direkt reducer içinde yapamayız, çünkü "**reducer fonksiyonlar pure**" fonksiyonlardır.
+- Asenkron bir işlemi component içerisinde yapıp dispatch için kullanabiliriz, fakat bu da çok ideal değildir.
+- Bu noktada "**MiddleWare**" adı verilen bir yardımcımız var. Dispatch yapıldıktan sonra, güncellenen state direkt store'a gitmek yerine bir ara birime uğrar. Burası "**Redux Thunks**" olarak isimlendirilir ve 3rd party bir pakettir. Asenkron tüm işlemler için Thunks kullanacağız.
+- İlk adım yükleme -> "**npm i redux-thunk**"
+- İkinci adım store içerisinde oluşturma -> "**const store = createStore(rootReducer, applyMiddleware(thunk));**"
+- Üçüncü adım Action Creator içerisinde kullanma.
+
+### ⚡ **Tek Sayfa Uygulamalar [ SPA ]**
 
 - Uygulama baştan sona client (tarayıcı) tarafında çalıştırılır.
 - Farklı URL'ler farklı görünümlerle(components) ilişkilidir.
 - Sayfa asla yeniden yüklenmez.
 - Normal bir masaüstü veya mobil uygulama gibi hissettirir.
 
-### 👨‍💻 Sahte Giriş (Fake Login) ve Kullanıcı Doğrulaması (User Authentatication)
+### 👨‍💻 **Sahte Giriş (Fake Login) ve Kullanıcı Doğrulaması (User Authentatication)**
 
 - Sahte bir giriş oluşturmak için 3 aşamamız mevut.
 - İlk aşamada kullanıcının e-mail ve şifresini bir giriş formundan alıyoruz, API uç noktası ile e-mail ve şifrenin doğruluğunu kontrol ediyoruz.
 - İkinci aşamada, kimlik bilgileri eğer doğruysa kullanıcının uygulamaya girişine izin veriyoruz ve kullanıcı objesini state'imizde kaydediyoruz.
 - Üçüncü ve son aşama olarak uygulamamızı doğrulamasız ve yanlış bilgi girilmiş durumlardan korumamız gerekiyor.
 
-### 🟥 API Cağırıları ve Hata yakalama
+### 🟥 **API Cağırıları ve Hata yakalama**
 
 - Her zaman API çağırıları try ve catch blokları içerisinde yapmalısınız.
 - Hataları ele almak ve ekranda göstermek için yeni bir state oluşturmalısınız. const[error, setError]= useState("") gibi.
 - Kondisyonel renderlama bu noktada çok önemlidir. Eğer bir hata varsa ekranda anlamlı mesajlar göstermelisiniz. Yukarıdaki örnekten yola çıkarak error değişkenini ekrana yazdırabilirsiniz.
 - Her zaman response.ok özelliğini kontrol etmeli ve bir hata varsa ekrana yazdırmalısınız.
 
-### ⚡ Performans ve Optimizasyon ☄
+### ⚡ **Performans ve Optimizasyon ☄**
 
 - 3 aşamadan oluşan bir takip listemiz olabilir.
 - Birinci olarak Boşa harcanan render'ları engelleme (Prevent Wasted Renders). Bu aşamada kullanabileceklerimiz memo, useMemo, useCallback ve elementleri child olarak yada prop olarak aktarma olabilir. Bu optimizasyonu uygulayabilmek için bileşenlerin ne zaman yeniden renderlandığını bilmemiz gerekir.
@@ -176,13 +201,13 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - Üçüncü aşama ise dosya boyutu düşürme, bunun için de 3rd party paketler, kod bölme (code splitting) ve tembel yükleme (lazy loading) özellikleri uygulanabilir.
 - Yavaş çalışan bir componenti "Children" prop'u ile extract edip children konumuna koyarsak parent renderlarından etkilenmez, bu da optimizasyonu arttırır.
 
-#### "memo" Fonksiyonu
+#### **"memo" Fonksiyonu**
 
 - Bu fonksiyon tamamiyle optimizasyon amaçlı olup, Parent component yeniden renderlandığında eğer **child component'de değişen bir prop** yok ise yeniden renderlanmasını engellemek amacıyla vardır. **Sadece proplara** etki edebilir. Yani memoized bir component kendi state'i veya bağlı olduğu bir context değiştiğinde yeniden renderlanmaya devam eder. Bu demek değildir ki her componentimize memo fonksiyonu uygulamalıyız. Sadece bir component çok ağır (yavaş renderlanan) veya çok sık yeniden renderlanan ve hep aynı proplara sahip olan componentler için geçerlidir.
 - Bazı durumlarda bir component memoized olsa bile, parent component'ten aldığımız ve parent içerisinde oluşturulmuş bir obje veya bir fonksiyon, her seferinde parent yeniden renderlandığında tekrar tekrar oluşturulacaktır. Bu da aldığımız prop'un değiştiğine işaret eder ve memo'yu görmezden gelir. ( {} != {} ) Bu noktada aldığımız obje ve fonksiyon propları sabit kılmak için **"useMemo"** ve **"useCallback"** devreye giriyor.
 - Bu durumlar dışında kalan bir istisna var ki o da setter fonksiyonlarımız. Yani useState için oluşturduğumuz setter fonksiyonlar kendiliğinden memoized olarak gelir. Bir prop olarak gönderirken bu fonksiyon hakkında düşünmemiz gerekmez.
 
-### useMemo & useCallback
+### **useMemo & useCallback**
 
 - useMemo ve useCallback fonksiyonları içerisinde bir değer alır ve bu değerler cache'de saklanır. Input'lar değişmediği sürece aynı kalmaya devam ederler. useEffect gibi useMemo ve useCallback'de bir bağımlılık dizisine sahiptir ve ne zaman bir bağımlılık değişirse, değer yeniden oluşturulur.
 - Aynı memo'da olduğu gibi bunları heryere yazmamalı ve sadece şu 3 durumda kullanmalıyız.
@@ -190,18 +215,18 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - İkinci durum : Her renderlamada ağır yük gerektiren yeniden hesaplamalardan kaçınmak için.
 - Üçüncü durum : Başka bir hook'un bağımlılık dizisinde kullanılan değerler için. (Örneğin useEffect içinde sonsuz döngüleri engellemek)
 
-### 🪓 Kod bölme (Code Splitting)
+### 🪓 **Kod bölme (Code Splitting)**
 
 - Kod bölme, kodumuzu uzak serverdan tek parça halinde gelen (bundle) JS dosyamızı sayfalarımıza, hatta istersen daha küçük componentlerimize bölmemizi sağlar. Bu sayede tüm sayfayı tek seferde uzun bir yükleme bekleyerek değil, sadece ihtiyaç duyulduğunda daha küçük dosyayı hızlı bir şekilde indirerek kullanıcıya daha iyi bir deneyim sunarız.
 - Kodumuzu bölmek için tüm diğer sayfalarımızı import ettiğimiz App.jsx dosyamıza geçip tüm importlarımızı lazy(()=> import) methodu ile yapıyoruz.
 - Tüm importlarımızı lazy() methoduna çevirdikten sonra tüm sayfalarımızın renderlandığı JSX'imizin çevresini Suspense componenti ile sarıp fallback{} property'si veriyoruz.
 - Bu prop'a bir loader veya bir spinner verebiliriz. Böylece sayfa arka planda indirilirken kullanıcıya birşeyler yapıldığı hakkında bilgi veririz.
 
-### 🗃 Local Storage
+### 🗃 **Local Storage**
 
 - Ugulamalarımıza local storage eklemek için useEffect kullanabiliriz. [] boş bir bağımlılık dizisi program her açıldığında local storage'daki kayıtları getirir.
 
-### 🖊 Arka planda nasıl çalışır & Bazı değerli bilgiler
+### 🖊 **Arka planda nasıl çalışır & Bazı değerli bilgiler**
 
 - Imperetive(Zorunlu) ve Declarative(Bildirimsel) arasındaki fark VanillaJS ve React farkında gözle görülmektedir. VanillaJS'de bir çok eylemi bizzat siz yapmanız gerekir. Fakat React'ta ne yapması istediğinizi söyler ve gerisini ona bırakırsınız.
 - React'ta veri akışı tek yönlüdür. Parent'tan child'a. Böylelikle birçok problemin önüne geçilir, karmaşıklıklar azaltılır. [ Ayrıca Angular iki yönlü data akışı sağlar. ]
@@ -213,7 +238,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - Event'in nerede gerçekleştiğini bulmak adına başlayan bu süreç Capturing Phase(Yakalama aşaması) ve bulduktan sonra Bubbling Phase(Kabarcıklanma aşaması) olarak tanımlanır.
 - React bir kütüphanedir(library), bir çerçeve(framework) değildir. Çünkü bir çerçeve bünyesinde ihtiyacınız olan tüm geliştirme araçlarını barındırır. Bir kütüphane istediğiniz geliştirme aracını tamamen kendi istediğinize göre seçmenize ve kullanmanıza izin verir.
 
-### Daha fazla 3rd-Party React kütüphanesi 👇
+### **Daha fazla 3rd-Party React kütüphanesi 👇**
 
 - Routing için ▶ **React Router / React Location**
 - HTTP requests ▶ **fetch() / Axios**
