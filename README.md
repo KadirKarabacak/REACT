@@ -11,7 +11,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - Bir React projesi oluşturmak için her zaman cmd komut satırına girip **"create-react-app@latest"** komutunu kullanarak ve yanına proje ismimizi vererek bir React proje dosyası oluşturuyoruz.
 - Gerçek dünya projelerinde her zaman **"Vite"** kullanmalıyız çünkü **"performans ve topluluk desteği"** bakımından Create-react-app'den daha popüler. Ama öğrenmek amaçlı create-react-app hala kullanılabilir.
 
-#### <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/410px-Vitejs-logo.svg.png" style="width: 20px"> Vite
+#### <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/410px-Vitejs-logo.svg.png" width="20" height="20"> Vite
 
 - Bir Vite projesi kurulumu içinse **"npm create vite@latest"** komutunu kullanarak onay verdikten sonra proje ismimizi yazıyoruz. Daha sonra kullanacağımız teknoloji seçimini yapıp o teknolojiye özel bir template alıyoruz. Vite **"bağımlılıkları otomatik yüklemez"**. Bu nedenle proje dosyamıza girip bağımlılıklarımızı manuel olarak yüklemeliyiz. Create-react-app'deki index.js dosyası yerine main.jsx dosyamız mevcut. Aynı şekilde app.js yerine de App.jsx. Projemizi başlatmak içinse npm start yerine **"npm run dev"** komutunu kullanıyoruz.
 
@@ -42,10 +42,10 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - Birden fazla bileşen renderlamak istediğimizde döngüler kullanırız. Örneğin .map() methodu React'ta birçok noktada kullanılır.
 - Döngüler kullanarak renderladığımız bileşenlere **"key özelliği**" vermemiz gerekir. Key özelliği **"yeri ve içeriği değişmeyen**" elemanların tekrar tekrar renderlanmasını engeller ve **"performansı arttırır**".
 - **"React Fragment**" olarak adlandırdığımız yapı JSX'te bir parent element yerine birden fazla kardeş element renderlamak istediğimizde bu elementleri çevreleyen bir parent oluşturur. Yeni bir **"div oluşturmaktan kaçınmak**" istediğimizde tercihimizdir. [ <>, </> ]
-- **"Component composition**", bizim çok fazla prop kaydırma gerektiren durumlarda imdadımıza yetişir. Alt componentleri ana component'in açılış ve kapanış tag'leri içine taşırız ve children prop'u vererek içeriğini tamamen taşımasına olanak sağlarız. Aynı zamanda parent component'in yeniden kullanılabilirliği adına mükemmel bir adımdır. Genel olarak _Prop Drilling_ adı verdiğimiz durumdan kaçınmamızı sağlar.
-- _Component, Instance ve Element_ arasındaki farklar; Component tamamiyle bir bileşendir. Instance componentlerin çoğaltılmış örnekleridir ve aynı özellikleri barındırır. Element tamamen DOM ile ilgilidir, HTML'de kullandığımız yapılar birer elementtir.
+- **"Component composition**", bizim çok fazla prop kaydırma gerektiren durumlarda imdadımıza yetişir. Alt componentleri ana component'in açılış ve kapanış tag'leri içine taşırız ve children prop'u vererek içeriğini tamamen taşımasına olanak sağlarız. Aynı zamanda parent component'in yeniden kullanılabilirliği adına mükemmel bir adımdır. Genel olarak "**Prop Drilling**" adı verdiğimiz durumdan kaçınmamızı sağlar.
+- "**Component, Instance ve Element**" arasındaki farklar; Component tamamiyle bir bileşendir. Instance componentlerin çoğaltılmış örnekleridir ve aynı özellikleri barındırır. Element tamamen DOM ile ilgilidir, HTML'de kullandığımız yapılar birer elementtir.
 - Dışarıdan aldığımız bir değişkeni değiştirmek, HTTP çağırıları gibi durumlar kodumuzda yan efektler oluşturur ve bu durum renderlamada kaçınmamız gereken durumlardan biridir.
-- _Pure function_ dediğimiz fonksiyon türü hiçbir yan etkiye sahip olmaz. Verilen değer, çıkan değer ile aynıdır.
+- "**Pure function**" dediğimiz fonksiyon türü hiçbir yan etkiye sahip olmaz. Verilen değer, çıkan değer ile aynıdır.
 
 #### 🔴 Renderlama mantığında bazı katı kurallar vardır.
 
@@ -70,8 +70,8 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 ### ♦ State'ler
 
 - const [count, setCount] = useState(0) -- Bir state örneğidir. count bizim ekranda göstereceğimiz değer, setCount arka planda tıklama farklı etkilerle count değerini güncelleyen fonksiyon, ve 0 ise count'ımızın başlangıç değeridir.
-- Önceki state'e bağlı olarak yeni bir state türetilmesi istenen durumlarda _setCount((anything)=> anything+1)_ gibi callback fonksiyonları içerisinde güncelleme yapmalıyız. State asenkron şekilde işlediğinden callback fonksiyon içerisinde çağırmaz isek state hep aynı kalır.
-- useState gibi farklı React hook'ları da mevcuttur. Bunlardan bazıları useEffect, useReducer vb. useEffect componentin dışarıyla olan iletişimini kontrol eder örneğin HTTP request. useReducer ise useState'e bir alternatiftir. Her değişmesi istediğimiz durum için bir useState oluşturmak yerine tamamını useReducer içerisinde güncelleyebiliriz.
+- Önceki state'e bağlı olarak yeni bir state türetilmesi istenen durumlarda " **setCount((anything)=> anything+1)** " gibi callback fonksiyonları içerisinde güncelleme yapmalıyız. State asenkron şekilde işlediğinden callback fonksiyon içerisinde çağırmaz isek state hep aynı kalır.
+- useState gibi farklı React hook'ları da mevcuttur. Bunlardan bazıları useEffect, useReducer vb. useEffect componentin dışarıyla olan iletişimini kontrol eder örneğin HTTP request. İlerleyen süreçte useEffect yerine "**React Query**" kullanarak HTTP isteklerini kullanacağız. useReducer ise useState'e bir alternatiftir. Her değişmesi istediğimiz durum için bir useState oluşturmak yerine tamamını useReducer içerisinde güncelleyebiliriz.
 - Hook'ları asla bir kondisyona bağlı yazmamalıyız. Globalde erken return'ler yapmamalıyız. Tüm hookların fiber tree adı verdiğimiz ağaçta bir yeri vardır. Kondisyonel olarak bunun değişmesi programı bozar.
 - Kontrol edilmiş elementler olarak adlandırdığımız yapılar form elemanlarıdır. Input, select, range vb. elementleri kontrolümüze alıp her girilen değeri hafızaya kaydetmesini ve ekrana göstermesini sağlayabiliriz.
 - State Management kavramı ne zaman yeni bir state oluşturmamız, ne zaman türetilmiş state'ler kullanmamız ve bir state'in nereye konumlandırmamız gerektiğini ifade eder.
@@ -82,13 +82,35 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 ### 🤏 Use Reducer
 
 - Bir useReducer örneği 👉 const [state, dispatch] = useReducer(reducer, initialState)
-- State oluşturmak için alternatif bir yoldur. useState'e göre anlaması ve uygulaması birazdaha zordur. Karışık state'ler, _birbirleri ile ilişkili_ state'ler ve birden fazla state güncellemesi gereken durumlar için idealdir.
-- İlişkili state parçalarını bir _obje_ içerisinde tutar.
-- useReducer state update'lemek için gerekli tüm mantığı içerisinde barındıran bir _reducer fonksiyona_ ihtiyaç duyar. State mantığını component'lerden ayırır.
-- _Reducer_ fonksiyon bir pure fonksiyondur, anlık state'i ve action özelliğini alıp yeni state'i çevirir.
-- Genellikle reducer fonksiyon içerisinde bir _switch-case_ yöntemi kullanılır.
-- _action özelliği_ state'in nasıl güncelleneceğini belirtir.
+- State oluşturmak için alternatif bir yoldur. useState'e göre anlaması ve uygulaması birazdaha zordur. Karışık state'ler, "**birbirleri ile ilişkili**" state'ler ve birden fazla state güncellemesi gereken durumlar için idealdir.
+- İlişkili state parçalarını bir "**obje**" içerisinde tutar.
+- useReducer state update'lemek için gerekli tüm mantığı içerisinde barındıran bir "**reducer fonksiyona**" ihtiyaç duyar. State mantığını component'lerden ayırır.
+- "**Reducer**" fonksiyon bir pure fonksiyondur, anlık state'i ve action özelliğini alıp yeni state'i çevirir.
+- Genellikle reducer fonksiyon içerisinde bir "**switch-case**" yöntemi kullanılır.
+- "**action özelliği**" state'in nasıl güncelleneceğini belirtir.
 - dispatch fonksiyonu state güncellemelerini tetiklemek için kullanılır. reducer fonkksiyona actions özelliğini gönderir.
+
+### 📦 Ref'ler
+
+- Refler bir kutu gibidir ve mount ve re-render'lar arasında değişmez. State'in renderlardan etkilenmeyen versiyonu gibi görebiliriz. Elementlere class vermeden seçmemizi sağlar.
+
+### ⚔ Event Handler'lar
+
+- Bir event gerçekleştiğinde çalıştırılırlar.
+- Side Effect'ler oluştururken tercih edilen bir yöntemdir. Bunun yanı sıra useEffect çok daha efektiftir.
+
+### ✨ Use Effect'ler
+
+- Bir component sayfaya mount'landığında [ Yani başlangıçta ] ve sonraki re-render'larda çalışır ( "**Bağlılık dizisine verdiğiniz değerlere göre değişir**" ).
+- Bağımlılık dizisi olmadan, React effect'i ne zaman çalıştıracağını bilmez.
+- Effect içinde kullanılan her state değişkeni ve prop bağımlılık dizisine eklenmelidir. Aksi taktirde çalışmaz.
+- Olabildiğince bağımlılık dizisine bir "**Obje veya Dizi**" vermekten kaçınmalıyız. Çünkü Javascript'te hiçbir obje birbiri ile aynı değildir ve useEffect içerisinde her seferinde yeniden oluşturulup programı sonsuz döngüye sokar.
+- Bir component'i harici bir sistem ile senkronize tutmaya yarar. Örneğin API çağırıları.
+- UseEffect bir eventlistener'a benzer. Bağımlılık dizisindekilerin değişmesini gözlemler. Her değişimde tekrar tekrar çalışır.
+- [] Sadece başlangıçta çalışır. ( "** initial render**" )
+- [ x,y,z ] başlangıçta, x,y ve z her güncellendiğinde çalışır.
+- Bağımlılık dizisi olmazsa programda değişen herşey tekrar tekrar çalışmasına sebep olur. Performans için berbat bir durum. ⛔
+- Cleanup fonksiyonu sideEffect'leri temizlemek için kullanılır ve performansı arttırmaya yardımcı olur.
 
 ### ↗↖ Router ( Yönlendirici )
 
@@ -125,49 +147,19 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - İkinci aşama JSX'imizi Posts.Provider componenti ile sarmak ve value prop'una geçirmek istediğimiz tüm propları yazmak.
 - Üçüncü ve son aşama Consumers (Tüketiciler) provider tarafından yayınlanan context değerini okuyan tüm componentlerdir.
 
-### 🗺 Projelerde kullanmak isteyebileceğimiz Leaflet (Map) kütüphanesi
-
-- Basitçe **"npm i react-leaflet leaflet"** komutu ile hem react hem normal leaflet kütüphanesini projemize dahil ediyoruz.
-- Daha sonra CSS dosyamıza @import **"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"** leaflet'in CSS işlevselliğini eklememiz gerekiyor.
-- Son olarak React içinde render yapabilmek adına **"https://react-leaflet.js.org/"** sitesinden alacağımız MapContainer, TileLayer, Marker ve Popup componentlerini içeren komut satırlarını kopyalayıp projemize dahil ediyoruz.
-
 ### ⚡ Tek Sayfa Uygulamalar [ SPA ]
 
 - Uygulama baştan sona client (tarayıcı) tarafında çalıştırılır.
 - Farklı URL'ler farklı görünümlerle(components) ilişkilidir.
 - Sayfa asla yeniden yüklenmez.
 - Normal bir masaüstü veya mobil uygulama gibi hissettirir.
-- Gerekli olan ekstra bilgiler bir web API'ı tarafından sağlanabilir.
 
-### Sahte Giriş (Fake Login) ve Kullanıcı Doğrulaması (User Authentatication)
+### 👨‍💻 Sahte Giriş (Fake Login) ve Kullanıcı Doğrulaması (User Authentatication)
 
 - Sahte bir giriş oluşturmak için 3 aşamamız mevut.
 - İlk aşamada kullanıcının e-mail ve şifresini bir giriş formundan alıyoruz, API uç noktası ile e-mail ve şifrenin doğruluğunu kontrol ediyoruz.
 - İkinci aşamada, kimlik bilgileri eğer doğruysa kullanıcının uygulamaya girişine izin veriyoruz ve kullanıcı objesini state'imizde kaydediyoruz.
 - Üçüncü ve son aşama olarak uygulamamızı doğrulamasız ve yanlış bilgi girilmiş durumlardan korumamız gerekiyor.
-
-### 📦 Ref'ler
-
-- Refler bir kutu gibidir ve mount ve re-render'lar arasında değişmez. State'in renderlardan etkilenmeyen versiyonu gibi görebiliriz. Elementlere class vermeden seçmemizi sağlar.
-
-### ✨ Side Effect'ler
-
-- Side effect bir React componentinin (bileşeninin) bu bileşen dışındaki bir dünyayla etkileşim kurması sonucu oluşur. Yine HTTP request'lerini örnek verebiliriz.
-
-### ⚔ Event Handler'lar
-
-- Bir event gerçekleştiğinde çalıştırılırlar.
-- Side Effect'ler oluştururken tercih edilen bir yöntemdir. Bunun yanı sıra useEffect çok daha efektiftir.
-
-### ✨ Use Effect'ler
-
-- Bir component sayfaya mount'landığında [ Yani başlangıçta ] ve sonraki re-render'larda çalışır ( _Bağlılık dizisine verdiğiniz değerlere göre değişir_ ).
-- Bağımlılık dizisi olmadan, React effect'i ne zaman çalıştıracağını bilmez.
-- Effect içinde kullanılan her state değişkeni ve prop bağımlılık dizisine eklenmelidir. Aksi taktirde çalışmaz.
-- Bir component'i harici bir sistem ile senkronize tutmaya yarar. Örneğin API çağırıları.
-- UseEffect bir eventlistener'a benzer. Bağımlılık dizisindekilerin değişmesini gözlemler. Her değişimde tekrar tekrar çalışır.
-- [] Sadece başlangıçta çalışır. _( initial render )_, [ x,y,z ] başlangıçta, x,y ve z her güncellendiğinde çalışır. Bağımlılık dizisi olmazsa programda değişen herşey tekrar tekrar çalışmasına sebep olur. Performans için berbat bir durum. ⛔
-- Cleanup fonksiyonu sideEffect'leri temizlemek için kullanılır ve performansı arttırmaya yardımcı olur.
 
 ### 🟥 API Cağırıları ve Hata yakalama
 
@@ -250,6 +242,14 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 #### 🆚 Diffing ( Farklılaşan )
 
 - Diffing, React'ın hangi DOM elementlerinin eklenmesi veya değiştirilmesi hakkında karar vermesini sağlar. Eğer renderlar arasında bir React elementi Fiber Tree'de aynı pozisyonda duruyorsa bu component ve state'i sabit kalır. Eğer element değiştiyse veya farklı bir pozisyondaysa element ve state yok edilir.
+
+## 📚 Bazı React Kütüphaneleri
+
+### 🗺 Leaflet (Map) kütüphanesi
+
+- Basitçe **"npm i react-leaflet leaflet"** komutu ile hem react hem normal leaflet kütüphanesini projemize dahil ediyoruz.
+- Daha sonra CSS dosyamıza @import **"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"** leaflet'in CSS işlevselliğini eklememiz gerekiyor.
+- Son olarak React içinde render yapabilmek adına **"https://react-leaflet.js.org/"** sitesinden alacağımız MapContainer, TileLayer, Marker ve Popup componentlerini içeren komut satırlarını kopyalayıp projemize dahil ediyoruz.
 
 ### ⌨ React ile yaptığım bazı **Codesandbox** pratikleri ⏬
 
