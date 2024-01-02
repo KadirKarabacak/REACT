@@ -201,13 +201,13 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - Üçüncü aşama ise dosya boyutu düşürme, bunun için de 3rd party paketler, kod bölme (code splitting) ve tembel yükleme (lazy loading) özellikleri uygulanabilir.
 - Yavaş çalışan bir componenti "Children" prop'u ile extract edip children konumuna koyarsak parent renderlarından etkilenmez, bu da optimizasyonu arttırır.
 
-#### **"memo" Fonksiyonu**
+#### 🧠 **"memo" Fonksiyonu**
 
 - Bu fonksiyon tamamiyle optimizasyon amaçlı olup, Parent component yeniden renderlandığında eğer **child component'de değişen bir prop** yok ise yeniden renderlanmasını engellemek amacıyla vardır. **Sadece proplara** etki edebilir. Yani memoized bir component kendi state'i veya bağlı olduğu bir context değiştiğinde yeniden renderlanmaya devam eder. Bu demek değildir ki her componentimize memo fonksiyonu uygulamalıyız. Sadece bir component çok ağır (yavaş renderlanan) veya çok sık yeniden renderlanan ve hep aynı proplara sahip olan componentler için geçerlidir.
 - Bazı durumlarda bir component memoized olsa bile, parent component'ten aldığımız ve parent içerisinde oluşturulmuş bir obje veya bir fonksiyon, her seferinde parent yeniden renderlandığında tekrar tekrar oluşturulacaktır. Bu da aldığımız prop'un değiştiğine işaret eder ve memo'yu görmezden gelir. ( {} != {} ) Bu noktada aldığımız obje ve fonksiyon propları sabit kılmak için **"useMemo"** ve **"useCallback"** devreye giriyor.
 - Bu durumlar dışında kalan bir istisna var ki o da setter fonksiyonlarımız. Yani useState için oluşturduğumuz setter fonksiyonlar kendiliğinden memoized olarak gelir. Bir prop olarak gönderirken bu fonksiyon hakkında düşünmemiz gerekmez.
 
-### **useMemo & useCallback**
+### 🔒**useMemo & useCallback**
 
 - useMemo ve useCallback fonksiyonları içerisinde bir değer alır ve bu değerler cache'de saklanır. Input'lar değişmediği sürece aynı kalmaya devam ederler. useEffect gibi useMemo ve useCallback'de bir bağımlılık dizisine sahiptir ve ne zaman bir bağımlılık değişirse, değer yeniden oluşturulur.
 - Aynı memo'da olduğu gibi bunları heryere yazmamalı ve sadece şu 3 durumda kullanmalıyız.
