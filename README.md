@@ -27,11 +27,11 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 
 ### 🎨 **React Stil Opsiyonları**
 
-- **"İnline"** olarak JSX içerisinde style prop'u kullanarak yapabiliriz.
+- **"Inline"** olarak JSX içerisinde style prop'u kullanarak yapabiliriz.
 - **"Harici bir CSS veya SASS**" dosyası ile className özellikleri oluşturarak yapabiliriz. Fakat bu durum bütün uygulamayı etkilediği için özellikle **"büyük çaplı projelerde çakışmalar"** yaşamak mümkündür.
-- **"CSS Modules"** her bir bileşen için harici bir css dosyası oluşturmamızı sağlar, böylece çakışmalar önlenir ve sadece o bileşene özgü stiller oluşturabiliriz. Creat-react-app ve vite içerisinde otomatik olarak gelir. Sadece element yazarak "ul,li,div" gibi stilleme yapamayız. Yaparsak yine tüm proje için geçerli olur. ClassName koşulu zorunludur.
+- <a href="https://github.com/css-modules/css-modules>"**"CSS Modules"**</a> her bir bileşen için harici bir css dosyası oluşturmamızı sağlar, böylece çakışmalar önlenir ve sadece o bileşene özgü stiller oluşturabiliriz. Creat-react-app ve vite içerisinde otomatik olarak gelir. Sadece element yazarak "ul,li,div" gibi stilleme yapamayız. Yaparsak yine tüm proje için geçerli olur. ClassName koşulu zorunludur.
 - **"CSS-in-JS"** dediğimiz yöntem ile yeni bir component oluşturarak stilleme yapabiliriz.
-- **"Utility-first CSS"** dediğimiz yapıya uygun olarak **"Tailwindcss"** kullanarak JSX içerisinde Bootstrap'te olduğu gibi sabit className'ler ile yapabiliriz.
+- **"Utility-first CSS"** dediğimiz yapıya uygun olarak <a href="https://tailwindcss.com/docs/installation">**"Tailwindcss"**</a> kullanarak JSX içerisinde <a href="https://getbootstrap.com/">Bootstrap</a>'te olduğu gibi sabit className'ler ile yapabiliriz.
 - Alternatif olarak hiç CSS yazmadan bazı arayüz kütüphaneleri olan **"MUI, Chakra UI, Mantine"** gibi hazır component yapısı sunan kütüphaneleri kullanabiliriz.
 
 ### 💻 **Render'lama**
