@@ -128,36 +128,35 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - State'i global alanda saklamanın en kolay yoludur URL'ler. Tüm component'lerin erişimi vardır.
 - URL state'i bilgiyi bir sayfadan diğerine geçirmek için iyi bir yoldur.
 - Belirli bir zamanda yapılan sayfa işaretlemelerini paylaşmayı ve daha sonrasında tam olarak o noktaya erişmeyi mümkün kılar.
-- 3 parçadan oluşur. 1.'si _path_ daha önce Router'lara tanımladığımız gibi. 2.'si **"params"** yani parametreler. 3.'sü ise **"query string"** yani sorgulardır.
+- 3 parçadan oluşur. 1.'si "**path**" daha önce Router'lara tanımladığımız gibi. 2.'si **"params"** yani parametreler. 3.'sü ise **"query string"** yani sorgulardır.
 - _Parametre_'leri kullanabilmek için 3 aşamaya ihtiyacımız var. Öncelikle yeni bir **Route oluştururuz**, sonra bu Route'a **link veririz** ve bu Route içerisinde **useParams() aracılığı ile** URL'den gelen state'i okuruz.
 - URL'deki query strings( sorgu dizileri )'i ise **useSearchParam** ile okuyabilir ve kullanabiliriz.
-- _Programmatic Navigation_ (Programlı gezinme) kullanıcı herhangi bir link'e tıklama yapmadan kullanıcıyı yeni bir URL'e götürme işlemidir. Bu durumun en yaygın kullanım alanı **form submit**'tir.
-- Bir başka Router hook'u ise _useNavigate()_, bu hook basitçe bir fonksiyon döndürür ve bu fonksiyonu kullanarak bir etkileşime bağlı dilediğiniz path'e gidebilirsiniz. const navigate = useNavigate() -> navigate("form") örneğin. Veya navigate(-1) bir adım geri gelmemizi sağlar.
-- Aynı zamanda daha declarative bir yol olan <"Navigate"/> componentini "to" özelliği ile kullanabiliriz.
-- <"Navigate"/> componentinin "replace" özelliğin geçmişte geriye gitmemizi sağlar.
+- "**Programmatic Navigation**" (Programlı gezinme) kullanıcı herhangi bir link'e tıklama yapmadan kullanıcıyı yeni bir URL'e götürme işlemidir. Bu durumun en yaygın kullanım alanı **form submit**'tir.
+- Bir başka Router hook'u ise "**useNavigate()**", bu hook basitçe bir fonksiyon döndürür ve bu fonksiyonu kullanarak bir etkileşime bağlı dilediğiniz path'e gidebilirsiniz. const navigate = useNavigate() -> navigate("form") örneğin. Veya navigate(-1) bir adım geri gelmemizi sağlar.
+- Aynı zamanda daha declarative bir yol olan **<"Navigate"/>** componentini "to" özelliği ile kullanabiliriz.
+- **<"Navigate"/>** componentinin "**replace**" özelliğin geçmişte geriye gitmemizi sağlar.
 
 ### 🌟 **Context API**
 
-- Birden fazla derinlikte bulunan child componentlere state geçirmek ve kullanmak istediğimizde bu state'i kullanmayacağımız componentler üzerinden geçerek kod kirliliği ve hantal bir yapı oluşturmak yerine direkt kullanmak istediğimiz child component'e bu state'i vermemizi sağlayan yapıdır.
-- Basitçe Prop Drilling problemimize net bir çözümdür.
+- Birden fazla derinlikte bulunan child componentlere state geçirmek ve kullanmak istediğimizde bu state'i kullanmayacağımız componentler üzerinden geçirerek kod kirliliği ve hantal bir yapı oluşturmak yerine **direkt kullanmak istediğimiz child component'e** bu state'i vermemizi sağlayan yapıdır.
+- Basitçe **Prop Drilling** problemimize net bir çözümdür.
 - Ne zaman provider aracılığı ile ilettiğimiz state güncellenirse, bu değeri kullanan child componentler'de yeniden renderlanır.
 - State'imizi uygulamamızın baştan sonuna globalde yayınlar.
 - 3 Aşamadan oluşur.
-- İlk aşama createContext() kullanarak geçireceğimiz propların isminde bir provider oluşturmak. Örn _const Posts = createContext()_. createContext bir component döndürür, bu sebeple değişken ismimiz büyük olmalıdır.
-- İkinci aşama JSX'imizi Posts.Provider componenti ile sarmak ve value prop'una geçirmek istediğimiz tüm propları yazmak.
-- Üçüncü ve son aşama Consumers (Tüketiciler) provider tarafından yayınlanan context değerini okuyan tüm componentlerdir.
+- İlk aşama createContext() kullanarak geçireceğimiz propların isminde bir provider oluşturmak. Örn. 👉 "**const Posts = createContext()**". createContext bir **component** döndürür, bu sebeple değişken ismimiz büyük olmalıdır.
+- İkinci aşama JSX'imizi "**Posts.Provider**" componenti ile sarmak ve value prop'una geçirmek istediğimiz tüm propları yazmak.
+- Üçüncü ve son aşama Consumers (Tüketiciler) provider tarafından yayınlanan "**context değerini okuyan**" tüm componentlerdir.
 
 ### 🟥 **Redux**
 
-- Redux Global state düzenlemesi yapmamızı sağlayan bir 3rd party kütüphanedir.
-- React-redux kütüphanesini kullanarak React applikasyonlarına entegre etmesi kolaydır.
-- Tüm global state, tek bir global erişilebilir yerdedir, actions kullanarak (useReducer'da olduğu gibi) güncellemesi kolaydır.
-- Konsept olarak Context API ve useReducer'ı birlikte kullanmaya benzer.
+- Redux "**Global state düzenlemesi**" yapmamızı sağlayan bir 3rd party kütüphanedir.
+- Tüm global state, "**tek bir global erişilebilir yerdedir**", actions kullanarak (useReducer'da olduğu gibi) güncellemesi kolaydır.
+- Konsept olarak "**Context API ve useReducer'ı**" birlikte kullanmaya benzer.
 - Globalde güncellenen bir state'i kullanan tüm bileşenler yeniden renderlanır.
 - İki farklı versiyonu vardır. Classic Redux ve Modern Redux Toolkit.
-- Yapıyı oluşturmaya öncelikle "**initialState**" objemizi belirterek başlıyoruz. Sonrasında yine bir reducer fonksiyon oluşturuyoruz ve parametre olarak state ve action'ımızı veriyoruz.
-- useReducer'dan farklı olarak state'imizi default olarak initialState'e eşitliyoruz. Yine switch/case yapımızı oluşturup durumları ele alıyoruz. Default olarak bir error yazmak yerine başlangıç state'imizin kendisini döndürüyoruz.
-- Redux'tan "**createStore**" fonksiyonunu import ediyoruz ve oluşturduğumuz reducer'ı bu fonksiyona parametre olarak veriyoruz. "**const store = createStore(reducer)**". Daha sonrasında her state güncellemesinde store objesinden dispatch fonksiyonumuzu okuyoruz ve useReducer'da olduğu gibi güncelliyoruz.
+- Yapıyı oluşturmaya öncelikle "**initialState**" objemizi belirterek başlıyoruz. Sonrasında yine bir "**reducer fonksiyon**" oluşturuyoruz ve parametre olarak "**state ile action'ımızı**" veriyoruz.
+- useReducer'dan farklı olarak "**state'imizi default olarak initialState'e**" eşitliyoruz. Yine switch/case yapımızı oluşturup durumları ele alıyoruz. Default olarak bir error yazmak yerine başlangıç state'imizin kendisini döndürüyoruz.
+- Redux'tan "**createStore**" fonksiyonunu import ediyoruz ve oluşturduğumuz reducer'ı bu fonksiyona parametre olarak veriyoruz. "**const store = createStore(reducer)**". Daha sonrasında her "**state güncellemesinde store objesinden dispatch fonksiyonumuzu**" okuyoruz ve useReducer'da olduğu gibi güncelliyoruz.
 - Fakat aslında Redux'ta "**Action Creators**" dediğimiz yapıyı kullanarak güncelleme işini manuel yapmak yerine otomatikleştiriyoruz.
 - Oluşturacağımız birden fazla Reducer fonksiyonu bir araya getirmek için bir Root reducer oluşturup bu değişken üzerinde "**combineReducers**" fonksiyonunu çağırabiliriz.
 - const rootReducer = combineReducers"**({ account: accountReducer, customer: customerReducer });**"
