@@ -23,22 +23,27 @@ const accountSlice = createSlice({
     },
     // Request Loan Action Creator
     requestLoan: {
+      // Taking two or more arguments
       prepare(amount, purpose) {
-        return { amount, purpose };
+        return {
+          payload: { amount, purpose },
+        };
+      },
+      // And then action.payload becomes that prepared payload
+      reducer(state, action) {
+        if (state.loan > 0) return;
+
+        state.loan = action.payload.amount;
+        state.loanPurpose = action.payload.purpose;
+        state.balance = state.balance + action.payload.amount;
       },
     },
-    reducer(state, action) {
-      if (state.loan > 0) return;
 
-      state.loan = action.payload.amount;
-      state.loanPurpose = action.payload.purpose;
-      state.balance = state.balance + action.payload.amount;
-    },
     // Pay Loan Action Creator
     payLoan(state, action) {
-      state.loan = 0;
-      state.loanPurpose = "";
       state.balance -= state.loan;
+      state.loanPurpose = "";
+      state.loan = 0;
     },
   },
 });
