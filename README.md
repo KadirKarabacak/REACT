@@ -193,7 +193,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - ReduxToolkit ile oluşturduğumuz Action Creator'lar sadece tek bir argüman alır.
 - Bunu düzeltmek için Action Creator içerisinde creator isminden hemen sonra : { } içerisinde bir prepare (parametreler) fonksiyonu oluşturup bu prepare fonksiyonu içerisinde bir obje döndürmeliyiz.
 
-<img src="./README-img/redux-action-creator.png" width="20" height="20" />
+<img src="./README-img/redux-action-creator.png" width="120" height="120" />
 
 ### ⚡ **Tek Sayfa Uygulamalar [ SPA ]**
 
