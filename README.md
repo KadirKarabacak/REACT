@@ -6,16 +6,16 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 
 ### ⚒ **Öncelikle kurulum ile başlayalım. Sonuçta herşey bununla başlıyor.**
 
-#### **<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="20" height="20" /> Create-react-app**
+#### **<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="20" height="20" /> <a href="https://create-react-app.dev/">Create-react-app**</a>
 
 - Bir React projesi oluşturmak için her zaman cmd komut satırına girip **"create-react-app@latest"** komutunu kullanarak ve yanına proje ismimizi vererek bir React proje dosyası oluşturuyoruz.
 - Gerçek dünya projelerinde her zaman **"Vite"** kullanmalıyız çünkü **"performans ve topluluk desteği"** bakımından Create-react-app'den daha popüler. Ama öğrenmek amaçlı create-react-app hala kullanılabilir.
 
-#### **<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/410px-Vitejs-logo.svg.png" width="20" height="20"> Vite**
+#### **<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/410px-Vitejs-logo.svg.png" width="20" height="20"><a href="https://vitejs.dev/"> Vite**</a>
 
 - Bir Vite projesi kurulumu içinse **"npm create vite@latest"** komutunu kullanarak onay verdikten sonra proje ismimizi yazıyoruz. Daha sonra kullanacağımız teknoloji seçimini yapıp o teknolojiye özel bir template alıyoruz. Vite **"bağımlılıkları otomatik yüklemez"**. Bu nedenle proje dosyamıza girip bağımlılıklarımızı manuel olarak yüklemeliyiz. Create-react-app'deki index.js dosyası yerine main.jsx dosyamız mevcut. Aynı şekilde app.js yerine de App.jsx. Projemizi başlatmak içinse npm start yerine **"npm run dev"** komutunu kullanıyoruz.
 
-#### ⚙ **Olası durumlar için Vite Projelerine **"Eslint"** kurulumu ve ayarları**
+#### ⚙ **Olası durumlar için Vite Projelerine **"<a href="https://eslint.org/">Eslint"**</a> kurulumu ve ayarları**
 
 - Şuanda Vite projeleri eslint eklentisi ile birlikte geliyor ki bu durum çok önemli. Fakat olası bir durumda gelmediğini varsayarsak şunları yaparak kurabiliriz.
 - **npm install eslint vite-plugin-eslint eslint-config-react-app --save-dev** ve yükleme tamamlandıktan sonra **.eslintrc.json veya .eslintrc.cjs** isminde bir dosya oluşturup ayarlarımızı uygulayabiliriz.
@@ -27,12 +27,12 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 
 ### 🎨 **React Stil Opsiyonları**
 
-- **"İnline"** olarak JSX içerisinde style prop'u kullanarak yapabiliriz.
+- **"Inline"** olarak JSX içerisinde style prop'u kullanarak yapabiliriz.
 - **"Harici bir CSS veya SASS**" dosyası ile className özellikleri oluşturarak yapabiliriz. Fakat bu durum bütün uygulamayı etkilediği için özellikle **"büyük çaplı projelerde çakışmalar"** yaşamak mümkündür.
-- **"CSS Modules"** her bir bileşen için harici bir css dosyası oluşturmamızı sağlar, böylece çakışmalar önlenir ve sadece o bileşene özgü stiller oluşturabiliriz. Creat-react-app ve vite içerisinde otomatik olarak gelir. Sadece element yazarak "ul,li,div" gibi stilleme yapamayız. Yaparsak yine tüm proje için geçerli olur. ClassName koşulu zorunludur.
+- <a href="https://github.com/css-modules/css-modules">**"CSS Modules"**</a> her bir bileşen için harici bir css dosyası oluşturmamızı sağlar, böylece çakışmalar önlenir ve sadece o bileşene özgü stiller oluşturabiliriz. Creat-react-app ve vite içerisinde otomatik olarak gelir. Sadece element yazarak "ul,li,div" gibi stilleme yapamayız. Yaparsak yine tüm proje için geçerli olur. ClassName koşulu zorunludur.
 - **"CSS-in-JS"** dediğimiz yöntem ile yeni bir component oluşturarak stilleme yapabiliriz.
-- **"Utility-first CSS"** dediğimiz yapıya uygun olarak **"Tailwindcss"** kullanarak JSX içerisinde Bootstrap'te olduğu gibi sabit className'ler ile yapabiliriz.
-- Alternatif olarak hiç CSS yazmadan bazı arayüz kütüphaneleri olan **"MUI, Chakra UI, Mantine"** gibi hazır component yapısı sunan kütüphaneleri kullanabiliriz.
+- **"Utility-first CSS"** dediğimiz yapıya uygun olarak <a href="https://tailwindcss.com/docs/installation">**"Tailwindcss"**</a> kullanarak JSX içerisinde <a href="https://getbootstrap.com/">Bootstrap</a>'te olduğu gibi sabit className'ler ile yapabiliriz.
+- Alternatif olarak hiç CSS yazmadan bazı arayüz kütüphaneleri olan **"<a href="https://mui.com/">MUI</a>, <a href="https://chakra-ui.com/">Chakra UI</a>, <a href="https://mantine.dev/">Mantine"</a>** gibi hazır component yapısı sunan kütüphaneleri kullanabiliriz.
 
 ### 💻 **Render'lama**
 
@@ -128,36 +128,35 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - State'i global alanda saklamanın en kolay yoludur URL'ler. Tüm component'lerin erişimi vardır.
 - URL state'i bilgiyi bir sayfadan diğerine geçirmek için iyi bir yoldur.
 - Belirli bir zamanda yapılan sayfa işaretlemelerini paylaşmayı ve daha sonrasında tam olarak o noktaya erişmeyi mümkün kılar.
-- 3 parçadan oluşur. 1.'si _path_ daha önce Router'lara tanımladığımız gibi. 2.'si **"params"** yani parametreler. 3.'sü ise **"query string"** yani sorgulardır.
+- 3 parçadan oluşur. 1.'si "**path**" daha önce Router'lara tanımladığımız gibi. 2.'si **"params"** yani parametreler. 3.'sü ise **"query string"** yani sorgulardır.
 - _Parametre_'leri kullanabilmek için 3 aşamaya ihtiyacımız var. Öncelikle yeni bir **Route oluştururuz**, sonra bu Route'a **link veririz** ve bu Route içerisinde **useParams() aracılığı ile** URL'den gelen state'i okuruz.
 - URL'deki query strings( sorgu dizileri )'i ise **useSearchParam** ile okuyabilir ve kullanabiliriz.
-- _Programmatic Navigation_ (Programlı gezinme) kullanıcı herhangi bir link'e tıklama yapmadan kullanıcıyı yeni bir URL'e götürme işlemidir. Bu durumun en yaygın kullanım alanı **form submit**'tir.
-- Bir başka Router hook'u ise _useNavigate()_, bu hook basitçe bir fonksiyon döndürür ve bu fonksiyonu kullanarak bir etkileşime bağlı dilediğiniz path'e gidebilirsiniz. const navigate = useNavigate() -> navigate("form") örneğin. Veya navigate(-1) bir adım geri gelmemizi sağlar.
-- Aynı zamanda daha declarative bir yol olan <"Navigate"/> componentini "to" özelliği ile kullanabiliriz.
-- <"Navigate"/> componentinin "replace" özelliğin geçmişte geriye gitmemizi sağlar.
+- "**Programmatic Navigation**" (Programlı gezinme) kullanıcı herhangi bir link'e tıklama yapmadan kullanıcıyı yeni bir URL'e götürme işlemidir. Bu durumun en yaygın kullanım alanı **form submit**'tir.
+- Bir başka Router hook'u ise "**useNavigate()**", bu hook basitçe bir fonksiyon döndürür ve bu fonksiyonu kullanarak bir etkileşime bağlı dilediğiniz path'e gidebilirsiniz. const navigate = useNavigate() -> navigate("form") örneğin. Veya navigate(-1) bir adım geri gelmemizi sağlar.
+- Aynı zamanda daha declarative bir yol olan **<"Navigate"/>** componentini "to" özelliği ile kullanabiliriz.
+- **<"Navigate"/>** componentinin "**replace**" özelliğin geçmişte geriye gitmemizi sağlar.
 
 ### 🌟 **Context API**
 
-- Birden fazla derinlikte bulunan child componentlere state geçirmek ve kullanmak istediğimizde bu state'i kullanmayacağımız componentler üzerinden geçerek kod kirliliği ve hantal bir yapı oluşturmak yerine direkt kullanmak istediğimiz child component'e bu state'i vermemizi sağlayan yapıdır.
-- Basitçe Prop Drilling problemimize net bir çözümdür.
+- Birden fazla derinlikte bulunan child componentlere state geçirmek ve kullanmak istediğimizde bu state'i kullanmayacağımız componentler üzerinden geçirerek kod kirliliği ve hantal bir yapı oluşturmak yerine **direkt kullanmak istediğimiz child component'e** bu state'i vermemizi sağlayan yapıdır.
+- Basitçe **Prop Drilling** problemimize net bir çözümdür.
 - Ne zaman provider aracılığı ile ilettiğimiz state güncellenirse, bu değeri kullanan child componentler'de yeniden renderlanır.
 - State'imizi uygulamamızın baştan sonuna globalde yayınlar.
 - 3 Aşamadan oluşur.
-- İlk aşama createContext() kullanarak geçireceğimiz propların isminde bir provider oluşturmak. Örn _const Posts = createContext()_. createContext bir component döndürür, bu sebeple değişken ismimiz büyük olmalıdır.
-- İkinci aşama JSX'imizi Posts.Provider componenti ile sarmak ve value prop'una geçirmek istediğimiz tüm propları yazmak.
-- Üçüncü ve son aşama Consumers (Tüketiciler) provider tarafından yayınlanan context değerini okuyan tüm componentlerdir.
+- İlk aşama createContext() kullanarak geçireceğimiz propların isminde bir provider oluşturmak. Örn. 👉 "**const Posts = createContext()**". createContext bir **component** döndürür, bu sebeple değişken ismimiz büyük olmalıdır.
+- İkinci aşama JSX'imizi "**Posts.Provider**" componenti ile sarmak ve value prop'una geçirmek istediğimiz tüm propları yazmak.
+- Üçüncü ve son aşama Consumers (Tüketiciler) provider tarafından yayınlanan "**context değerini okuyan**" tüm componentlerdir.
 
 ### 🟥 **Redux**
 
-- Redux Global state düzenlemesi yapmamızı sağlayan bir 3rd party kütüphanedir.
-- React-redux kütüphanesini kullanarak React applikasyonlarına entegre etmesi kolaydır.
-- Tüm global state, tek bir global erişilebilir yerdedir, actions kullanarak (useReducer'da olduğu gibi) güncellemesi kolaydır.
-- Konsept olarak Context API ve useReducer'ı birlikte kullanmaya benzer.
+- Redux "**Global state düzenlemesi**" yapmamızı sağlayan bir 3rd party kütüphanedir.
+- Tüm global state, "**tek bir global erişilebilir yerdedir**", actions kullanarak (useReducer'da olduğu gibi) güncellemesi kolaydır.
+- Konsept olarak "**Context API ve useReducer'ı**" birlikte kullanmaya benzer.
 - Globalde güncellenen bir state'i kullanan tüm bileşenler yeniden renderlanır.
 - İki farklı versiyonu vardır. Classic Redux ve Modern Redux Toolkit.
-- Yapıyı oluşturmaya öncelikle "**initialState**" objemizi belirterek başlıyoruz. Sonrasında yine bir reducer fonksiyon oluşturuyoruz ve parametre olarak state ve action'ımızı veriyoruz.
-- useReducer'dan farklı olarak state'imizi default olarak initialState'e eşitliyoruz. Yine switch/case yapımızı oluşturup durumları ele alıyoruz. Default olarak bir error yazmak yerine başlangıç state'imizin kendisini döndürüyoruz.
-- Redux'tan "**createStore**" fonksiyonunu import ediyoruz ve oluşturduğumuz reducer'ı bu fonksiyona parametre olarak veriyoruz. "**const store = createStore(reducer)**". Daha sonrasında her state güncellemesinde store objesinden dispatch fonksiyonumuzu okuyoruz ve useReducer'da olduğu gibi güncelliyoruz.
+- Yapıyı oluşturmaya öncelikle "**initialState**" objemizi belirterek başlıyoruz. Sonrasında yine bir "**reducer fonksiyon**" oluşturuyoruz ve parametre olarak "**state ile action'ımızı**" veriyoruz.
+- useReducer'dan farklı olarak "**state'imizi default olarak initialState'e**" eşitliyoruz. Yine switch/case yapımızı oluşturup durumları ele alıyoruz. Default olarak bir error yazmak yerine başlangıç state'imizin kendisini döndürüyoruz.
+- Redux'tan "**createStore**" fonksiyonunu import ediyoruz ve oluşturduğumuz reducer'ı bu fonksiyona parametre olarak veriyoruz. "**const store = createStore(reducer)**". Daha sonrasında her "**state güncellemesinde store objesinden dispatch fonksiyonumuzu**" okuyoruz ve useReducer'da olduğu gibi güncelliyoruz.
 - Fakat aslında Redux'ta "**Action Creators**" dediğimiz yapıyı kullanarak güncelleme işini manuel yapmak yerine otomatikleştiriyoruz.
 - Oluşturacağımız birden fazla Reducer fonksiyonu bir araya getirmek için bir Root reducer oluşturup bu değişken üzerinde "**combineReducers**" fonksiyonunu çağırabiliriz.
 - const rootReducer = combineReducers"**({ account: accountReducer, customer: customerReducer });**"
@@ -221,13 +220,13 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - Üçüncü aşama ise dosya boyutu düşürme, bunun için de 3rd party paketler, kod bölme (code splitting) ve tembel yükleme (lazy loading) özellikleri uygulanabilir.
 - Yavaş çalışan bir componenti "Children" prop'u ile extract edip children konumuna koyarsak parent renderlarından etkilenmez, bu da optimizasyonu arttırır.
 
-#### **"memo" Fonksiyonu**
+### 🧠 **memo Fonksiyonu**
 
 - Bu fonksiyon tamamiyle optimizasyon amaçlı olup, Parent component yeniden renderlandığında eğer **child component'de değişen bir prop** yok ise yeniden renderlanmasını engellemek amacıyla vardır. **Sadece proplara** etki edebilir. Yani memoized bir component kendi state'i veya bağlı olduğu bir context değiştiğinde yeniden renderlanmaya devam eder. Bu demek değildir ki her componentimize memo fonksiyonu uygulamalıyız. Sadece bir component çok ağır (yavaş renderlanan) veya çok sık yeniden renderlanan ve hep aynı proplara sahip olan componentler için geçerlidir.
 - Bazı durumlarda bir component memoized olsa bile, parent component'ten aldığımız ve parent içerisinde oluşturulmuş bir obje veya bir fonksiyon, her seferinde parent yeniden renderlandığında tekrar tekrar oluşturulacaktır. Bu da aldığımız prop'un değiştiğine işaret eder ve memo'yu görmezden gelir. ( {} != {} ) Bu noktada aldığımız obje ve fonksiyon propları sabit kılmak için **"useMemo"** ve **"useCallback"** devreye giriyor.
 - Bu durumlar dışında kalan bir istisna var ki o da setter fonksiyonlarımız. Yani useState için oluşturduğumuz setter fonksiyonlar kendiliğinden memoized olarak gelir. Bir prop olarak gönderirken bu fonksiyon hakkında düşünmemiz gerekmez.
 
-### **useMemo & useCallback**
+### 🔒 **useMemo & useCallback**
 
 - useMemo ve useCallback fonksiyonları içerisinde bir değer alır ve bu değerler cache'de saklanır. Input'lar değişmediği sürece aynı kalmaya devam ederler. useEffect gibi useMemo ve useCallback'de bir bağımlılık dizisine sahiptir ve ne zaman bir bağımlılık değişirse, değer yeniden oluşturulur.
 - Aynı memo'da olduğu gibi bunları heryere yazmamalı ve sadece şu 3 durumda kullanmalıyız.
