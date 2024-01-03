@@ -190,6 +190,8 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - İlk olarak **reducer içerisinde state'i değiştiren** kod yazabiliriz. (Arka planda **Immer** isimli bir kütüphane tarafından immutable olarak çevirilir)
 - İkincisi Action Creator'larımız **otomatik** olarak oluşturulur.
 - Üçüncüsü ise **otomatik olarak thunk middleware ve devtools** setup'u yapılır.
+- ReduxToolkit ile oluşturduğumuz Action Creator'lar sadece tek bir argüman alır.
+- Bunu düzeltmek için Action Creator içerisinde creator isminden hemen sonra : { } içerisinde bir prepare (parametreler) fonksiyonu oluşturup bu prepare fonksiyonu içerisinde bir obje döndürmeliyiz.
 
 ### ⚡ **Tek Sayfa Uygulamalar [ SPA ]**
 
