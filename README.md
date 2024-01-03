@@ -170,7 +170,27 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - Bu noktada "**MiddleWare**" adı verilen bir yardımcımız var. Dispatch yapıldıktan sonra, güncellenen state direkt store'a gitmek yerine bir ara birime uğrar. Burası "**Redux Thunks**" olarak isimlendirilir ve 3rd party bir pakettir. Asenkron tüm işlemler için Thunks kullanacağız.
 - İlk adım yükleme -> "**npm i redux-thunk**"
 - İkinci adım store içerisinde oluşturma -> "**const store = createStore(rootReducer, applyMiddleware(thunk));**"
-- Üçüncü adım Action Creator içerisinde kullanma.
+- Üçüncü adım **Action Creator** içerisinde kullanma.
+
+### 🟥 **Redux Geliştirici Araçları (DevTools)**
+
+- Geliştirici araçları için google üzerinden redux-devtools'u indireceğiz.
+- Daha sonra terminal içerisinde redux-devtools-extension yükleyeceğiz.
+- Bu eklentinin bize sağladığı bir fonksiyon olan {composeWithDevTools}'u import edeceğiz.
+- Ve son olarak applyMiddleware fonksiyonumuzu composeWithDevTools ile sarıyoruz. (Kullanımı bu şekilde)
+
+### 🟥 **Redux Toolkit**
+
+- Yükleme için 👉 **npm i @reduxjs/toolkit**
+- Daha önce oluşturduğumuz **createStore()** yerine **configureStore()** fonksiyonunu kullanacağız.
+- **configureStore()** otomatik şekilde reducer'larımızı **kombine** eder, **thunk middleware** ekler ve **devtools'u** oluşturur.
+- Redux kodu yazmanın daha **modern ve tercih edilen** yoludur.
+- Redux'un **en iyi uygulamalarını(En doğru şekilde)** kullanmaya zorlayan fikir odaklı bir yaklaşımdır.
+- Aynı sonuca **daha az kod** yazarak erişebilmemizi sağlar.
+- **3** büyük avantajı vardır.
+- İlk olarak **reducer içerisinde state'i değiştiren** kod yazabiliriz. (Arka planda **Immer** isimli bir kütüphane tarafından immutable olarak çevirilir)
+- İkincisi Action Creator'larımız **otomatik** olarak oluşturulur.
+- Üçüncüsü ise **otomatik olarak thunk middleware ve devtools** setup'u yapılır.
 
 ### ⚡ **Tek Sayfa Uygulamalar [ SPA ]**
 
