@@ -16,6 +16,7 @@ const accountSlice = createSlice({
     // Deposit Action Creator
     deposit(state, action) {
       state.balance += action.payload;
+      state.isLoading = false;
     },
     // Withdraw Action Creator
     withdraw(state, action) {
@@ -35,12 +36,16 @@ const accountSlice = createSlice({
 
         state.loan = action.payload.amount;
         state.loanPurpose = action.payload.purpose;
-        state.balance = state.balance + action.payload.amount;
+        state.balance += action.payload.amount;
       },
     },
 
+    convertingCurrency(state) {
+      state.isLoading = true;
+    },
+
     // Pay Loan Action Creator
-    payLoan(state, action) {
+    payLoan(state) {
       state.balance -= state.loan;
       state.loanPurpose = "";
       state.loan = 0;
@@ -49,7 +54,30 @@ const accountSlice = createSlice({
 });
 
 //! Now need to export reducer and action creators
-export const { deposit, withdraw, requestLoan, payload } = accountSlice.actions;
+export const { withdraw, requestLoan, payload } = accountSlice.actions;
+
+// Redux understands its our action creator by type "account/deposit",
+export function deposit(amount, currency) {
+  if (currency === "USD")
+    // if its USD nothing changes.
+    return { type: "account/deposit", payload: amount };
+
+  // To redux's understand we need a thunk, we need to return a function so it understands
+  // And redux allow us to use dispatch and getState(current state) cuz of its thunk
+  return async function (dispatch, getState) {
+    dispatch({ type: "account/convertingCurrency" });
+
+    // API call which controls value converting to USD
+    const res = await fetch(
+      `https://api.frankfurter.app/latest?amount=${amount}&from=${currency}&to=USD`
+    );
+    const data = await res.json();
+    console.log(data);
+    const converted = data.rates.USD;
+    // Return action
+    dispatch({ type: "account/deposit", payload: converted });
+  };
+}
 
 export default accountSlice.reducer;
 
