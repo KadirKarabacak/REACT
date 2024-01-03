@@ -9,17 +9,21 @@ function AccountOperations() {
   const [loanPurpose, setLoanPurpose] = useState("");
   const [currency, setCurrency] = useState("USD");
 
+  // Taking states from accountSlice
   const {
     loan,
     loanPurpose: currentLoanPurpose,
     isLoading,
   } = useSelector((store) => store.account);
 
+  // Taking dispatch function also
   const dispatch = useDispatch();
 
   function handleDeposit() {
     if (!depositAmount) return;
     dispatch(deposit(depositAmount, currency));
+
+    // Back to initials
     setDepositAmount("");
     setCurrency("USD");
   }
@@ -27,12 +31,16 @@ function AccountOperations() {
   function handleWithdrawal() {
     if (!withdrawalAmount) return;
     dispatch(withdraw(withdrawalAmount));
+
+    // Back to initial
     setWithdrawalAmount("");
   }
 
   function handleRequestLoan() {
     if (!loanAmount || !loanPurpose) return;
     dispatch(requestLoan(loanAmount, loanPurpose));
+
+    // Back to initials
     setLoanAmount("");
     setLoanPurpose("");
   }
