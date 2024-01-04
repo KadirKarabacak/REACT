@@ -205,7 +205,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - Bunu düzeltmek için Action Creator içerisinde creator isminden hemen sonra : { } içerisinde bir **prepare(parametreler)** fonksiyonu oluşturup bu prepare fonksiyonu içerisinde bir obje döndürmeliyiz.
 - Aynı zamanda bir **sideEffect** içeren bir durum oluşturmak için yine **prepare( )** fonksiyonundan faydalanıp bu fonksiyon içinde oluşturmalıyız. Direk olarak reducer içerisinde **yapamayız**.
 
-<img src="./README-img/redux-action-creator.png" width="120" height="120" />
+<img src="./README-img/redux-action-creator.png" width="400" height="225" />
 
 ### ⚡ **Tek Sayfa Uygulamalar [ SPA ]**
 
