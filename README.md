@@ -136,6 +136,17 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - Aynı zamanda daha declarative bir yol olan **<"Navigate"/>** componentini "to" özelliği ile kullanabiliriz.
 - **<"Navigate"/>** componentinin "**replace**" özelliğin geçmişte geriye gitmemizi sağlar.
 
+<img src="./README-img/old-react-router.png">
+
+### ↪ **Router v6.4 İçin Yeni Kullanım**
+
+- Router bağımlılığımızı yükledikten sonra **createBrowserRouter()** fonksiyonumuzu App.jsx içerisinde alıyoruz.
+- Bu fonksiyona bir **dizi [ ]** vererek içerisinde **her bir route** için bir obje oluşturup **path ve element** özelliklerini ekliyoruz.
+- Daha sonra **createBrowserRouter** fonksiyonunu **router** değişkenimize atayıp JSX içerisinde **RouterProvider** döndürüp prop olarak **router={ router }** veriyoruz.
+- React Router v6.4'ün bize sağladığı bir diğer özellik ise **data fetching** veya **data loading**.
+
+<img src="./README-img/new-react-router.png">
+
 ### 🌟 **Context API**
 
 - Birden fazla derinlikte bulunan child componentlere state geçirmek ve kullanmak istediğimizde bu state'i kullanmayacağımız componentler üzerinden geçirerek kod kirliliği ve hantal bir yapı oluşturmak yerine **direkt kullanmak istediğimiz child component'e** bu state'i vermemizi sağlayan yapıdır.
