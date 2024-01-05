@@ -81,7 +81,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 
 ### 🤏 **Use Reducer**
 
-- Bir useReducer örneği 👉 const [state, dispatch] = useReducer(reducer, initialState)
+- Bir useReducer örneği 👉 **const [state, dispatch] = useReducer(reducer, initialState)**
 - State oluşturmak için alternatif bir yoldur. useState'e göre anlaması ve uygulaması birazdaha zordur. Karışık state'ler, "**birbirleri ile ilişkili**" state'ler ve birden fazla state güncellemesi gereken durumlar için idealdir.
 - İlişkili state parçalarını bir "**obje**" içerisinde tutar.
 - useReducer state update'lemek için gerekli tüm mantığı içerisinde barındıran bir "**reducer fonksiyona**" ihtiyaç duyar. State mantığını component'lerden ayırır.
