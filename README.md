@@ -69,10 +69,10 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 
 ### ♦ **State'ler**
 
-- const [count, setCount] = useState(0) -- Bir state örneğidir. count bizim ekranda göstereceğimiz değer, setCount arka planda tıklama farklı etkilerle count değerini güncelleyen fonksiyon, ve 0 ise count'ımızın başlangıç değeridir.
+- 👉 **const [count, setCount] = useState(0)** Count bizim ekranda göstereceğimiz değer, setCount arka planda tıklama veya farklı etkilerle count değerini güncelleyen fonksiyon, ve 0 ise count'ımızın başlangıç değeridir.
 - Önceki state'e bağlı olarak yeni bir state türetilmesi istenen durumlarda " **setCount((anything)=> anything+1)** " gibi callback fonksiyonları içerisinde güncelleme yapmalıyız. State asenkron şekilde işlediğinden callback fonksiyon içerisinde çağırmaz isek state hep aynı kalır.
 - useState gibi farklı React hook'ları da mevcuttur. Bunlardan bazıları useEffect, useReducer vb. useEffect componentin dışarıyla olan iletişimini kontrol eder örneğin HTTP request. İlerleyen süreçte useEffect yerine "**React Query**" kullanarak HTTP isteklerini kullanacağız. useReducer ise useState'e bir alternatiftir. Her değişmesi istediğimiz durum için bir useState oluşturmak yerine tamamını useReducer içerisinde güncelleyebiliriz.
-- Hook'ları asla bir kondisyona bağlı yazmamalıyız. Globalde erken return'ler yapmamalıyız. Tüm hookların fiber tree adı verdiğimiz ağaçta bir yeri vardır. Kondisyonel olarak bunun değişmesi programı bozar.
+- Hook'ları asla bir **kondisyona bağlı** yazmamalıyız. Globalde **erken return'ler** yapmamalıyız. Tüm hookların fiber tree adı verdiğimiz ağaçta bir yeri vardır. Kondisyonel olarak bunun değişmesi programı bozar.
 - Kontrol edilmiş elementler olarak adlandırdığımız yapılar form elemanlarıdır. Input, select, range vb. elementleri kontrolümüze alıp her girilen değeri hafızaya kaydetmesini ve ekrana göstermesini sağlayabiliriz.
 - State Management kavramı ne zaman yeni bir state oluşturmamız, ne zaman türetilmiş state'ler kullanmamız ve bir state'in nereye konumlandırmamız gerektiğini ifade eder.
 - Derived State ( Türetilmiş durum ) bir state değişkenine bağlı olarak türetilmiş sabit değişkendir. Bazı durumlarda yeni bir state üretmek yerine varolan'dan yenilerini türetmemizi sağlar.
@@ -81,7 +81,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 
 ### 🤏 **Use Reducer**
 
-- Bir useReducer örneği 👉 **const [state, dispatch] = useReducer(reducer, initialState)**
+- 👉 **const [state, dispatch] = useReducer( reducer, initialState )**
 - State oluşturmak için alternatif bir yoldur. useState'e göre anlaması ve uygulaması birazdaha zordur. Karışık state'ler, "**birbirleri ile ilişkili**" state'ler ve birden fazla state güncellemesi gereken durumlar için idealdir.
 - İlişkili state parçalarını bir "**obje**" içerisinde tutar.
 - useReducer state update'lemek için gerekli tüm mantığı içerisinde barındıran bir "**reducer fonksiyona**" ihtiyaç duyar. State mantığını component'lerden ayırır.
