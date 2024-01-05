@@ -34,11 +34,11 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - **"Utility-first CSS"** dediğimiz yapıya uygun olarak <a href="https://tailwindcss.com/docs/installation">**"Tailwindcss"**</a> kullanarak JSX içerisinde <a href="https://getbootstrap.com/">Bootstrap</a>'te olduğu gibi sabit className'ler ile yapabiliriz.
 - Alternatif olarak hiç CSS yazmadan bazı arayüz kütüphaneleri olan **"<a href="https://mui.com/">MUI</a>, <a href="https://chakra-ui.com/">Chakra UI</a>, <a href="https://mantine.dev/">Mantine"</a>** gibi hazır component yapısı sunan kütüphaneleri kullanabiliriz.
 
-### **Tailwind CSS**
+### 🌫 **Tailwind CSS**
 
-- Tailwind kurulumu için <a href= "https://tailwindcss.com/docs/guides/vite?ref=jonas.io"> Tailwind Installation</a>
-- Eğer yoksa sonrasında VS Code içerisinde tailwindcss eklentisini yükleyelim. Böylece verdiğimiz class özelliklerinin ne ifade ettiğini görebiliriz ve otomatik tamamlama elde ederiz.
-- Aynı şekilde daha düzenli bir görünüm için tailwind prettier extension yükleyebiliriz. <a href="https://github.com/tailwindlabs/prettier-plugin-tailwindcss">Tailwind Prettier Extension </a>
+- Tailwind kurulumu için **<a href= "https://tailwindcss.com/docs/guides/vite?ref=jonas.io">Tailwind Installation</a>**
+- Eğer yoksa sonrasında VS Code içerisinde **tailwindcss eklentisini** yükleyelim. Böylece verdiğimiz class özelliklerinin **ne ifade ettiğini** görebiliriz ve **otomatik tamamlama** elde ederiz.
+- Aynı şekilde daha düzenli bir görünüm için tailwind **prettier extension** yükleyebiliriz. **<a href="https://github.com/tailwindlabs/prettier-plugin-tailwindcss">Tailwind Prettier Extension</a>**
 
 ### 💻 **Render'lama**
 
