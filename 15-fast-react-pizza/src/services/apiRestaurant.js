@@ -33,6 +33,8 @@ export async function createOrder(newOrder) {
 
     if (!res.ok) throw Error();
     const { data } = await res.json();
+
+    // We returning data to after submit we redirect to that id
     return data;
   } catch {
     throw Error("Failed creating your order");
