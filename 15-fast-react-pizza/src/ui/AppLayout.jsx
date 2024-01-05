@@ -11,14 +11,17 @@ function AppLayout() {
   const isLoading = navigation.state === "loading";
 
   return (
-    <div className="layout">
+    <div className="grid h-screen grid-rows-[auto_1fr_auto]">
       {/* Shows loader before data arrived */}
       {isLoading && <Loader />}
+
       <Header />
-      <main>
-        {/* To use child Routes its Outlet! */}
-        <Outlet />
-      </main>
+      <div className="overflow-scroll">
+        <main className="mx-auto max-w-3xl">
+          {/* To use child Routes its Outlet! */}
+          <Outlet />
+        </main>
+      </div>
       <CartOverview />
     </div>
   );
