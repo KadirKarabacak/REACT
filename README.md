@@ -147,6 +147,23 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 
 <img src="./README-img/new-react-router.png">
 
+### ↪ **Router Loader**
+
+- Bize **sadece o sayfaya gidildiğinde** data fetch yapmamızı sağlayan bir yapıdır.
+- Bu yapı useEffect'te olduğu gibi **( önce component renderlanması ve sonra veri yakalanması )** değil, component renderlanması ve veri yakalanması **aynı anda** yapılır.
+- 3 Adımda oluşturulur.
+- İlk adım bir **Loader** oluşturmamız ve içerisinden istediğimiz veriyi return etmemiz gerek.
+- İkinci adım oluşturulan loader'ı yayma ( Provide ). Oluşturduğumuz loader'ı **export** edip Route'ları oluşturduğumuz yerde verinin yakalanmasını istediğimiz sayfaya **loader prop'u** ekleyerek loaderımızı yazıyoruz.
+- Üçüncü adım veriyi kullanma. Yaydığımız veriyi, o sayfanın component'ine giderek içerisinde **useLoaderData()** fonksiyonu kullanarak verilerimizi alıp bir değişkene atıyoruz. Ve artık verilerimize sadece sayfaya gidildiğinde sahibiz.
+- Aynı zamanda error durumu için herbir Route'a **errorElement** belirleyebilir ve bu element içerisinde **useRouteError()** fonksiyonu ile hatayı ele alabiliriz.
+
+### ↪ **Router Action**
+
+- Action yöntemini kullanmak için submit için kullandığımız form elementini react-router'dan gelen **"Form"** elementine çeviriyoruz ve method özelliğine **"POST"** veriyoruz.
+- Aynı dosya içerisinde **async bir "action"** fonksiyonu oluşturuyoruz ve parametre olarak **{ request }** alıyoruz.
+- 👉 **const formData = await request.formData** kod satırı ile request'imiz içerisinden form bilgilerimizi alıyoruz.
+- 👉 **const data = Object.fromEntries(formData)** kod satırıyla verimizi bir **objeye çeviriyoruz** ve verimizi döndürüyoruz.
+
 ### 🌟 **Context API**
 
 - Birden fazla derinlikte bulunan child componentlere state geçirmek ve kullanmak istediğimizde bu state'i kullanmayacağımız componentler üzerinden geçirerek kod kirliliği ve hantal bir yapı oluşturmak yerine **direkt kullanmak istediğimiz child component'e** bu state'i vermemizi sağlayan yapıdır.
