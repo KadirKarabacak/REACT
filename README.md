@@ -228,6 +228,8 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - ReduxToolkit ile oluşturduğumuz Action Creator'lar sadece **tek bir argüman alır**.
 - Bunu düzeltmek için Action Creator içerisinde creator isminden hemen sonra : { } içerisinde bir **prepare(parametreler)** fonksiyonu oluşturup bu prepare fonksiyonu içerisinde bir obje döndürmeliyiz.
 - Aynı zamanda bir **sideEffect** içeren bir durum oluşturmak için yine **prepare( )** fonksiyonundan faydalanıp bu fonksiyon içinde oluşturmalıyız. Direk olarak reducer içerisinde **yapamayız**.
+- Reducer'ımızda action creatorlerimiz içerisinde **verilerimizi manipule edebiliriz**. Arka planda tüm bunlar manipule edilmeyen bir kod yapısına çeviriliyor.
+- 👉 **state.cart.push(action.payload)**
 
 <img src="./README-img/redux-action-creator.png" width="400" height="225" />
 
