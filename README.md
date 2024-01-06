@@ -36,10 +36,10 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 
 ### 🌫 **Tailwind CSS**
 
-- Tailwind kurulumu için <a href= "https://tailwindcss.com/docs/guides/vite?ref=jonas.io"> Tailwind Installation</a>
-- Eğer yoksa sonrasında VS Code içerisinde tailwindcss eklentisini yükleyelim. Böylece verdiğimiz class özelliklerinin ne ifade ettiğini görebiliriz ve otomatik tamamlama elde ederiz.
-- Aynı şekilde daha düzenli bir görünüm için tailwind prettier extension yükleyebiliriz. <a href="https://github.com/tailwindlabs/prettier-plugin-tailwindcss">Tailwind Prettier Extension </a>
-- <a href="https://tailwindcss.com/docs/responsive-design"> Tailwind Responsive Design</a>
+- Tailwind kurulumu için **<a href= "https://tailwindcss.com/docs/guides/vite?ref=jonas.io"> Tailwind Installation</a>**
+- Eğer yoksa sonrasında VS Code içerisinde **tailwindcss eklentisini** yükleyelim. Böylece verdiğimiz class özelliklerinin ne ifade ettiğini görebiliriz ve **otomatik tamamlama** elde ederiz.
+- Aynı şekilde daha düzenli bir görünüm için **tailwind prettier extension** yükleyebiliriz. **<a href="https://github.com/tailwindlabs/prettier-plugin-tailwindcss">Tailwind Prettier Extension </a>**
+- **<a href="https://tailwindcss.com/docs/responsive-design"> Tailwind Responsive Design</a>**
 
 ### 💻 **Render'lama**
 
