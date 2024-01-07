@@ -230,6 +230,10 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - Aynı zamanda bir **sideEffect** içeren bir durum oluşturmak için yine **prepare( )** fonksiyonundan faydalanıp bu fonksiyon içinde oluşturmalıyız. Direk olarak reducer içerisinde **yapamayız**.
 - Reducer'ımızda action creatorlerimiz içerisinde **verilerimizi manipule edebiliriz**. Arka planda tüm bunlar manipule edilmeyen bir kod yapısına çeviriliyor.
 - 👉 **state.cart.push(action.payload)**
+- **useFetcher( )** bir başka sayfadaki veriyi o sayfaya gitmeden de kullanabilmemizi sağlayan bir fonksiyondur.
+- 👉 **const fetcher = useFetcher( )**
+- Daha sonra bu fetcher'ı kullanabilmek için **fetcher.load( '/menu' )** bilgiyi almak istediğimiz route'ı yazıyoruz ve veri **fetcher içerisinde** saklanmış oluyor.
+- **Fetcher**'da navigation gibi farklı durum verilerine sahiptir. **"idle", "loading"** etc.
 
 <img src="./README-img/redux-action-creator.png" width="400" height="225" />
 
