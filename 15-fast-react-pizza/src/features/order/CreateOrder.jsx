@@ -6,37 +6,23 @@ const isValidPhone = (str) =>
   );
 
 import { Form, redirect, useActionData, useNavigation } from 'react-router-dom';
-import { createOrder } from '../../services/apiRestaurant';
-import Button from '../../ui/Button';
 import { useSelector } from 'react-redux';
 
-const fakeCart = [
-  {
-    pizzaId: 12,
-    name: 'Mediterranean',
-    quantity: 2,
-    unitPrice: 16,
-    totalPrice: 32,
-  },
-  {
-    pizzaId: 6,
-    name: 'Vegetale',
-    quantity: 1,
-    unitPrice: 13,
-    totalPrice: 13,
-  },
-  {
-    pizzaId: 11,
-    name: 'Spinach and Mushroom',
-    quantity: 1,
-    unitPrice: 15,
-    totalPrice: 15,
-  },
-];
+import { createOrder } from '../../services/apiRestaurant';
+import Button from '../../ui/Button';
+import { clearCart, getCart, getTotalCartPrice } from '../cart/cartSlice';
+import EmptyCart from '../cart/EmptyCart';
+import store from '../../store';
+import { formatCurrency } from '../../utils/helpers';
+import { useState } from 'react';
 
 function CreateOrder() {
+  // Priority checkbox adds + 20% to totalCartPrice
+  const [withPriority, setWithPriority] = useState(false);
+
   // Taking username from store again
   const username = useSelector((state) => state.user.username);
+
   // Disable button when it is already submitting
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
@@ -44,8 +30,15 @@ function CreateOrder() {
   // To access action data need useActionData() which react-router feature
   const formErrors = useActionData();
 
-  // const [withPriority, setWithPriority] = useState(false);
-  const cart = fakeCart;
+  // Get Cart info to handle empty cart
+  const cart = useSelector(getCart);
+
+  // Show total price into order button
+  const totalCartPrice = useSelector(getTotalCartPrice);
+  const priorityPrice = withPriority ? totalCartPrice * 0.2 : 0;
+  const totalPrice = totalCartPrice + priorityPrice;
+
+  if (!cart.length) return <EmptyCart />;
 
   return (
     <div className="px-4 py-6">
@@ -95,8 +88,8 @@ function CreateOrder() {
             type="checkbox"
             name="priority"
             id="priority"
-            // value={withPriority}
-            // onChange={(e) => setWithPriority(e.target.checked)}
+            value={withPriority}
+            onChange={(e) => setWithPriority(e.target.checked)}
           />
           <label className="font-medium" htmlFor="priority">
             Want to yo give your order priority?
@@ -104,10 +97,12 @@ function CreateOrder() {
         </div>
 
         <div>
-          {/* A hidden input to take fakeCart data, doesnt matter where it is */}
+          {/* A hidden input to take cart data, doesnt matter where it is */}
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
           <Button type="primary" disabled={isSubmitting}>
-            {isSubmitting ? 'Placing order...' : 'Order now'}
+            {isSubmitting
+              ? 'Placing order...'
+              : `Order now ${formatCurrency(totalPrice)}`}
           </Button>
         </div>
       </Form>
@@ -127,7 +122,7 @@ export async function action({ request }) {
   const order = {
     ...data,
     cart: JSON.parse(data.cart),
-    priority: data.priority === 'on',
+    priority: data.priority === 'true',
   };
 
   //! Handle error messages
@@ -142,6 +137,9 @@ export async function action({ request }) {
   // createOrder returns new data, so we can redirect URL to that order
   // but we can not use navigate, because it works only in components, not functions
   const newOrder = await createOrder(order);
+
+  //! After order complated, we need to clean cart, but no way to dispatch directyl so we use that trick, calling whole store.
+  store.dispatch(clearCart());
 
   // Redirect comes from react-router, returns a Response
   return redirect(`/order/${newOrder.id}`);
