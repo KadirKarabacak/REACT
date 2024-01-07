@@ -233,6 +233,11 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 
 <img src="./README-img/redux-action-creator.png" width="400" height="225" />
 
+- Toolkit kullanımı ile bir "**Thunk**" oluşturmak ve kullanmak istersek **createAsyncThunk()** fonksiyonuna başvurmalıyız. Bu fonksiyon iki argüman alır. Birincisi **action ismi**, ikinci argüman ise **reducer için payload olan** bir asenkron fonksiyon.
+- Daha sonra reducer'larımızı oluşyurduğumuz slice içinde reducers'ın dışında **extraReducers ( builder )** ekleyip ele almak istediğimiz durumları **builder.addCase( )** ile ele alıyoruz.
+
+<img src="./README-img/modern-thunk.png" width="400" height="225" />
+
 ### ⚡ **Tek Sayfa Uygulamalar [ SPA ]**
 
 - Uygulama baştan sona client (tarayıcı) tarafında çalıştırılır.
