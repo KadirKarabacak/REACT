@@ -28,12 +28,15 @@ const cartSlice = createSlice({
       item.quantity--;
       item.totalPrice = item.quantity * item.unitPrice;
 
-      // Deneme
-      if (item.quantity <= 0) {
-        state.cart = state.cart.filter(
-          (item) => item.pizzaId !== action.payload,
-        );
-      }
+      // If quantity is 0, then delete the item
+      // if (item.quantity <= 0) {
+      //   state.cart = state.cart.filter(
+      //     (item) => item.pizzaId !== action.payload,
+      //   );
+      // }
+
+      // Or we can call our another action creator works as same
+      if (item.quantity <= 0) cartSlice.caseReducers.deleteItem(state, action);
     },
     clearCart: (state) => {
       state.cart = [];
