@@ -159,30 +159,30 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - Bize **sadece o sayfaya gidildiğinde** data fetch yapmamızı sağlayan bir yapıdır.
 - Bu yapı useEffect'te olduğu gibi **( önce component renderlanması ve sonra veri yakalanması )** değil, component renderlanması ve veri yakalanması **aynı anda** yapılır.
 - 3 Adımda oluşturulur.
-- İlk adım bir **Loader** oluşturmamız ve içerisinden istediğimiz veriyi return etmemiz gerek.
-- İkinci adım oluşturulan loader'ı yayma ( Provide ). Oluşturduğumuz loader'ı **export** edip Route'ları oluşturduğumuz yerde verinin yakalanmasını istediğimiz sayfaya **loader prop'u** ekleyerek loaderımızı yazıyoruz.
+- İlk adım bir **Loader** oluşturmamız ve içerisinden istediğimiz veriyi **return** etmemiz gerek.
+- İkinci adım oluşturulan **loader'ı yayma ( Provide )**. Oluşturduğumuz loader'ı **export** edip Route'ları oluşturduğumuz **App.jsx'te** verinin yakalanmasını istediğimiz sayfaya **loader prop'u** ekleyerek loaderımızı yazıyoruz.
 - Üçüncü adım veriyi kullanma. Yaydığımız veriyi, o sayfanın component'ine giderek içerisinde **useLoaderData()** fonksiyonu kullanarak verilerimizi alıp bir değişkene atıyoruz. Ve artık verilerimize sadece sayfaya gidildiğinde sahibiz.
 - Aynı zamanda error durumu için herbir Route'a **errorElement** belirleyebilir ve bu element içerisinde **useRouteError()** fonksiyonu ile hatayı ele alabiliriz.
 
 ### ↪ **Router Action**
 
 - Action yöntemini kullanmak için submit için kullandığımız form elementini react-router'dan gelen **"Form"** elementine çeviriyoruz ve method özelliğine **"POST"** veriyoruz.
-- Aynı dosya içerisinde **async bir "action"** fonksiyonu oluşturuyoruz ve parametre olarak **{ request }** alıyoruz.
-- 👉 **const formData = await request.formData** kod satırı ile request'imiz içerisinden form bilgilerimizi alıyoruz.
+- Aynı dosya içerisinde **async bir "action"** fonksiyonu oluşturuyoruz ve parametre olarak **{ request, params }** alıyoruz. İhtiyacımıza göre kullanabiliriz.
+- 👉 **const formData = await request.formData** kod satırı ile request'imiz içerisinden form bilgilerimizi alıyoruz. Form içerisinde **input alanları** olduğunda gereklidir.
 - 👉 **const data = Object.fromEntries(formData)** kod satırıyla verimizi bir **objeye çeviriyoruz** ve verimizi döndürüyoruz.
-- Ne zaman bir API'a **PATCH** isteği gönderen bir action oluştursak, React-router **re-validation( yeniden-doğrulama )** adı verilen bir duruma sahiptir. Verinin **action'a bağlı olarak değiştiğini** bilir ve arka planda otomatik olarak **re-fetch( yeniden-veri yakalaması )** yapar ve bu yeni veriler ile sayfayı tekrar renderlar.
+- Ne zaman bir API'a **PATCH** isteği gönderen bir action oluştursak, React-router **re-validation( yeniden-doğrulama )** adı verilen bir duruma sahiptir. Verinin **action'a bağlı olarak değiştiğini** bilir ve arka planda otomatik olarak **re-fetch( yeniden-veri yakalaması )** yapar ve bu yeni veriler ile sayfayı **tekrar renderlar**.
 - Bu işlemi 👉 **<"fetcher.Form"> { Button etc.. } </"fetcher.Form">** ile yaptığımız için React-Router bunu anlıyor.
 
 ### 🌟 **Context API**
 
-- Birden fazla derinlikte bulunan child componentlere state geçirmek ve kullanmak istediğimizde bu state'i kullanmayacağımız componentler üzerinden geçirerek kod kirliliği ve hantal bir yapı oluşturmak yerine **direkt kullanmak istediğimiz child component'e** bu state'i vermemizi sağlayan yapıdır.
+- Birden fazla **derinlikte bulunan child componentlere** state geçirmek ve kullanmak istediğimizde bu state'i kullanmayacağımız componentler üzerinden geçirerek **kod kirliliği ve hantal bir yapı** oluşturmak yerine **direkt kullanmak istediğimiz child component'e** bu state'i vermemizi sağlayan yapıdır.
 - Basitçe **Prop Drilling** problemimize net bir çözümdür.
-- Ne zaman provider aracılığı ile ilettiğimiz state güncellenirse, bu değeri kullanan child componentler'de yeniden renderlanır.
+- Ne zaman provider aracılığı ile ilettiğimiz **state güncellenirse**, bu değeri kullanan child componentler'de yeniden renderlanır.
 - State'imizi uygulamamızın baştan sonuna globalde yayınlar.
 - 3 Aşamadan oluşur.
-- İlk aşama createContext() kullanarak geçireceğimiz propların isminde bir provider oluşturmak. Örn. 👉 "**const Posts = createContext()**". createContext bir **component** döndürür, bu sebeple değişken ismimiz büyük olmalıdır.
-- İkinci aşama JSX'imizi "**Posts.Provider**" componenti ile sarmak ve value prop'una geçirmek istediğimiz tüm propları yazmak.
-- Üçüncü ve son aşama Consumers (Tüketiciler) provider tarafından yayınlanan "**context değerini okuyan**" tüm componentlerdir.
+- İlk aşama **createContext( )** kullanarak geçireceğimiz propların isminde bir provider oluşturmak. Örn. 👉 "**const Posts = createContext()**". createContext bir **component** döndürür, bu sebeple değişken ismimiz büyük olmalıdır.
+- İkinci aşama JSX'imizi "**Posts.Provider**" componenti ile sarmak ve **value prop'una** geçirmek istediğimiz tüm propları yazmak.
+- Üçüncü ve son aşama Consumers (Tüketiciler) provider tarafından yayınlanan "**context değerini okuyan**" tüm componentlerde import etme.
 
 ### 🟥 **Redux**
 
