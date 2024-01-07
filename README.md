@@ -170,6 +170,8 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - Aynı dosya içerisinde **async bir "action"** fonksiyonu oluşturuyoruz ve parametre olarak **{ request }** alıyoruz.
 - 👉 **const formData = await request.formData** kod satırı ile request'imiz içerisinden form bilgilerimizi alıyoruz.
 - 👉 **const data = Object.fromEntries(formData)** kod satırıyla verimizi bir **objeye çeviriyoruz** ve verimizi döndürüyoruz.
+- Ne zaman bir API'a **PATCH** isteği gönderen bir action oluştursak, React-router **re-validation( yeniden-doğrulama )** adı verilen bir duruma sahiptir. Verinin **action'a bağlı olarak değiştiğini** bilir ve arka planda otomatik olarak **re-fetch( yeniden-veri yakalaması )** yapar ve bu yeni veriler ile sayfayı tekrar renderlar.
+- Bu işlemi 👉 **<"fetcher.Form"> { Button etc.. } </"fetcher.Form">** ile yaptığımız için React-Router bunu anlıyor.
 
 ### 🌟 **Context API**
 
