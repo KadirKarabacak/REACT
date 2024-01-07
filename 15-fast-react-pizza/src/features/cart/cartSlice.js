@@ -59,3 +59,13 @@ export const getTotalCartPrice = (state) =>
   state.cart.cart.reduce((acc, item) => acc + item.totalPrice, 0);
 
 export const getCart = (state) => state.cart.cart;
+
+/**
+ * @param {id} id Takes id as parameter
+ * @returns 1 | 0
+ * 1) Finding which item.pizzaId === id
+ * 2) And if it exists, then take quantity
+ * 3) if not return 0
+ */
+export const getCurrentQuantityById = (id) => (state) =>
+  state.cart.cart.find((item) => item.pizzaId === id)?.quantity ?? 0;
