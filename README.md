@@ -54,6 +54,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - 👉 **const GlobalStyles = createGlobalStyle``** ve sonrasında export default GlobalStyles
 - Template literals kullandığımız için içerisinde **Javascript mod'a** geçip kondisyonel stilleme yapabiliriz.
 - Her component için default bir prop belirtebiliriz. 👉 **Component.defaultProps = { ... }** gibi.
+- Aynı zamanda bir kütüphane aracılığı ile aldığımız componentleri stillendirmek için ise **styled(NavLink)** gibi direkt bir component verebiliriz.
 
 ### 💻 **Render'lama**
 
