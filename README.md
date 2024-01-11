@@ -41,17 +41,25 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - Aynı şekilde daha düzenli bir görünüm için **tailwind prettier extension** yükleyebiliriz. **<a href="https://github.com/tailwindlabs/prettier-plugin-tailwindcss">Tailwind Prettier Extension </a>**
 - **<a href="https://tailwindcss.com/docs/responsive-design"> Tailwind Responsive Design</a>**
 
-## **Styled Components**
+## 🖌 **Styled Components**
 
-- Setup 👉 **npm i styled-components**, then import **styled** from styled-components.
-- And to use 👉 **const H1 = styled.h1`CSS`** for example. It returns a component.
-- Styled components allows us to write CSS right inside JS component files.
+- Setup 👉 **npm i styled-components**, sonra import **styled** from styled-components.
+- Kullanımı 👉 **const H1 = styled.h1`CSS`** örneğin. Bu kod bir component döndürür.
+- Aynı componenti birden fazla yerde kullanıp h1 dışında bir element insertlemek istersek component'e **as** prop'u vererek h2-h3 veya herhangi bir html elementini yazabiliriz.
+- Styled components bizlere JS dosyalarımız içerisinde CSS yazmamıza olanak verir.
+- Styled components **sadece o component**'e özgüdür. Çakışmaları CSS.modules'de olduğu gibi engeller.
+- Daha kolay bir kullanım için VS Code içerisinde **styled-components eklentisini** de yüklemeliyiz. Otomatik tamamlama vb özellikler sağlıyor.
+- Aynı zamanda styled components ile oluşturduğumuz bir component her türlü prop'u alabilir. Örneğin bir button onclick propu aldığında içerisine önceki gibi tekrar bir button html elementi oluşturmamıza gerek kalmaz.
+- **Global CSS özellikleri** belirtmek için ise styles klasörümüz altında **GlobalStyles.js** dosyası oluşturup, içerisinde **createGlobalStyle``** fonksiyonunu çağırarak içerisine tüm CSS kodlarımızı yazabiliriz.
+- 👉 **const GlobalStyles = createGlobalStyle``** ve sonrasında export default GlobalStyles
+- Template literals kullandığımız için içerisinde **Javascript mod'a** geçip kondisyonel stilleme yapabiliriz.
+- Her component için default bir prop belirtebiliriz. 👉 **Component.defaultProps = { ... }** gibi.
 
 ### 💻 **Render'lama**
 
 - Bir **"component"** basitçe kullanıcı arayüzünü oluşturan lego parçalarına benzetilebilir. Her zaman büyük harfle başlamalıdır **[ function Header() ]**
 - JSX bir component'in içerisinden döndürdüğümüz **"HTML benzeri"** bir yapıdır. İçerisinde **"JS ve CSS"** kullanmamıza olanak sağlar.
-- **"Kondisyonel renderlama**" bir koşula bağlı olarak bir DOM elementini veya bir component'i gizleyip gösterebilir. State değişimine bağlı olarak arayüzde farklı görünümler oluştururuz.
+- **Kondisyonel renderlama**" bir koşula bağlı olarak bir DOM elementini veya bir component'i gizleyip gösterebilir. State değişimine bağlı olarak arayüzde farklı görünümler oluştururuz.
 - Birden fazla bileşen renderlamak istediğimizde döngüler kullanırız. Örneğin .map() methodu React'ta birçok noktada kullanılır.
 - Döngüler kullanarak renderladığımız bileşenlere **"key özelliği**" vermemiz gerekir. Key özelliği **"yeri ve içeriği değişmeyen**" elemanların tekrar tekrar renderlanmasını engeller ve **"performansı arttırır**".
 - **"React Fragment**" olarak adlandırdığımız yapı JSX'te bir parent element yerine birden fazla kardeş element renderlamak istediğimizde bu elementleri çevreleyen bir parent oluşturur. Yeni bir **"div oluşturmaktan kaçınmak**" istediğimizde tercihimizdir. [ <>, </> ]
