@@ -259,6 +259,22 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 
 <img src="./README-img/modern-thunk.png" width="400" height="225" />
 
+### 💫 **React Query**
+
+- Setup 👉 **npm i @tanstack/react-query**
+- Kullanımı **ContextAPI veya Redux-Toolkit** ile benzerdir.
+- İlk adım olarak bir değişken oluşturup **new QueryClient( {} )** fonksiyonunu çağırıyoruz ve istersek içerisine options yazabiliriz.
+- 👉 **const queryClient = new QueryClient( { } )**
+- Aynı zamanda kendi geliştiri kiti vardır. Yüklemek için 👉 **npm i @tanstack/react-query/devtools**
+- React-Query güçlü bir remote-state düzenlemesi sağlayan kütüphanedir.
+- Çoğu özelliği bakımından daha az kod yazmamızı sağlar.
+- Yakaladığı verileri cache'e alır, bu sayede aynı verileri farklı component'ler üzerinde kullanabilmemize olanak sağlar ve gereksiz refetch yapmaz.
+- Otomatik olarak bize "loading" ve "error" durumlarını verir.
+- Otomatik refetch sayesinde durumu senkronize tutar. Aynı anda açık birden fazla uygulama olduğunda hepsinde aynı anda etki gösterir.
+- Pre-fetching özelliği vardır. Ekranda gösterilmeden önce de diğer verileri yakalar. Örneğin pagination. Sadece o anki sayfayı değil, diğer tüm sayfaları yakalar.
+- Remote state'i güncellemek kolaydır.
+- Offline desteği vardır. Bir kere cache'e alındıktan sonra kullanıcı interneti olmadığı durumda bile uygulamanın alanlarına erişim sağlayabilir.
+
 ### ⚡ **Tek Sayfa Uygulamalar [ SPA ]**
 
 - Uygulama baştan sona client (tarayıcı) tarafında çalıştırılır.
@@ -312,6 +328,16 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 ### 🗃 **Local Storage**
 
 - Ugulamalarımıza local storage eklemek için useEffect kullanabiliriz. [] boş bir bağımlılık dizisi program her açıldığında local storage'daki kayıtları getirir.
+
+### **SUPABASE**
+
+- <a href="https://supabase.com/">Supa Base </a>
+- Geliştiricilerin kolayca bir back-end Postgres database oluşturmalarına izin veren bir uygulamadır.
+- Otomatik olarak bir database ve bir API oluşturur, böylece kolayca request atıp verilerimizi alabiliriz.
+- Back-end geliştirmeye ihtiyaç duymaz.
+- Hızlı bir başlangıç için harikadır.
+- Sadece bir API olmakla kalmayıp, kolay kullanımlı, kullanıcı güvenliği ve dosya deposu sunar.
+- 👉 **npm install --save @supabase/supabase-js**
 
 ### 🖊 **Arka planda nasıl çalışır & Bazı değerli bilgiler**
 
