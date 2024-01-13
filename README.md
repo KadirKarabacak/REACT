@@ -399,3 +399,14 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - <a href="https://t.ly/BX59P">🅰 Reusable-Flexible Text Expander Component</a>
 - <a href="https://t.ly/H3LuI">💲 Currency-Converter </a>
 - <a href="https://t.ly/LI6sf">🏦 useReducer Bank </a>
+
+### **Commit Examples**
+
+- feat: add new feature
+- fix: fix bug
+- docs: update README.md
+- style: fix formatting
+- refactor: refactor code
+- perf: improve performance
+- chore: update dependencies
+- revert: revert to commit 123456
