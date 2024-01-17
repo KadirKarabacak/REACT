@@ -1,6 +1,6 @@
 # <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="30" height="30" /> REACT
 
-Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
+Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi birikimimi tutuyorum.
 
 ## 🖊 **Şimdiye kadar neler öğrendim?**
 
