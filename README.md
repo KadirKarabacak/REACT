@@ -266,13 +266,16 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 - İlk adım olarak bir değişken oluşturup **new QueryClient( {} )** fonksiyonunu çağırıyoruz ve istersek içerisine options yazabiliriz.
 - 👉 **const queryClient = new QueryClient( { } )**
 - Aynı zamanda kendi geliştiri kiti vardır. Yüklemek için 👉 **npm i @tanstack/react-query/devtools**
-- React-Query güçlü bir remote-state düzenlemesi sağlayan kütüphanedir.
-- Çoğu özelliği bakımından daha az kod yazmamızı sağlar.
+- Oluşturduğumuz queryClient'i başka bir dosyada kullanmak için **useQueryClient( )** fonksiyonunu çağırabiliriz.
+- Verimizi mutsayona uğratmak, birşeyler eklemek yada silmek istediğimizde **useMutation( )** fonksiyonunu kullanıyoruz. Bu fonksiyon içerisinde **mutationFn, mutationKey, onSuccess, onError** gibi farklı özellikleri kullanabiliriz.
+- Mutasyona uğratma başarılı olduğunda onSuccess fonksiyonu içerisinde **queryClient.invalideQueries(" databaseTablomuzunIsmi ")** kullanarak arayüzümüzü değişimden etkilendikten hemen sonra yeniden renderlayabiliriz.
+- React-Query güçlü bir **remote-state** düzenlemesi sağlayan kütüphanedir.
+- Çoğu özelliği bakımından **daha az kod** yazmamızı sağlar.
 - Yakaladığı verileri cache'e alır, bu sayede aynı verileri farklı component'ler üzerinde kullanabilmemize olanak sağlar ve gereksiz refetch yapmaz.
-- Otomatik olarak bize "loading" ve "error" durumlarını verir.
+- Otomatik olarak bize **"loading" ve "error"** durumlarını verir.
 - Otomatik refetch sayesinde durumu senkronize tutar. Aynı anda açık birden fazla uygulama olduğunda hepsinde aynı anda etki gösterir.
-- Pre-fetching özelliği vardır. Ekranda gösterilmeden önce de diğer verileri yakalar. Örneğin pagination. Sadece o anki sayfayı değil, diğer tüm sayfaları yakalar.
-- Remote state'i güncellemek kolaydır.
+- **Pre-fetching** özelliği vardır. Ekranda gösterilmeden önce de diğer verileri yakalar. Örneğin pagination. Sadece o anki sayfayı değil, diğer tüm sayfaları yakalar.
+- **Remote state'i güncellemek** kolaydır.
 - Offline desteği vardır. Bir kere cache'e alındıktan sonra kullanıcı interneti olmadığı durumda bile uygulamanın alanlarına erişim sağlayabilir.
 
 ### ⚡ **Tek Sayfa Uygulamalar [ SPA ]**
@@ -364,30 +367,38 @@ Bu depoda toplu olarak "React" ile yaptığım tüm işlerimi tutuyorum.
 
 ### 📜 React Hakkında Pratik Özetler <img style="width: 25px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png?20220125121207">✍
 
-#### 🧩 Component'ler Hakkında
+### 🧩 Component'ler Hakkında
 
 - Bir component bir şema gibidir. Arayüzün bir parçasını oluşturmak için vardır
 - Ne zaman bir component kullansak React bir component instance oluşturur ve bu instance props,state ve daha fazlasını içerebilir.
 - Asla bir component içerisinde ikinci bir component tanımlama! Bunu yapmak içerdeki componenti her zaman yeniden renderlar. Bu da parent'i tekrar renderlar. React nested component'i her zaman yeni olarak görür. Performans açısından berbattır.
 
-#### ⏳ Render'lama Hakkında
+### **⏳ Render'lama Hakkında**
 
 - Renderlama tamamen component fonksiyonlarını çağırma ve hangi elementlerin eklenmesi, silinmesi veya güncellenmesi gerektiğinin kontrolü ile ilgilidir. DOM'a herhangi birşey yazmaz.
 - Bir component instance renderlandığında yada yeniden renderlandığında fonksiyon tekrar tekrar çağırılır.
 - Ne zaman bir component instance yeniden renderlansa tüm child'ları da renderlanabilir. Bu hepsinin kesinlikle güncelleneceği anlamına gelmez. İki render arasında sadece değişim yaşayan child'lar yeniden renderlanır.
 - DOM, commit phase denen aşamada güncellenir, ama React tarafından değil. Renderlayıcı olarak da isimlendirilen ReactDOM tarafından. Bu durum, projelerimize neden her zaman hem React hem de ReactDOM'u eklediğimizi açıklıyor.
 
-#### 🆚 Diffing ( Farklılaşan )
+### **🆚 Diffing ( Farklılaşan )**
 
 - Diffing, React'ın hangi DOM elementlerinin eklenmesi veya değiştirilmesi hakkında karar vermesini sağlar. Eğer renderlar arasında bir React elementi Fiber Tree'de aynı pozisyonda duruyorsa bu component ve state'i sabit kalır. Eğer element değiştiyse veya farklı bir pozisyondaysa element ve state yok edilir.
 
-## 📚 Bazı React Kütüphaneleri
+## **📚 Bazı React Kütüphaneleri**
 
-### 🗺 Leaflet (Map) kütüphanesi
+### **🗺 Leaflet (Map) kütüphanesi**
 
 - Basitçe **"npm i react-leaflet leaflet"** komutu ile hem react hem normal leaflet kütüphanesini projemize dahil ediyoruz.
 - Daha sonra CSS dosyamıza @import **"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"** leaflet'in CSS işlevselliğini eklememiz gerekiyor.
 - Son olarak React içinde render yapabilmek adına **"https://react-leaflet.js.org/"** sitesinden alacağımız MapContainer, TileLayer, Marker ve Popup componentlerini içeren komut satırlarını kopyalayıp projemize dahil ediyoruz.
+
+### **React Hot-Toast Library**
+
+- <a href="https://react-hot-toast.com/">Dökümantasyon</a>
+- **Setup 👉 npm i react-hot-toast**
+- Kullanmak için **Toaster** componentini App.jsx'imize kendi kapanışı ile dahil ediyoruz.
+- Aldığı bazı **propları** veriyoruz.
+- Daha sonra kullanmak istediğimiz yerde **toast.success yada toast.error** fonksiyonlarını çağırıp içerisine text'imizi yazabiliriz.
 
 ### ⌨ React ile yaptığım bazı **Codesandbox** pratikleri ⏬
 
