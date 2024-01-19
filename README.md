@@ -2,7 +2,7 @@
 
 Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi birikimimi tutuyorum.
 
-## 🖊 **Şimdiye kadar neler öğrendim?**
+## 🖊 `Şimdiye kadar neler öğrendim?`
 
 ## ⚒ **Öncelikle kurulum ile başlayalım. Sonuçta herşey bununla başlıyor.**
 
@@ -25,7 +25,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 - Daha sonra vite.config dosyamıza girip **import eslint from "vite-plugin-eslint"** yapıyoruz.
 - Son adım olarak plugins dizisine eslint importumuzu ekliyoruz.
 
-### 🎨 **React Stil Opsiyonları**
+### 🎨 `React Stil Opsiyonları`
 
 - **"Inline"** olarak JSX içerisinde style prop'u kullanarak yapabiliriz.
 - **"Harici bir CSS veya SASS**" dosyası ile className özellikleri oluşturarak yapabiliriz. Fakat bu durum bütün uygulamayı etkilediği için özellikle **"büyük çaplı projelerde çakışmalar"** yaşamak mümkündür.
@@ -34,14 +34,14 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 - **"Utility-first CSS"** dediğimiz yapıya uygun olarak <a href="https://tailwindcss.com/docs/installation">**"Tailwindcss"**</a> kullanarak JSX içerisinde <a href="https://getbootstrap.com/">Bootstrap</a>'te olduğu gibi sabit className'ler ile yapabiliriz.
 - Alternatif olarak hiç CSS yazmadan bazı arayüz kütüphaneleri olan **"<a href="https://mui.com/">MUI</a>, <a href="https://chakra-ui.com/">Chakra UI</a>, <a href="https://mantine.dev/">Mantine"</a>** gibi hazır component yapısı sunan kütüphaneleri kullanabiliriz.
 
-### 🌫 **Tailwind CSS**
+### 🌫 ``Tailwind CSS``
 
 - Tailwind kurulumu için **<a href= "https://tailwindcss.com/docs/guides/vite?ref=jonas.io"> Tailwind Installation</a>**
 - Eğer yoksa sonrasında VS Code içerisinde **tailwindcss eklentisini** yükleyelim. Böylece verdiğimiz class özelliklerinin ne ifade ettiğini görebiliriz ve **otomatik tamamlama** elde ederiz.
 - Aynı şekilde daha düzenli bir görünüm için **tailwind prettier extension** yükleyebiliriz. **<a href="https://github.com/tailwindlabs/prettier-plugin-tailwindcss">Tailwind Prettier Extension </a>**
 - **<a href="https://tailwindcss.com/docs/responsive-design"> Tailwind Responsive Design</a>**
 
-## 🖌 **Styled Components**
+## 🖌 ``Styled Components``
 
 - Setup 👉 **npm i styled-components**, sonra import **styled** from styled-components.
 - Kullanımı 👉 **const H1 = styled.h1`CSS`** örneğin. Bu kod bir component döndürür.
@@ -56,7 +56,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 - Her component için default bir prop belirtebiliriz. 👉 **Component.defaultProps = { ... }** gibi.
 - Aynı zamanda bir kütüphane aracılığı ile aldığımız componentleri stillendirmek için ise **styled(NavLink)** gibi direkt bir component verebiliriz.
 
-### 💻 **Render'lama**
+### 💻 ``Render'lama``
 
 - Bir **"component"** basitçe kullanıcı arayüzünü oluşturan lego parçalarına benzetilebilir. Her zaman büyük harfle başlamalıdır **[ function Header() ]**
 - JSX bir component'in içerisinden döndürdüğümüz **"HTML benzeri"** bir yapıdır. İçerisinde **"JS ve CSS"** kullanmamıza olanak sağlar.
@@ -69,7 +69,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 - Dışarıdan aldığımız bir değişkeni değiştirmek, HTTP çağırıları gibi durumlar kodumuzda yan efektler oluşturur ve bu durum renderlamada kaçınmamız gereken durumlardan biridir.
 - "**Pure function**" dediğimiz fonksiyon türü hiçbir yan etkiye sahip olmaz. Verilen değer, çıkan değer ile aynıdır.
 
-#### 🔴 **Renderlama mantığında bazı katı kurallar vardır.**
+#### 🔴 ``Renderlama mantığında bazı katı kurallar vardır.``
 
 - **HTTP çağırıları** yapamazsınız.
 - **Zamanlayıcılar** başlatamazsınız.
@@ -78,7 +78,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 - **State güncellemesi ve ref güncellemesi** yapamazsınız. Program sonsuz döngüye girer.
 - Side effectler sadece **handler fonksiyonlar** içerisinde izin verilir. Bunun dışında birde **useEffect hook**'u dahilinde kullanabiliriz.
 
-### ℹ **Prop'lar**
+### ℹ ``Prop'lar``
 
 - Proplar basitçe **parent componentten child component**'lere iletilebilen değişkenlerdir. Aynı anda birden fazla componentte kullanılması gereken değişkenler için kullanılır. Kod içindeki karmaşıklığı azaltmak adına props.anything demek yerine componente dahil ederken {anything} destructure yaparak alırız.
 - **Proplar değiştirilemez**. Sadece okunur. "Readonly".
@@ -89,7 +89,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 - **"Key prop'u Diffing algoritmasına**" bir bileşenin benzersiz (unique) olduğunu belirtir.
 - **Key prop'u** listelerde state'i dağılmadan tutabilmek veya tamamen state'i sıfırlamak için kullanılabilir.
 
-### ♦ **State'ler**
+### ♦ ``State'ler``
 
 - 👉 **const [count, setCount] = useState(0)** Count bizim ekranda göstereceğimiz değer, setCount arka planda tıklama veya farklı etkilerle count değerini güncelleyen fonksiyon, ve 0 ise count'ımızın başlangıç değeridir.
 - Önceki state'e bağlı olarak yeni bir state türetilmesi istenen durumlarda " **setCount((anything)=> anything+1)** " gibi callback fonksiyonları içerisinde güncelleme yapmalıyız. State asenkron şekilde işlediğinden callback fonksiyon içerisinde çağırmaz isek state hep aynı kalır.
@@ -101,7 +101,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 - State Lifting kavramı child componentlerden birisinde oluşturduğumuz bir state'i gerektiğinde birden fazla sibling(kardeş) component'e dağıtmak için en yakın parent elemente taşımak anlamına gelir.
 - State Group Batching ifadesi, bir handler fonksiyon içerisinde birden fazla gerçekleşen state güncellemesini tek bir güncelleme gibi görüp programımıza performans kazandıran bir terim ve uygulamadır. React@18 ve üzerinde geçerlidir.
 
-### 🤏 **Use Reducer**
+### 🤏 ``Use Reducer``
 
 - 👉 **const [state, dispatch] = useReducer( reducer, initialState )**
 - State oluşturmak için alternatif bir yoldur. useState'e göre anlaması ve uygulaması birazdaha zordur. Karışık state'ler, "**birbirleri ile ilişkili**" state'ler ve birden fazla state güncellemesi gereken durumlar için idealdir.
@@ -112,16 +112,16 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 - "**action özelliği**" state'in nasıl güncelleneceğini belirtir.
 - dispatch fonksiyonu state güncellemelerini tetiklemek için kullanılır. reducer fonkksiyona actions özelliğini gönderir.
 
-### 📦 **Ref'ler**
+### 📦 ``Ref'ler``
 
 - Refler bir kutu gibidir ve mount ve re-render'lar arasında değişmez. State'in renderlardan etkilenmeyen versiyonu gibi görebiliriz. Elementlere class vermeden seçmemizi sağlar.
 
-### ⚔ **Event Handler'lar**
+### ⚔ ``Event Handler'lar``
 
 - Bir event gerçekleştiğinde çalıştırılırlar.
 - Side Effect'ler oluştururken tercih edilen bir yöntemdir. Bunun yanı sıra useEffect çok daha efektiftir.
 
-### ✨**Use Effect'ler**
+### ✨ ``Use Effect'ler``
 
 - Bir component sayfaya mount'landığında [ Yani başlangıçta ] ve sonraki re-render'larda çalışır ( "**Bağlılık dizisine verdiğiniz değerlere göre değişir**" ).
 - Bağımlılık dizisi olmadan, React effect'i ne zaman çalıştıracağını bilmez.
@@ -134,7 +134,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 - Bağımlılık dizisi olmazsa programda değişen herşey tekrar tekrar çalışmasına sebep olur. Performans için berbat bir durum. ⛔
 - Cleanup fonksiyonu sideEffect'leri temizlemek için kullanılır ve performansı arttırmaya yardımcı olur.
 
-### ↗↖ **Router ( Yönlendirici )**
+### ↗↖ ``Router ( Yönlendirici )``
 
 - Router oluşturmak için öncelikle **"BrowserRouter"**, daha sonra **"Routes"** ve son olarak her bir gezinim için bir **"Route"** oluşturmalıyız. Kullanıldıkları konuma Eslint'i kızdırmamak için hepsini import etmeliyiz.
 - Her Route'ın bir **path** propu ve bir **element** prop'u olmalıdır. Yani hangi path'de hangi elementin görünmesini istediğimizi belirtiyoruz.
@@ -160,7 +160,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 
 <img src="./README-img/old-react-router.png" width="500" height="450">
 
-### ↪ **Router v6.4 İçin Yeni Kullanım**
+### ↪ ``Router v6.4 İçin Yeni Kullanım``
 
 - Router bağımlılığımızı yükledikten sonra **createBrowserRouter()** fonksiyonumuzu App.jsx içerisinde alıyoruz.
 - Bu fonksiyona bir **dizi [ ]** vererek içerisinde **her bir route** için bir obje oluşturup **path ve element** özelliklerini ekliyoruz.
@@ -169,7 +169,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 
 <img src="./README-img/new-react-router.png" width="400" height="300">
 
-### ↪ **Router Loader**
+### ↪ ``Router Loader``
 
 - Bize **sadece o sayfaya gidildiğinde** data fetch yapmamızı sağlayan bir yapıdır.
 - Bu yapı useEffect'te olduğu gibi **( önce component renderlanması ve sonra veri yakalanması )** değil, component renderlanması ve veri yakalanması **aynı anda** yapılır.
@@ -179,7 +179,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 - Üçüncü adım veriyi kullanma. Yaydığımız veriyi, o sayfanın component'ine giderek içerisinde **useLoaderData()** fonksiyonu kullanarak verilerimizi alıp bir değişkene atıyoruz. Ve artık verilerimize sadece sayfaya gidildiğinde sahibiz.
 - Aynı zamanda error durumu için herbir Route'a **errorElement** belirleyebilir ve bu element içerisinde **useRouteError()** fonksiyonu ile hatayı ele alabiliriz.
 
-### ↪ **Router Action**
+### ↪ ``Router Action``
 
 - Action yöntemini kullanmak için submit için kullandığımız form elementini react-router'dan gelen **"Form"** elementine çeviriyoruz ve method özelliğine **"POST"** veriyoruz.
 - Aynı dosya içerisinde **async bir "action"** fonksiyonu oluşturuyoruz ve parametre olarak **{ request, params }** alıyoruz. İhtiyacımıza göre kullanabiliriz.
@@ -188,7 +188,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 - Ne zaman bir API'a **PATCH** isteği gönderen bir action oluştursak, React-router **re-validation( yeniden-doğrulama )** adı verilen bir duruma sahiptir. Verinin **action'a bağlı olarak değiştiğini** bilir ve arka planda otomatik olarak **re-fetch( yeniden-veri yakalaması )** yapar ve bu yeni veriler ile sayfayı **tekrar renderlar**.
 - Bu işlemi 👉 **<"fetcher.Form"> { Button etc.. } </"fetcher.Form">** ile yaptığımız için React-Router bunu anlıyor.
 
-### 🌟 **Context API**
+### 🌟 ``Context API``
 
 - Birden fazla **derinlikte bulunan child componentlere** state geçirmek ve kullanmak istediğimizde bu state'i kullanmayacağımız componentler üzerinden geçirerek **kod kirliliği ve hantal bir yapı** oluşturmak yerine **direkt kullanmak istediğimiz child component'e** bu state'i vermemizi sağlayan yapıdır.
 - Basitçe **Prop Drilling** problemimize net bir çözümdür.
@@ -199,7 +199,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 - İkinci aşama JSX'imizi "**Posts.Provider**" componenti ile sarmak ve **value prop'una** geçirmek istediğimiz tüm propları yazmak.
 - Üçüncü ve son aşama Consumers (Tüketiciler) provider tarafından yayınlanan "**context değerini okuyan**" tüm componentlerde import etme.
 
-### 🟥 **Redux**
+### 🟥 ``Redux``
 
 - Redux "**Global state düzenlemesi**" yapmamızı sağlayan bir 3rd party kütüphanedir.
 - Tüm global state, "**tek bir global erişilebilir yerdedir**", actions kullanarak (useReducer'da olduğu gibi) güncellemesi kolaydır.
@@ -223,14 +223,14 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 - İkinci adım store içerisinde oluşturma -> "**const store = createStore(rootReducer, applyMiddleware(thunk));**"
 - Üçüncü adım **Action Creator** içerisinde kullanma.
 
-### 🟥 **Redux Geliştirici Araçları (DevTools)**
+### 🟥 ``Redux Geliştirici Araçları (DevTools)``
 
 - Geliştirici araçları için google üzerinden redux-devtools'u indireceğiz.
 - Daha sonra terminal içerisinde redux-devtools-extension yükleyeceğiz.
 - Bu eklentinin bize sağladığı bir fonksiyon olan {composeWithDevTools}'u import edeceğiz.
 - Ve son olarak applyMiddleware fonksiyonumuzu composeWithDevTools ile sarıyoruz. (Kullanımı bu şekilde)
 
-### 🟥 **Redux Toolkit**
+### 🟥 ``Redux Toolkit``
 
 - Yükleme için 👉 **npm i @reduxjs/toolkit**
 - Daha önce oluşturduğumuz **createStore()** yerine **configureStore()** fonksiyonunu kullanacağız.
@@ -259,7 +259,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 
 <img src="./README-img/modern-thunk.png" width="400" height="225" />
 
-### 💫 **React Query**
+### 💫 ``React Query``
 
 - Setup 👉 **npm i @tanstack/react-query**
 - Kullanımı **ContextAPI veya Redux-Toolkit** ile benzerdir.
@@ -278,28 +278,28 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 - **Remote state'i güncellemek** kolaydır.
 - Offline desteği vardır. Bir kere cache'e alındıktan sonra kullanıcı interneti olmadığı durumda bile uygulamanın alanlarına erişim sağlayabilir.
 
-### ⚡ **Tek Sayfa Uygulamalar [ SPA ]**
+### ⚡ ``Tek Sayfa Uygulamalar [ SPA ]``
 
 - Uygulama baştan sona client (tarayıcı) tarafında çalıştırılır.
 - Farklı URL'ler farklı görünümlerle(components) ilişkilidir.
 - Sayfa asla yeniden yüklenmez.
 - Normal bir masaüstü veya mobil uygulama gibi hissettirir.
 
-### 👨‍💻 **Sahte Giriş (Fake Login) ve Kullanıcı Doğrulaması (User Authentatication)**
+### 👨‍💻 ``Sahte Giriş (Fake Login) ve Kullanıcı Doğrulaması (User Authentatication)``
 
 - Sahte bir giriş oluşturmak için 3 aşamamız mevut.
 - İlk aşamada kullanıcının e-mail ve şifresini bir giriş formundan alıyoruz, API uç noktası ile e-mail ve şifrenin doğruluğunu kontrol ediyoruz.
 - İkinci aşamada, kimlik bilgileri eğer doğruysa kullanıcının uygulamaya girişine izin veriyoruz ve kullanıcı objesini state'imizde kaydediyoruz.
 - Üçüncü ve son aşama olarak uygulamamızı doğrulamasız ve yanlış bilgi girilmiş durumlardan korumamız gerekiyor.
 
-### 🟥 **API Cağırıları ve Hata yakalama**
+### 🟥 ``API Cağırıları ve Hata yakalama``
 
 - Her zaman API çağırıları try ve catch blokları içerisinde yapmalısınız.
 - Hataları ele almak ve ekranda göstermek için yeni bir state oluşturmalısınız. const[error, setError]= useState("") gibi.
 - Kondisyonel renderlama bu noktada çok önemlidir. Eğer bir hata varsa ekranda anlamlı mesajlar göstermelisiniz. Yukarıdaki örnekten yola çıkarak error değişkenini ekrana yazdırabilirsiniz.
 - Her zaman response.ok özelliğini kontrol etmeli ve bir hata varsa ekrana yazdırmalısınız.
 
-### ⚡ **Performans ve Optimizasyon ☄**
+### ⚡ ``Performans ve Optimizasyon ☄``
 
 - 3 aşamadan oluşan bir takip listemiz olabilir.
 - Birinci olarak Boşa harcanan render'ları engelleme (Prevent Wasted Renders). Bu aşamada kullanabileceklerimiz memo, useMemo, useCallback ve elementleri child olarak yada prop olarak aktarma olabilir. Bu optimizasyonu uygulayabilmek için bileşenlerin ne zaman yeniden renderlandığını bilmemiz gerekir.
@@ -307,13 +307,13 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 - Üçüncü aşama ise dosya boyutu düşürme, bunun için de 3rd party paketler, kod bölme (code splitting) ve tembel yükleme (lazy loading) özellikleri uygulanabilir.
 - Yavaş çalışan bir componenti "Children" prop'u ile extract edip children konumuna koyarsak parent renderlarından etkilenmez, bu da optimizasyonu arttırır.
 
-### 🧠 **memo Fonksiyonu**
+### 🧠 ``memo Fonksiyonu``
 
 - Bu fonksiyon tamamiyle optimizasyon amaçlı olup, Parent component yeniden renderlandığında eğer **child component'de değişen bir prop** yok ise yeniden renderlanmasını engellemek amacıyla vardır. **Sadece proplara** etki edebilir. Yani memoized bir component kendi state'i veya bağlı olduğu bir context değiştiğinde yeniden renderlanmaya devam eder. Bu demek değildir ki her componentimize memo fonksiyonu uygulamalıyız. Sadece bir component çok ağır (yavaş renderlanan) veya çok sık yeniden renderlanan ve hep aynı proplara sahip olan componentler için geçerlidir.
 - Bazı durumlarda bir component memoized olsa bile, parent component'ten aldığımız ve parent içerisinde oluşturulmuş bir obje veya bir fonksiyon, her seferinde parent yeniden renderlandığında tekrar tekrar oluşturulacaktır. Bu da aldığımız prop'un değiştiğine işaret eder ve memo'yu görmezden gelir. ( {} != {} ) Bu noktada aldığımız obje ve fonksiyon propları sabit kılmak için **"useMemo"** ve **"useCallback"** devreye giriyor.
 - Bu durumlar dışında kalan bir istisna var ki o da setter fonksiyonlarımız. Yani useState için oluşturduğumuz setter fonksiyonlar kendiliğinden memoized olarak gelir. Bir prop olarak gönderirken bu fonksiyon hakkında düşünmemiz gerekmez.
 
-### 🔒 **useMemo & useCallback**
+### 🔒 ``useMemo & useCallback``
 
 - useMemo ve useCallback fonksiyonları içerisinde bir değer alır ve bu değerler cache'de saklanır. Input'lar değişmediği sürece aynı kalmaya devam ederler. useEffect gibi useMemo ve useCallback'de bir bağımlılık dizisine sahiptir ve ne zaman bir bağımlılık değişirse, değer yeniden oluşturulur.
 - Aynı memo'da olduğu gibi bunları heryere yazmamalı ve sadece şu 3 durumda kullanmalıyız.
@@ -321,18 +321,18 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 - İkinci durum : Her renderlamada ağır yük gerektiren yeniden hesaplamalardan kaçınmak için.
 - Üçüncü durum : Başka bir hook'un bağımlılık dizisinde kullanılan değerler için. (Örneğin useEffect içinde sonsuz döngüleri engellemek)
 
-### 🪓 **Kod bölme (Code Splitting)**
+### 🪓 ``Kod bölme (Code Splitting)``
 
 - Kod bölme, kodumuzu uzak serverdan tek parça halinde gelen (bundle) JS dosyamızı sayfalarımıza, hatta istersen daha küçük componentlerimize bölmemizi sağlar. Bu sayede tüm sayfayı tek seferde uzun bir yükleme bekleyerek değil, sadece ihtiyaç duyulduğunda daha küçük dosyayı hızlı bir şekilde indirerek kullanıcıya daha iyi bir deneyim sunarız.
 - Kodumuzu bölmek için tüm diğer sayfalarımızı import ettiğimiz App.jsx dosyamıza geçip tüm importlarımızı lazy(()=> import) methodu ile yapıyoruz.
 - Tüm importlarımızı lazy() methoduna çevirdikten sonra tüm sayfalarımızın renderlandığı JSX'imizin çevresini Suspense componenti ile sarıp fallback{} property'si veriyoruz.
 - Bu prop'a bir loader veya bir spinner verebiliriz. Böylece sayfa arka planda indirilirken kullanıcıya birşeyler yapıldığı hakkında bilgi veririz.
 
-### 🗃 **Local Storage**
+### 🗃 ``Local Storage``
 
 - Ugulamalarımıza local storage eklemek için useEffect kullanabiliriz. [] boş bir bağımlılık dizisi program her açıldığında local storage'daki kayıtları getirir.
 
-### **SUPABASE**
+### ``SUPABASE``
 
 - <a href="https://supabase.com/">Supa Base </a>
 - Geliştiricilerin kolayca bir back-end Postgres database oluşturmalarına izin veren bir uygulamadır.
@@ -342,7 +342,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 - Sadece bir API olmakla kalmayıp, kolay kullanımlı, kullanıcı güvenliği ve dosya deposu sunar.
 - 👉 **npm install --save @supabase/supabase-js**
 
-### 🖊 **Arka planda nasıl çalışır & Bazı değerli bilgiler**
+### 🖊 ``Arka planda nasıl çalışır & Bazı değerli bilgiler``
 
 - Imperetive(Zorunlu) ve Declarative(Bildirimsel) arasındaki fark VanillaJS ve React farkında gözle görülmektedir. VanillaJS'de bir çok eylemi bizzat siz yapmanız gerekir. Fakat React'ta ne yapması istediğinizi söyler ve gerisini ona bırakırsınız.
 - React'ta veri akışı tek yönlüdür. Parent'tan child'a. Böylelikle birçok problemin önüne geçilir, karmaşıklıklar azaltılır. [ Ayrıca Angular iki yönlü data akışı sağlar. ]
@@ -354,7 +354,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 - Event'in nerede gerçekleştiğini bulmak adına başlayan bu süreç Capturing Phase(Yakalama aşaması) ve bulduktan sonra Bubbling Phase(Kabarcıklanma aşaması) olarak tanımlanır.
 - React bir kütüphanedir(library), bir çerçeve(framework) değildir. Çünkü bir çerçeve bünyesinde ihtiyacınız olan tüm geliştirme araçlarını barındırır. Bir kütüphane istediğiniz geliştirme aracını tamamen kendi istediğinize göre seçmenize ve kullanmanıza izin verir.
 
-### **Daha fazla 3rd-Party React kütüphanesi 👇**
+### ``Daha fazla 3rd-Party React kütüphanesi 👇``
 
 - Routing için ▶ **React Router / React Location**
 - HTTP requests ▶ **fetch() / Axios**
@@ -365,34 +365,33 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 - Animasyonlar - Transitions ▶ **Motion / React Spring**
 - Arayüz bileşenleri ▶ **Chakra / Mantine**
 
-### 📜 React Hakkında Pratik Özetler <img style="width: 25px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png?20220125121207">✍
+### 📜 `React Hakkında Pratik Özetler` <img style="width: 25px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png?20220125121207">✍
 
-### 🧩 Component'ler Hakkında
+### 🧩 `Component'ler Hakkında`
 
 - Bir component bir şema gibidir. Arayüzün bir parçasını oluşturmak için vardır
 - Ne zaman bir component kullansak React bir component instance oluşturur ve bu instance props,state ve daha fazlasını içerebilir.
 - Asla bir component içerisinde ikinci bir component tanımlama! Bunu yapmak içerdeki componenti her zaman yeniden renderlar. Bu da parent'i tekrar renderlar. React nested component'i her zaman yeni olarak görür. Performans açısından berbattır.
 
-### **⏳ Render'lama Hakkında**
-
+### ⏳ `` Render'lama Hakkında ``
 - Renderlama tamamen component fonksiyonlarını çağırma ve hangi elementlerin eklenmesi, silinmesi veya güncellenmesi gerektiğinin kontrolü ile ilgilidir. DOM'a herhangi birşey yazmaz.
 - Bir component instance renderlandığında yada yeniden renderlandığında fonksiyon tekrar tekrar çağırılır.
 - Ne zaman bir component instance yeniden renderlansa tüm child'ları da renderlanabilir. Bu hepsinin kesinlikle güncelleneceği anlamına gelmez. İki render arasında sadece değişim yaşayan child'lar yeniden renderlanır.
 - DOM, commit phase denen aşamada güncellenir, ama React tarafından değil. Renderlayıcı olarak da isimlendirilen ReactDOM tarafından. Bu durum, projelerimize neden her zaman hem React hem de ReactDOM'u eklediğimizi açıklıyor.
 
-### **🆚 Diffing ( Farklılaşan )**
+### 🆚 `` Diffing ( Farklılaşan )``
 
 - Diffing, React'ın hangi DOM elementlerinin eklenmesi veya değiştirilmesi hakkında karar vermesini sağlar. Eğer renderlar arasında bir React elementi Fiber Tree'de aynı pozisyonda duruyorsa bu component ve state'i sabit kalır. Eğer element değiştiyse veya farklı bir pozisyondaysa element ve state yok edilir.
 
-## **📚 Bazı React Kütüphaneleri**
+## 📚 `` Bazı React Kütüphaneleri ``
 
-### **🗺 Leaflet (Map) kütüphanesi**
+### 🗺 `` Leaflet (Map) kütüphanesi ``
 
 - Basitçe **"npm i react-leaflet leaflet"** komutu ile hem react hem normal leaflet kütüphanesini projemize dahil ediyoruz.
 - Daha sonra CSS dosyamıza @import **"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"** leaflet'in CSS işlevselliğini eklememiz gerekiyor.
 - Son olarak React içinde render yapabilmek adına **"https://react-leaflet.js.org/"** sitesinden alacağımız MapContainer, TileLayer, Marker ve Popup componentlerini içeren komut satırlarını kopyalayıp projemize dahil ediyoruz.
 
-### **React Hot-Toast Library**
+### ``React Hot-Toast Library``
 
 - <a href="https://react-hot-toast.com/">Dökümantasyon</a>
 - **Setup 👉 npm i react-hot-toast**
@@ -400,7 +399,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 - Aldığı bazı **propları** veriyoruz.
 - Daha sonra kullanmak istediğimiz yerde **toast.success yada toast.error** fonksiyonlarını çağırıp içerisine text'imizi yazabiliriz.
 
-### ⌨ React ile yaptığım bazı **Codesandbox** pratikleri ⏬
+### ⌨ `React ile yaptığım bazı Codesandbox pratikleri` ⏬
 
 - <a href="https://t.ly/_9303">📆 Date Counter </a>
 - <a href="https://t.ly/qxh5X">📕 Small Exam with State</a>
@@ -411,7 +410,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 - <a href="https://t.ly/H3LuI">💲 Currency-Converter </a>
 - <a href="https://t.ly/LI6sf">🏦 useReducer Bank </a>
 
-### 💬 **Commit Examples**
+### 💬 ``Commit Examples``
 
 - feat: add new feature
 - fix: fix bug
