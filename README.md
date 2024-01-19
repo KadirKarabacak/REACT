@@ -255,7 +255,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 <img src="./README-img/redux-action-creator.png" width="400" height="225" />
 
 - Toolkit kullanımı ile bir "**Thunk**" oluşturmak ve kullanmak istersek **createAsyncThunk()** fonksiyonuna başvurmalıyız. Bu fonksiyon iki argüman alır. Birincisi **action ismi**, ikinci argüman ise **reducer için payload olan** bir asenkron fonksiyon.
-- Daha sonra reducer'larımızı oluşyurduğumuz slice içinde reducers'ın dışında **extraReducers ( builder )** ekleyip ele almak istediğimiz durumları **builder.addCase( )** ile ele alıyoruz.
+- Daha sonra reducer'larımızı oluşturduğumuz slice içinde reducers'ın dışında **extraReducers ( builder )** ekleyip ele almak istediğimiz durumları **builder.addCase( )** ile ele alıyoruz.
 
 <img src="./README-img/modern-thunk.png" width="400" height="225" />
 
@@ -332,9 +332,9 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 
 - Ugulamalarımıza local storage eklemek için useEffect kullanabiliriz. [] boş bir bağımlılık dizisi program her açıldığında local storage'daki kayıtları getirir.
 
-### ``SUPABASE``
+### ⚡ ``SUPABASE``
 
-- <a href="https://supabase.com/">Supa Base </a>
+- <a href="https://supabase.com/">SupaBase </a>
 - Geliştiricilerin kolayca bir back-end Postgres database oluşturmalarına izin veren bir uygulamadır.
 - Otomatik olarak bir database ve bir API oluşturur, böylece kolayca request atıp verilerimizi alabiliriz.
 - Back-end geliştirmeye ihtiyaç duymaz.
