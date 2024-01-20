@@ -33,7 +33,8 @@ function CreateCabinForm() {
 
     // Called on handleSubmit
     function onSubmit(data) {
-        mutate(data);
+        // console.log(data);
+        mutate({ ...data, image: data.image[0] });
     }
 
     // If there is one matched validation it runs onError
