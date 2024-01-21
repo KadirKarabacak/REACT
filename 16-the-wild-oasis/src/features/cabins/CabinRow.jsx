@@ -1,12 +1,9 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 import { formatCurrency } from "../../utils/helpers";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteCabin } from "../../services/apiCabins";
-import toast from "react-hot-toast";
-// import Button from "../../ui/Button";
 import { useState } from "react";
 import CreateCabinForm from "./CreateCabinForm";
+import { useDeleteCabin } from "./useDeleteCabin";
 
 const TableRow = styled.div`
     display: grid;
@@ -49,6 +46,7 @@ const Discount = styled.div`
 
 function CabinRow({ cabin }) {
     const [showForm, setShowForm] = useState(false);
+    const { isDeleting, deleteCabin } = useDeleteCabin();
 
     const {
         name,
@@ -59,22 +57,6 @@ function CabinRow({ cabin }) {
         id: cabinId,
     } = cabin;
 
-    // We need to use queryClient to update UI after mutations
-    const queryClient = useQueryClient();
-
-    // To mutate data with React-Query need useMutation deleting or adding
-    const { isLoading: isDeleting, mutate } = useMutation({
-        mutationFn: deleteCabin,
-        // Immediately update UI after deleting
-        onSuccess: () => {
-            toast.success("Cabin successfully deleted");
-            queryClient.invalidateQueries({
-                queryKey: ["cabins"],
-            });
-        },
-        onError: err => toast.error(err.message),
-    });
-
     return (
         <>
             <TableRow role="row">
@@ -82,14 +64,18 @@ function CabinRow({ cabin }) {
                 <Cabin>{name}</Cabin>
                 <div>Fits up to {maxCapacity} guests</div>
                 <Price>{formatCurrency(regularPrice)}</Price>
-                <Discount>{formatCurrency(discount)}</Discount>
+                {discount ? (
+                    <Discount>{formatCurrency(discount)}</Discount>
+                ) : (
+                    <span>&mdash;</span>
+                )}
                 <div>
                     <button onClick={() => setShowForm(show => !show)}>
                         Edit
                     </button>
                     <button
                         disabled={isDeleting}
-                        onClick={() => mutate(cabinId)}
+                        onClick={() => deleteCabin(cabinId)}
                     >
                         Delete
                     </button>
