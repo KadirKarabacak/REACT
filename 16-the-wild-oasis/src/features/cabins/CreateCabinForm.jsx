@@ -11,12 +11,12 @@ import FileInput from "../../ui/FileInput";
 
 // Custom hooks
 import { useCreateCabin } from "./useCreateCabin";
-import { useEditCabin } from "./useEditCabin";
+import { useUpdateCabin } from "./useUpdateCabin";
 
 function CreateCabinForm({ cabinToEdit = {} }) {
     // Custom Hooks
     const { isCreating, createCabin } = useCreateCabin();
-    const { isEditing, editCabin } = useEditCabin();
+    const { isUpdating, updateCabin } = useUpdateCabin();
 
     // Taking id and other values from cabin object
     const { id: editId, ...editValues } = cabinToEdit;
@@ -32,7 +32,7 @@ function CreateCabinForm({ cabinToEdit = {} }) {
     const { errors } = formState;
 
     // Handling both isLoading situations
-    const isWorking = isCreating || isEditing;
+    const isWorking = isCreating || isUpdating;
 
     // Called on handleSubmit
     function onSubmit(data) {
@@ -41,7 +41,7 @@ function CreateCabinForm({ cabinToEdit = {} }) {
             typeof data.image === "string" ? data.image : data.image[0];
 
         if (isEditSession)
-            editCabin(
+            updateCabin(
                 { newCabinData: { ...data, image }, id: editId },
                 {
                     onSuccess: () => {
@@ -164,7 +164,7 @@ function CreateCabinForm({ cabinToEdit = {} }) {
                     Cancel
                 </Button>
                 <Button disabled={isWorking}>
-                    {isEditSession ? "Edit Cabin" : "Create Cabin"}
+                    {isEditSession ? "Update Cabin" : "Create Cabin"}
                 </Button>
             </FormRow>
         </Form>
