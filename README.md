@@ -283,6 +283,13 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   **Remote state'i güncellemek** kolaydır.
 -   Offline desteği vardır. Bir kere cache'e alındıktan sonra kullanıcı interneti olmadığı durumda bile uygulamanın alanlarına erişim sağlayabilir.
 
+### 🕳 `React Portal`
+
+-   React Portal, bize **parent component'in dışında** biryerde ( DOM Tree üzerinde istediğimiz biryerde ) elementin **asıl yerini bozmadan** ( React Component Tree üzerinde yeri değişmeden ) renderlama yapabilmemizi sağlar.
+-   React Portal kullanmamızın asıl sebeplerinden birisi de **yeniden kullanılan componentlerin** bazı yerlerde parent'tan aldığı **CSS overflow hidden** özelliğinden etkilenip modal içeriğinin tamamen görünmemesi hatalarını engellemek içindir.
+-   Diğer tüm elementlerin üzerinde durmasını istediğimiz durumlar için kullanılır. Örneğin **Modal Pencereleri, Tool Tips, Menüler vb.**
+-   Kullanımı oldukça basit olup, bir component içerisinde JSX return etmek yerine return'den hemen sonra **createPortal()** fonksiyonunu çağırıp **ilk arguman olarak JSX** kodumuz, ikinci argüman olarak **nerede render etmek** istediğimizi belirtiyoruz.
+
 ### ⚡ `Tek Sayfa Uygulamalar [ SPA ]`
 
 -   Uygulama baştan sona client (tarayıcı) tarafında çalıştırılır.
