@@ -13,7 +13,7 @@ import FileInput from "../../ui/FileInput";
 import { useCreateCabin } from "./useCreateCabin";
 import { useUpdateCabin } from "./useUpdateCabin";
 
-function CreateCabinForm({ cabinToEdit = {} }) {
+function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
     // Custom Hooks
     const { isCreating, createCabin } = useCreateCabin();
     const { isUpdating, updateCabin } = useUpdateCabin();
@@ -46,6 +46,7 @@ function CreateCabinForm({ cabinToEdit = {} }) {
                 {
                     onSuccess: () => {
                         reset();
+                        onCloseModal?.();
                     },
                 }
             );
@@ -55,6 +56,7 @@ function CreateCabinForm({ cabinToEdit = {} }) {
                 {
                     onSuccess: () => {
                         reset();
+                        onCloseModal?.();
                     },
                 }
             );
@@ -66,7 +68,11 @@ function CreateCabinForm({ cabinToEdit = {} }) {
 
     return (
         // We must call handleSubmit directly
-        <Form onSubmit={handleSubmit(onSubmit, onError)}>
+        <Form
+            onSubmit={handleSubmit(onSubmit, onError)}
+            // To conditionally style
+            type={onCloseModal ? "modal" : "regular"}
+        >
             <FormRow label="Cabin name" error={errors?.name?.message}>
                 <Input
                     type="text"
@@ -160,7 +166,13 @@ function CreateCabinForm({ cabinToEdit = {} }) {
 
             <FormRow>
                 {/* type is an HTML attribute! */}
-                <Button disabled={isWorking} variation="secondary" type="reset">
+                <Button
+                    // If we reuse this and if there is no modal, only just form, to avoid create a bug
+                    onClick={() => onCloseModal?.()}
+                    disabled={isWorking}
+                    variation="secondary"
+                    type="reset"
+                >
                     Cancel
                 </Button>
                 <Button disabled={isWorking}>
