@@ -1,6 +1,7 @@
 import Spinner from "../../ui/Spinner";
 import CabinRow from "./CabinRow";
 import Table from "../../ui/Table";
+// import Empty from "../../ui/Empty";
 
 import { useCabins } from "./useCabins";
 import Menus from "../../ui/Menus";
@@ -32,6 +33,8 @@ function CabinTable() {
     );
 
     if (isLoading) return <Spinner />;
+
+    // if (!cabins.length) return <Empty resource="cabins" />;
 
     return (
         // Wrapping with menus to add menu to each row
