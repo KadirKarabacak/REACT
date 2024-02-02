@@ -440,6 +440,12 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   <a href="https://t.ly/H3LuI">💲 Currency-Converter </a>
 -   <a href="https://t.ly/LI6sf">🏦 useReducer Bank </a>
 
+### `Cypress Test`
+
+- context() ve describe() aynıdır, specify() ve it() aynıdır. Kullanıma göre istediğimizi seçebiliriz. Describe ana fonksiyondur. <a href="https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests?utm_source=Binary%3A+Launchpad&utm_medium=Docs+Menu&utm_content=Organizing+Tests#Test-Structure"> Buradan incele </a>
+- Aynı şekilde Mocha tarafından sunulan bazı hooklar'a da <a href="https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests?utm_source=Binary%3A+Launchpad&utm_medium=Docs+Menu&utm_content=Organizing+Tests#Hooks"> buradan bakabilirsin </a>
+- Excluding & Including test, yani test ekleme veya test çıkarma tek seferde tek bir test yapmamıza olanak verir. <a href="https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests?utm_source=Binary%3A+Launchpad&utm_medium=Docs+Menu&utm_content=Organizing+Tests#Excluding-and-Including-Tests"> Buradan incele </a>
+
 ### 💬 `Commit Examples`
 
 -   feat: add new feature
