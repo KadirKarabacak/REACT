@@ -11,7 +11,13 @@ export async function getBookings({ filter, sortBy }) {
     // .gte("totalPrice", 2000); // Greater than
 
     // Instead of hardcoding, we get conditionally fetching data with params
-    if (filter !== null) query = query.eq(filter.field, filter.value);
+    if (filter)
+        query = query[filter.method || "eq"](filter.field, filter.value);
+
+    if (sortBy)
+        query = query.order(sortBy.field, {
+            ascending: sortBy.direction === "asc",
+        });
 
     const { data, error } = await query;
 
