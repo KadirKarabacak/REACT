@@ -18,8 +18,8 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 ### ⚙ Vite Projelerine <a href="https://eslint.org/">`Eslint`</a> kurulumu ve ayarları
 
 -   Şuanda Vite projeleri eslint eklentisi ile birlikte geliyor ki bu durum çok önemli. Fakat olası bir durumda gelmediğini varsayarsak şunları yaparak kurabiliriz.
--   **npm install eslint vite-plugin-eslint eslint-config-react-app --save-dev** ve yükleme tamamlandıktan sonra **.eslintrc.json veya .eslintrc.cjs** isminde bir dosya oluşturup ayarlarımızı uygulayabiliriz.  
--   { "extends": "react-app" }  
+-   **npm install eslint vite-plugin-eslint eslint-config-react-app --save-dev** ve yükleme tamamlandıktan sonra **.eslintrc.json veya .eslintrc.cjs** isminde bir dosya oluşturup ayarlarımızı uygulayabiliriz.
+-   { "extends": "react-app" }
 -   Daha sonra vite.config dosyamıza girip **import eslint from "vite-plugin-eslint"** yapıyoruz.
 -   Son adım olarak plugins dizisine eslint importumuzu ekliyoruz.
 
@@ -252,13 +252,10 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 
 <img src="./README-img/redux-action-creator.png" width="400" height="225" />
 
-<<<<<<< HEAD
-
 -   Toolkit kullanımı ile bir "**Thunk**" oluşturmak ve kullanmak istersek **createAsyncThunk()** fonksiyonuna başvurmalıyız. Bu fonksiyon iki argüman alır. Birincisi **action ismi**, ikinci argüman ise **reducer için payload olan** bir asenkron fonksiyon.
--   # Daha sonra reducer'larımızı oluşyurduğumuz slice içinde reducers'ın dışında **extraReducers ( builder )** ekleyip ele almak istediğimiz durumları **builder.addCase( )** ile ele alıyoruz.
+-   Daha sonra reducer'larımızı oluşyurduğumuz slice içinde reducers'ın dışında **extraReducers ( builder )** ekleyip ele almak istediğimiz durumları **builder.addCase( )** ile ele alıyoruz.
 -   Toolkit kullanımı ile bir "**Thunk**" oluşturmak ve kullanmak istersek **createAsyncThunk()** fonksiyonuna başvurmalıyız. Bu fonksiyon iki argüman alır. Birincisi **action ismi**, ikinci argüman ise **reducer için payload olan** bir asenkron fonksiyon.
 -   Daha sonra reducer'larımızı oluşturduğumuz slice içinde reducers'ın dışında **extraReducers ( builder )** ekleyip ele almak istediğimiz durumları **builder.addCase( )** ile ele alıyoruz.
-    > > > > > > > bac5890a1505f8f98e55a6b69309870c3d5c3030
 
 <img src="./README-img/modern-thunk.png" width="400" height="225" />
 
@@ -344,15 +341,13 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 
 ### ⚡ `SUPABASE`
 
-<<<<<<< HEAD
-
 -   <a href="https://supabase.com/">Supa Base </a>
 -   Geliştiricilerin kolayca bir back-end Postgres database oluşturmalarına izin veren bir uygulamadır.
 -   Otomatik olarak bir database ve bir API oluşturur, böylece kolayca request atıp verilerimizi alabiliriz.
 -   Back-end geliştirmeye ihtiyaç duymaz.
 -   Hızlı bir başlangıç için harikadır.
 -   Sadece bir API olmakla kalmayıp, kolay kullanımlı, kullanıcı güvenliği ve dosya deposu sunar.
--   # 👉 **npm install --save @supabase/supabase-js**
+-   👉 **npm install --save @supabase/supabase-js**
 -   <a href="https://supabase.com/">SupaBase </a>
 -   Geliştiricilerin kolayca bir back-end Postgres database oluşturmalarına izin veren bir uygulamadır.
 -   Otomatik olarak bir database ve bir API oluşturur, böylece kolayca request atıp verilerimizi alabiliriz.
@@ -360,7 +355,6 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Hızlı bir başlangıç için harikadır.
 -   Sadece bir API olmakla kalmayıp, kolay kullanımlı, kullanıcı güvenliği ve dosya deposu sunar.
 -   👉 **npm install --save @supabase/supabase-js**
-    > > > > > > > bac5890a1505f8f98e55a6b69309870c3d5c3030
 
 ### 🖊 `Arka planda nasıl çalışır & Bazı değerli bilgiler`
 
@@ -442,9 +436,9 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 
 ### `Cypress Test`
 
-- context() ve describe() aynıdır, specify() ve it() aynıdır. Kullanıma göre istediğimizi seçebiliriz. Describe ana fonksiyondur. <a href="https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests?utm_source=Binary%3A+Launchpad&utm_medium=Docs+Menu&utm_content=Organizing+Tests#Test-Structure"> Buradan incele </a>
-- Aynı şekilde Mocha tarafından sunulan bazı hooklar'a da <a href="https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests?utm_source=Binary%3A+Launchpad&utm_medium=Docs+Menu&utm_content=Organizing+Tests#Hooks"> buradan bakabilirsin </a>
-- Excluding & Including test, yani test ekleme veya test çıkarma tek seferde tek bir test yapmamıza olanak verir. <a href="https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests?utm_source=Binary%3A+Launchpad&utm_medium=Docs+Menu&utm_content=Organizing+Tests#Excluding-and-Including-Tests"> Buradan incele </a>
+-   context() ve describe() aynıdır, specify() ve it() aynıdır. Kullanıma göre istediğimizi seçebiliriz. Describe ana fonksiyondur. <a href="https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests?utm_source=Binary%3A+Launchpad&utm_medium=Docs+Menu&utm_content=Organizing+Tests#Test-Structure"> Buradan incele </a>
+-   Aynı şekilde Mocha tarafından sunulan bazı hooklar'a da <a href="https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests?utm_source=Binary%3A+Launchpad&utm_medium=Docs+Menu&utm_content=Organizing+Tests#Hooks"> buradan bakabilirsin </a>
+-   Excluding & Including test, yani test ekleme veya test çıkarma tek seferde tek bir test yapmamıza olanak verir. <a href="https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests?utm_source=Binary%3A+Launchpad&utm_medium=Docs+Menu&utm_content=Organizing+Tests#Excluding-and-Including-Tests"> Buradan incele </a>
 
 ### 💬 `Commit Examples`
 
