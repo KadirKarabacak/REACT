@@ -90,10 +90,6 @@ function CabinRow({ cabin }) {
                 <span>&mdash;</span>
             )}
             <div>
-                {/* <button disabled={isDuplicating} onClick={handleDuplicate}>
-                    <HiSquare2Stack />
-                </button> */}
-
                 <Modal>
                     {/* Menu for rows */}
                     <Menus.Menu>
