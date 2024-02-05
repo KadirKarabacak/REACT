@@ -53,6 +53,7 @@ const Button = styled.button`
     border: none;
     border-radius: var(--border-radius-sm);
     box-shadow: var(--shadow-sm);
+    opacity: ${props => (props.disabled ? 0.8 : 1)};
     /* align-self: center; */
 
     /* Takes conditionally from up size and variation which we pass */
