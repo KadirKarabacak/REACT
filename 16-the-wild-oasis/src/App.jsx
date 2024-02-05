@@ -18,44 +18,57 @@ import AppLayout from "./ui/AppLayout";
 
 // Styles
 import GlobalStyles from "./styles/GlobalStyles";
+import Booking from "./pages/Booking";
+import Checkin from "./pages/Checkin";
 
 // Creating new QueryClient for React-Query
 const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      // staleTime: 60 * 1000, // 1 Minute
-      staleTime: 0,
+    defaultOptions: {
+        queries: {
+            // staleTime: 60 * 1000, // 1 Minute
+            staleTime: 0,
+        },
     },
-  },
 });
 
 function App() {
-  return (
-    // Providing our queryClient
-    <QueryClientProvider client={queryClient}>
-      {/* React-Query-Devtools*/}
-      <ReactQueryDevtools initialIsOpen={false} />
-      {/* Global Styles */}
-      <GlobalStyles />
-      <BrowserRouter>
-        <Routes>
-          {/* Creating parent element as always */}
-          <Route element={<AppLayout />}>
-            <Route index element={<Navigate replace to="dashboard" />} />
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="bookings" element={<Bookings />} />
-            <Route path="cabins" element={<Cabins />} />
-            <Route path="users" element={<Users />} />
-            <Route path="settings" element={<Settings />} />
-            <Route path="account" element={<Account />} />
-          </Route>
-          {/* Login and pagenotfound is not childs */}
-          <Route path="login" element={<Login />} />
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </QueryClientProvider>
-  );
+    return (
+        // Providing our queryClient
+        <QueryClientProvider client={queryClient}>
+            {/* React-Query-Devtools*/}
+            <ReactQueryDevtools initialIsOpen={false} />
+            {/* Global Styles */}
+            <GlobalStyles />
+            <BrowserRouter>
+                <Routes>
+                    {/* Creating parent element as always */}
+                    <Route element={<AppLayout />}>
+                        <Route
+                            index
+                            element={<Navigate replace to="dashboard" />}
+                        />
+                        <Route path="dashboard" element={<Dashboard />} />
+                        <Route path="bookings" element={<Bookings />} />
+                        <Route
+                            path="bookings/:bookingId"
+                            element={<Booking />}
+                        />
+                        <Route
+                            path="checkin/:bookingId"
+                            element={<Checkin />}
+                        />
+                        <Route path="cabins" element={<Cabins />} />
+                        <Route path="users" element={<Users />} />
+                        <Route path="settings" element={<Settings />} />
+                        <Route path="account" element={<Account />} />
+                    </Route>
+                    {/* Login and pagenotfound is not childs */}
+                    <Route path="login" element={<Login />} />
+                    <Route path="*" element={<PageNotFound />} />
+                </Routes>
+            </BrowserRouter>
+        </QueryClientProvider>
+    );
 }
 
 export default App;
