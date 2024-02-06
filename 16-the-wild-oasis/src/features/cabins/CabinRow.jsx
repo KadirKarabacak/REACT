@@ -106,23 +106,19 @@ function CabinRow({ cabin }) {
                             </Menus.Button>
 
                             <Modal.Open opens="edit">
-                                {/* Changing Edit Button */}
                                 <Menus.Button icon={<HiPencil />}>
                                     Edit
                                 </Menus.Button>
-                                {/* <button><HiPencil /></button> */}
                             </Modal.Open>
 
                             <Modal.Open opens="delete">
                                 <Menus.Button icon={<HiTrash />}>
                                     Delete
                                 </Menus.Button>
-                                {/* <button><HiTrash />  </button> */}
                             </Modal.Open>
                         </Menus.List>
 
                         {/* Modal */}
-
                         <Modal.Window name="edit">
                             <CreateCabinForm cabinToEdit={cabin} />
                         </Modal.Window>
