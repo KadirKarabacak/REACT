@@ -12,6 +12,11 @@ import { useBooking } from "./useBooking";
 import Spinner from "../../ui/Spinner";
 import { useNavigate } from "react-router-dom";
 import ButtonText from "../../ui/ButtonText";
+import { HiArrowUpOnSquare, HiTrash } from "react-icons/hi2";
+import { useCheckout } from "../check-in-out/useCheckout";
+import { useDeleteBooking } from "./useDeleteBooking";
+import Modal from "../../ui/Modal";
+import ConfirmDelete from "../../ui/ConfirmDelete";
 
 const HeadingGroup = styled.div`
     display: flex;
@@ -23,6 +28,9 @@ function BookingDetail() {
     const navigate = useNavigate();
     const moveBack = useMoveBack();
     const { booking, isLoading } = useBooking();
+    const { checkout, isCheckingOut } = useCheckout();
+    const { isDeleting, deleteBookingMutate } = useDeleteBooking();
+
     if (!booking) return;
     const { status, id } = booking;
 
@@ -49,11 +57,49 @@ function BookingDetail() {
             <BookingDataBox booking={booking} />
 
             <ButtonGroup>
+                {status === "checked-out" && (
+                    <Modal>
+                        <Modal.Open opens="delete">
+                            <Button
+                                variation="danger"
+                                disabled={isDeleting}
+                                icon={<HiTrash />}
+                            >
+                                Delete
+                            </Button>
+                        </Modal.Open>
+                        <Modal.Window name="delete">
+                            <ConfirmDelete
+                                resourceName={id}
+                                onConfirm={() => {
+                                    deleteBookingMutate(id, {
+                                        onSuccess: () => {
+                                            moveBack();
+                                        },
+                                    });
+                                }}
+                                disabled={isDeleting}
+                            />
+                        </Modal.Window>
+                    </Modal>
+                )}
+
                 {status === "unconfirmed" && (
                     <Button onClick={() => navigate(`/checkin/${id}`)}>
                         Check in
                     </Button>
                 )}
+
+                {status === "checked-in" && (
+                    <Button
+                        onClick={() => checkout(id)}
+                        icon={<HiArrowUpOnSquare />}
+                        disabled={isCheckingOut}
+                    >
+                        Check Out
+                    </Button>
+                )}
+
                 <Button variation="secondary" onClick={moveBack}>
                     Back
                 </Button>
