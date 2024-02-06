@@ -13,3 +13,18 @@ export async function login({ email, password }) {
     // Giriş başarılı olduğunda token ve diğer veriler localStorage'a kaydedilir
     return data;
 }
+
+// After a long time when user come back, refetch and validate the token
+export async function getCurrentUser() {
+    // localStorage içerisinden session verisini alır.
+    const { data: session } = await supabase.auth.getSession();
+
+    if (!session.session) return null;
+
+    const { data, error } = await supabase.auth.getUser();
+    console.log(data);
+
+    if (error) throw new Error(error.message);
+
+    return data?.user;
+}
