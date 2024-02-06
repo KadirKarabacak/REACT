@@ -46,6 +46,9 @@ function Filter({ filterField, options }) {
     function handleClick(value) {
         // cabins?discount=all/no-discount/with-discount
         searchParams.set(filterField, value);
+
+        // Filter değiştiğinde sayfayı 1'e getirmeliyiz, yoksa sayfa sayısından daha az sonuç varsa hata veriyor.
+        if (searchParams.get("page")) searchParams.set("page", 1);
         setSearchParams(searchParams);
     }
 
