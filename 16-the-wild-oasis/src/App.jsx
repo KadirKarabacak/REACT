@@ -15,6 +15,7 @@ import Account from "./pages/Account";
 import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
 import AppLayout from "./ui/AppLayout";
+import ProtectedRoute from "./ui/ProtectedRoute";
 
 // Styles
 import GlobalStyles from "./styles/GlobalStyles";
@@ -42,7 +43,13 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     {/* Creating parent element as always */}
-                    <Route element={<AppLayout />}>
+                    <Route
+                        element={
+                            <ProtectedRoute>
+                                <AppLayout />
+                            </ProtectedRoute>
+                        }
+                    >
                         <Route
                             index
                             element={<Navigate replace to="dashboard" />}
