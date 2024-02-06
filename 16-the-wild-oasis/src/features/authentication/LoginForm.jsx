@@ -16,7 +16,15 @@ function LoginForm() {
         e.preventDefault();
         if (!email || !password)
             return toast.error("Plase enter an email and password");
-        login({ email, password });
+        login(
+            { email, password },
+            {
+                onSettled: () => {
+                    setEmail("");
+                    setPassword("");
+                },
+            }
+        );
     }
 
     return (
