@@ -348,13 +348,9 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Hızlı bir başlangıç için harikadır.
 -   Sadece bir API olmakla kalmayıp, kolay kullanımlı, kullanıcı güvenliği ve dosya deposu sunar.
 -   👉 **npm install --save @supabase/supabase-js**
--   <a href="https://supabase.com/">SupaBase </a>
--   Geliştiricilerin kolayca bir back-end Postgres database oluşturmalarına izin veren bir uygulamadır.
--   Otomatik olarak bir database ve bir API oluşturur, böylece kolayca request atıp verilerimizi alabiliriz.
--   Back-end geliştirmeye ihtiyaç duymaz.
--   Hızlı bir başlangıç için harikadır.
--   Sadece bir API olmakla kalmayıp, kolay kullanımlı, kullanıcı güvenliği ve dosya deposu sunar.
--   👉 **npm install --save @supabase/supabase-js**
+-   Supabase ile Authentication ele almak için providers Authentication > Providers kısmından provider ayarlayabiliriz. Default olarak email ile giriş yapabilmemizi sağlar. Geliştirme aşaması için confirm e-mail seçeneği kapatılmalıdır.
+-   Öncelikle Authentication kısmından yeni bir user oluşturuyoruz. Ve gerekli api çağırısını projemizde yapıp react-query ile ele alıyoruz.
+-   Authorization için ise bir **ProtectedRoute** componenti oluşturup **children** propunu alıyoruz ve return ediyoruz. Daha sonra Tüm uygulamamızı içeren **AppLayout componentimizi ProtectedRoute componenti ile sarıyoruz** ve ProtectedRoute içerisinde **kondisyonel** olarak ( Authenticated or Not ) children'i returnleyeceğiz.
 
 ### 🖊 `Arka planda nasıl çalışır & Bazı değerli bilgiler`
 
