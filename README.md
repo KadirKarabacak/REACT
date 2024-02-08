@@ -268,7 +268,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Aynı zamanda kendi geliştiri kiti vardır. Yüklemek için 👉 **npm i @tanstack/react-query/devtools**
 -   Oluşturduğumuz queryClient'i başka bir dosyada kullanmak için **useQueryClient( )** fonksiyonunu çağırabiliriz.
 -   Verimizi mutsayona uğratmak, birşeyler eklemek yada silmek istediğimizde **useMutation( )** fonksiyonunu kullanıyoruz. Bu fonksiyon içerisinde **mutationFn, mutationKey, onSuccess, onError** gibi farklı özellikleri kullanabiliriz.
--   Mutasyona uğratma başarılı olduğunda onSuccess fonksiyonu içerisinde **queryClient.invalideQueries(" databaseTablomuzunIsmi ")** kullanarak arayüzümüzü değişimden etkilendikten hemen sonra yeniden renderlayabiliriz.
+-   Mutasyona uğratma başarılı olduğunda onSuccess fonksiyonu içerisinde **queryClient.invalidateQueries(" databaseTablomuzunIsmi ")** kullanarak arayüzümüzü değişimden etkilendikten hemen sonra yeniden renderlayabiliriz.
 -   React-Query güçlü bir **remote-state** düzenlemesi sağlayan kütüphanedir.
 -   Çoğu özelliği bakımından **daha az kod** yazmamızı sağlar.
 -   Yakaladığı verileri cache'e alır, bu sayede aynı verileri farklı component'ler üzerinde kullanabilmemize olanak sağlar ve gereksiz refetch yapmaz.
