@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 const ButtonIcon = styled.button`
     background: none;
-    border: none;
-    padding: 0.6rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0.7rem;
     border-radius: var(--border-radius-sm);
     transition: all 0.2s;
     display: flex;
