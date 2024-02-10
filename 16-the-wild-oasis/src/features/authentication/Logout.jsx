@@ -10,7 +10,6 @@ function Logout() {
             {isLoading && <SpinnerMini />}
             {!isLoading && (
                 <>
-                    {" "}
                     <HiArrowRightOnRectangle /> Logout
                 </>
             )}
