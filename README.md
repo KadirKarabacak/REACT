@@ -268,7 +268,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Aynı zamanda kendi geliştiri kiti vardır. Yüklemek için 👉 **npm i @tanstack/react-query/devtools**
 -   Oluşturduğumuz queryClient'i başka bir dosyada kullanmak için **useQueryClient( )** fonksiyonunu çağırabiliriz.
 -   Verimizi mutsayona uğratmak, birşeyler eklemek yada silmek istediğimizde **useMutation( )** fonksiyonunu kullanıyoruz. Bu fonksiyon içerisinde **mutationFn, mutationKey, onSuccess, onError** gibi farklı özellikleri kullanabiliriz.
--   Mutasyona uğratma başarılı olduğunda onSuccess fonksiyonu içerisinde **queryClient.invalideQueries(" databaseTablomuzunIsmi ")** kullanarak arayüzümüzü değişimden etkilendikten hemen sonra yeniden renderlayabiliriz.
+-   Mutasyona uğratma başarılı olduğunda onSuccess fonksiyonu içerisinde **queryClient.invalidateQueries(" databaseTablomuzunIsmi ")** kullanarak arayüzümüzü değişimden etkilendikten hemen sonra yeniden renderlayabiliriz.
 -   React-Query güçlü bir **remote-state** düzenlemesi sağlayan kütüphanedir.
 -   Çoğu özelliği bakımından **daha az kod** yazmamızı sağlar.
 -   Yakaladığı verileri cache'e alır, bu sayede aynı verileri farklı component'ler üzerinde kullanabilmemize olanak sağlar ve gereksiz refetch yapmaz.
@@ -435,6 +435,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   context() ve describe() aynıdır, specify() ve it() aynıdır. Kullanıma göre istediğimizi seçebiliriz. Describe ana fonksiyondur. <a href="https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests?utm_source=Binary%3A+Launchpad&utm_medium=Docs+Menu&utm_content=Organizing+Tests#Test-Structure"> Buradan incele </a>
 -   Aynı şekilde Mocha tarafından sunulan bazı hooklar'a da <a href="https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests?utm_source=Binary%3A+Launchpad&utm_medium=Docs+Menu&utm_content=Organizing+Tests#Hooks"> buradan bakabilirsin </a>
 -   Excluding & Including test, yani test ekleme veya test çıkarma tek seferde tek bir test yapmamıza olanak verir. <a href="https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests?utm_source=Binary%3A+Launchpad&utm_medium=Docs+Menu&utm_content=Organizing+Tests#Excluding-and-Including-Tests"> Buradan incele </a>
+- Özellikle materialUI veya benzeri harici componentler ile çalıştığım projelerde data-test-id prop'u geçersiz kılınabiliyor. Bu sebeple data-test-id yerine name özelliğini kullanarak test yapabilirsin.
 
 ### 💬 `Commit Examples`
 
