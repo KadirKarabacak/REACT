@@ -6,16 +6,18 @@ import { useNavigate } from "react-router-dom";
 
 const StyledHeaderMenu = styled.ul`
     display: flex;
-    gap: 0.4rem;
+    gap: 0.6rem;
 `;
 
 function HeaderMenu() {
     const navigate = useNavigate();
+
     return (
         <StyledHeaderMenu>
             <li>
                 <ButtonIcon onClick={() => navigate("/account")}>
                     <HiOutlineUser />
+                    Account
                 </ButtonIcon>
             </li>
             <li>
