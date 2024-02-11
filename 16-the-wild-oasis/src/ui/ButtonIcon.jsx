@@ -8,10 +8,16 @@ const ButtonIcon = styled.button`
     transition: all 0.2s;
     display: flex;
     align-items: center;
+    text-align: center;
     justify-content: center;
 
     &:hover {
-        background-color: var(--color-grey-100);
+        background-color: var(--color-brand-600);
+        color: white;
+
+        & svg {
+            color: white;
+        }
     }
 
     & svg {
