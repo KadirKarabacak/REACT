@@ -20,6 +20,5 @@ export async function action({ request, params }) {
   // This updateOrder needs an id and the data which should change
   await updateOrder(params.orderId, data);
 
-  console.log('update');
   return null;
 }
