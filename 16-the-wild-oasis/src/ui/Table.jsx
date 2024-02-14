@@ -8,7 +8,6 @@ const StyledTable = styled.div`
     font-size: 1.4rem;
     background-color: var(--color-grey-0);
     border-radius: 7px;
-    overflow: scroll;
 `;
 
 const CommonRow = styled.div`
