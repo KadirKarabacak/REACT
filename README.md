@@ -424,6 +424,15 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   React Rechart Library en popüler ve kullanımı en kolay grafik kütüphanelerinden birisidir.
 -   👉 **npm i recharts**
 
+### `Error Boundaries`
+
+-   👉 **npm i react-error-boundary**
+-   Bu paket bize react ile renderlama aşamasında yaşadığımız hataları ele almamız ve ekranda **kullanıcıya birşeylerin yanlış gittiğini** gösterebilmemizi sağlar.
+-   Tüm projemizi render yaptığımız dosyamızda **ErrorBoundary** componentine sarmamız gerekir.
+-   Prop olarak bir **Fallback componenti** alır, hata durumunda göstereceğimiz componentimizi içerisine yazacağız.
+-   Kullanıcıya geri gidebilmesi için bir buton oluşturabiliriz ve bu butonun çalışması için **ErrorBoundary componentine onReset** prop'u vermeliyiz.
+-   Sonrasında Fallback componentimiz içerisinde **resetErrorBoundary** isimli bir prop alabilir ve bu prop'u butonumuza verebiliriz.
+
 ### ⌨ `React ile yaptığım bazı Codesandbox pratikleri` ⏬
 
 -   <a href="https://t.ly/_9303">📆 Date Counter </a>
