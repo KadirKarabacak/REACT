@@ -13,10 +13,8 @@ export function useLogin() {
             // Manually set data to the cache
             queryClient.setQueryData(["user", user.user]);
             navigate("/dashboard", { replace: true });
-            console.log(user);
         },
         onError: err => {
-            console.log(err.message);
             toast.error(err.message);
         },
     });
