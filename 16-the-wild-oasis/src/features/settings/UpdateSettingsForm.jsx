@@ -23,7 +23,6 @@ function UpdateSettingsForm() {
 
         if (!value) return;
         updateSetting({ [field]: value });
-        console.log(field);
     }
 
     if (isLoading) return <Spinner />;
