@@ -92,6 +92,7 @@ function Toggle({ id }) {
     const { openId, close, open, setPosition } = useContext(MenusContext);
 
     function handleClick(e) {
+        e.stopPropagation();
         // To calculate position and display menu
         const rect = e.target.closest("button").getBoundingClientRect();
 
@@ -114,7 +115,8 @@ function Toggle({ id }) {
 
 function List({ id, children }) {
     const { openId, position, close } = useContext(MenusContext);
-    const ref = useOutsideClick(close);
+    // Use false as a second arg to ignore capturing phase
+    const ref = useOutsideClick(close, false);
 
     // If id's are not matched, then return null. Otherwise return list of Buttons
     if (openId !== id) return null;
