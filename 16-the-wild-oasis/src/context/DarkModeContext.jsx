@@ -6,8 +6,12 @@ import { useLocalStorageState } from "../hooks/useLocalStorageState";
 const DarkModeContext = createContext();
 
 function DarkModeProvider({ children }) {
+    // Controls users default theme
+    const isUserUsingDarkMode = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+    ).matches;
     const [isDarkMode, setIsDarkMode] = useLocalStorageState(
-        false,
+        isUserUsingDarkMode,
         "isDarkMode"
     );
 
