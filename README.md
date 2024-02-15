@@ -108,7 +108,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   "**Reducer**" fonksiyon bir pure fonksiyondur, anlık state'i ve action özelliğini alıp yeni state'i çevirir.
 -   Genellikle reducer fonksiyon içerisinde bir "**switch-case**" yöntemi kullanılır.
 -   "**action özelliği**" state'in nasıl güncelleneceğini belirtir.
--   dispatch fonksiyonu state güncellemelerini tetiklemek için kullanılır. reducer fonkksiyona actions özelliğini gönderir.
+-   dispatch fonksiyonu state güncellemelerini tetiklemek için kullanılır. reducer fonksiyona actions özelliğini gönderir.
 
 ### 📦 `Ref'ler`
 
