@@ -458,3 +458,4 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 - Eğer projede bu hatayı alıyorsak düzeltmek için şu komutu terminalde uygulayabiliriz.
 - 👉 **npm config set legacy-peer-deps true**
 - Böylelikle hata almadan devam edebiliriz.
+- Netlify deploy'unda hata alırsan deploy aşamasında en aşağıdan bir environment variable oluşturup key = NPM_FLAGS ve value = --legacy-peer-deps vererek düzelmesini sağlayabilirsin
