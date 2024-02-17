@@ -453,3 +453,8 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   perf: improve performance
 -   chore: update dependencies
 -   revert: revert to commit 123456
+
+### `Peer Legacy Deps Hatası`
+- Eğer projede bu hatayı alıyorsak düzeltmek için şu komutu terminalde uygulayabiliriz.
+- 👉 **npm config set legacy-peer-deps true**
+- Böylelikle hata almadan devam edebiliriz.
