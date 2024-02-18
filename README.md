@@ -232,7 +232,6 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Redux kodu yazmanın daha **modern ve tercih edilen** yoludur.
 -   Redux'un **en iyi uygulamalarını(En doğru şekilde)** kullanmaya zorlayan fikir odaklı bir yaklaşımdır.
 -   Aynı sonuca **daha az kod** yazarak erişebilmemizi sağlar.
--   **3** büyük avantajı vardır.
 -   İlk olarak **reducer içerisinde state'i değiştiren** kod yazabiliriz. (Arka planda **Immer** isimli bir kütüphane tarafından immutable olarak çevirilir)
 -   İkincisi Action Creator'larımız **otomatik** olarak oluşturulur.
 -   Üçüncüsü ise **otomatik olarak thunk middleware ve devtools** setup'u yapılır.
