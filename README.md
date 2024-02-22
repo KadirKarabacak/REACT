@@ -121,16 +121,16 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 
 ### ✨ `Use Effect'ler`
 
--   Bir component sayfaya mount'landığında [ Yani başlangıçta ] ve sonraki re-render'larda çalışır ( "**Bağlılık dizisine verdiğiniz değerlere göre değişir**" ).
--   Bağımlılık dizisi olmadan, React effect'i ne zaman çalıştıracağını bilmez.
--   Effect içinde kullanılan her state değişkeni ve prop bağımlılık dizisine eklenmelidir. Aksi taktirde çalışmaz.
--   Olabildiğince bağımlılık dizisine bir "**Obje veya Dizi**" vermekten kaçınmalıyız. Çünkü Javascript'te hiçbir obje birbiri ile aynı değildir ve useEffect içerisinde her seferinde yeniden oluşturulup programı sonsuz döngüye sokar.
--   Bir component'i harici bir sistem ile senkronize tutmaya yarar. Örneğin API çağırıları.
--   UseEffect bir eventlistener'a benzer. Bağımlılık dizisindekilerin değişmesini gözlemler. Her değişimde tekrar tekrar çalışır.
+-   [ ] Bir component sayfaya mount'landığında [ Yani başlangıçta ] ve sonraki re-render'larda çalışır ( "**Bağlılık dizisine verdiğiniz değerlere göre değişir**" ).
+-   [ ] Bağımlılık dizisi olmadan, React effect'i ne zaman çalıştıracağını bilmez.
+-   [ ] Effect içinde kullanılan her state değişkeni ve prop bağımlılık dizisine eklenmelidir. Aksi taktirde çalışmaz.
+-   [ ] Olabildiğince bağımlılık dizisine bir "**Obje veya Dizi**" vermekten kaçınmalıyız. Çünkü Javascript'te hiçbir obje birbiri ile aynı değildir ve useEffect içerisinde her seferinde yeniden oluşturulup programı sonsuz döngüye sokar.
+-   [ ] Bir component'i harici bir sistem ile senkronize tutmaya yarar. Örneğin API çağırıları.
+-   [ ] UseEffect bir eventlistener'a benzer. Bağımlılık dizisindekilerin değişmesini gözlemler. Her değişimde tekrar tekrar çalışır.
 -   [ ] Sadece başlangıçta çalışır. ( "**initial render**" )
--   [ x,y,z ] başlangıçta, x,y ve z her güncellendiğinde çalışır.
--   Bağımlılık dizisi olmazsa programda değişen herşey tekrar tekrar çalışmasına sebep olur. Performans için berbat bir durum. ⛔
--   Cleanup fonksiyonu sideEffect'leri temizlemek için kullanılır ve performansı arttırmaya yardımcı olur.
+-   [ ] [ x,y,z ] başlangıçta, x,y ve z her güncellendiğinde çalışır.
+-   [ ] Bağımlılık dizisi olmazsa programda değişen herşey tekrar tekrar çalışmasına sebep olur. Performans için berbat bir durum. ⛔
+-   [ ] Cleanup fonksiyonu sideEffect'leri temizlemek için kullanılır ve performansı arttırmaya yardımcı olur.
 
 ### ↗↖ `Router ( Yönlendirici )`
 
