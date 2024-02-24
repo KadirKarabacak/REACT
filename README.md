@@ -1,4 +1,4 @@
-# <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="30" height="30" /> `REACT`
+# <img src="https://techstack-generator.vercel.app/react-icon.svg" alt="icon" width="40" height="40" /> `REACT`
 
 Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi birikimimi tutuyorum.
 
@@ -193,7 +193,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   İkinci aşama JSX'imizi "**Posts.Provider**" componenti ile sarmak ve **value prop'una** geçirmek istediğimiz tüm propları yazmak.
 -   Üçüncü ve son aşama Consumers (Tüketiciler) provider tarafından yayınlanan "**context değerini okuyan**" tüm componentlerde import etme.
 
-### 🟥 `Redux`
+### <img src="https://techstack-generator.vercel.app/redux-icon.svg" alt="icon" width="40" height="40" /> `Redux`
 
 -   Redux "**Global state düzenlemesi**" yapmamızı sağlayan bir 3rd party kütüphanedir.
 -   Tüm global state, "**tek bir global erişilebilir yerdedir**", actions kullanarak (useReducer'da olduğu gibi) güncellemesi kolaydır.
