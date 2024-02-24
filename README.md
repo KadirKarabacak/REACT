@@ -217,14 +217,14 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   İkinci adım store içerisinde oluşturma -> "**const store = createStore(rootReducer, applyMiddleware(thunk));**"
 -   Üçüncü adım **Action Creator** içerisinde kullanma.
 
-### 🟥 `Redux Geliştirici Araçları (DevTools)`
+### <img src="https://techstack-generator.vercel.app/redux-icon.svg" alt="icon" width="40" height="40" /> `Redux Geliştirici Araçları (DevTools)`
 
 -   Geliştirici araçları için google üzerinden redux-devtools'u indireceğiz.
 -   Daha sonra terminal içerisinde redux-devtools-extension yükleyeceğiz.
 -   Bu eklentinin bize sağladığı bir fonksiyon olan {composeWithDevTools}'u import edeceğiz.
 -   Ve son olarak applyMiddleware fonksiyonumuzu composeWithDevTools ile sarıyoruz. (Kullanımı bu şekilde)
 
-### 🟥 `Redux Toolkit`
+### <img src="https://techstack-generator.vercel.app/redux-icon.svg" alt="icon" width="40" height="40" /> `Redux Toolkit`
 
 -   Yükleme için 👉 **npm i @reduxjs/toolkit**
 -   Daha önce oluşturduğumuz **createStore()** yerine **configureStore()** fonksiyonunu kullanacağız.
