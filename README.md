@@ -182,6 +182,14 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Ne zaman bir API'a **PATCH** isteği gönderen bir action oluştursak, React-router **re-validation( yeniden-doğrulama )** adı verilen bir duruma sahiptir. Verinin **action'a bağlı olarak değiştiğini** bilir ve arka planda otomatik olarak **re-fetch( yeniden-veri yakalaması )** yapar ve bu yeni veriler ile sayfayı **tekrar renderlar**.
 -   Bu işlemi 👉 **<"fetcher.Form"> { Button etc.. } </"fetcher.Form">** ile yaptığımız için React-Router bunu anlıyor.
 
+### 🧷 `Custom Hooks`
+- React'ta bir custom hook birden fazla built-in hook kullanan bir javascript fonksiyonudur. [ useState, useEffect, vb. ]
+- Custom hook'lar React component'leri arasında mantığı ayırmak ve paylaşmak için bir yol sunarak daha temiz kod, gelişmiş organizasyon ve üretkenlik sağlar.
+- Bir custom hook oluştururken uyulması gereken bazı kurallar vardır.
+- Custom hook isimleri her zaman "use" ile başlamalıdır.
+- Bir custom hook'un ana amacı yeniden kullanılabilirliktir ve proje boyunca birden fazla component içerisinde kullanılır.
+- Custom hook'lar bir JSX içermez ve yeniden renderlamalara sebep olmaz. Mantık ve state düzenlemeye yararlar, arayüz tanımlamazlar.
+
 ### 🌟 `Context API`
 
 -   Birden fazla **derinlikte bulunan child componentlere** state geçirmek ve kullanmak istediğimizde bu state'i kullanmayacağımız componentler üzerinden geçirerek **kod kirliliği ve hantal bir yapı** oluşturmak yerine **direkt kullanmak istediğimiz child component'e** bu state'i vermemizi sağlayan yapıdır.
