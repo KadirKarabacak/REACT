@@ -185,15 +185,16 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 ### ➡ `TanStack Router`
 - TanStack router'ı react-router ile karşılaştırdığımızda görebileceğimiz en büyük avantajlarından birisi **typesafe** olmasıdır. Olmayan bir route yazdığınızda TypeScript sizi uyarır ve bir hata olduğunu belirtir.
 - TanStack router hem File-Based Routing hemde Code-Based Routing için destek sunar. Bu konuda detaylı bilgi için <a href="https://tanstack.com/router/latest/docs/framework/react/guide/route-trees">linke</a> gidebilirsin.
-- 
 - Installation ⏬
-   ```js
+
+   ```
   npm install @tanstack/router
   npm install --save-dev @tanstack/router-vite-plugin
   ```
 - Vite plugin otomatik olarak routes dosyasını oluşturur.
 - Daha sonra **vite.config.ts** dosyamız bu şekilde görünmelidir
-   ```js
+
+   ```
   import { defineConfig } from 'vite';
   import react from '@vitejs/plugin-react';
   import { TanStackRouterVite } from '@tanstack/router-vite-plugin';
@@ -203,7 +204,8 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
   });
   ```
 - Bir sonraki adımda **__root.tsx** dosyamız içerisinde tüm route'larımız için bir root route'ı Outlet componentimiz ile oluşturuyoruz.
-  ```js
+
+  ```
   import { Outlet, createRootRoute } from '@tanstack/react-router';
 
   export const Route = createRootRoute({
@@ -211,7 +213,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
   });
   ```
 - Şimdi route'larımız tanımlıdır fakat React bunu henüz bilmiyor. Dolayısıyla bir provider'a ihtiyacımız var. Bu noktada **App.tsx** dosyamıza gidip içeriğini aşağıdaki gibi güncelliyoruz
-  ```js
+  ```
   import './App.css';
   import { RouterProvider, createRouter } from '@tanstack/react-router';
   import { routeTree } from './routeTree.gen';
