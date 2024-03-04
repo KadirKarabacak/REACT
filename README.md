@@ -186,13 +186,13 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 - TanStack router'ı react-router ile karşılaştırdığımızda görebileceğimiz en büyük avantajlarından birisi **typesafe** olmasıdır. Olmayan bir route yazdığınızda TypeScript sizi uyarır ve bir hata olduğunu belirtir.
 - TanStack router hem File-Based Routing hemde Code-Based Routing için destek sunar. Bu konuda detaylı bilgi için <a href="https://tanstack.com/router/latest/docs/framework/react/guide/route-trees">linke</a> gidebilirsin.
 - Installation ⏬
-  ```
+  ```js
   npm install @tanstack/router
   npm install --save-dev @tanstack/router-vite-plugin
   ```
 - Vite plugin otomatik olarak routes dosyasını oluşturur.
 - Daha sonra **vite.config.ts** dosyamız bu şekilde görünmelidir
-   ```
+   ```js
   import { defineConfig } from 'vite';
   import react from '@vitejs/plugin-react';
   import { TanStackRouterVite } from '@tanstack/router-vite-plugin';
@@ -202,7 +202,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
   });
   ```
 - Bir sonraki adımda **__root.tsx** dosyamız içerisinde tüm route'larımız için bir root route'ı Outlet componentimiz ile oluşturuyoruz.
-  ```
+  ```js
   import { Outlet, createRootRoute } from '@tanstack/react-router';
 
   export const Route = createRootRoute({
@@ -210,7 +210,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
   });
   ```
 - Şimdi route'larımız tanımlıdır fakat React bunu henüz bilmiyor. Dolayısıyla bir provider'a ihtiyacımız var. Bu noktada **App.tsx** dosyamıza gidip içeriğini aşağıdaki gibi güncelliyoruz
-  ```
+  ```js
   import './App.css';
   import { RouterProvider, createRouter } from '@tanstack/react-router';
   import { routeTree } from './routeTree.gen';
@@ -231,13 +231,13 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
   ```
 - Bununla birlikte tüm route'larımız aktif bir şekilde çalışacaktır. Bu noktada route'larımız arasında gezinim için ihtiyacımız olan şey **Link** component'idir. ```<Link to="/">Home</Link>```. Kullanımı react-router ile aynıdır.
 - Tüm işlevselliğimiz apaçık bir şekilde çalışmaktadır. Şimdi bulunduğumuz sayfayı belirten bir stilleme için Link componentimize activeProps prop'u vererek aktif durumda stilleme yapabiliriz.
-  ```
+  ```js
   <Link to="/" activeProps={{ style: { fontWeight: 'bold' } }}>
     Home
   </Link>
   ```
 - Bu özelliğin yanısıra custom bir active state için şu şekilde bir kullanım da mevcuttur.
-  ```
+  ```js
   <Link to="/profile">{({ isActive }) => <>Profile {isActive && 'Active'}</>}</Link>
   ```
 
