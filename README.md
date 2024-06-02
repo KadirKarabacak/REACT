@@ -121,16 +121,16 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 
 ### ✨ `Use Effect'ler`
 
--  Bir component sayfaya mount'landığında [ Yani başlangıçta ] ve sonraki re-render'larda çalışır ( "**Bağlılık dizisine verdiğiniz değerlere göre değişir**" ).
--  Bağımlılık dizisi olmadan, React effect'i ne zaman çalıştıracağını bilmez.
--  Effect içinde kullanılan her state değişkeni ve prop bağımlılık dizisine eklenmelidir. Aksi taktirde çalışmaz.
--  Olabildiğince bağımlılık dizisine bir "**Obje veya Dizi**" vermekten kaçınmalıyız. Çünkü Javascript'te hiçbir obje birbiri ile aynı değildir ve useEffect içerisinde her seferinde yeniden oluşturulup programı sonsuz döngüye sokar.
--  Bir component'i harici bir sistem ile senkronize tutmaya yarar. Örneğin API çağırıları.
--  UseEffect bir eventlistener'a benzer. Bağımlılık dizisindekilerin değişmesini gözlemler. Her değişimde tekrar tekrar çalışır.
--  Sadece başlangıçta çalışır. ( "**initial render**" )
--  [ x,y,z ] başlangıçta, x,y ve z her güncellendiğinde çalışır.
--  Bağımlılık dizisi olmazsa programda değişen herşey tekrar tekrar çalışmasına sebep olur. Performans için berbat bir durum. ⛔
--  Cleanup fonksiyonu sideEffect'leri temizlemek için kullanılır ve performansı arttırmaya yardımcı olur.
+-   Bir component sayfaya mount'landığında [ Yani başlangıçta ] ve sonraki re-render'larda çalışır ( "**Bağlılık dizisine verdiğiniz değerlere göre değişir**" ).
+-   Bağımlılık dizisi olmadan, React effect'i ne zaman çalıştıracağını bilmez.
+-   Effect içinde kullanılan her state değişkeni ve prop bağımlılık dizisine eklenmelidir. Aksi taktirde çalışmaz.
+-   Olabildiğince bağımlılık dizisine bir "**Obje veya Dizi**" vermekten kaçınmalıyız. Çünkü Javascript'te hiçbir obje birbiri ile aynı değildir ve useEffect içerisinde her seferinde yeniden oluşturulup programı sonsuz döngüye sokar.
+-   Bir component'i harici bir sistem ile senkronize tutmaya yarar. Örneğin API çağırıları.
+-   UseEffect bir eventlistener'a benzer. Bağımlılık dizisindekilerin değişmesini gözlemler. Her değişimde tekrar tekrar çalışır.
+-   Sadece başlangıçta çalışır. ( "**initial render**" )
+-   [ x,y,z ] başlangıçta, x,y ve z her güncellendiğinde çalışır.
+-   Bağımlılık dizisi olmazsa programda değişen herşey tekrar tekrar çalışmasına sebep olur. Performans için berbat bir durum. ⛔
+-   Cleanup fonksiyonu sideEffect'leri temizlemek için kullanılır ve performansı arttırmaya yardımcı olur.
 
 ### ↗↖ `Router ( Yönlendirici )`
 
@@ -183,63 +183,72 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Bu işlemi 👉 **<"fetcher.Form"> { Button etc.. } </"fetcher.Form">** ile yaptığımız için React-Router bunu anlıyor.
 
 ### ➡ `TanStack Router`
-- TanStack router'ı react-router ile karşılaştırdığımızda görebileceğimiz en büyük avantajlarından birisi **typesafe** olmasıdır. Olmayan bir route yazdığınızda TypeScript sizi uyarır ve bir hata olduğunu belirtir.
-- TanStack router hem File-Based Routing hemde Code-Based Routing için destek sunar. Bu konuda detaylı bilgi için <a href="https://tanstack.com/router/latest/docs/framework/react/guide/route-trees">linke</a> gidebilirsin.
-- Installation ⏬
-  ```js
-  npm install @tanstack/router
-  npm install --save-dev @tanstack/router-vite-plugin
-  ```
-- Vite plugin otomatik olarak routes dosyasını oluşturur.
-- Daha sonra **vite.config.ts** dosyamız bu şekilde görünmelidir
-   ```js
-  import { defineConfig } from 'vite';
-  import react from '@vitejs/plugin-react';
-  import { TanStackRouterVite } from '@tanstack/router-vite-plugin';
-  
-  export default defineConfig({
-  plugins: [react(), TanStackRouterVite()],
-  });
-  ```
-- Bir sonraki adımda **__root.tsx** dosyamız içerisinde tüm route'larımız için bir root route'ı Outlet componentimiz ile oluşturuyoruz.
-  ```js
-  import { Outlet, createRootRoute } from '@tanstack/react-router';
 
-  export const Route = createRootRoute({
-  component: () => <Outlet />,
-  });
-  ```
-- Şimdi route'larımız tanımlıdır fakat React bunu henüz bilmiyor. Dolayısıyla bir provider'a ihtiyacımız var. Bu noktada **App.tsx** dosyamıza gidip içeriğini aşağıdaki gibi güncelliyoruz
-  ```js
-  import './App.css';
-  import { RouterProvider, createRouter } from '@tanstack/react-router';
-  import { routeTree } from './routeTree.gen';
+-   TanStack router'ı react-router ile karşılaştırdığımızda görebileceğimiz en büyük avantajlarından birisi **typesafe** olmasıdır. Olmayan bir route yazdığınızda TypeScript sizi uyarır ve bir hata olduğunu belirtir.
+-   TanStack router hem File-Based Routing hemde Code-Based Routing için destek sunar. Bu konuda detaylı bilgi için <a href="https://tanstack.com/router/latest/docs/framework/react/guide/route-trees">linke</a> gidebilirsin.
+-   Installation ⏬
+    ```js
+    npm install @tanstack/router
+    npm install --save-dev @tanstack/router-vite-plugin
+    ```
+-   Vite plugin otomatik olarak routes dosyasını oluşturur.
+-   Daha sonra **vite.config.ts** dosyamız bu şekilde görünmelidir
 
-  const router = createRouter({ routeTree });
+    ```js
+    import { defineConfig } from "vite";
+    import react from "@vitejs/plugin-react";
+    import { TanStackRouterVite } from "@tanstack/router-vite-plugin";
 
-  declare module '@tanstack/react-router' {
-    interface Register {
-    router: typeof router;
+    export default defineConfig({
+        plugins: [react(), TanStackRouterVite()],
+    });
+    ```
+
+-   Bir sonraki adımda **\_\_root.tsx** dosyamız içerisinde tüm route'larımız için bir root route'ı Outlet componentimiz ile oluşturuyoruz.
+
+    ```js
+    import { Outlet, createRootRoute } from "@tanstack/react-router";
+
+    export const Route = createRootRoute({
+        component: () => <Outlet />,
+    });
+    ```
+
+-   Şimdi route'larımız tanımlıdır fakat React bunu henüz bilmiyor. Dolayısıyla bir provider'a ihtiyacımız var. Bu noktada **App.tsx** dosyamıza gidip içeriğini aşağıdaki gibi güncelliyoruz
+
+    ```js
+    import './App.css';
+    import { RouterProvider, createRouter } from '@tanstack/react-router';
+    import { routeTree } from './routeTree.gen';
+
+    const router = createRouter({ routeTree });
+
+    declare module '@tanstack/react-router' {
+      interface Register {
+      router: typeof router;
+      }
     }
-  }
 
-  function App() {
-    return <RouterProvider router={router} />;
-  }
+    function App() {
+      return <RouterProvider router={router} />;
+    }
 
-  export default App;
-  ```
-- Bununla birlikte tüm route'larımız aktif bir şekilde çalışacaktır. Bu noktada route'larımız arasında gezinim için ihtiyacımız olan şey **Link** component'idir. ```<Link to="/">Home</Link>```. Kullanımı react-router ile aynıdır.
-- Tüm işlevselliğimiz apaçık bir şekilde çalışmaktadır. Şimdi bulunduğumuz sayfayı belirten bir stilleme için Link componentimize activeProps prop'u vererek aktif durumda stilleme yapabiliriz.
-  ```js
-  <Link to="/" activeProps={{ style: { fontWeight: 'bold' } }}>
-    Home
-  </Link>
-  ```
-- Bu özelliğin yanısıra custom bir active state için şu şekilde bir kullanım da mevcuttur.
-  ```js
-  <Link to="/profile">{({ isActive }) => <>Profile {isActive && 'Active'}</>}</Link>
-  ```
+    export default App;
+    ```
+
+-   Bununla birlikte tüm route'larımız aktif bir şekilde çalışacaktır. Bu noktada route'larımız arasında gezinim için ihtiyacımız olan şey **Link** component'idir. `<Link to="/">Home</Link>`. Kullanımı react-router ile aynıdır.
+-   Tüm işlevselliğimiz apaçık bir şekilde çalışmaktadır. Şimdi bulunduğumuz sayfayı belirten bir stilleme için Link componentimize activeProps prop'u vererek aktif durumda stilleme yapabiliriz.
+    ```js
+    <Link to="/" activeProps={{ style: { fontWeight: "bold" } }}>
+        Home
+    </Link>
+    ```
+-   Bu özelliğin yanısıra custom bir active state için şu şekilde bir kullanım da mevcuttur.
+    ```js
+    <Link to="/profile">
+        {({ isActive }) => <>Profile {isActive && "Active"}</>}
+    </Link>
+    ```
 
 ### 🧷 `Custom Hooks`
 
@@ -412,6 +421,15 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 
 ### 🆕 `NEXTJS`
 
+### `CLIENT TARAFLI RENDERLAMA [CSR]`
+
+-   Html sayfası client tarafında derlenir, böylece ilk sayfa yüklemeleri daha yavaş gerçekleşir.
+-   İndirilmesi gereken Javascript paketi büyük olabilir.
+-   Veriler komponentler mount edildikten sonra yakalanır.
+-   Daha fazla etkileşimlidir, sayfa değişimlerinde tam yükleme olmaz.
+-   SEO konusu problemli olabilir.
+-   SEO'nun önemsiz olduğu yüksek etkileşimli SPA [ Tek sayfa uygulamalar ] için oldukça uygundur. [ Örn. Sadece belirli bir şirket kullanıcılarına hitap eden uygulamalar ]
+
 ### `SUNUCU TARAFLI RENDERLAMA [SSR]`
 
 -   Html sayfası sunucu tarafında derlenir, böylece ilk sayfa yüklemeleri daha hızlıdır.
@@ -426,14 +444,11 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Dynamic sunucu taraflı renderlama, herbir kullanıcıya daha spesifik veriler göndermek için her seferinde yeniden oluşturulma amaçlı kullanılır.
 -   Sunucu tarafında renderlanan komponentler içerisindeki state'leri ve dinamikliği kaybederler, bu dinamikliği geri getirmek için hydrate kullanılır.
 
-### `CLIENT TARAFLI RENDERLAMA [CSR]`
+### 🚿 `HYDRATION`
 
--   Html sayfası client tarafında derlenir, böylece ilk sayfa yüklemeleri daha yavaş gerçekleşir.
--   İndirilmesi gereken Javascript paketi büyük olabilir.
--   Veriler komponentler mount edildikten sonra yakalanır.
--   Daha fazla etkileşimlidir, sayfa değişimlerinde tam yükleme olmaz.
--   SEO konusu problemli olabilir.
--   SEO'nun önemsiz olduğu yüksek etkileşimli SPA [ Tek sayfa uygulamalar ] için oldukça uygundur. [ Örn. Sadece belirli bir şirket kullanıcılarına hitap eden uygulamalar ]
+-   SSR ( Sunucu Taraflı Renderlama ) aşamasında kaybettiğimiz etkileşimi ve eventlerimizi geri eklememize yardımcı olur.
+-   React, komponent ağacını client tarafında oluşturur ve sunucu tarafından gelen SSR Dom ile karşılaştırır. Doğru çalışabilmesi için aynı olmalıdırlar.
+-   Bazı yaygın Hydration hataları şunlardır: Doğru olmayan HTML element nesting (p içinde div gibi), renderlama için kullanılan farklı veriler, yan etkiler (side effects), vb.
 
 ### 🖊 `Arka planda nasıl çalışır & Bazı değerli bilgiler`
 
