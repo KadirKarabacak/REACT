@@ -183,12 +183,13 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Bu işlemi 👉 **<"fetcher.Form"> { Button etc.. } </"fetcher.Form">** ile yaptığımız için React-Router bunu anlıyor.
 
 ### 🧷 `Custom Hooks`
-- React'ta bir custom hook birden fazla built-in hook kullanan bir javascript fonksiyonudur. [ useState, useEffect, vb. ]
-- Custom hook'lar React component'leri arasında mantığı ayırmak ve paylaşmak için bir yol sunarak daha temiz kod, gelişmiş organizasyon ve üretkenlik sağlar.
-- Bir custom hook oluştururken uyulması gereken bazı kurallar vardır.
-- Custom hook isimleri her zaman "use" ile başlamalıdır.
-- Bir custom hook'un ana amacı yeniden kullanılabilirliktir ve proje boyunca birden fazla component içerisinde kullanılır.
-- Custom hook'lar bir JSX içermez ve yeniden renderlamalara sebep olmaz. Mantık ve state düzenlemeye yararlar, arayüz tanımlamazlar.
+
+-   React'ta bir custom hook birden fazla built-in hook kullanan bir javascript fonksiyonudur. [ useState, useEffect, vb. ]
+-   Custom hook'lar React component'leri arasında mantığı ayırmak ve paylaşmak için bir yol sunarak daha temiz kod, gelişmiş organizasyon ve üretkenlik sağlar.
+-   Bir custom hook oluştururken uyulması gereken bazı kurallar vardır.
+-   Custom hook isimleri her zaman "use" ile başlamalıdır.
+-   Bir custom hook'un ana amacı yeniden kullanılabilirliktir ve proje boyunca birden fazla component içerisinde kullanılır.
+-   Custom hook'lar bir JSX içermez ve yeniden renderlamalara sebep olmaz. Mantık ve state düzenlemeye yararlar, arayüz tanımlamazlar.
 
 ### 🌟 `Context API`
 
@@ -350,6 +351,31 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Öncelikle Authentication kısmından yeni bir user oluşturuyoruz. Ve gerekli api çağırısını projemizde yapıp react-query ile ele alıyoruz.
 -   Authorization için ise bir **ProtectedRoute** componenti oluşturup **children** propunu alıyoruz ve return ediyoruz. Daha sonra Tüm uygulamamızı içeren **AppLayout componentimizi ProtectedRoute componenti ile sarıyoruz** ve ProtectedRoute içerisinde **kondisyonel** olarak ( Authenticated or Not ) children'i returnleyeceğiz.
 
+### 🆕 `NEXTJS`
+
+### `SUNUCU TARAFLI RENDERLAMA [SSR]`
+
+-   Html sayfası sunucu tarafında derlenir, böylece ilk sayfa yüklemeleri daha hızlıdır.
+-   İndirilmesi gereken Javascript paketi daha küçüktür.
+-   Veriler HTML render edilmeden önce yakalanır, sayfa derlenir ve client'a gösterilmeye hazır sayfa gönderilir.
+-   Daha az etkileşimlidir, sayfa değişimlerinde Html'in yeniden renderlanması gerektiğinde tam yüklemeye yol açabilir.
+-   Etkileşimi artırmak adına Hydrate isminde bir işlem gerçekleştirilir.
+-   SEO dostudur, içerik arama motoru tarafından daha hızlı anlaşılır.
+-   SEO'nun önemli olduğu içerik bazlı site ve web uygulamaları için uygundur. [ E-ticaret sitesi, bloglar, haber siteleri, marketing vb.]
+-   Sunucu taraflı renderlama iki kategori altında ele alınabilir. [ Static (SSG - Static Site Generation), Dynamic (SSR - Server Side Rendering)]
+-   Static sunucu taraflı renderlama, geliştiricinin deploy ettiği siteyi kullanıcılara tekrar tekrar gönderir.
+-   Dynamic sunucu taraflı renderlama, herbir kullanıcıya daha spesifik veriler göndermek için her seferinde yeniden oluşturulma amaçlı kullanılır.
+-   Sunucu tarafında renderlanan komponentler içerisindeki state'leri ve dinamikliği kaybederler, bu dinamikliği geri getirmek için hydrate kullanılır.
+
+### `CLIENT TARAFLI RENDERLAMA [CSR]`
+
+-   Html sayfası client tarafında derlenir, böylece ilk sayfa yüklemeleri daha yavaş gerçekleşir.
+-   İndirilmesi gereken Javascript paketi büyük olabilir.
+-   Veriler komponentler mount edildikten sonra yakalanır.
+-   Daha fazla etkileşimlidir, sayfa değişimlerinde tam yükleme olmaz.
+-   SEO konusu problemli olabilir.
+-   SEO'nun önemsiz olduğu yüksek etkileşimli SPA [ Tek sayfa uygulamalar ] için oldukça uygundur. [ Örn. Sadece belirli bir şirket kullanıcılarına hitap eden uygulamalar ]
+
 ### 🖊 `Arka planda nasıl çalışır & Bazı değerli bilgiler`
 
 -   Imperetive(Zorunlu) ve Declarative(Bildirimsel) arasındaki fark VanillaJS ve React farkında gözle görülmektedir. VanillaJS'de bir çok eylemi bizzat siz yapmanız gerekir. Fakat React'ta ne yapması istediğinizi söyler ve gerisini ona bırakırsınız.
@@ -461,7 +487,8 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   revert: revert to commit 123456
 
 ### `Peer Legacy Deps Hatası`
-- Eğer projede bu hatayı alıyorsak düzeltmek için şu komutu terminalde uygulayabiliriz.
-- 👉 **npm config set legacy-peer-deps true**
-- Böylelikle hata almadan devam edebiliriz.
-- Netlify deploy'unda hata alırsan deploy aşamasında en aşağıdan bir environment variable oluşturup key = NPM_FLAGS ve value = --legacy-peer-deps vererek düzelmesini sağlayabilirsin
+
+-   Eğer projede bu hatayı alıyorsak düzeltmek için şu komutu terminalde uygulayabiliriz.
+-   👉 **npm config set legacy-peer-deps true**
+-   Böylelikle hata almadan devam edebiliriz.
+-   Netlify deploy'unda hata alırsan deploy aşamasında en aşağıdan bir environment variable oluşturup key = NPM_FLAGS ve value = --legacy-peer-deps vererek düzelmesini sağlayabilirsin
