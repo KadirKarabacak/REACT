@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 
 const questions = [
     {
@@ -233,6 +233,10 @@ function reducer(state, action) {
                 secondsRemaining: state.secondsRemaining - 1,
                 status:
                     state.secondsRemaining === 0 ? "finished" : state.status,
+                highscore:
+                    state.points > state.highscore
+                        ? state.points
+                        : state.highscore,
             };
         default:
             throw new Error("Action is unknown!");
@@ -259,15 +263,6 @@ function QuizProvider({ children }) {
     const totalPoints = questions.reduce(function (acc, question) {
         return acc + question.points;
     }, 0);
-
-    // useEffect(function () {
-    //     fetch(
-    //         `https://codingheroes.io/api-react-course-projects/questions.json`
-    //     )
-    //         .then(res => res.json())
-    //         .then(data => dispatch({ type: "dataRecieved", payload: data }))
-    //         .catch(err => dispatch({ type: "dataFailed" }));
-    // }, []);
 
     return (
         <QuizContext.Provider
