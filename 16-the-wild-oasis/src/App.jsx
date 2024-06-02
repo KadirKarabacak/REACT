@@ -71,7 +71,6 @@ function App() {
                             <Route path="settings" element={<Settings />} />
                             <Route path="account" element={<Account />} />
                         </Route>
-                        {/* Login and pagenotfound is not childs */}
                         <Route path="login" element={<Login />} />
                         <Route path="*" element={<PageNotFound />} />
                     </Routes>
