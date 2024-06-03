@@ -15,6 +15,10 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 
 -   Bir Vite projesi kurulumu içinse **"npm create vite@latest"** komutunu kullanarak onay verdikten sonra proje ismimizi yazıyoruz. Daha sonra kullanacağımız teknoloji seçimini yapıp o teknolojiye özel bir template alıyoruz. Vite **"bağımlılıkları otomatik yüklemez"**. Bu nedenle proje dosyamıza girip bağımlılıklarımızı manuel olarak yüklemeliyiz. Create-react-app'deki index.js dosyası yerine main.jsx dosyamız mevcut. Aynı şekilde app.js yerine de App.jsx. Projemizi başlatmak içinse npm start yerine **"npm run dev"** komutunu kullanıyoruz.
 
+### `NextJS`
+
+-   Bir NextJS projesi oluşturmak için **"npx create-next-app@latest nameOfProject"** komutunu kullanarak projemizi oluşturuyoruz.
+
 ### ⚙ Vite Projelerine <a href="https://eslint.org/">`Eslint`</a> kurulumu ve ayarları
 
 -   Şuanda Vite projeleri eslint eklentisi ile birlikte geliyor ki bu durum çok önemli. Fakat olası bir durumda gelmediğini varsayarsak şunları yaparak kurabiliriz.
@@ -419,7 +423,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Öncelikle Authentication kısmından yeni bir user oluşturuyoruz. Ve gerekli api çağırısını projemizde yapıp react-query ile ele alıyoruz.
 -   Authorization için ise bir **ProtectedRoute** componenti oluşturup **children** propunu alıyoruz ve return ediyoruz. Daha sonra Tüm uygulamamızı içeren **AppLayout componentimizi ProtectedRoute componenti ile sarıyoruz** ve ProtectedRoute içerisinde **kondisyonel** olarak ( Authenticated or Not ) children'i returnleyeceğiz.
 
-### 🆕 `NEXTJS`
+## 🆕 `NEXTJS`
 
 ### `CLIENT TARAFLI RENDERLAMA [CSR]`
 
@@ -449,6 +453,24 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   SSR ( Sunucu Taraflı Renderlama ) aşamasında kaybettiğimiz etkileşimi ve eventlerimizi geri eklememize yardımcı olur.
 -   React, komponent ağacını client tarafında oluşturur ve sunucu tarafından gelen SSR Dom ile karşılaştırır. Doğru çalışabilmesi için aynı olmalıdırlar.
 -   Bazı yaygın Hydration hataları şunlardır: Doğru olmayan HTML element nesting (p içinde div gibi), renderlama için kullanılan farklı veriler, yan etkiler (side effects), vb.
+
+### `ESKI NEXT JS [ PAGES ROUTER ]`
+
+-   2016'dan önceki nextJS sürümüdür. Hala desteklenir ve gelecekte güncelleme alacaktır.
+-   Basit ve öğrenmesi çok kolaydır.
+-   Arayüzler gibi basit şeyleri uygulaması daha karmaşıktır.
+-   Veri yakalamada getStaticProps, getServerSideProps gibi daha çok NextJS'e özel fonksiyonlar kullanır.
+
+### `MODERN NEXT JS [ APP ROUTER ]`
+
+-   NextJS 13.4 (2023)'den itibaren kullanıma açılmıştır. Yeni projeler için Pages router yerine önerilir.
+-   React'ın full-stack yapısını uyarlar. Server Side Components, Server Actions, Streaming gibi özellikleri vardır.
+-   Veri yakalamada componentler içerisinde fetch() ile kullanılabilir, pages router'a göre daha kolay dır.
+-   Arayüzler, yükleyiciler gibi komponentler oluşturmak çok kolaydır.
+-   Daha gelişmiş routing sağlar.
+-   Daha iyi bir geliştirici deneyimi ve kullanıcı deneyimi sağlar.
+-   Caching fazla agresif ve karmaşık olabilir.
+-   Öğrenimi daha zordur.
 
 ### 🖊 `Arka planda nasıl çalışır & Bazı değerli bilgiler`
 
