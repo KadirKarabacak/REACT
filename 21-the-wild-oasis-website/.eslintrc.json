@@ -1,0 +1,7 @@
+{
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+        "requireConfigFile": false
+    },
+    "extends": ["next", "next/core-web-vitals"]
+}
