@@ -433,6 +433,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Daha fazla etkileşimlidir, sayfa değişimlerinde tam yükleme olmaz.
 -   SEO konusu problemli olabilir.
 -   SEO'nun önemsiz olduğu yüksek etkileşimli SPA [ Tek sayfa uygulamalar ] için oldukça uygundur. [ Örn. Sadece belirli bir şirket kullanıcılarına hitap eden uygulamalar ]
+-   Data Waterfall yani aynı sayfadaki birden fazla komponentin birden fazla ihtiyaç duyduğu verinin database'den arka arkaya indirilmesi durumudur ve projeyi performans açısından olumsuz etkiler.
 
 ### `SUNUCU TARAFLI RENDERLAMA [SSR]`
 
@@ -471,6 +472,38 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Daha iyi bir geliştirici deneyimi ve kullanıcı deneyimi sağlar.
 -   Caching fazla agresif ve karmaşık olabilir.
 -   Öğrenimi daha zordur.
+
+### `CLIENT COMPONENTS - SERVER COMPONENTS`
+
+-   Client components'in stateleri vardır ve hooklar kullanılabilir. Server components'de state yoktur ve hooklar kullanılamazlar.
+-   Client components'de state lifting mümkündür. Server komponents bir state'e sahip olamayacağı için state lifting söz konusu değildir.
+-   Client components'de prop'lar kullanılabilir. Server komponents'te de kullanılabilir fakat dönüştürülebilir tipte bir veri olmalıdır. Bir fonksiyon veya class olamazlar.
+-   Client components'de veri yakalamak için React Query tarzı 3. taraf bir kütüphane kullanılabilir. Server komponentste bu durum komponent içerisinde async await kullanılarak yapılır.
+-   Client komponents sadece client komponentleri import edebilir ve kullanabilir. Server komponents ise hem server hem de client komponentleri import edebilir ve kullanabilirler.
+-   Client komponents kendi state'i veya parent'ının state'i değiştiğinde yeniden renderlanırlar. Server komponents ise URL her değiştiğinde yeniden renderlanırlar.
+
+### `REACT SERVER COMPONENTS`
+
+-   React server components Client Side Renderlama'nın interactive ve komponentli yapısını alıp Server Side Renderlamanın kolay veri yakalama ve az Javascript dosyası ihtiyacı duymasını birleştirir ve hem etkileşimli hemde yüksek performanslı uygulamalar oluşturmamıza izin verir.
+-   Veritabanından veri yakalnmasına ihtiyaç duyan her komponent server komponent'i olmalıdır. Böylece ilk renderımız çok hızlı gerçekleşir.
+-   Server components sadece sunucu tarafında renderlanır. Herhangi bir etkileşimi ve state'i yoktur dolayısıyla bir javascript dosyasına ihtiyaç duymazlar.
+-   RSC default olarak yeni react uygulamalarında aktif değillerdir. NextJS (App-Router) veya Remix gibi framework'ler ile oluşturulduğunda RSC kullanılabilir.
+-   NextJS de oluşturulan her komponent bir Server Komponentidir. Eğer bir komponentin client komponenti olmasını istiyorsak 'use client' direktifini modülün en üstünde belirtmemiz gerekir.
+
+-   #### `OLUMLU YÖNLER`
+-   Fullstack bir projeyi sadece React Komponentleri ve server actions ile oluşturabiliriz.
+-   Hem frontend hemde backend için tek bir kodbase olur.
+-   Daha doğrudan ve daha güvenlidir. API, API keys gibi şeyler yoktur.
+-   Client-server veri yakalama durumunda gerçekleşen waterfall'ları ortadan kaldırır. Tüm veriyi sunucuda yakalar ve client'a tek sayfa halinde gönderir.
+-   Hiçbir JS dosyasına ihtiyaç duymazlar, böylece büyük 3. taraf kütüphanelerini rahatlıkla kullanabilirler.
+
+-   #### `OLUMSUZ YÖNLER`
+-   Daha karmaşık bir React yapısı vardır.
+-   Öğrenilmesi ve anlanması gereken çok daha fazla şey vardır.
+-   Context API gibi yapılar çalışmaz.
+-   Daha fazla karar verilmesi gereken durum vardır. (Örneğin bu client komponenti mi olmalı server komponenti mi?)
+-   Bazı durumlarda bir API oluşturmanız gerekebilir.
+-   Sadece bir framework içerisinde çalışabilir NextJS - Remix gibi
 
 ### 🖊 `Arka planda nasıl çalışır & Bazı değerli bilgiler`
 
