@@ -489,7 +489,6 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Server components sadece sunucu tarafında renderlanır. Herhangi bir etkileşimi ve state'i yoktur dolayısıyla bir javascript dosyasına ihtiyaç duymazlar.
 -   RSC default olarak yeni react uygulamalarında aktif değillerdir. NextJS (App-Router) veya Remix gibi framework'ler ile oluşturulduğunda RSC kullanılabilir.
 -   NextJS de oluşturulan her komponent bir Server Komponentidir. Eğer bir komponentin client komponenti olmasını istiyorsak 'use client' direktifini modülün en üstünde belirtmemiz gerekir.
-
 -   #### `OLUMLU YÖNLER`
 -   Fullstack bir projeyi sadece React Komponentleri ve server actions ile oluşturabiliriz.
 -   Hem frontend hemde backend için tek bir kodbase olur.
