@@ -505,6 +505,16 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Bazı durumlarda bir API oluşturmanız gerekebilir.
 -   Sadece bir framework içerisinde çalışabilir NextJS - Remix gibi
 
+### `RSC vs SSR`
+
+-   React server components Server side rendering ile aynı şey değildir. İkisi farklı teknolojilerdir.
+-   Genellikle bir kütüphane aracılığıyla birlikte çalışırlar (NEXTJS)
+
+### `APP ROUTER`
+
+-   App router'da oluşturduğumuz her bir klasör ismi bir pathname olarak kullanılır ve her klasör içerisinde o pathname ile eşleşen bir page.js modülü oluşturmalıyız.
+-   Oluşturduğumuz bir klasör'ün pathname olarak algılanmasından kaçınmak için **\_components** şeklinde bir tanımlama yapabiliriz. Böylece components adında bir path oluşturulmaz.
+
 ### 🖊 `Arka planda nasıl çalışır & Bazı değerli bilgiler`
 
 -   Imperetive(Zorunlu) ve Declarative(Bildirimsel) arasındaki fark VanillaJS ve React farkında gözle görülmektedir. VanillaJS'de bir çok eylemi bizzat siz yapmanız gerekir. Fakat React'ta ne yapması istediğinizi söyler ve gerisini ona bırakırsınız.
