@@ -425,6 +425,17 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 
 ## 🆕 `NEXTJS`
 
+-   NextJS projelerinde bazı sabit dosya isimleri vardır ve bu yapılar ile projemizi oluştururuz.
+-   **loading.js** : app folder'ı içerisinde en üst kapsamda bulunan loading sayfası proje içerisinde veri çekme durumlarının tamamında bir loader gösterebilmemizi sağlar.
+-   **layout.js** : app folder'ı içerisinde en üst kapsamda bulunan layout sayfası, sayfalar arası geçişte sidebar, header, navbar gibi değişmeyen ve proje boyunca sabit kalmasını istediğimiz yapıyı oluşturmamızı sağlar.
+-   **page.js** : Her bir route içerisinden renderlanacak ve gösterilecek içerik ve işlevselliği oluşturduğumuz sayfalarımızdır.
+-   **\_components** : Bir route oluşturmadan tüm komponentlerimizi içerisinde barındırabileceğimiz klasörümüzdür.
+-   **\_styles** : Bir route oluşturmadan tüm stillendirme dosyalarımızı barındırabileceğimiz klasörümüzdür.
+-   **icon.png** : App folder'ı içerisinde en genel kapsamda tutulan uzantısı fark etmeksizin ismi icon olan resim, browser tab'da gösterilecek favicon'u oluşturur.
+-   **\_lib** : Proje boyunca kullandığımız database işlemlerimizi içerisinde tutabileceğimiz klasörümüzdür.
+-   NextJS font'lar için çok sağlam bir performans optimizasyonu ve gizlilik sağlar ve istediğimiz herhangi bir Google fontunu otomatik olarak self-host yapmamıza izin verir böylece google'dan indirmemize gerek kalmaz.
+-   Dilediğimiz fontu "next/font/google" veya local bilgisayarımızdan import edebiliriz. Örnek olarak <a href="https://nextjs.org/docs/pages/building-your-application/optimizing/fonts#google-fonts">buradan inceleyebilirsin</a>
+
 ### `CLIENT TARAFLI RENDERLAMA [CSR]`
 
 -   Html sayfası client tarafında derlenir, böylece ilk sayfa yüklemeleri daha yavaş gerçekleşir.
