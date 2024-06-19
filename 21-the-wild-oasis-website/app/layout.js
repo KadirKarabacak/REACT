@@ -1,5 +1,13 @@
 import Logo from "@/app/_components/Logo";
 import Navigation from "@/app/_components/Navigation";
+import { Josefin_Sans } from "next/font/google";
+
+// It returns a classname to use
+const josefin = Josefin_Sans({
+    subsets: ["latin"],
+    display: "swap", // At the beginning display default, then display Josefin when downloaded
+});
+
 import "@/app/_styles/globals.css";
 
 // Page title witch shown on new browser tab
@@ -16,7 +24,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-            <body className="bg-primary-950 text-primary-100 min-h-screen">
+            <body
+                className={`${josefin.className} bg-primary-950 text-primary-100 min-h-screen`}
+            >
                 <header>
                     <Logo />
                 </header>
