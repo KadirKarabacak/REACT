@@ -426,7 +426,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 ## 🆕 `NEXTJS`
 
 -   NextJS projelerinde bazı sabit dosya isimleri vardır ve bu yapılar ile projemizi oluştururuz.
--   **loading.js** : app folder'ı içerisinde en üst kapsamda bulunan loading sayfası proje içerisinde veri çekme durumlarının tamamında bir loader gösterebilmemizi sağlar.
+-   **loading.js** : app folder'ı içerisinde en üst kapsamda bulunan loading sayfası proje içerisinde veri çekme durumlarının tamamında bir loader gösterebilmemizi sağlar. Eğer nested route'lar için farklı bir loader göstermek istiyorsak o route içerisinde bir loading.js dosyası oluşturabilir ve daha spesifik bir loader gösterebiliriz.
 -   **layout.js** : app folder'ı içerisinde en üst kapsamda bulunan layout sayfası, sayfalar arası geçişte sidebar, header, navbar gibi değişmeyen ve proje boyunca sabit kalmasını istediğimiz yapıyı oluşturmamızı sağlar.
 -   **page.js** : Her bir route içerisinden renderlanacak ve gösterilecek içerik ve işlevselliği oluşturduğumuz sayfalarımızdır.
 -   **\_components** : Bir route oluşturmadan tüm komponentlerimizi içerisinde barındırabileceğimiz klasörümüzdür.
