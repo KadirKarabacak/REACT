@@ -525,6 +525,17 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   App router'da oluşturduğumuz her bir klasör ismi bir pathname olarak kullanılır ve her klasör içerisinde o pathname ile eşleşen bir page.js modülü oluşturmalıyız.
 -   Oluşturduğumuz bir klasör'ün pathname olarak algılanmasından kaçınmak için **\_components** şeklinde bir tanımlama yapabiliriz. Böylece components adında bir path oluşturulmaz.
 
+### `SUSPENSE`
+
+-   Suspense bir built-in react komponentidir. Henüz renderlanmaya hazır olmayan asenkron işlem barındıran komponentleri isole eder ve asenkron işlem tamamlanana kadar bekler. Asenkron işlem devam ederken belirlediğimiz fallback komponenti işlemin devam ettiğini ekranda gösterebilmemizi sağlar.
+-   isLoading durumları yerine artık yapılan işlemin henüz devam ettiğini bilmek ve belirtmek için suspense kullanırız.
+-   Asenkron bir işlem gerçekleşen sayfanın tamamını suspense etmek yerine sadece gerçekten asenkron işlemin bulunduğu parça arayüzü suspense etmek önemlidir. Böylece halihazırda var olan verilerimiz diğer verilerin gelmesini beklemez. Bunu yapmak için asenkron işlem bulunan komponenti kendi ayrı komponentine extract etmeli ve suspense ile sarmalıyız.
+
+### `DYNAMIC ROUTES`
+
+-   Bir dinamik route oluşturmak için parent klasör içerisinde [ ] köşeli parantezler ile örneğin bir [ cabinId ] isimli klasör ve içerisinde page.js oluşturmamız gerekir.
+-   Oluşturulan bu dynamic route oluşturduğumuz klasör isminde params içerisinde bir değişken alır ve bu değer route'ı dinamik yapan değerdir. Dinamik veri yakalamak ve göstermek için kullanabiliriz.
+
 ### 🖊 `Arka planda nasıl çalışır & Bazı değerli bilgiler`
 
 -   Imperetive(Zorunlu) ve Declarative(Bildirimsel) arasındaki fark VanillaJS ve React farkında gözle görülmektedir. VanillaJS'de bir çok eylemi bizzat siz yapmanız gerekir. Fakat React'ta ne yapması istediğinizi söyler ve gerisini ona bırakırsınız.
@@ -539,7 +550,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 
 ### `Daha fazla 3rd-Party React kütüphanesi 👇`
 
--   Routing için ▶ **React Router / React Location**
+-   Routing için ▶ **React Router / React Location / NextJS**
 -   HTTP requests ▶ **fetch() / Axios**
 -   Uzaktan Durum Yönetimi ▶ **React Query / SWR / Apollo**
 -   Küresel Durum Yönetimi ▶ **Context API / Redux / Zustand**
@@ -567,23 +578,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 
 -   Diffing, React'ın hangi DOM elementlerinin eklenmesi veya değiştirilmesi hakkında karar vermesini sağlar. Eğer renderlar arasında bir React elementi Fiber Tree'de aynı pozisyonda duruyorsa bu component ve state'i sabit kalır. Eğer element değiştiyse veya farklı bir pozisyondaysa element ve state yok edilir.
 
-## 📚 `Bazı React Kütüphaneleri`
-
-### 🗺 `Leaflet (Map) kütüphanesi`
-
--   Basitçe **"npm i react-leaflet leaflet"** komutu ile hem react hem normal leaflet kütüphanesini projemize dahil ediyoruz.
--   Daha sonra CSS dosyamıza @import **"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"** leaflet'in CSS işlevselliğini eklememiz gerekiyor.
--   Son olarak React içinde render yapabilmek adına **"https://react-leaflet.js.org/"** sitesinden alacağımız MapContainer, TileLayer, Marker ve Popup componentlerini içeren komut satırlarını kopyalayıp projemize dahil ediyoruz.
-
-### `React Hot-Toast Library`
-
--   <a href="https://react-hot-toast.com/">Dökümantasyon</a>
--   **Setup 👉 npm i react-hot-toast**
--   Kullanmak için **Toaster** componentini App.jsx'imize kendi kapanışı ile dahil ediyoruz.
--   Aldığı bazı **propları** veriyoruz.
--   Daha sonra kullanmak istediğimiz yerde **toast.success yada toast.error** fonksiyonlarını çağırıp içerisine text'imizi yazabiliriz.
-
-### `React-Hook-Form Library`
+### `React-Hook-Form`
 
 -   👉 **npm i react-hook-form**
 -   Kullanabilmek için **const { register, handleSubmit } = useForm();** register ve handleSubmit'imizi destructure ile alıyoruz.
@@ -591,11 +586,6 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Validation için elementID'den sonra bir **{ required: "Bu alan doldurulması zorunludur" }** açıp içerisinde validation yapabiliriz
 -   Ve form'umuzun **onSubmit** durumuna **handleSubmit( onSubmit( ) )** fonksiyonumuzu veriyoruz.
 -   Burada dikkat etmemiz gereken handleSubmit içerisine kendi oluşturduğumuz **onSubmit( )** fonksiyonumuzu parametre olarak veriyoruz.
-
-### `React Rechart Library`
-
--   React Rechart Library en popüler ve kullanımı en kolay grafik kütüphanelerinden birisidir.
--   👉 **npm i recharts**
 
 ### `Error Boundaries`
 
