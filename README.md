@@ -433,6 +433,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   **\_styles** : Bir route oluşturmadan tüm stillendirme dosyalarımızı barındırabileceğimiz klasörümüzdür.
 -   **icon.png** : App folder'ı içerisinde en genel kapsamda tutulan uzantısı fark etmeksizin ismi icon olan resim, browser tab'da gösterilecek favicon'u oluşturur.
 -   **\_lib** : Proje boyunca kullandığımız database işlemlerimizi içerisinde tutabileceğimiz klasörümüzdür.
+-   **not-found.js** : Kullanıcının araması ile eşleşen bir route bulunamayan durumlar için nextjs'in default olarak gösterdiği 404 hatası yerine gösterebileceğimiz hata mesajını içerir.
 -   NextJS font'lar için çok sağlam bir performans optimizasyonu ve gizlilik sağlar ve istediğimiz herhangi bir Google fontunu otomatik olarak self-host yapmamıza izin verir böylece google'dan indirmemize gerek kalmaz.
 -   Dilediğimiz fontu "next/font/google" veya local bilgisayarımızdan import edebiliriz. Örnek olarak <a href="https://nextjs.org/docs/pages/building-your-application/optimizing/fonts#google-fonts">buradan inceleyebilirsin</a>
 
@@ -506,7 +507,6 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Daha doğrudan ve daha güvenlidir. API, API keys gibi şeyler yoktur.
 -   Client-server veri yakalama durumunda gerçekleşen waterfall'ları ortadan kaldırır. Tüm veriyi sunucuda yakalar ve client'a tek sayfa halinde gönderir.
 -   Hiçbir JS dosyasına ihtiyaç duymazlar, böylece büyük 3. taraf kütüphanelerini rahatlıkla kullanabilirler.
-
 -   #### `OLUMSUZ YÖNLER`
 -   Daha karmaşık bir React yapısı vardır.
 -   Öğrenilmesi ve anlanması gereken çok daha fazla şey vardır.
@@ -535,8 +535,24 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 
 -   Bir dinamik route oluşturmak için parent klasör içerisinde [ ] köşeli parantezler ile örneğin bir [ cabinId ] isimli klasör ve içerisinde page.js oluşturmamız gerekir.
 -   Oluşturulan bu dynamic route oluşturduğumuz klasör isminde params içerisinde bir değişken alır ve bu değer route'ı dinamik yapan değerdir. Dinamik veri yakalamak ve göstermek için kullanabiliriz.
+-   Dynamic route'larımıza dynamic bir metadata oluşturmak için **export async function generateMetadata( { params } )** fonksiyonunu kullanabiliriz. Bu fonksiyon page'de olduğu gibi params parametresi alır ve cabinId'ye erişimi vardır. Böylece fonksiyon içerisinde bu id ile yine veri yakalayıp fonksiyon içerisinden önceki gibi bir obje döndürerek title'ını istediğimiz herhangi bir değer olarak setleyebiliriz.
 
-### 🖊 `Arka planda nasıl çalışır & Bazı değerli bilgiler`
+### `ERROR BOUNDARY IN NEXTJS`
+
+-   Diğer yapılarımızda olduğu error boundary için de bir error.js dosyası oluşturmamız gerekir.
+-   Error bountry dosyamız her zaman bir client component olmak zorundadır. Modülümüzün en başında 'use client' komutuyla bu durumu gerçekleştirebiliriz.
+-   Oluşturduğumuz error sayfamızın iki parametreye erişimi vardır. {error , reset}.
+-   Error parametresi ile hatamızı ekranda gösterebilir, reset fonksiyonu ile ise ekranda bulunabilecek bir buton ile kullanıcının hatanın düzelme ihtimaline karşı tekrar denemesini sağlayabiliriz. Veya kullanıcıyı anasayfamıza yönlendirebiliriz.
+-   Error boundary root layoutta gerçekleşen bir hatayı yakalayamaz. Bu hataları da yakalayabilmek için global-error.js isimli bir dosya oluşturmamız gerekir.
+-   Error handling için <a href="https://nextjs.org/docs/app/building-your-application/routing/error-handling">buraya gidebilirsin</a>
+
+### `NOT-FOUND PAGE`
+
+-   Not found page kullanıcı projede bulunmayan bir route'a geçmeye çalıştığında gösterilir. NextJS'de covention olarak **not-found.js** olarak dosyamız root klasörümüzde oluşturulur.
+-   Bunun dışında manuel olarak not-found sayfasını göstermek istersek **notFound()** fonksiyonunu dilediğimiz yerde next/navigation'dan import ederek not-found sayfasını trigger edebiliriz.
+-   Aynı zamanda daha spesifik not-found sayfaları oluşturmak için root klasörde oluşturduğumuzun yanısıra diğer klasörlerimizin içerisinde de not-found sayfası oluşturabiliriz böylece root klasörde oluşturduğumuzun üzerine yazar.
+
+### 🖊 `Arka planda nasıl çalışır`
 
 -   Imperetive(Zorunlu) ve Declarative(Bildirimsel) arasındaki fark VanillaJS ve React farkında gözle görülmektedir. VanillaJS'de bir çok eylemi bizzat siz yapmanız gerekir. Fakat React'ta ne yapması istediğinizi söyler ve gerisini ona bırakırsınız.
 -   React'ta veri akışı tek yönlüdür. Parent'tan child'a. Böylelikle birçok problemin önüne geçilir, karmaşıklıklar azaltılır. [ Ayrıca Angular iki yönlü data akışı sağlar. ]
@@ -561,12 +577,6 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 
 ### 📜 `React Hakkında Pratik Özetler` <img style="width: 25px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png?20220125121207">✍
 
-### 🧩 `Component'ler Hakkında`
-
--   Bir component bir şema gibidir. Arayüzün bir parçasını oluşturmak için vardır
--   Ne zaman bir component kullansak React bir component instance oluşturur ve bu instance props,state ve daha fazlasını içerebilir.
--   Asla bir component içerisinde ikinci bir component tanımlama! Bunu yapmak içerdeki componenti her zaman yeniden renderlar. Bu da parent'i tekrar renderlar. React nested component'i her zaman yeni olarak görür. Performans açısından berbattır.
-
 ### **⏳ Render'lama Hakkında**
 
 -   Renderlama tamamen component fonksiyonlarını çağırma ve hangi elementlerin eklenmesi, silinmesi veya güncellenmesi gerektiğinin kontrolü ile ilgilidir. DOM'a herhangi birşey yazmaz.
@@ -577,15 +587,6 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 ### 🆚 ` Diffing ( Farklılaşan )`
 
 -   Diffing, React'ın hangi DOM elementlerinin eklenmesi veya değiştirilmesi hakkında karar vermesini sağlar. Eğer renderlar arasında bir React elementi Fiber Tree'de aynı pozisyonda duruyorsa bu component ve state'i sabit kalır. Eğer element değiştiyse veya farklı bir pozisyondaysa element ve state yok edilir.
-
-### `React-Hook-Form`
-
--   👉 **npm i react-hook-form**
--   Kullanabilmek için **const { register, handleSubmit } = useForm();** register ve handleSubmit'imizi destructure ile alıyoruz.
--   Daha sonra tüm kontrol edilmesi gereken elemanlara **{...register, "elementID" }**' sini veriyoruz.
--   Validation için elementID'den sonra bir **{ required: "Bu alan doldurulması zorunludur" }** açıp içerisinde validation yapabiliriz
--   Ve form'umuzun **onSubmit** durumuna **handleSubmit( onSubmit( ) )** fonksiyonumuzu veriyoruz.
--   Burada dikkat etmemiz gereken handleSubmit içerisine kendi oluşturduğumuz **onSubmit( )** fonksiyonumuzu parametre olarak veriyoruz.
 
 ### `Error Boundaries`
 
@@ -609,7 +610,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 
 ### `Cypress Test`
 
--   context() ve describe() aynıdır, specify() ve it() aynıdır. Kullanıma göre istediğimizi seçebiliriz. Describe ana fonksiyondur. <a href="https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests?utm_source=Binary%3A+Launchpad&utm_medium=Docs+Menu&utm_content=Organizing+Tests#Test-Structure"> Buradan incele </a>
+-   context() ve describe() aynıdır, specify() ve it() aynıdır. Kullanıma göre istediğimizi seçebiliriz. <a href="https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests?utm_source=Binary%3A+Launchpad&utm_medium=Docs+Menu&utm_content=Organizing+Tests#Test-Structure"> Buradan incele </a>
 -   Aynı şekilde Mocha tarafından sunulan bazı hooklar'a da <a href="https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests?utm_source=Binary%3A+Launchpad&utm_medium=Docs+Menu&utm_content=Organizing+Tests#Hooks"> buradan bakabilirsin </a>
 -   Excluding & Including test, yani test ekleme veya test çıkarma tek seferde tek bir test yapmamıza olanak verir. <a href="https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests?utm_source=Binary%3A+Launchpad&utm_medium=Docs+Menu&utm_content=Organizing+Tests#Excluding-and-Including-Tests"> Buradan incele </a>
 -   Özellikle materialUI veya benzeri harici componentler ile çalıştığım projelerde data-test-id prop'u geçersiz kılınabiliyor. Bu sebeple data-test-id yerine name özelliğini kullanarak test yapabilirsin.
