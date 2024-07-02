@@ -423,6 +423,10 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Öncelikle Authentication kısmından yeni bir user oluşturuyoruz. Ve gerekli api çağırısını projemizde yapıp react-query ile ele alıyoruz.
 -   Authorization için ise bir **ProtectedRoute** componenti oluşturup **children** propunu alıyoruz ve return ediyoruz. Daha sonra Tüm uygulamamızı içeren **AppLayout componentimizi ProtectedRoute componenti ile sarıyoruz** ve ProtectedRoute içerisinde **kondisyonel** olarak ( Authenticated or Not ) children'i returnleyeceğiz.
 
+### `CONTENT DELIVERY NETWORK [ CDN ]`
+
+-   Bir web sitesinin statik içeriğini ( HTML, CSS, JS, Resimler ) önbelleğe alan ve her kullanıcıya mümkün olduğu kadar yakın bir yerden sunan, dünyanın her yerinde bulunan sunuculardan oluşan bir ağ.
+
 ## 🆕 `NEXTJS`
 
 -   NextJS projelerinde bazı sabit dosya isimleri vardır ve bu yapılar ile projemizi oluştururuz.
@@ -449,17 +453,32 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 
 ### `SUNUCU TARAFLI RENDERLAMA [SSR]`
 
--   Html sayfası sunucu tarafında derlenir, böylece ilk sayfa yüklemeleri daha hızlıdır.
+-   HTML sayfası sunucu tarafında derlenir, böylece ilk sayfa yüklemeleri daha hızlıdır.
 -   İndirilmesi gereken Javascript paketi daha küçüktür.
 -   Veriler HTML render edilmeden önce yakalanır, sayfa derlenir ve client'a gösterilmeye hazır sayfa gönderilir.
--   Daha az etkileşimlidir, sayfa değişimlerinde Html'in yeniden renderlanması gerektiğinde tam yüklemeye yol açabilir.
--   Etkileşimi artırmak adına Hydrate isminde bir işlem gerçekleştirilir.
+-   Daha az etkileşimlidir, sayfa değişimlerinde HTML'in yeniden renderlanması gerektiğinde tam yüklemeye yol açabilir.
 -   SEO dostudur, içerik arama motoru tarafından daha hızlı anlaşılır.
 -   SEO'nun önemli olduğu içerik bazlı site ve web uygulamaları için uygundur. [ E-ticaret sitesi, bloglar, haber siteleri, marketing vb.]
+-   Sunucu tarafında renderlanan komponentler içerisindeki state'leri ve dinamikliği kaybederler, bu dinamikliği geri getirmek için Hydrate kullanılır.
+-   NextJs'de server-side renderlama route'ları parçalayarak yapılır. Her bir route static veya dynamic rendering ile renderlanabilir.
+-   Aynı zamanda Partial Pre-Rendering bir route'daki bölümleri parça parça static veya dynamic olarak renderlayabilir.
 -   Sunucu taraflı renderlama iki kategori altında ele alınabilir. [ Static (SSG - Static Site Generation), Dynamic (SSR - Server Side Rendering)]
--   Static sunucu taraflı renderlama, geliştiricinin deploy ettiği siteyi kullanıcılara tekrar tekrar gönderir.
--   Dynamic sunucu taraflı renderlama, herbir kullanıcıya daha spesifik veriler göndermek için her seferinde yeniden oluşturulma amaçlı kullanılır.
--   Sunucu tarafında renderlanan komponentler içerisindeki state'leri ve dinamikliği kaybederler, bu dinamikliği geri getirmek için hydrate kullanılır.
+-   Geliştiriciler genellikle bir route'ın dynamic yada static olması gerektiğine kendileri karar vermezler. NextJS belirli kondisyonlarda bunu otomatik olarak gerçekleştirir. Bu durumlar; Eğer bir route dynamic route'lara sahipse ( params kullanan bir sayfa ), sayfada searchParams kullanılıyorsa ( /product?quantity=20 ), route'ların server komponentlerinde headers() veya cookies() kullanılıyorsa, route'ların server komponentlerinden cache'lenmemiş bir veri isteği yapıldığında otomatik olarak dynamic rendering kullanılır. Çünkü bunları built zamanında bilmek mümkün değildir, sadece request time'da ulaşılabilirler.
+-   #### `Static Rendering`
+    -   Static sunucu taraflı renderlama, geliştiricinin deploy ettiği siteyi kullanıcılara tekrar tekrar gönderir.
+    -   HTML, built zamanında oluşturulur ve renderlanır. Veya periodik olarak arka tarafta veriyi tekrar tekrar yakalayarak her veri yakalandığında renderlama yapılır.
+    -   Veriler sıklıkla değişmediğinde ve kişiye özel oluşturulmadığında kullanışlıdır. (Product sayfası gibi)
+    -   NextJS'de default olarak tüm sayfalar static renderlanır ( Bir veri yakalama işlemi olsa bile )
+    -   Sayfa/uygulama vercel ile deploy edildiğinde her bir route otomatik olarak bir CDN'de host edilir.
+    -   Eğer tüm route'lar static olarak renderlanıyorsa, tüm uygulama SSG olarak export edilebilir.
+-   #### `Dynamic Rendering`
+    -   Dynamic sunucu taraflı renderlama, herbir kullanıcıya daha spesifik veriler göndermek için her seferinde yeniden oluşturulma amaçlı kullanılır.
+    -   HTML request zamanında oluşturulur ve renderlanır. Her bir yeni istek server'a ulaştığında.
+    -   Veriler sıklıkla değişiyorsa ve kişiye özel oluşturuluyorsa kullanışlıdır. (Cart sayfası gibi kişiye özel sepet)
+    -   Bir route'ı renderlamak request ile ilgili veriye ihtiyaç duyar ( CabinID gibi )
+    -   Bir route belirli koşullarda otomatik olarak dynamic'e geçebilir.
+    -   Vercel ile deploy edildiğinde her route sunucusuz bir fonksiyona dönüşür.
+    -   Bir sayfayı dynamic olarak renderlamaya zorlamanın bazı yolları vardır. Bunlar **export const dynamic = "force dynamic"** page.js'de | **export const revalidate = 0** page.js'de | { cache: "no-store" } route'daki server komponentin bir fetch isteğine eklenerek | **noStore()** bir route'daki herhangi bir server komponentte belirterek.
 
 ### 🚿 `HYDRATION`
 
@@ -502,23 +521,23 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   RSC default olarak yeni react uygulamalarında aktif değillerdir. NextJS (App-Router) veya Remix gibi framework'ler ile oluşturulduğunda RSC kullanılabilir.
 -   NextJS de oluşturulan her komponent bir Server Komponentidir. Eğer bir komponentin client komponenti olmasını istiyorsak 'use client' direktifini modülün en üstünde belirtmemiz gerekir.
 -   #### `OLUMLU YÖNLER`
--   Fullstack bir projeyi sadece React Komponentleri ve server actions ile oluşturabiliriz.
--   Hem frontend hemde backend için tek bir kodbase olur.
--   Daha doğrudan ve daha güvenlidir. API, API keys gibi şeyler yoktur.
--   Client-server veri yakalama durumunda gerçekleşen waterfall'ları ortadan kaldırır. Tüm veriyi sunucuda yakalar ve client'a tek sayfa halinde gönderir.
--   Hiçbir JS dosyasına ihtiyaç duymazlar, böylece büyük 3. taraf kütüphanelerini rahatlıkla kullanabilirler.
+    -   Fullstack bir projeyi sadece React Komponentleri ve server actions ile oluşturabiliriz.
+    -   Hem frontend hemde backend için tek bir kodbase olur.
+    -   Daha doğrudan ve daha güvenlidir. API, API keys gibi şeyler yoktur.
+    -   Client-server veri yakalama durumunda gerçekleşen waterfall'ları ortadan kaldırır. Tüm veriyi sunucuda yakalar ve client'a tek sayfa halinde gönderir.
+    -   Hiçbir JS dosyasına ihtiyaç duymazlar, böylece büyük 3. taraf kütüphanelerini rahatlıkla kullanabilirler.
 -   #### `OLUMSUZ YÖNLER`
--   Daha karmaşık bir React yapısı vardır.
--   Öğrenilmesi ve anlanması gereken çok daha fazla şey vardır.
--   Context API gibi yapılar çalışmaz.
--   Daha fazla karar verilmesi gereken durum vardır. (Örneğin bu client komponenti mi olmalı server komponenti mi?)
--   Bazı durumlarda bir API oluşturmanız gerekebilir.
--   Sadece bir framework içerisinde çalışabilir NextJS - Remix gibi
+    -   Daha karmaşık bir React yapısı vardır.
+    -   Öğrenilmesi ve anlanması gereken çok daha fazla şey vardır.
+    -   Context API gibi yapılar çalışmaz.
+    -   Daha fazla karar verilmesi gereken durum vardır. (Örneğin bu client komponenti mi olmalı server komponenti mi?)
+    -   Bazı durumlarda bir API oluşturmanız gerekebilir.
+    -   Sadece bir framework içerisinde çalışabilir NextJS - Remix gibi
 
 ### `RSC vs SSR`
 
 -   React server components Server side rendering ile aynı şey değildir. İkisi farklı teknolojilerdir.
--   Genellikle bir kütüphane aracılığıyla birlikte çalışırlar (NEXTJS)
+-   Genellikle bir kütüphane aracılığıyla birlikte çalışırlar (NextJS)
 
 ### `APP ROUTER`
 
@@ -536,6 +555,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Bir dinamik route oluşturmak için parent klasör içerisinde [ ] köşeli parantezler ile örneğin bir [ cabinId ] isimli klasör ve içerisinde page.js oluşturmamız gerekir.
 -   Oluşturulan bu dynamic route oluşturduğumuz klasör isminde params içerisinde bir değişken alır ve bu değer route'ı dinamik yapan değerdir. Dinamik veri yakalamak ve göstermek için kullanabiliriz.
 -   Dynamic route'larımıza dynamic bir metadata oluşturmak için **export async function generateMetadata( { params } )** fonksiyonunu kullanabiliriz. Bu fonksiyon page'de olduğu gibi params parametresi alır ve cabinId'ye erişimi vardır. Böylece fonksiyon içerisinde bu id ile yine veri yakalayıp fonksiyon içerisinden önceki gibi bir obje döndürerek title'ını istediğimiz herhangi bir değer olarak setleyebiliriz.
+-   Dynamic bir route'ı static olarak exportlamak için NextJS'e mümkün olan tüm dynamic segment ihtimallerini **export async function generateStaticParams()** fonksiyonu ile söyleyebiliriz böylece tüm sayfalarımız static olarak export edilebilir ( SSG ).
 
 ### `ERROR BOUNDARY IN NEXTJS`
 
