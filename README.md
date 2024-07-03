@@ -555,7 +555,9 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Bir dinamik route oluşturmak için parent klasör içerisinde [ ] köşeli parantezler ile örneğin bir [ cabinId ] isimli klasör ve içerisinde page.js oluşturmamız gerekir.
 -   Oluşturulan bu dynamic route oluşturduğumuz klasör isminde params içerisinde bir değişken alır ve bu değer route'ı dinamik yapan değerdir. Dinamik veri yakalamak ve göstermek için kullanabiliriz.
 -   Dynamic route'larımıza dynamic bir metadata oluşturmak için **export async function generateMetadata( { params } )** fonksiyonunu kullanabiliriz. Bu fonksiyon page'de olduğu gibi params parametresi alır ve cabinId'ye erişimi vardır. Böylece fonksiyon içerisinde bu id ile yine veri yakalayıp fonksiyon içerisinden önceki gibi bir obje döndürerek title'ını istediğimiz herhangi bir değer olarak setleyebiliriz.
--   Dynamic bir route'ı static olarak exportlamak için NextJS'e mümkün olan tüm dynamic segment ihtimallerini **export async function generateStaticParams()** fonksiyonu ile söyleyebiliriz böylece tüm sayfalarımız static olarak export edilebilir ( SSG ).
+-   Dynamic bir route'ı static olarak exportlamak için NextJS'e mümkün olan tüm dynamic segment ihtimallerini **export async function generateStaticParams()** fonksiyonu ile söyleyebiliriz böylece tüm sayfalarımız static olarak export edilebilir ( SSG ). Tüm uygulamayı SSG olarak export etmek için öncelikle next.config dosyasında **output: "export"** belirtmemiz gerekir. Sornasında npm run build yaparak out adında yeni bir klasör oluşumunu sağlayabilir ve istersek ismini daha genel bir isim olan **dist** yapabiliriz.
+-   Tüm uygulamamızı SSG olarak export etmediğimiz durumlarda Vercel dışında bir hosting server'ı ile deploy etmek oldukça zordur. SSG olası tüm hosting serverlarına kolayca deploy edilebilir.
+-   SSG ile export edilen projede NextJS'in sunduğumu Image komponenti çalışmaz, dolayısıyla resimlerimiz bozulur. Çünkü Image komponentinin çalışması için arka planda Vercel kendi serverlarını kullanarak resimleri optimize eder ve bu olay arka planda dinamik olarak gerçekleşir. SSG export yaptığımızda bu server tamamen yok olur dolayısıyla resimlerimiz görünmez. Bunu çözmenin 2 yolu vardır. Birincisi Image komponenti yerine img elementi kullanmak ve resimleri optimize etmemeyi tercih etmek, diğer yöntem ise kendi loader'ımızı yapıp farklı bir server kullanarak resimlerimizi optimize etmek ve göstermektir ( Cloudinary ). <a href="https://nextjs.org/docs/pages/building-your-application/deploying/static-exports"> Buradan </a> static export ve image optimization hakkında bilgi alabilirsin.
 
 ### `ERROR BOUNDARY IN NEXTJS`
 
@@ -571,6 +573,14 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Not found page kullanıcı projede bulunmayan bir route'a geçmeye çalıştığında gösterilir. NextJS'de covention olarak **not-found.js** olarak dosyamız root klasörümüzde oluşturulur.
 -   Bunun dışında manuel olarak not-found sayfasını göstermek istersek **notFound()** fonksiyonunu dilediğimiz yerde next/navigation'dan import ederek not-found sayfasını trigger edebiliriz.
 -   Aynı zamanda daha spesifik not-found sayfaları oluşturmak için root klasörde oluşturduğumuzun yanısıra diğer klasörlerimizin içerisinde de not-found sayfası oluşturabiliriz böylece root klasörde oluşturduğumuzun üzerine yazar.
+
+### `PARTIAL PRE-RENDERING`
+
+-   Bu yöntem çoğu sayfanın 100% static yada 100% dynamic olması gerekmediğinden yola çıkılarak bulunmuştur. İki durumun karması olarak anlatılabilir.
+-   Örneğin diğer tüm sayfanın static renderlandığı bir durumda sadece header'da login olan kullanıcının ismininin yazması tüm projeyi dynamic olarak çalıştırır. Bunun yerine sadece kullanıcı adının bulunduğu bölgeyi dynamic, diğer tüm projeyi static olarak renderlamak projemize büyük bir performans kazancı sağlar. ( Static renderlama CDN'ler ile çalıştığı için ). Şuan NextJS'de bu özellik bulunmuyor. Fakat gelecekte bir Next versiyonunda bunu kullanmak için yapılması gerekecek şeyler şunlardır.
+-   Öncelikle next.config dosyasından PPR (Partial Pre-Rendering) açılmalıdır.
+-   Dynamic parçalar (components) Suspense ile sarılmalıdır. Böylece tüm route yerine hangi parçanın dynamic olması gerektiği belirtilecektir.
+-   Bu dynamic parçalar yüklenirken gösterilecek static bir fallback bırakmamız gerekecektir.
 
 ### 🖊 `Arka planda nasıl çalışır`
 
