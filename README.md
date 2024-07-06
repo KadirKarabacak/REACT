@@ -2,8 +2,6 @@
 
 Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi birikimimi tutuyorum.
 
-## 🖊 `Şimdiye kadar neler öğrendim?`
-
 ## ⚒ **Öncelikle kurulum ile başlayalım. Sonuçta herşey bununla başlıyor.**
 
 ### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="20" height="20" /><a href="https://create-react-app.dev/">`Create-react-app`</a>
