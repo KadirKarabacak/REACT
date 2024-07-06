@@ -2,8 +2,6 @@
 
 Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi birikimimi tutuyorum.
 
-## 🖊 `Şimdiye kadar neler öğrendim?`
-
 ## ⚒ **Öncelikle kurulum ile başlayalım. Sonuçta herşey bununla başlıyor.**
 
 ### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="20" height="20" /><a href="https://create-react-app.dev/">`Create-react-app`</a>
@@ -15,7 +13,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 
 -   Bir Vite projesi kurulumu içinse **"npm create vite@latest"** komutunu kullanarak onay verdikten sonra proje ismimizi yazıyoruz. Daha sonra kullanacağımız teknoloji seçimini yapıp o teknolojiye özel bir template alıyoruz. Vite **"bağımlılıkları otomatik yüklemez"**. Bu nedenle proje dosyamıza girip bağımlılıklarımızı manuel olarak yüklemeliyiz. Create-react-app'deki index.js dosyası yerine main.jsx dosyamız mevcut. Aynı şekilde app.js yerine de App.jsx. Projemizi başlatmak içinse npm start yerine **"npm run dev"** komutunu kullanıyoruz.
 
-### `NextJS`
+### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" width="25" height="25" /> <a href="https://nextjs.org/" >` NextJS `</a>
 
 -   Bir NextJS projesi oluşturmak için **"npx create-next-app@latest nameOfProject"** komutunu kullanarak projemizi oluşturuyoruz.
 
