@@ -581,6 +581,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Caching, NextJS uygulamalarını daha performanslı ve daha az maliyetli kılar.
 -   Default olarak caching NextJS'de sürekli aktiftir. Bu durumda beklenmedi davranışlara yol açabilir. Bazı cache'lemeler kapatılamaz.
 -   Bu durum fazla kafa karıştırıcı olabilir çünkü NextJS'de caching'i kontrol etmek için çok fazla API vardır.
+-   Caching development aşamasında beklendiği gibi çalışmaz. Caching kapalıdır. Caching durumunu simüle edebilmek için build ve start scriptlerini kombine edip çalıştırırsak caching kullanabiliriz. Custom script oluşturarak kullanabiliriz. 👉 **npm run build && npm run start**. Yaptığımız değişiklikler ekrana anlık yansımaz, serveri kapatıp tekrar çalıştırmamız gerekir.
 -   4 Farklı Caching mekanizması vardır. 1: Request Memoization, 2: Data Cache, 3: Full Route Cache, 4: Router Cache.
 
     -   #### `Request Memoization`
