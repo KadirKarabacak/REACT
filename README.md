@@ -574,6 +574,48 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Bunun dışında manuel olarak not-found sayfasını göstermek istersek **notFound()** fonksiyonunu dilediğimiz yerde next/navigation'dan import ederek not-found sayfasını trigger edebiliriz.
 -   Aynı zamanda daha spesifik not-found sayfaları oluşturmak için root klasörde oluşturduğumuzun yanısıra diğer klasörlerimizin içerisinde de not-found sayfası oluşturabiliriz böylece root klasörde oluşturduğumuzun üzerine yazar.
 
+### `NEXTJS CACHING`
+
+-   NextJS'de normal reacttan farklı olarak cache sistemi daha agresiftir. Basit olarak saklanabilecek herşey cache'e alınır. [ Fetched data, visited routes etc. ]
+-   NextJS cache revalidation için API'lar dağıtır. Cache işlemi önceki verinin tamamen kaldırılması ve yenisinin cache'e alınmasıyla ilgilidir.
+-   Caching, NextJS uygulamalarını daha performanslı ve daha az maliyetli kılar.
+-   Default olarak caching NextJS'de sürekli aktiftir. Bu durumda beklenmedi davranışlara yol açabilir. Bazı cache'lemeler kapatılamaz.
+-   Bu durum fazla kafa karıştırıcı olabilir çünkü NextJS'de caching'i kontrol etmek için çok fazla API vardır.
+-   4 Farklı Caching mekanizması vardır. 1: Request Memoization, 2: Data Cache, 3: Full Route Cache, 4: Router Cache.
+
+    -   #### `Request Memoization`
+    -   Cache olarak server'ı kullanır.
+    -   Get requestleri gibi veri tarzlarını cache'e alır.
+    -   Birden fazla yerde yapılan aynı istek tekrar tekrar API isteği oluşturmaz, tek bir istekte alınan veriler tüm isteklerde kullanılır. Fakat bu durum sadece **fetch()** fonksiyonu ile çalışır ve istekler birebir aynı olmalıdır.
+    -   Yeniden doğrulama yapma mümkün değildir.
+    -   Vazgeçmek için ise AbortController kullanılabilir.
+
+    -   #### `Data Cache`
+    -   Cache olarak server'ı kullanır.
+    -   Veri olarak bir route'da yakalanan verileri veya te bir fetch isteğini cache'e alır.
+    -   Yakalanan veriler sonsuza kadar cache'de kalır. (Revalidate yapmak istesek bile)
+    -   Özellikle static sayfalar için kullanılır. Milyon tane kullanıcıya aynı verileri göstermek için mükemmeldir.
+    -   Açık ara geliştiriciler için düşünülmesi en önemli cache diyebiliriz.
+    -   Yeniden doğrulama için kullanabileceğimiz birden fazla yöntem vardır.
+    -   Time-based (otomatik) sayfadaki tüm veri için [ **export const revalidate = time** page.js'de ]
+    -   Time-based(otomatik) tek bir veri isteği için [ **fetch(... , { next: { revalidate: time }})** ]
+    -   İsteğe bağlı olarak (manuel) **revalidatePath** veya **revalidateTag**
+    -   Tüm sayfada Vazgeçmek/iptal etmek için ise **export const revalidate = 0** page.js'de veya **export const dynamic = "force-dynamic"** yine page.js'de kullanabiliriz.
+    -   Tek bir istek için Vazgeçmek/iptal etmek için **fetch(... , { cache: 'no-store'})** veya Tek bir server komponent için **noStore()** fonksiyonu kullanılabilir.
+
+    -   #### `Full Route Cache`
+    -   Cache olarak server'ı kullanır.
+    -   Tüm static sayfaları ( HTML ve RSC Payload ) cache'e alır.
+    -   Data Cache yeniden doğrulanana veya proje yeniden deploy edilene kadar temizlenmez.
+
+    -   #### `Router Cache`
+    -   Cache olarak Client'ı kullanır.
+    -   Önceden yakalanmış ve anlık olarak kullanıcının uygulamada gezindiği sayfaları cache'e alır. [ Static & Dynamic ]
+    -   Yakalanan veriler sayfa dynamic ise 30 saniye, sayfa static ise 5 dakika cache'de tutulur. Yani sayfayı komple kapatıp açtığımızda dahi outdated veri görebiliriz. NextJS ile ilgili en büyük problemlerden birisi de budur.
+    -   Yeniden doğrulama için revalidatePath veya revalidateTag (Server Action'da)
+    -   router.refresh, cookies.set veya cookies.delete'de yine Server Action'da revalidate için kullanılabilir.
+    -   Vazgeçmek veya iptal etmek için herhangi bir yöntem yoktur.
+
 ### `PARTIAL PRE-RENDERING`
 
 -   Bu yöntem çoğu sayfanın 100% static yada 100% dynamic olması gerekmediğinden yola çıkılarak bulunmuştur. İki durumun karması olarak anlatılabilir.
