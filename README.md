@@ -13,7 +13,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 
 -   Bir Vite projesi kurulumu içinse **"npm create vite@latest"** komutunu kullanarak onay verdikten sonra proje ismimizi yazıyoruz. Daha sonra kullanacağımız teknoloji seçimini yapıp o teknolojiye özel bir template alıyoruz. Vite **"bağımlılıkları otomatik yüklemez"**. Bu nedenle proje dosyamıza girip bağımlılıklarımızı manuel olarak yüklemeliyiz. Create-react-app'deki index.js dosyası yerine main.jsx dosyamız mevcut. Aynı şekilde app.js yerine de App.jsx. Projemizi başlatmak içinse npm start yerine **"npm run dev"** komutunu kullanıyoruz.
 
-### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" width="25" height="25" /> <a href="https://nextjs.org/" >` NextJS `</a>
+### <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" width="25" height="25" /> <a href="https://nextjs.org/" >`NextJS`</a>
 
 -   Bir NextJS projesi oluşturmak için **"npx create-next-app@latest nameOfProject"** komutunu kullanarak projemizi oluşturuyoruz.
 
@@ -615,6 +615,14 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
     -   router.refresh, cookies.set veya cookies.delete'de yine Server Action'da revalidate için kullanılabilir.
     -   Vazgeçmek veya iptal etmek için herhangi bir yöntem yoktur.
 
+### `INCREMENTAL STATIC REGENERATION`
+
+-   Incremental Static Regeneration, static bir sayfanın belirli zamanlar içerisinde yeniden oluşturulmasını ve kullanıcılara güncel veriyi göstermeyi sağlar.
+-   Bu yapıyı **export const revalidate = time** şeklinde modülümüz içerisinde tanımlamalıyız. Böylece belirttiğimiz süre aralıkları ile sayfamız yeniden oluşturulur ve cache güncellenir. ( Route Level )
+-   Veya bir komponent için bunu yapmak istersek **import { unstable_noStore as noStore } from "next/cache"** şeklinde import edip komponentimiz içerisinde en üst seviyede noStore() fonksiyonunu çağırıyoruz.
+-   Route seviyesinde **revalidate** export etmek veya komponent seviyesinde **noStore** kullanmanın bir farkı yoktur. Ancak partial pre-rendering kullanıldığında bir anlam ifade eder. Tüm sayfayı static tutup sadece komponenti dynamic yapabilir ve uygulamamıza performans kazancı sağlayabiliriz.
+-
+
 ### `PARTIAL PRE-RENDERING`
 
 -   Bu yöntem çoğu sayfanın 100% static yada 100% dynamic olması gerekmediğinden yola çıkılarak bulunmuştur. İki durumun karması olarak anlatılabilir.
@@ -622,6 +630,24 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Öncelikle next.config dosyasından PPR (Partial Pre-Rendering) açılmalıdır.
 -   Dynamic parçalar (components) Suspense ile sarılmalıdır. Böylece tüm route yerine hangi parçanın dynamic olması gerektiği belirtilecektir.
 -   Bu dynamic parçalar yüklenirken gösterilecek static bir fallback bırakmamız gerekecektir.
+
+### `Server - Client Boundary`
+
+-   #### `Traditional Way`
+    -   Very clear server-client boundary.
+    -   Communication happens via an API.
+    -   Once JSON arrives from back-end, the front end takes over.
+-   #### `NextJS with RSC and SA (Server Actions)`
+    -   No clear seperation between front-end and back-end anymore.
+    -   **Knitting:** Pieces of server and client code interweave (composability)
+    -   Allow us to build true full-stack applications in just one codebase
+    -   No need for an intermediary API in many times.
+
+### `Client ve Server Komponent'larda Importing vs Rendering`
+
+-   Client komponentler sadece client komponentleri import edebilir.
+-   Client komponentler prop olarak geçirilen hem client hem server komponentleri renderlayabilir.
+-   Server komponentler hem client hem server komponentleri hem import edebilir hemde renderlayabilir.
 
 ### 🖊 `Arka planda nasıl çalışır`
 
