@@ -634,17 +634,18 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 ### `Server - Client Boundary`
 
 -   #### `Traditional Way`
-    -   Very clear server-client boundary.
-    -   Communication happens via an API.
-    -   Once JSON arrives from back-end, the front end takes over.
+    -   Çok açık ve temiz bir server-client çizgisi vardır.
+    -   İletişim API aracılığıyla gerçekleşir
+    -   JSON tipi veri back-end'den geldiğinde fornt-end devralır.
 -   #### `NextJS with RSC and SA (Server Actions)`
-    -   No clear seperation between front-end and back-end anymore.
+    -   Front-end ve back-end arasında temiz bir ayrım yoktur.
     -   **Knitting:** Pieces of server and client code interweave (composability)
     -   Allow us to build true full-stack applications in just one codebase
     -   No need for an intermediary API in many times.
 
 ### `Client ve Server Komponent'larda Importing vs Rendering`
 
+-   Client komponentleri olabildiğince DOM ağacında son yapraklarda oluşturmalıyız. Çünkü her client component kendisinden sonraki tüm componentleri client olarak renderlar ve performans düşüşü yaşanabilir.
 -   Client komponentler sadece client komponentleri import edebilir.
 -   Client komponentler prop olarak geçirilen hem client hem server komponentleri renderlayabilir.
 -   Server komponentler hem client hem server komponentleri hem import edebilir hemde renderlayabilir.
