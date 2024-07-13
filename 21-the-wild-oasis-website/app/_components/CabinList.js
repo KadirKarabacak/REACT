@@ -1,10 +1,10 @@
 import CabinCard from "@/app/_components/CabinCard";
 import { getCabins } from "@/app/_lib/data-service";
-import { unstable_noStore as noStore } from "next/cache";
+// import { unstable_noStore as noStore } from "next/cache";
 
 export default async function CabinList() {
     // With this, Cabins page become dynamic again, cuz we are not caching component
-    noStore();
+    // noStore();
     const cabins = await getCabins();
 
     if (!cabins?.length) return null;
