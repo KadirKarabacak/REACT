@@ -633,6 +633,8 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 
 ### `Server - Client Boundary`
 
+-   Bir client component içerisinde server component import etmek ve renderlamak sorunlara yol açar. Bunu yapmanın tek yolu prop olarak componenti geçirmektir.
+
 -   #### `Traditional Way`
     -   Çok açık ve temiz bir server-client çizgisi vardır.
     -   İletişim API aracılığıyla gerçekleşir
@@ -649,6 +651,12 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Client komponentler sadece client komponentleri import edebilir.
 -   Client komponentler prop olarak geçirilen hem client hem server komponentleri renderlayabilir.
 -   Server komponentler hem client hem server komponentleri hem import edebilir hemde renderlayabilir.
+
+### `NextJS Share State Between Client & Server`
+
+-   Client ve Server arasında state paylaşımı yapmanın en kolay yolu değerleri URL'de saklamaktır.
+-   URL'de state saklamak için useSearchParams, useRouter, usePathname ve new URLSearchParams'a ihtiyaç duyarız.
+-   router.replace() fonksiyonuna argüman olarak `${pathname}?${params.toString()}` değerlerimizi verir ve yeni bir URL oluştururuz.
 
 ### 🖊 `Arka planda nasıl çalışır`
 
