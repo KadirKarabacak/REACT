@@ -1,4 +1,5 @@
 import SelectCountry from "@/app/_components/SelectCountry";
+import UpdateProfileForm from "@/app/_components/UpdateProfileForm";
 
 export const metadata = {
     title: "Update Profile",
@@ -7,9 +8,7 @@ export const metadata = {
 
 export default function Page() {
     // CHANGE
-    const countryFlag = "pt.jpg";
     const nationality = "portugal";
-
     return (
         <div>
             <h2 className="font-semibold text-2xl text-accent-400 mb-4">
@@ -21,7 +20,7 @@ export default function Page() {
                 process faster and smoother. See you soon!
             </p>
 
-            <form className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col">
+            {/* <form className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col">
                 <div className="space-y-2">
                     <label>Full name</label>
                     <input
@@ -69,7 +68,16 @@ export default function Page() {
                         Update profile
                     </button>
                 </div>
-            </form>
+            </form> */}
+            {/* To fix server-client boundary issue, use server comp as children */}
+            <UpdateProfileForm>
+                <SelectCountry
+                    name="nationality"
+                    id="nationality"
+                    className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
+                    defaultCountry={nationality}
+                />
+            </UpdateProfileForm>
         </div>
     );
 }
