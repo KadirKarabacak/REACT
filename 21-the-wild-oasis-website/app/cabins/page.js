@@ -2,6 +2,7 @@ import CabinList from "@/app/_components/CabinList";
 import React from "react";
 import Spinner from "@/app/_components/Spinner";
 import Filter from "../_components/Filter";
+import ReservationReminder from "../_components/ReservationReminder";
 
 export const metadata = {
     title: "Cabins",
@@ -36,6 +37,7 @@ export default function Page({ searchParams }) {
             {/* Every navigation wrapped into transitions in NextJS, so we had to use key to spesify each time url changes display spinner */}
             <React.Suspense fallback={<Spinner />} key={filter}>
                 <CabinList filter={filter} />
+                <ReservationReminder />
             </React.Suspense>
         </div>
     );
