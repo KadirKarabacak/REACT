@@ -658,6 +658,12 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   URL'de state saklamak için useSearchParams, useRouter, usePathname ve new URLSearchParams'a ihtiyaç duyarız.
 -   router.replace() fonksiyonuna argüman olarak `${pathname}?${params.toString()}` değerlerimizi verir ve yeni bir URL oluştururuz.
 
+### `Creating an API Endpoint with Route Handlers`
+
+-   API endpointlere genellikle Pages Router'da ihtiyaç duyarız. App Router'da Server Actions kullanıyoruz.
+-   Yeni bir API endpoint oluşturmak için bir route.js dosyası oluşturuyoruz. Bu dosya bir JSON formatında veri çevirir.
+-   Oluşturduğumuz route.js dosyası içinde **export async function GET(request, { params })** gibi bir GET isteği yapabiliriz. Request ve params'a erişebiliriz.
+
 ### 🖊 `Arka planda nasıl çalışır`
 
 -   Imperetive(Zorunlu) ve Declarative(Bildirimsel) arasındaki fark VanillaJS ve React farkında gözle görülmektedir. VanillaJS'de bir çok eylemi bizzat siz yapmanız gerekir. Fakat React'ta ne yapması istediğinizi söyler ve gerisini ona bırakırsınız.
