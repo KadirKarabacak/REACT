@@ -662,7 +662,21 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 
 -   API endpointlere genellikle Pages Router'da ihtiyaç duyarız. App Router'da Server Actions kullanıyoruz.
 -   Yeni bir API endpoint oluşturmak için bir route.js dosyası oluşturuyoruz. Bu dosya bir JSON formatında veri çevirir.
--   Oluşturduğumuz route.js dosyası içinde **export async function GET(request, { params })** gibi bir GET isteği yapabiliriz. Request ve params'a erişebiliriz.
+-   Oluşturduğumuz route.js dosyası içinde **export async function GET(request, { params })** gibi bir GET, POST, PUT isteği yapabiliriz. Request ve params'a erişebiliriz.
+
+### `NextAuth [ Auth.js ]`
+
+-   Kütüphane yüklemesi için öncelikle **npm i next-auth@beta** komutunu kullanıyoruz.
+-   Alternatif olarak Clerk ve Lucia kullanabiliriz. Ancak bu kütüphaneler bir noktada ücretli oluyor. Dolayısıyla ücretsiz bir servis için Auth.js kullanabiliriz.
+-   Auth.js bünyesinde birçok provider barındırır. [ Google, Github, Facebook etc. ]
+-   \_lib kalsörümüzde bir auth.js dosyası oluşturuyoruz.
+-   Sonrasında env dosyamızda **NEXTAUTH_URL** isminde bir değişken oluşturup projeyi çalıştırdığımız linki veriyoruz [ http://localhost:3000/ ]
+-   Bir sonraki adımda NEXTAUTH_SECRET oluşturup değerini <a href="https://generate-secret.vercel.app/">Generate Secret Vercel </a>'dan oluşturup koyabiliriz.
+-   Sonrasında google developer console'a gidip yeni bir proje oluşturuyoruz. Oluşturulan projeye girip API & Services kısmından 0Auth consent screen'e geçiş yapıyoruz. External seçip create'liyoruz. Appname ve email gibi kısımları doldurduktan sonra Save & Continue diyoruz.
+-   Test için bir kullanıcı ekleyebiliriz. SonrasındaBack to the dashboard diyip Credentials sekmesine geçerek Create Credentials sekmesinden 0Auth client ID oluşturacağız. Burada bir url olarak Authorized JS origins'e **http://localhost:3000/** ekleyeceğiz. Authorized Redirect URL'e ise **http://localhost:3000/api/auth/callback/google** ekleyeceğiz ve create yapacağız.
+-   Sonuç ekranında gelen ClientID ve Client Secret'ları env variables'a ekleyeceğiz. Bu noktada Google Provider'ı Next Auth ile kullanabiliriz. Daha sonrasında projeyi deploy ederken URL'leri değiştirebiliriz.
+-   Auth.js dosyamıza NextAuth ve Google'ı import ediyoruz. Bir config dosyası oluşturup içerisinde providers dizimizi belirtiyoruz ve aldığımız clientID ile clientSecret'larımızı belirtiyoruz. Sonrasında NextAuth fonksiyonumuzu çağırıp config objemizi içerisine aktarıyoruz.
+-   Sonraki aşamada api klasörümüz içerisinde auth isminde bir klasör oluşturup bu klasör içerisinde de [...nextauth] klasörünü oluşturup içerisine bir route.js dosyası daha oluşturuyoruz.
 
 ### 🖊 `Arka planda nasıl çalışır`
 
