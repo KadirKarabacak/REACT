@@ -678,6 +678,14 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Auth.js dosyamıza NextAuth ve Google'ı import ediyoruz. Bir config dosyası oluşturup içerisinde providers dizimizi belirtiyoruz ve aldığımız clientID ile clientSecret'larımızı belirtiyoruz. Sonrasında NextAuth fonksiyonumuzu çağırıp config objemizi içerisine aktarıyoruz.
 -   Sonraki aşamada api klasörümüz içerisinde auth isminde bir klasör oluşturup bu klasör içerisinde de [...nextauth] klasörünü oluşturup içerisine bir route.js dosyası daha oluşturuyoruz.
 
+### `NextJs Middleware`
+
+-   Middleware istek (request) ve yanıt arasında bulunan bir fonksiyondur. İstek yapıldıktan sonra ve yanıt gelmeden önce çalışır. ( Bir route render edilmeden hemen önce )
+-   Default olarak middleware her route'dan önce çalışır fakat hangi route'larda çalışması gerektiğini matcher belirtebiliriz.
+-   Sadece bir middleware fonksiyonu middleware.js veya ts projenin root dosyasında export edilmeli.
+-   Middleware kullanım alanı genellikle cookies, header, authentication, authorization, server-side analytics, geolocation'a bağlı yeniden yönlendirme, A/B testing gibi alanlardır.
+-   Middleware bir response üretmelidir.
+
 ### 🖊 `Arka planda nasıl çalışır`
 
 -   Imperetive(Zorunlu) ve Declarative(Bildirimsel) arasındaki fark VanillaJS ve React farkında gözle görülmektedir. VanillaJS'de bir çok eylemi bizzat siz yapmanız gerekir. Fakat React'ta ne yapması istediğinizi söyler ve gerisini ona bırakırsınız.
