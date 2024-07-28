@@ -8,10 +8,7 @@ function LoginMessage() {
                 {/* <Link href="/login" className="underline text-accent-500">
                     login
                 </Link>{" "} */}
-                <Link
-                    href="/api/auth/signin"
-                    className="underline text-accent-500"
-                >
+                <Link href="/login" className="underline text-accent-500">
                     login
                 </Link>{" "}
                 to reserve this
