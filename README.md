@@ -686,6 +686,20 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Middleware kullanım alanı genellikle cookies, header, authentication, authorization, server-side analytics, geolocation'a bağlı yeniden yönlendirme, A/B testing gibi alanlardır.
 -   Middleware bir response üretmelidir.
 
+### `NextJS Server Actions`
+
+-   Server Actions uygulamamızda gösterdiğimiz verinin kullanıcı etkileşimi ile değişimini (Mutations) arayüze işlememizi sağlayan yardımcı fonksiyonlardır.
+-   React Server Components yapısındaki eksik parçadır diyebiliriz. Etkileşimli full-stack uygulamalar oluşturmamıza olanak sağlar.
+-   Server tarafında çalışan asenkron fonksiyonlardır, veri mutasyonu yapmamıza olanak verirler [ Create, Delete, Update ]. Mutasyon sonucu oluşturulan yeni verileri arayüze işlemek için Revalidate Cache yapmamız gerekir [ revalidatePath, revalidateTag ]
+-   İki farklı şekilde oluşturulabilirler. "use server" direktifi ile bir modülün tamamında veya bir fonksiyonun en üstünde.
+-   Bir server component içerisindeki asenkron bir fonksiyon olarak; Herhangi bir fonksiyonun veya componentin içerisinde kullanılabilir veya bir client component'e prop olarak geçirilebilir. ( Normal fonksiyonlar gibi değil )
+-   Bir dosya olarak; Export edilen fonksiyonlar server action'lar haline gelir ve herhangi bir component içerisinde import edilebilir. [ Önerilen yöntemdir çünkü böylece tüm mutasyonlar tek bir merkezde toplanır ]
+-   Server actions otomatik olarak bir API endpoint oluşturur.
+-   Server Componentlerden farklı olarak server actions çalışan bir web server'ına ihtiyaç duyar [ Build time'da çalışmaz ]
+-   Server Actions tipik olarak Form Submitleme için kullanılır. Bir form'un action özelliğine direkt olarak verilebilirler. Client yada Server component olması fark etmez.
+-   Server Actions aynı zamanda event handler'lar içerisinde veya useEffect içerisinde çağırılabilirler [ Bu durumlar sadece "Client" componentler için geçerlidir ]
+-   "use server" direktifi sadece server actions içindir. Server component oluşturmak için "use server" direktifi kullanmak gibi bir hataya düşülmemelidir. NextJS default olarak her componenti (belirtilmediği sürece) server component olarak renderlar. Yani basitçe bir API endpoint oluşturmak için "use server" direktifi kullanırız.
+
 ### 🖊 `Arka planda nasıl çalışır`
 
 -   Imperetive(Zorunlu) ve Declarative(Bildirimsel) arasındaki fark VanillaJS ve React farkında gözle görülmektedir. VanillaJS'de bir çok eylemi bizzat siz yapmanız gerekir. Fakat React'ta ne yapması istediğinizi söyler ve gerisini ona bırakırsınız.
@@ -700,7 +714,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 
 ### `Daha fazla 3rd-Party React kütüphanesi 👇`
 
--   Routing için ▶ **React Router / React Location / NextJS**
+-   Routing için ▶ **React Router / React Location / NextJS / Tanstack-Router**
 -   HTTP requests ▶ **fetch() / Axios**
 -   Uzaktan Durum Yönetimi ▶ **React Query / SWR / Apollo**
 -   Küresel Durum Yönetimi ▶ **Context API / Redux / Zustand**
