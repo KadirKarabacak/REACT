@@ -699,6 +699,7 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Server Actions tipik olarak Form Submitleme için kullanılır. Bir form'un action özelliğine direkt olarak verilebilirler. Client yada Server component olması fark etmez.
 -   Server Actions aynı zamanda event handler'lar içerisinde veya useEffect içerisinde çağırılabilirler [ Bu durumlar sadece "Client" componentler için geçerlidir ]
 -   "use server" direktifi sadece server actions içindir. Server component oluşturmak için "use server" direktifi kullanmak gibi bir hataya düşülmemelidir. NextJS default olarak her componenti (belirtilmediği sürece) server component olarak renderlar. Yani basitçe bir API endpoint oluşturmak için "use server" direktifi kullanırız.
+-   Yapılan bir mutasyon sonucunda arayüzün yeniden doğrulanması isteniyorsa revalidatePath kullanılır. Arayüz yeniden doğrulanırken kullanıcıya bir durum belirteci kullanmak için ( Spinner, Loader vb. ) useFormStatus hookunu kullanıyoruz. Fakat useFormStatus hook'u içerisinde bir form içeren bir komponent içinde kullanılamaz ve form'un içerisinde bulunan bir componentte olmalıdır.
 
 ### 🖊 `Arka planda nasıl çalışır`
 
