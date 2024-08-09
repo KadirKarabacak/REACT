@@ -2,7 +2,7 @@
 // This one is a client component trying to import a server component [ SelectCountry ]. Trying this makes us problems
 import React, { useState } from "react";
 import { updateGuest } from "../_lib/actions";
-import { useFormStatus } from "react-dom";
+import SubmitButton from "./SubmitButton";
 
 //! Importing a server component inside client component causing the problem
 // import SelectCountry from "./SelectCountry";
@@ -58,23 +58,9 @@ function UpdateProfileForm({ children, guest }) {
             </div>
 
             <div className="flex justify-end items-center gap-6">
-                <Button />
+                <SubmitButton>Update Profile</SubmitButton>
             </div>
         </form>
-    );
-}
-
-function Button() {
-    // Pending status holds form's current situation
-    const { pending, formData, action } = useFormStatus();
-
-    return (
-        <button
-            disabled={pending}
-            className="bg-accent-500 px-8 py-4 text-primary-800 font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300"
-        >
-            {pending ? "Updating..." : "Update profile"}
-        </button>
     );
 }
 
