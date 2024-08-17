@@ -25,6 +25,7 @@ export default async function Page() {
 
             {/* To fix server-client boundary issue, use server comp as children */}
             <UpdateProfileForm guest={guest}>
+                {/* SelectContry is a server comp, UpdateProfileForm is a client comp, to use selectCountry inside profileForm we use children */}
                 <SelectCountry
                     name="nationality"
                     id="nationality"
