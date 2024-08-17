@@ -1,11 +1,10 @@
 // This comp must be client cuz of we invoke server action directly in button click instead of using a form
 "use client";
 import { TrashIcon } from "@heroicons/react/24/solid";
-import { deleteReservation } from "../_lib/actions";
 import { useTransition } from "react";
 import SpinnerMini from "./SpinnerMini";
 
-function DeleteReservation({ bookingId }) {
+function DeleteReservation({ bookingId, onDelete }) {
     // For delete reservation we can create server action right here.
     // function deleteReservation() {
     // To create a server action right here, we must use "use server" directive top of that function to be sure always this func stays on server
@@ -17,7 +16,7 @@ function DeleteReservation({ bookingId }) {
     function handleDelete() {
         if (confirm("Are you sure you want to delete this reservation?"))
             // Wrapping our action with startTransition to mark it as transition
-            startTransition(() => deleteReservation(bookingId));
+            startTransition(() => onDelete(bookingId));
     }
 
     return (
