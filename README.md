@@ -703,6 +703,16 @@ Bu depoda toplu olarak "React" ile yaptığım tüm çalışmalarımı ve bilgi 
 -   Server actionları form'ların action attribute'ına vermek dışında bir buton tıklamasına da verebiliriz. Bu durumda server action'un gerçekleştiği durum boyunca bir loading indicator'umuz olması için useTransition hookunu kullanmalıyız. Ana mantık olarak useTransition bize bir state güncellemesini transition olarak adlandırmamıza izin verir ve ne zaman bir state update useTransition kullanarak transition olarak adlandırılırsa state güncellemesi arayüzü bloklamadan gerçekleşir. Böylece arayüzde bozulmalar gerçekleşmez. Nextjs'de bir server action'u bir transition olarak adlandırabiliriz.
 -   useTransition hook'u bize iki değer verir. İlki isPending durumun gerçekleşip gerçekleşmediğini kontrol eden boolean değerdir. İkincisi ise startTransition yani işlemi başlatan fonksiyondur. İşleminin kontrol edilmesini istediğimiz action'ı startTransition fonksiyonu içerisine veriyoruz.
 
+### `useOptimistic`
+
+-   useOptimistic hook'u görünen arayüz performansını arttırmaya yönelik kullanılan bir hooktur. Heryerde loader'lar göstermek yerine arayüzü gerçekleştirdiğimiz database işlemlerinin sonuçları tamamlanmadan kullanıcı arayüzüne yansıtır.
+-   useOptimistic iki parametre alır. İlk parametre actual state yani halihazırda render edilen data. İkinci parametre olarak bir state update fonksiyonu alır ve ilk parametremizi asenkron işlemin sonucuna göre günceller fakat asenkron işlemin sonucunu beklemeden arayüzde işlemi gerçekleştirir. Arka planda asenkron bir işlem gerçekleşirken çalışır.
+-   Herhangi bir ekleme, silme veya düzenleme işlemi için kullanılabilir. Değişiklikler arayüzde anlık olarak güncellenirken asenkron işlemi beklememesi kullanıcıya daha gelişmiş bir deneyim sunar.
+-   Kullanımı 👉 const [optimisticData, optimisticFunction] = useOptimistic(
+    data,
+    ( curData, variableWePassToMutation ) => { fonksiyonun kendisi }
+    );
+
 ### 🖊 `Arka planda nasıl çalışır`
 
 -   Imperetive(Zorunlu) ve Declarative(Bildirimsel) arasındaki fark VanillaJS ve React farkında gözle görülmektedir. VanillaJS'de bir çok eylemi bizzat siz yapmanız gerekir. Fakat React'ta ne yapması istediğinizi söyler ve gerisini ona bırakırsınız.
