@@ -31,7 +31,7 @@ export default async function Page({ params }) {
             <Cabin cabin={cabin} />
             <div>
                 <h2 className="mb-10 text-accent-400 text-5xl font-semibold text-center">
-                    Reserve {cabin.name} today. Pay on arrival.
+                    Reserve today. Pay on arrival.
                 </h2>
             </div>
             {/* With this, other data fetch requests doesnt block entire ui but the piece of it */}
