@@ -1,7 +1,12 @@
 "use client";
 
 // React day picker requires use client
-import { isWithinInterval } from "date-fns";
+import {
+    differenceInDays,
+    isPast,
+    isSameDay,
+    isWithinInterval,
+} from "date-fns";
 import { useState } from "react";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
@@ -19,16 +24,13 @@ function isAlreadyBooked(range, datesArr) {
 
 function DateSelector({ settings, bookedDates, cabin }) {
     const { range, setRange, resetRange } = useReservation();
-    // CHANGE
-    const numNights = 23;
-    const cabinPrice = 23;
-    // const range = { from: null, to: null };
 
-    console.log(cabin);
+    const displayRange = isAlreadyBooked(range, bookedDates) ? {} : range;
 
-    // SETTINGS
-    const { minBookingLength, maxBookingLength, discount, regularPrice } =
-        cabin;
+    const numNights = differenceInDays(displayRange.to, displayRange.from);
+    const { minBookingLength, maxBookingLength } = settings;
+    const { discount, regularPrice } = cabin;
+    const cabinPrice = numNights * (regularPrice - discount);
 
     return (
         <div className="flex flex-col justify-between">
@@ -37,16 +39,18 @@ function DateSelector({ settings, bookedDates, cabin }) {
                 mode="range"
                 min={minBookingLength + 1}
                 max={maxBookingLength}
-                onSelect={range => {
-                    console.log(range);
-                    setRange(range);
-                }}
-                selected={range}
+                onSelect={setRange}
+                selected={displayRange}
                 fromMonth={new Date()}
                 fromDate={new Date()}
                 toYear={new Date().getFullYear() + 5}
                 captionLayout="dropdown"
                 numberOfMonths={2}
+                // Disable booking dates in situation today's past days & booked dates
+                disabled={curDate =>
+                    isPast(curDate) ||
+                    bookedDates.some(date => isSameDay(date, curDate))
+                }
             />
 
             <div className="flex items-center justify-between px-8 bg-accent-500 text-primary-800 h-[72px]">
