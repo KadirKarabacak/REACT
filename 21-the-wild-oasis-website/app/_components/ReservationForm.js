@@ -1,11 +1,32 @@
 "use client";
 
+import { differenceInDays } from "date-fns";
 import { useReservation } from "./ReservationContext";
+import { createBooking } from "../_lib/actions";
+import SubmitButton from "./SubmitButton";
 
 function ReservationForm({ cabin, user }) {
-    // CHANGE
-    const { maxCapacity } = cabin;
-    const { range } = useReservation();
+    const { maxCapacity, regularPrice, discount, id } = cabin;
+    const { range, resetRange } = useReservation();
+
+    const startDate = range.from;
+    const endDate = range.to;
+
+    const numNights = differenceInDays(endDate, startDate);
+    const cabinPrice = numNights * (regularPrice - discount);
+
+    const bookingData = {
+        startDate,
+        endDate,
+        numNights,
+        cabinPrice,
+        cabinId: id,
+    };
+
+    // Second alternative pass datas into server action instead of hidden input use bind method
+    // But if we do that, in server action first arg becomes bookingData instead of formData
+    // To fix that, we must add additional first parameter to take both of data
+    const createBookingWithData = createBooking.bind(null, bookingData);
 
     return (
         <div className="scale-[1.01]">
@@ -24,7 +45,10 @@ function ReservationForm({ cabin, user }) {
                 </div>
             </div>
 
-            <form className="bg-primary-900 py-10 px-16 text-lg flex gap-5 flex-col">
+            <form
+                action={createBookingWithData}
+                className="bg-primary-900 py-10 px-16 text-lg flex gap-5 flex-col"
+            >
                 <div className="space-y-2">
                     <label htmlFor="numGuests">How many guests?</label>
                     <select
@@ -64,9 +88,9 @@ function ReservationForm({ cabin, user }) {
                         Start by selecting dates
                     </p>
 
-                    <button className="bg-accent-500 px-8 py-4 text-primary-800 font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300">
-                        Reserve now
-                    </button>
+                    <SubmitButton actionText="Creating...">
+                        Create Booking
+                    </SubmitButton>
                 </div>
             </form>
         </div>
