@@ -2,7 +2,7 @@
 import { useFormStatus } from "react-dom";
 import SpinnerMini from "./SpinnerMini";
 
-function SubmitButton({ children }) {
+function SubmitButton({ children, actionText = "Updating..." }) {
     // Pending status holds form's current situation
     const { pending, formData, action } = useFormStatus();
 
@@ -16,7 +16,7 @@ function SubmitButton({ children }) {
                     <span>
                         <SpinnerMini />
                     </span>
-                    Updating...
+                    {actionText}
                 </div>
             ) : (
                 children
