@@ -46,7 +46,12 @@ function ReservationForm({ cabin, user }) {
             </div>
 
             <form
-                action={createBookingWithData}
+                // To use resetRange func, we must use a trick like this
+                action={async formData => {
+                    await createBookingWithData(formData);
+                    resetRange();
+                }}
+                // action={createBookingWithData}
                 className="bg-primary-900 py-10 px-16 text-lg flex gap-5 flex-col"
             >
                 <div className="space-y-2">
@@ -84,13 +89,15 @@ function ReservationForm({ cabin, user }) {
                 </div>
 
                 <div className="flex justify-end items-center gap-6">
-                    <p className="text-primary-300 text-base">
-                        Start by selecting dates
-                    </p>
-
-                    <SubmitButton actionText="Creating...">
-                        Create Booking
-                    </SubmitButton>
+                    {!(startDate && endDate) ? (
+                        <p className="text-primary-300 text-base">
+                            Start by selecting dates
+                        </p>
+                    ) : (
+                        <SubmitButton actionText="Creating...">
+                            Create Booking
+                        </SubmitButton>
+                    )}
                 </div>
             </form>
         </div>
